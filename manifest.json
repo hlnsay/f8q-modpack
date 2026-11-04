@@ -495,9 +495,9 @@
     },
     {
       "path": "mods/pikafishing-0.0.3.1-mc1.21.1-neoforge.jar",
-      "sha512": "4ad9f62544a013ff3f693bad49ffad3e4856736c435ce0928b9966d47fc02033ae03e98a90ad6d504cdbfaec5ad830b9edf180b56eb93997a0557a759690c2de",
-      "size": 5453239,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/pikafishing-0.0.3.1-mc1.21.1-neoforge-16-slots.jar"
+      "sha512": "866c7beeabb4d5ce76d18a5621b4af29088083cae0d802de1d9f1144ba5c40b0b9c34704d350aba577b111ebde3f9e56fef5d3873ef45521ef278b0655e47bbc",
+      "size": 5453217,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/pikafishing-0.0.3.1-mc1.21.1-neoforge-16-stacks.jar"
     },
     {
       "path": "mods/polytone-1.21-5.3.4-neoforge.jar",
@@ -657,9 +657,9 @@
     },
     {
       "path": "resourcepacks/Cozy-Russian.zip",
-      "sha512": "d9b6033e49fd643426838aebfeb5b6de7e92d6b70d150a3968bd2984ab1a661f1b33f859938628660f075ff550bd31941eb9844c7117e41e9b4b0f429f91edc9",
-      "size": 329072,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v2.zip"
+      "sha512": "e64f39d754a9a86f63f8f6669a7f90de5af10f494b89be93314f03f7a44f970cbee04e93a461e21514f726411229b8ef928727e3335ae498fb0e645b1a1cfb7d",
+      "size": 329052,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v3.zip"
     },
     {
       "path": "resourcepacks/F8Q 1.21.zip",
@@ -2027,9 +2027,9 @@
     },
     {
       "path": "config/fancymenu/customization/f8q-title.txt",
-      "size": 37942,
-      "sha512": "d382bec672f61ea203a2b8d98d51d2114bad3243236bdf70db396330559e0ebad8706e27278745e724eabc63afa99338543bbd93282795e93ffc85aef4c1eedd",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-title.txt"
+      "size": 39291,
+      "sha512": "de72324df53048db62118e4f5eb98d471823f08129b1728d6b29babe9b90210d5a0659265006de7565c0f1e8b47ccc7bc126d55c0df37ab83840bc12e9a50f22",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/1095909d30cb6cf182d3a2470f4443ee3d690234/config/fancymenu/customization/f8q-title.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-VideoSettingsScreen.txt",
@@ -2132,6 +2132,12 @@
       "size": 103,
       "sha512": "76f84f077c48e015edf203e7bb26910155d58def731c35bb0430f7f4bfd1741ac144701741f7a48a64a82aaf74a3322e568549b142aff3581bf6900318a192ba",
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/0819b203b471cfbeba98cb857d5e713d7e06ea6f/config/modernfix-mixins.properties"
+    },
+    {
+      "path": "config/fancymenu/assets/f8q/primary.png",
+      "size": 134,
+      "sha512": "9d482f141e870a16ddf3eedc99e85f0a1619588ac3b3cc8971bf9ceb24b344949f80e48adf5bd6883e111165eeef02cf38ba9d6f57ee346901f7288b416dbb0b",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/1095909d30cb6cf182d3a2470f4443ee3d690234/config/fancymenu/assets/f8q/primary.png"
     }
   ],
   "updater": {
@@ -2180,6 +2186,16 @@
     "file/better-3d-beds.zip"
   ],
   "changelog": [
+    {
+      "date": "2026-11-05",
+      "added": [],
+      "updated": [
+        "Главное меню: логотип в углу, новые кнопки",
+        "Сумки Pikafishing показывают слоты: 0/16",
+        "Деревья с толстым стволом рубятся чище"
+      ],
+      "removed": []
+    },
     {
       "date": "2026-11-05",
       "added": [
@@ -2324,7 +2340,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-remove-fix",
+  "revision": "2026-11-05-menu-and-trunks",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
