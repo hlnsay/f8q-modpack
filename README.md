@@ -5,13 +5,13 @@
 ## Как установить
 
 1. Установите [Horizon](https://playhorizon.dev) и войдите в аккаунт Microsoft.
-2. Скачайте [f8q-updater.exe](https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater.exe) и запустите его. Он создаст сборку и скачает моды.
-3. Скачайте [F8Q-Launcher-Setup.exe](https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup.exe) и установите F8Q Launcher.
-4. Откройте F8Q Launcher и нажмите «Играть».
+2. Скачайте [F8Q-Launcher-Setup.exe](https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup.exe) и установите F8Q Launcher.
+3. Откройте F8Q Launcher и нажмите «Установить сборку». Дождитесь конца установки в открывшемся окне.
+4. Откройте лаунчер заново и нажмите «Играть».
 
 Официальный Horizon удалять нельзя: он делает вход Microsoft и запускает игру.
 
-Первый запуск устанавливает NeoForge и занимает несколько минут. Дальше моды обновляются сами при каждом запуске.
+Если на сервере изменятся моды, вместо «Играть» появится «Обновить». Первый запуск устанавливает NeoForge и занимает несколько минут.
 
 Windows может предупредить о неизвестном издателе: файлы не подписаны.
 
