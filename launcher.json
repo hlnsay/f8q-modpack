@@ -1,10 +1,17 @@
 {
-  "build": 18,
-  "version": "0.0.4",
-  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.4.exe",
-  "size": 55888384,
-  "sha512": "d3c217addafe6e0b309f169c0068b5ee13fac32b5a499f2a52649275c3868ad1f39add15ba36659a04361d0fff5487e834af5fdfd1ab60cbc470cbfe248e5815",
+  "build": 19,
+  "version": "0.0.5",
+  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.5.exe",
+  "size": 55889408,
+  "sha512": "0aac0b5515709693d34ece792892abe0bd48b1f4d9b915cb801906fd32f310bd2f15351f08c8721936f4a734c59341fe9beaabd4e61ff94804d12fb8e9f10821",
   "changelog": [
+    {
+      "version": "0.0.5",
+      "date": "2026-11-04",
+      "changes": [
+        "При сбое запуска на экране показывается настоящая причина."
+      ]
+    },
     {
       "version": "0.0.4",
       "date": "2026-11-04",
