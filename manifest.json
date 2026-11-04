@@ -2238,7 +2238,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-04-no-console",
+  "revision": "2026-11-05-waypoints-on",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
@@ -2278,9 +2278,9 @@
     },
     {
       "path": "journeymap/config/6.0/journeymap.waypoint.config",
-      "sha512": "13501e3f9ba158f3d99fa2c526cdd02238a9695378449f9edc6f84c74e6b92d94ae3ded2776bf42473cff7a96e0527fc870f8587fbc9b813bfeb9d0c8fd982c9",
-      "size": 1431,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/5dd5c162902a22aa29a8a52357ea4f8c2149ba5b/journeymap/config/6.0/journeymap.waypoint.config"
+      "sha512": "58d60d8aee8856eca1df87be700bf57b3404925085d52f71e9e8177eee75db5b2c68151fe8615257e5305fe60dd6181f56b96d9ddfa49431ce3b0e65851b304f",
+      "size": 1430,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7ee94cd02eff8626b06a3c70534522bd1e184fe1/journeymap/config/6.0/journeymap.waypoint.config"
     },
     {
       "path": "journeymap/config/6.0/journeymap.webmap.config",
