@@ -852,6 +852,12 @@
       "size": 9636,
       "sha512": "629995454b400688b84e4946bf64523dce827ab6af0ff720d32196f87233d60f1947fdc8697575669878da5b8bbe03d240d650af402b5a8f686bf0064351b512",
       "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Interface-v002.zip"
+    },
+    {
+      "path": "resourcepacks/F8Q-Fixes.zip",
+      "sha512": "1894b638adab035cfddc08c95da7ac48b754b480343a6a9d978519eec541b43beaee905a57a4ff10bdab3e58032c7260750abd20deb18c9ec9d6403fe44f1d57",
+      "size": 4397,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Fixes.zip"
     }
   ],
   "remove": [],
@@ -1842,9 +1848,9 @@
     },
     {
       "path": "config/fancymenu/customizablemenus.txt",
-      "size": 1583,
-      "sha512": "f79018d21811a0819c0475e9be741b5c833fb37d0188cdfe07d33c9446769baabe8d2f0ecb0b80e2cfe41fe01a58fc14fcb59d706af26938533c907c08814466",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customizablemenus.txt"
+      "size": 1533,
+      "sha512": "e6e77d3a9ccdd6b2d37043d7bb6b2fae47aaea9a716ee68c7d3cc466cc2879f210bf7eccc55066b81fd0008fd968930b8893fd5d933fd3a629faee0e401d1d4d",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/c33f7c49ab675ddb1a89858c58226a08d1d8b9a3/config/fancymenu/customizablemenus.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-AccessibilityOptionsScreen.txt",
@@ -1947,12 +1953,6 @@
       "size": 699,
       "sha512": "82bf629ae782291c267c29066da34ad19332b14efed59af9eb6605258dbc03358161359e34e3b5b8768c726909d7b45f2dfd76b1bf8184855bfa84b8d3ab7d98",
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-PackSelectionScreen.txt"
-    },
-    {
-      "path": "config/fancymenu/customization/f8q-PauseScreen.txt",
-      "size": 677,
-      "sha512": "f2df8ee63acfacd90362ec14f6c16a565edbfe8d6a6b4e3974cfe41860f89b4ebfbbf9dbb7f7ed76aa6499201e134c83e2e5eca70bb18e7c15b7835f146df657",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-PauseScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-SafetyScreen.txt",
@@ -2115,7 +2115,8 @@
     "file/visual-effects-plus.zip",
     "mod_resources",
     "moonlight:merged_pack",
-    "file/F8Q-Interface.zip"
+    "file/F8Q-Interface.zip",
+    "file/F8Q-Fixes.zip"
   ],
   "incompatible_packs": [
     "file/fresh-buckets.zip",
@@ -2127,6 +2128,15 @@
     "file/better-3d-beds.zip"
   ],
   "changelog": [
+    {
+      "date": "2026-11-04",
+      "added": [
+        "Обычные руды без мигающих 3D-кусков",
+        "Игра видна за меню паузы"
+      ],
+      "updated": [],
+      "removed": []
+    },
     {
       "date": "2026-11-04",
       "added": [],
@@ -2199,5 +2209,5 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-04-neoforge-mirror"
+  "revision": "2026-11-04-pause-ores"
 }
