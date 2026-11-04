@@ -1591,7 +1591,7 @@
   ],
   "updater": {
     "path": "f8q-updater.exe",
-    "sha512": "f102d1204217eca8a173106428ac508eff59f63921b75c2e27d54abcc1fd9f9bbf6adbd649db2a83939c3b9cfaca661453eff4020080ccdc8dcff2f8be7a3cea",
+    "sha512": "b15fce60db94f23cdaca6c31d874825a4f4ad00d30a8f844794cff48012bc7e2f766f42cc317f95aa9b5bddbdb661be5835fe3c077eb1448e29e26049723dc22",
     "size": 2908160,
     "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater.exe"
   }
