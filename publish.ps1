@@ -10,7 +10,7 @@ $here = $PSScriptRoot
 $out = Join-Path $env:TEMP 'f8q-publish'
 
 if (Test-Path $out) { Remove-Item $out -Recurse -Force }
-& $updater publish $home_dir $out $base
+& $updater publish $home_dir $out $base | Write-Output
 if ($LASTEXITCODE -ne 0) { throw 'publish failed' }
 & $updater starter $home_dir (Join-Path $out 'upload\f8q-starter.zip')
 if ($LASTEXITCODE -ne 0) { throw 'starter failed' }
