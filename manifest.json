@@ -278,12 +278,6 @@
       "url": "https://cdn.modrinth.com/data/vdjF5PL5/versions/G4uJ0UA0/dynamictrees-neoforge-1.21.1-1.7.2.jar"
     },
     {
-      "path": "mods/emotecraft-for-MC1.21.1-2.4.12-neoforge.jar",
-      "sha512": "b9e59249f1fd2ad33c042561bdcebad74b3c1c82de86e4e11d0066e500c0c231ddf79487685367b47386370c8f7c763138ab5ba3f84d03e3b87667ecd2576dd1",
-      "size": 861829,
-      "url": "https://cdn.modrinth.com/data/pZ2wrerK/versions/fu6N0NgM/emotecraft-for-MC1.21.1-2.4.12-neoforge.jar"
-    },
-    {
       "path": "mods/entity_model_features-3.3.12-1.21-neoforge.jar",
       "sha512": "b18bde755c6719c62579d65c96e6e768c99b25fba9f987dc843b2a64ce4d713ba2f8151da4a98efe76d854550f40356ac4fdfa952568cf1fb11771353dfc70e8",
       "size": 656382,
@@ -483,9 +477,9 @@
     },
     {
       "path": "mods/moonlight-1.21.1-3.7.2-neoforge.jar",
-      "sha512": "b4e8efba91e5f46729928335cce8952ad70af3e33b851e8cf4887a24346f7bbdfe3609f8cc482f76a715aa050bf39e7048ee97b33183e5c358f149bc3678183c",
-      "size": 2299162,
-      "url": "https://cdn.modrinth.com/data/twkfQtEc/versions/fAIfWX6M/moonlight-1.21.1-3.7.2-neoforge.jar"
+      "sha512": "16822bd2b8180b0a2c0740bae27f178cebf475ffecd52a5b0ad8811a35188514e8263e43c7d61654f0728f2f802be16374bd525424fa40c757ce21e17a34d094",
+      "size": 2303486,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/moonlight-1.21.1-3.7.2-neoforge-supp-fix.jar"
     },
     {
       "path": "mods/mru-1.0.19+LTS+1.21.1+neoforge.jar",
@@ -501,9 +495,9 @@
     },
     {
       "path": "mods/pikafishing-0.0.3.1-mc1.21.1-neoforge.jar",
-      "sha512": "dbc262c15ef6626236e7c5c091dc045407dd89a3248d60927c44afbcbdc1fe2f1d9172f26c34001f3f0aa6a9c2567177aea42c6f65f15670297509c6156d593a",
-      "size": 5453268,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/pikafishing-0.0.3.1-mc1.21.1-neoforge.jar"
+      "sha512": "b861ecfe674da3e70a8a3a9624149037e1acca1bbe18bfa1a9a0596028f718196c37a3c39f199a0c6089b06ea934d607493a2a7b802829a184a91eb6dce4aef7",
+      "size": 5453239,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/pikafishing-0.0.3.1-mc1.21.1-neoforge-invmove-fix.jar"
     },
     {
       "path": "mods/polytone-1.21-5.3.4-neoforge.jar",
@@ -669,9 +663,9 @@
     },
     {
       "path": "resourcepacks/F8Q 1.21.zip",
-      "sha512": "619feb6ec126169296d1304b8a11d9b333b19bc838871b150daa697fc9e6ec17724521a46f1198296f3b9fb01b0da2272be4f8639114909e026bbca981626b17",
-      "size": 205078118,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q.1.21.zip"
+      "sha512": "d5c738d79db6520f3941043db43e8119cdd8fd9640211fd2f249a2e1a31ad48d9f52133a354f78cb1c95d1ccf097adddb172764a273be7b01c003e1d5b172e95",
+      "size": 68168299,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-1.21-clean.zip"
     },
     {
       "path": "resourcepacks/als-skeletons-x-fresh-animations.zip",
@@ -864,12 +858,45 @@
       "sha512": "0cadde30060cb66489202b65764a55f0c536d7c51927b887aa941a20a9ad2c0a42d036a8be5947e93fc9d31b861b8323f391facda2f744fca9e14abec1a838a8",
       "size": 40702,
       "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qtrees-1.1.0.jar"
+    },
+    {
+      "path": "mods/modernfix-neoforge-5.27.27+mc1.21.1.jar",
+      "sha512": "af14a35e51f1c5d94139c6225ae641e8b0ded5a8c68eb4806cf28025d6c043455ac289902cd6b854a867320ab845ad619b186d02b8341822faf03f4476dec555",
+      "size": 614138,
+      "url": "https://cdn.modrinth.com/data/nmDcB62a/versions/ZDZENbHH/modernfix-neoforge-5.27.27%2Bmc1.21.1.jar"
+    },
+    {
+      "path": "mods/dynamic-fps-3.11.4+minecraft-1.21.0-neoforge.jar",
+      "sha512": "8eb18a280b265e598540306275b51a165836f4b14c6c703b6ced11fcac50bfab439e4deb69e222f62614a9f15fa0ef58e5bd84e20e37ae57755d9c2f8b134057",
+      "size": 220193,
+      "url": "https://cdn.modrinth.com/data/LQ3K71Q1/versions/T238FZpQ/dynamic-fps-3.11.4%2Bminecraft-1.21.0-neoforge.jar"
+    },
+    {
+      "path": "mods/moreculling-neoforge-1.21.1-1.0.11.jar",
+      "sha512": "440573d65ac6068aa6adeb4a6851a2a49d40ac86cbb15578e96eeef736fe2967cf12fc0a288b03c0ed4a7bed325d4986c8f5186d3be6b97a57b84be52e963b24",
+      "size": 337255,
+      "url": "https://cdn.modrinth.com/data/51shyZVL/versions/ucyxnpWe/moreculling-neoforge-1.21.1-1.0.11.jar"
+    },
+    {
+      "path": "mods/spark-1.10.124-neoforge.jar",
+      "sha512": "f86ce34f2759c69df82578c397ff55b666c84626229a98f598458b960c21b38c95d6bfef4772af7f963c4f4868e5e2d9aef6b99c1d51bab55bf45e0e6e6b5ed4",
+      "size": 3642581,
+      "url": "https://cdn.modrinth.com/data/l6YH9Als/versions/v5qtqRQi/spark-1.10.124-neoforge.jar"
     }
   ],
   "remove": [
+    "config/emotecraft.json",
+    "config/emotecraft_emote_map.json",
+    "config/livingwind-client.toml",
+    "config/livingwind-common.toml",
     "config/sereneseasons/fertility.toml",
     "config/sereneseasons/seasons.toml",
+    "config/sophisticatedbackpacks-common.toml",
+    "config/sophisticatedbackpacks-server.toml",
+    "config/sophisticatedcore-client.toml",
+    "config/sophisticatedcore-common.toml",
     "mods/SereneSeasons-neoforge-1.21.1-10.1.0.9.jar",
+    "mods/emotecraft-for-MC1.21.1-2.4.12-neoforge.jar",
     "mods/sophisticatedbackpacks-1.21.1-3.26.19.2243.jar",
     "mods/sophisticatedcore-1.21.1-1.5.25.2451.jar"
   ],
@@ -1095,18 +1122,6 @@
       "sha512": "5d161cc8e8f12045bd63204012d8b114e6d28ef35601cd38fb7e6ceb30bc771e56938b7caab7ad5db8d2fd9da53a7fd1aecac7e07c09901b93d76c48c09039df",
       "size": 6365,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/dynamictrees-server.toml"
-    },
-    {
-      "path": "config/emotecraft.json",
-      "sha512": "3c79d3de6255f4b1cbbadfbf0a2c77bd1c25275c6bb097895f1c0adfceef6b6843a4c1a7ae710ec09a78e8329c87b25f7e538df5e9c00dbb665694e1ca5dbe43",
-      "size": 840,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/emotecraft.json"
-    },
-    {
-      "path": "config/emotecraft_emote_map.json",
-      "sha512": "6bd56a5f2bfd22c15516e6d836f421e76f77a7efba038c9a8b5e06b91b6aeb9a63ccc8eae3f2e09f58d1ab6238ead97d339d82249936774bcaebd75ed261a084",
-      "size": 117,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/emotecraft_emote_map.json"
     },
     {
       "path": "config/entity_model_features.json",
@@ -1428,21 +1443,9 @@
     },
     {
       "path": "config/lithium.properties",
-      "sha512": "7cc1ad34b644be80c01adecf595809874a1d0a86e9b954e4ba39226bb96ec39c8433ce787c7e11280c598a2cf103c00949ea37406abc3e573fb7d28cca1a0573",
-      "size": 267,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/lithium.properties"
-    },
-    {
-      "path": "config/livingwind-client.toml",
-      "sha512": "88c84d89a5eba1faa0c97bcfc099beb0988c3b1a480baff65ec2022c358ceb8454dd5008030ed507ec606ab4def6988f20bdc52ade01e5eb27d9c5377e5a4d0b",
-      "size": 17705,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/livingwind-client.toml"
-    },
-    {
-      "path": "config/livingwind-common.toml",
-      "sha512": "c16141d1234aabd7677f9fc06b613503f0a7c779274e10fe7d0c1e43f6015f076a4244cb704047e2741ed8f30b03dd59352617173322114e6181cd3e4dcd2be8",
-      "size": 10907,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/livingwind-common.toml"
+      "sha512": "b511fbabe53bcb32a9cb3ee9ebea55b8e823b58847d6ec847544207132093367e19b8d2a6533c6e198af29278a2b0ef5718524ab6877309eb045cde20fcabd9e",
+      "size": 305,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/0819b203b471cfbeba98cb857d5e713d7e06ea6f/config/lithium.properties"
     },
     {
       "path": "config/mezz_config/client/default/settings.ini",
@@ -1623,30 +1626,6 @@
       "sha512": "c82101b2f926a50e4609f67f0e68267d03ec54497338e4951c374b23d99f389acbc4827dd0ae9fe661022a49d6337300fe1f1077b11d73990e487b04135ab61a",
       "size": 762,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/sodium-options.json"
-    },
-    {
-      "path": "config/sophisticatedbackpacks-common.toml",
-      "sha512": "4bda96a33735b62706fd7b7e785cc0dcac04670c9047f7079a05b70e300621899c3c5106da4bbd86de1d74b3ac3eac1a3038200e54d06f1f051ac2e5b07404c6",
-      "size": 118,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/sophisticatedbackpacks-common.toml"
-    },
-    {
-      "path": "config/sophisticatedbackpacks-server.toml",
-      "sha512": "976374d0abf66406395da87075e3ad966eb0ac1beeaf65cb746585aab57f238cb94884c667fb7b8d2cbfea06ddfdd8f3929e56cc3791c65e7d5a7aff601fb20c",
-      "size": 24153,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/sophisticatedbackpacks-server.toml"
-    },
-    {
-      "path": "config/sophisticatedcore-client.toml",
-      "sha512": "76233eb0781280c1556eebb54c4ac51933a35f487bb3fd4dcc4976154e543da114c01ad04890cd82b3e5d00c1bb2dc1f75afef4e3a191e0f252b5e5f2ecfc8d2",
-      "size": 478,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/sophisticatedcore-client.toml"
-    },
-    {
-      "path": "config/sophisticatedcore-common.toml",
-      "sha512": "b41ce19b086b67dc7b866dea008e0715d97a3e117b4e65116992dab4a74ab62f63a6b0211dec6c4f9ea431f9ed0cf9a0c2bc5d3cc5ffe5324e119595b6357d11",
-      "size": 4259,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/sophisticatedcore-common.toml"
     },
     {
       "path": "config/sounds/event.json",
@@ -2079,6 +2058,12 @@
       "size": 4648,
       "sha512": "22cd5aee5705189d3c9f9cc038154de55375b9166b06c55d5c49ca15df1b72b037ceed830f68c111e6be3f12e89ba9618c1b3a2f962d79f5843be79c8406809b",
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/create-client.toml"
+    },
+    {
+      "path": "config/modernfix-mixins.properties",
+      "size": 103,
+      "sha512": "76f84f077c48e015edf203e7bb26910155d58def731c35bb0430f7f4bfd1741ac144701741f7a48a64a82aaf74a3322e568549b142aff3581bf6900318a192ba",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/0819b203b471cfbeba98cb857d5e713d7e06ea6f/config/modernfix-mixins.properties"
     }
   ],
   "updater": {
@@ -2127,6 +2112,21 @@
     "file/better-3d-beds.zip"
   ],
   "changelog": [
+    {
+      "date": "2026-11-05",
+      "added": [
+        "ModernFix",
+        "Dynamic FPS",
+        "More Culling",
+        "spark"
+      ],
+      "updated": [
+        "Ресурс-пак F8Q 1.21 стал легче: 196 → 65 МБ"
+      ],
+      "removed": [
+        "Emotecraft"
+      ]
+    },
     {
       "date": "2026-11-05",
       "added": [],
@@ -2231,7 +2231,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-no-seasons",
+  "revision": "2026-11-05-optimized",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
