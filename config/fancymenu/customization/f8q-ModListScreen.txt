@@ -1,0 +1,31 @@
+type = fancymenu_layout
+
+layout-meta {
+  identifier = net.neoforged.neoforge.client.gui.ModListScreen
+  render_custom_elements_behind_vanilla = true
+  is_enabled = true
+  randommode = false
+  layout_index = 0
+}
+
+menu_background {
+  image_path = [source:local]/config/fancymenu/assets/f8q/black.png
+  slide = false
+  repeat_texture = false
+  parallax = false
+  background_type = image
+  instance_identifier = f8q-background-ModListScreen
+}
+
+customization {
+  action = backgroundoptions
+  keepaspectratio = true
+}
+
+scroll_list_customization {
+  show_screen_background_overlay_on_custom_background = false
+  apply_vanilla_background_blur = false
+}
+
+layout_action_executable_blocks {
+}

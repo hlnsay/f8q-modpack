@@ -34,8 +34,8 @@ S:custom_window_icon_16 = '';
 
 ##[global_customizations]
 
-B:global_slider_background_nine_slice = 'false';
-S:global_slider_handle_hover = '';
+B:global_slider_background_nine_slice = 'true';
+S:global_slider_handle_hover = '[source:local]/config/fancymenu/assets/f8q/handle-hover.png';
 S:global_button_background_normal = '[source:local]/config/fancymenu/assets/f8q/button.png';
 B:global_button_label_shadow = 'false';
 S:global_button_background_inactive = '[source:local]/config/fancymenu/assets/f8q/inactive.png';
@@ -47,34 +47,34 @@ S:global_button_click_sound = '';
 S:global_slider_label_base_color = '';
 B:global_button_label_underline_on_hover = 'false';
 I:global_button_background_nine_slice_border_right = '1';
-I:global_slider_background_nine_slice_border_top = '5';
-I:global_slider_handle_nine_slice_border_top = '5';
-I:global_slider_handle_nine_slice_border_bottom = '5';
+I:global_slider_background_nine_slice_border_top = '1';
+I:global_slider_handle_nine_slice_border_top = '1';
+I:global_slider_handle_nine_slice_border_bottom = '1';
 F:global_button_label_scale = '1.0';
 S:global_slider_label_scale_raw = '';
-S:global_slider_handle_inactive = '';
-B:global_slider_label_shadow = 'true';
+S:global_slider_handle_inactive = '[source:local]/config/fancymenu/assets/f8q/inactive.png';
+B:global_slider_label_shadow = 'false';
 S:global_button_label_scale_raw = '';
-I:global_slider_handle_nine_slice_border_right = '5';
+I:global_slider_handle_nine_slice_border_right = '1';
 S:global_slider_label_hover_color = '';
-I:global_slider_background_nine_slice_border_bottom = '5';
+I:global_slider_background_nine_slice_border_bottom = '1';
 S:global_menu_music_tracks = '[source:local]/config/fancymenu/assets/f8q/mainmenu.ogg';
-I:global_slider_background_nine_slice_border_left = '5';
+I:global_slider_background_nine_slice_border_left = '1';
 S:global_button_background_hover = '[source:local]/config/fancymenu/assets/f8q/hover.png';
 I:global_button_background_nine_slice_border_top = '1';
-S:global_slider_background = '';
+S:global_slider_background = '[source:local]/config/fancymenu/assets/f8q/slider.png';
 I:global_button_background_nine_slice_border_bottom = '1';
 B:global_slider_label_underline_on_hover = 'false';
-B:global_slider_handle_nine_slice = 'false';
+B:global_slider_handle_nine_slice = 'true';
 I:global_button_background_nine_slice_border_left = '1';
 B:global_button_background_transparent = 'false';
 B:seamless_world_loading = 'false';
 B:global_slider_background_transparent = 'false';
-S:global_slider_handle_normal = '';
-I:global_slider_background_nine_slice_border_right = '5';
+S:global_slider_handle_normal = '[source:local]/config/fancymenu/assets/f8q/handle.png';
+I:global_slider_background_nine_slice_border_right = '1';
 S:global_background_panorama = '';
-I:global_slider_handle_nine_slice_border_left = '5';
-S:global_menu_background_texture = '';
+I:global_slider_handle_nine_slice_border_left = '1';
+S:global_menu_background_texture = '[source:local]/config/fancymenu/assets/f8q/black.png';
 
 
 ##[multiplayer_screen]

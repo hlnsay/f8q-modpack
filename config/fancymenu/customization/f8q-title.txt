@@ -1096,4 +1096,3 @@ element {
   in_editor_color = #FFC800FF
   layer_hidden_in_editor = false
 }
-
