@@ -495,9 +495,9 @@
     },
     {
       "path": "mods/pikafishing-0.0.3.1-mc1.21.1-neoforge.jar",
-      "sha512": "b861ecfe674da3e70a8a3a9624149037e1acca1bbe18bfa1a9a0596028f718196c37a3c39f199a0c6089b06ea934d607493a2a7b802829a184a91eb6dce4aef7",
+      "sha512": "4ad9f62544a013ff3f693bad49ffad3e4856736c435ce0928b9966d47fc02033ae03e98a90ad6d504cdbfaec5ad830b9edf180b56eb93997a0557a759690c2de",
       "size": 5453239,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/pikafishing-0.0.3.1-mc1.21.1-neoforge-invmove-fix.jar"
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/pikafishing-0.0.3.1-mc1.21.1-neoforge-16-slots.jar"
     },
     {
       "path": "mods/polytone-1.21-5.3.4-neoforge.jar",
@@ -657,9 +657,9 @@
     },
     {
       "path": "resourcepacks/Cozy-Russian.zip",
-      "sha512": "24e55d6824419f327e2d66128de0e4d41f7946212fa2611ceee7cf70a526da514bcabfd17f9bbb8454799c9d0e07883e6c4b2838cb8b976d26269c123fb46978",
-      "size": 314830,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian.zip"
+      "sha512": "d9b6033e49fd643426838aebfeb5b6de7e92d6b70d150a3968bd2984ab1a661f1b33f859938628660f075ff550bd31941eb9844c7117e41e9b4b0f429f91edc9",
+      "size": 329072,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v2.zip"
     },
     {
       "path": "resourcepacks/F8Q 1.21.zip",
@@ -888,6 +888,78 @@
       "sha512": "c217ee154bc1acd08e124f9d972fa664c716860f12d6531e742e35605b180dfea02a888235b8f9f004a7ac96396788bde1363a9aafa1faeede5e2e28441f8aed",
       "size": 13686,
       "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.0.jar"
+    },
+    {
+      "path": "mods/naturalist-2.0.7-neoforge-1.21.1.jar",
+      "sha512": "5d56ec2d1e5f994c9b63cf7578e9ed1be2cd4f58a055503e32bdd90c80d9802af04d3f6e1eec08394180e196ce32b2c2e71df8ba19d918e77df1694c9007e7e1",
+      "size": 11347884,
+      "url": "https://cdn.modrinth.com/data/F8BQNPWX/versions/9Yn8ig4c/naturalist-2.0.7-neoforge-1.21.1.jar"
+    },
+    {
+      "path": "mods/bountiful-neoforge-8.0.0-beta.2.jar",
+      "sha512": "a30c55813348a1f1f2869996e627f7357b9a47de478c477ef02b767d36a33f4ffad8836c60974146d4c6be3e75e42eba9285a84ad95e544c6f0549a12ceb08fb",
+      "size": 721006,
+      "url": "https://cdn.modrinth.com/data/BpwWFOVM/versions/swTb6NU9/bountiful-neoforge-8.0.0-beta.2.jar"
+    },
+    {
+      "path": "mods/Jadens-Nether-Expansion-2.4.1.jar",
+      "sha512": "61a88089177a957999c244decd07683559f1d452552c4fc4fd61cafb721bb85c4752558d57777b2cb0e82719b079178c3c6bd67c509b870c7bb279dce9dfb675",
+      "size": 21052417,
+      "url": "https://cdn.modrinth.com/data/v3UlehfS/versions/NactTrv2/Jadens-Nether-Expansion-2.4.1.jar"
+    },
+    {
+      "path": "mods/lodestone-1.21.1-1.8.2.jar",
+      "sha512": "6917080339b982d96cb4a7c98205ade5d89730191bc9113f4f8cd36bb1a760a91ad2421c8869c7063f8dea22a200d7d1896e0bb5e0e64119bb7590e32a998a23",
+      "size": 818829,
+      "url": "https://cdn.modrinth.com/data/bN3xUWdo/versions/CohX6yP1/lodestone-1.21.1-1.8.2.jar"
+    },
+    {
+      "path": "mods/ElysiumAPI-1.21.1-2.0.1.jar",
+      "sha512": "22daa9fa8018baeeaaec1d5c3e91e13099300208ca2c6d57fbba63d9fddef583a097b9ebe0b590b5095f48a449c6230cdf193d22d4d7501c9725918d984448db",
+      "size": 307526,
+      "url": "https://cdn.modrinth.com/data/6YTvv3aI/versions/d2JaQ362/ElysiumAPI-1.21.1-2.0.1.jar"
+    },
+    {
+      "path": "mods/lukis-strongholds-v1.0.jar",
+      "sha512": "754a15411558e953a530a9612e979af1340eb5769d29a76208d3960e8e227cda288a10260fe92510501de15db616d0b0d4cb36f00fcdcd4e3bcec8f63c52510c",
+      "size": 917606,
+      "url": "https://cdn.modrinth.com/data/reQ63xx3/versions/i7i69H6Y/lukis-strongholds-v1.0.jar"
+    },
+    {
+      "path": "mods/trek-B0.6.2.jar",
+      "sha512": "17f35802c2f8dbae026153718b6d40a2b4c3ae1558e6e87500ecffe859fe2e607e00b3be76b8c8cbee7da932a042ebe5a279df9929fb7b51000ea1af49fcc1c9",
+      "size": 12461621,
+      "url": "https://cdn.modrinth.com/data/h2jngREY/versions/OYbFzi8L/trek-B0.6.2.jar"
+    },
+    {
+      "path": "mods/dawnoftimebuilder-neoforge-1.21.1-1.6.8.jar",
+      "sha512": "293c49cc0f65053c57741f61adff70444fb70b6cae3c912ba67ce46fbbe4ab84a9e010b995e0b6375d02397ed600382cc8c8dd8feb91061ff7ef7759de5fe746",
+      "size": 3384023,
+      "url": "https://cdn.modrinth.com/data/RgWXq0La/versions/vuLdhPUq/dawnoftimebuilder-neoforge-1.21.1-1.6.8.jar"
+    },
+    {
+      "path": "mods/armoroftheages-neoforge-1.21.1-1.5.11.jar",
+      "sha512": "2c584489901aa544257ece6cfb4e20c778eacdb56be9aa879120d2d1b32dd32895c1d940b0b710ff384868e112e54821a8aa4b6a9722f3cf0ae83ef9ecd2a56a",
+      "size": 570014,
+      "url": "https://cdn.modrinth.com/data/vEgtiJIY/versions/EvVBQ12Y/armoroftheages-neoforge-1.21.1-1.5.11.jar"
+    },
+    {
+      "path": "mods/fusion-1.3.16-neoforge-mc1.21.1.jar",
+      "sha512": "0b65c3a78db5785c76a222639a56da0cd09fc8445e02cdfb84e4bb7c88dc2c5622ccb468291a12df30440205a881db2023d9857fdb7252e7d21238876fcc8608",
+      "size": 947335,
+      "url": "https://cdn.modrinth.com/data/p19vrgc2/versions/AYDaLPK8/fusion-1.3.16-neoforge-mc1.21.1.jar"
+    },
+    {
+      "path": "mods/kambrik-neoforge-8.0.0-beta.2.jar",
+      "sha512": "c110728232ca6eb63df43c404cc1e9c6c4e1ba22f266de71faa665a2a07efaef2941fae13117a496782747ae3f84b1706fb017a860cc0ff7876077d4f0d91984",
+      "size": 436428,
+      "url": "https://cdn.modrinth.com/data/zfbCkvdZ/versions/rCSmCZpX/kambrik-neoforge-8.0.0-beta.2.jar"
+    },
+    {
+      "path": "mods/ancientstructures-neoforge-1.21.1-0.1.2.jar",
+      "sha512": "6bca244fad0febf5c733090c230b1239f0255ce5086cace04240ac4c394861da7ac6fdb8dd7529eeaa7b1feb659e422c574fab12ec06e342da7d7444b7fa2bda",
+      "size": 535556,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/ancientstructures-neoforge-1.21.1-0.1.2.jar"
     }
   ],
   "remove": [
@@ -987,9 +1059,9 @@
     },
     {
       "path": "config/betterdays-common.toml",
-      "sha512": "c3ae8c7f1f02161defa85a9e94710593c346cd7a6a409619bf11724771758a534b4badad4279ac4d5fa31ad717d3e0fe356e1c317746678beec3dd77bce5a0f3",
-      "size": 11743,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/betterdays-common.toml"
+      "sha512": "f6a401321d58af11badc9ddb2331730f350560788dcfc7c3978ddfcf859e707392bfe071b040645afe126df77e6d3fa5412e106006ff010b1ce5b5ddfedf9434",
+      "size": 11744,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/042b61e29605b6e1388a26a195c06057b19091cc/config/betterdays-common.toml"
     },
     {
       "path": "config/betterdungeons-neoforge-1_21.toml",
@@ -2121,6 +2193,22 @@
     {
       "date": "2026-11-05",
       "added": [
+        "Naturalist",
+        "Bountiful",
+        "Jaden's Nether Expansion",
+        "Luki's Strongholds",
+        "Trek",
+        "Ancient Structures"
+      ],
+      "updated": [
+        "Ночь ускоряется, когда в кровати большинство игроков",
+        "Сумки Pikafishing: 16 слотов"
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-05",
+      "added": [
         "Новый экран нокаута: шкала, красная пиксельная виньетка, сердцебиение",
         "Подсказка и подсветка у лежачего игрока"
       ],
@@ -2246,7 +2334,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-knock-screen",
+  "revision": "2026-11-05-new-worlds",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
