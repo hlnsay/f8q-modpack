@@ -1,10 +1,18 @@
 {
-  "build": 17,
-  "version": "0.0.3",
-  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.3.exe",
-  "size": 55494144,
-  "sha512": "108c13c47ec57245f19ae2f97f08d8b4d7f53614bef706b29faf2e98895e66f333a2c94c8176bb5eb65b9d92f2e9fd5fa96f76072f3071f46f6648c1aeb95a20",
+  "build": 18,
+  "version": "0.0.4",
+  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.4.exe",
+  "size": 55888384,
+  "sha512": "d3c217addafe6e0b309f169c0068b5ee13fac32b5a499f2a52649275c3868ad1f39add15ba36659a04361d0fff5487e834af5fdfd1ab60cbc470cbfe248e5815",
   "changelog": [
+    {
+      "version": "0.0.4",
+      "date": "2026-11-04",
+      "changes": [
+        "«Играть» больше не путает сборку F8Q со старыми портами: игра запускается у всех.",
+        "При сбое запуска на экране показывается настоящая причина, а неудачное обновление файлов не мешает старту."
+      ]
+    },
     {
       "version": "0.0.3",
       "date": "2026-11-04",

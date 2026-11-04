@@ -2084,8 +2084,8 @@
   "updater": {
     "path": "f8q-updater.exe",
     "size": 2958848,
-    "sha512": "ff242872242497af806ea81eaa0c5c2d7b8f9485ee4b947821399dcb510983e6effa40d829a0a616bca9d7108fbd82d6e268f82048887ba2456900db15fd4bf3",
-    "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater-build17.exe"
+    "sha512": "21704474e4b39ddca614851ae0d87b18df4f915d398d95743010d525435b39f272962f75ecf5175f6ae3223b8dc1683e8894b8719ca1f15e4e86fcc5ff99bef9",
+    "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater-build18.exe"
   },
   "packs": [
     "mod/punchy:resourcepacks/punchy",
@@ -2199,5 +2199,5 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-04-launcher-v003"
+  "revision": "2026-11-04-launcher-v004"
 }
