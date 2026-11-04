@@ -1,0 +1,2 @@
+#Show Kings & Monsters custom tooltip text, fonts, colors, and borders. Vanilla item attributes and enchantments remain visible when disabled.
+showCustomTooltips = true

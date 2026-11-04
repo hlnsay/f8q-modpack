@@ -24,7 +24,10 @@
     "net.mehvahdjukaar.supplementaries.client.screens.CannonScreen": true,
     "net.p3pp3rf1y.sophisticatedbackpacks.client.gui.BackpackScreen": true,
     "net.p3pp3rf1y.sophisticatedbackpacks.client.gui.BackpackSettingsScreen": true,
-    "mezz.jei.gui.recipes.RecipesGui": true
+    "mezz.jei.gui.recipes.RecipesGui": true,
+    "punchymoves.client.tutorial.TutorialScreen": true,
+    "punchymoves.client.emote.EmoteWheelScreen": true,
+    "vazkii.patchouli.client.book.gui.GuiBookLanding": true
   },
   "hideBackground": {
     "io.github.kosmx.emotes.arch.screen.ingame.FastMenuScreen": true,

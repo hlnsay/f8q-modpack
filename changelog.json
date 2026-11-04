@@ -1,19 +1,48 @@
 [
-  {
-    "date": "2026-11-04",
-    "added": [
-      "Sophisticated Backpacks",
-      "Sophisticated Core",
-      "Yakisugi",
-      "Ghost",
-      "Ice Caves Backport",
-      "Better Third Person",
-      "Advancement Plaques",
-      "Item Highlighter",
-      "Ambient Camera",
-      "Iceberg"
-    ],
-    "updated": [],
-    "removed": []
-  }
+    {
+        "date":  "2026-11-04",
+        "added":  [
+                      "Atmospherics",
+                      "Cosycritters",
+                      "Entity model features",
+                      "Entity texture features",
+                      "Fwa+1.21.1",
+                      "Kingsandmonsters1.2.2",
+                      "Patchouli",
+                      "Punchy moves",
+                      "Storagedelight"
+                  ],
+        "updated":  [
+
+                    ],
+        "removed":  [
+
+                    ]
+    },
+    {
+        "value":  [
+                      {
+                          "date":  "2026-11-04",
+                          "added":  [
+                                        "Sophisticated Backpacks",
+                                        "Sophisticated Core",
+                                        "Yakisugi",
+                                        "Ghost",
+                                        "Ice Caves Backport",
+                                        "Better Third Person",
+                                        "Advancement Plaques",
+                                        "Item Highlighter",
+                                        "Ambient Camera",
+                                        "Iceberg"
+                                    ],
+                          "updated":  [
+
+                                      ],
+                          "removed":  [
+
+                                      ]
+                      }
+                  ],
+        "Count":  1
+    }
 ]

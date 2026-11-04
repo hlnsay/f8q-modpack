@@ -98,6 +98,12 @@
       "url": "https://cdn.modrinth.com/data/aC3cM3Vq/versions/9I21YYxf/MouseTweaks-neoforge-mc1.21-2.26.1.jar"
     },
     {
+      "path": "mods/Patchouli-1.21.1-93-NEOFORGE.jar",
+      "sha512": "0b5c172db9a6eeecb5ca44b359a83548c3a60be7ff313959acdfc1e5b8039736c18e57e947d435b52d06da31159d2d02ea36e5742668dbc826308a4c99e4039f",
+      "size": 646777,
+      "url": "https://cdn.modrinth.com/data/nU0bVIaL/versions/BIogJv2D/Patchouli-1.21.1-93-NEOFORGE.jar"
+    },
+    {
       "path": "mods/PickUpNotifier-v21.1.1-1.21.1-NeoForge.jar",
       "sha512": "9754f44f3bf084f45b47c88c3830dc37ffc68b4b5d6cf03ca5015177611068e8c1725670d20c0ed4674fb619227b18ccbff39cfc687a46f5258caf91c96db6db",
       "size": 97094,
@@ -176,6 +182,12 @@
       "url": "https://cdn.modrinth.com/data/b1ZV3DIJ/versions/dJgL278E/athena-neoforge-1.21.1-4.0.6.jar"
     },
     {
+      "path": "mods/atmospherics-2.6.5-mc-1.21.1.jar",
+      "sha512": "e01173f579a93035f278f53fcf253ad069b6413aa2d8aace777dcd4c023971ba6435abc43a7fd808766e2734ab0db721e93ccca155ae1b2dfdb42d2a553973c1",
+      "size": 2342565,
+      "url": "https://cdn.modrinth.com/data/ft2cYBpB/versions/yJJkB7Qc/atmospherics-2.6.5-mc-1.21.1.jar"
+    },
+    {
       "path": "mods/autumnity-1.21.1-6.0.1.jar",
       "sha512": "6d7afea7903b494465742e1def892edc35a86cd29d0c0c90f0b46249ecf63dd62bc52d44b71dc216a06972cd4d33ee956bfd73cea2f8a3a798ddf68c1d232327",
       "size": 1261462,
@@ -236,6 +248,12 @@
       "url": "https://cdn.modrinth.com/data/WrpuIfhw/versions/SElnDbg1/corpse-neoforge-1.21.1-1.1.22.jar"
     },
     {
+      "path": "mods/cosycritters-0.3.3+1.21.1-neoforge.jar",
+      "sha512": "a55618fee7d50373306d476efa4c71db4b54817ca9600c4d159ddfbaa57e140b0df7549489bd6761b50c4d18dcb25c94b10581adc7ffbc83ffe2b5c26e1b8501",
+      "size": 99302,
+      "url": "https://cdn.modrinth.com/data/61PI8Hzj/versions/QnJ9WVDV/cosycritters-0.3.3%2B1.21.1-neoforge.jar"
+    },
+    {
       "path": "mods/crawl-0.14.9.jar",
       "sha512": "621c9e5285ada13d3855101497e28a23ffeb2d9299d71b7e1b7f1df0672eb69e8a24af777c9b80d4304d42d25bfca02dc1e578ac68d565daa0f92db2672ac109",
       "size": 35791,
@@ -278,6 +296,18 @@
       "url": "https://cdn.modrinth.com/data/pZ2wrerK/versions/fu6N0NgM/emotecraft-for-MC1.21.1-2.4.12-neoforge.jar"
     },
     {
+      "path": "mods/entity_model_features-3.3.12-1.21-neoforge.jar",
+      "sha512": "b18bde755c6719c62579d65c96e6e768c99b25fba9f987dc843b2a64ce4d713ba2f8151da4a98efe76d854550f40356ac4fdfa952568cf1fb11771353dfc70e8",
+      "size": 656382,
+      "url": "https://cdn.modrinth.com/data/4I1XuqiY/versions/197m3VoU/entity_model_features-3.3.12-1.21-neoforge.jar"
+    },
+    {
+      "path": "mods/entity_texture_features-7.2.7-1.21-neoforge.jar",
+      "sha512": "eca787ad7c15819f9cb14e29a3748b49d0d2a6af01e3a18295293ccacac636090bf71d6756ac640b81f5079f21814e306493f6b94be35e6b8cef198363ecb337",
+      "size": 811876,
+      "url": "https://cdn.modrinth.com/data/BVzZfTc1/versions/1DVPB3a4/entity_texture_features-7.2.7-1.21-neoforge.jar"
+    },
+    {
       "path": "mods/entityculling-neoforge-1.11.3-mc1.21.1.jar",
       "sha512": "93e83dd690b91d610be29451b34836c9daa7e08bd952f88ffa07c62d8774bbaac2ff0c6768d2cbf1b14f47d0b86f98cef9fd341e0d29bd37207eaf4aa2abea63",
       "size": 1510075,
@@ -294,6 +324,12 @@
       "sha512": "19af89a2075bb10a63884fa853ebf84b02c79dc3242430ecdad056fd764fdcde367a7303276b329df01b0736e2ef264c5d80c7dc92c6aebd244f556a230bb417",
       "size": 121559,
       "url": "https://cdn.modrinth.com/data/uXXizFIs/versions/x7kQWVju/ferritecore-7.0.3-neoforge.jar"
+    },
+    {
+      "path": "mods/fwa+1.21.1-neoforge-1.3.4.jar",
+      "sha512": "7abbd70d1f87355d5a1b9b02920c9551f71da02291deca8b10caeca5d4e83f89bc785e61f36e2f5e745d50871c6156aa9b58aa22a8167c1f95a2e829a6532c6a",
+      "size": 406749,
+      "url": "https://cdn.modrinth.com/data/IAzUFvS6/versions/ElMgmNhI/fwa%2B1.21.1-neoforge-1.3.4.jar"
     },
     {
       "path": "mods/fzzy_config-0.7.7+fix1+1.21+neoforge.jar",
@@ -360,6 +396,12 @@
       "sha512": "8900ee4cdb7d1ffb6559decdeec84ad479d04b2e7b01a60be9f6e328809af2bfd7a80077b7da0e49bc96261fe8fe274ba33c62f6c9f65302c783ed823c4ff746",
       "size": 4320499,
       "url": "https://cdn.modrinth.com/data/lfHFW1mp/versions/CtFE7hwT/journeymap-neoforge-1.21.1-6.0.9.jar"
+    },
+    {
+      "path": "mods/kingsandmonsters1.2.2.jar",
+      "sha512": "77c5effe944f55d51f6d15646d458fb625d1f9b2b5836e79ead2953e30513ef5ef9a16571fcb825470c32c330759e15f05f11222f2f531efc51560590f821ec7",
+      "size": 10156211,
+      "url": "https://mediafilez.forgecdn.net/files/8788/347/kingsandmonsters1.2.2.jar"
     },
     {
       "path": "mods/kotlinforforge-5.12.0-all.jar",
@@ -488,6 +530,12 @@
       "url": "https://cdn.modrinth.com/data/8aoMKplv/versions/Rbt26WBl/punchy-3.1b-neoforge-1.21.1.jar"
     },
     {
+      "path": "mods/punchy-moves-1.0.6-hotfix-neoforge-1.21.1.jar",
+      "sha512": "127d662b2b99d8799bc1e455674bb8b6e7526239b8fd14cfbbc979535edb5ec3534dda42f1716a341d1792049a9b54c092ab8dc27ada68fd56a225bf5a8ff764",
+      "size": 1126701,
+      "url": "https://cdn.modrinth.com/data/mzgtK8pY/versions/7EwG435J/punchy-moves-1.0.6-hotfix-neoforge-1.21.1.jar"
+    },
+    {
       "path": "mods/puzzleslib-v21.1.66-mc1.21.1+neoforge.jar",
       "sha512": "d265016586d39d7e0ac63b064fcad6fd64df79ce885ae81aa1d7a51ba32b4c6849c4b3021b563667eb392599512fe193adfa52b40d99a101ab411dd0b5c5d484",
       "size": 1451120,
@@ -564,6 +612,12 @@
       "sha512": "0dbfe1cd74be45241c5e95354e6466af10cb50ce780d87672337bd4de03fa708dc56eb013040bb2a02a941cf19b2b282385c6a5305695a4de3534627c645f053",
       "size": 8732437,
       "url": "https://cdn.modrinth.com/data/ZouiUX7t/versions/kti7i9SG/sounds-2.4.22%2Blts%2B1.21.1-neoforge.jar"
+    },
+    {
+      "path": "mods/storagedelight-26.09.17-1.21-neoforge.jar",
+      "sha512": "9acf5df836d82c2ca7a58efa6fd3848516d64b7de75b71a7b9a85d256aedd9c2e587f436067498a6542af2ac1fd818b2c11fa008d994fa8309e5805c0256c150",
+      "size": 837755,
+      "url": "https://cdn.modrinth.com/data/LTTvOp5L/versions/7I2UUB9l/storagedelight-26.09.17-1.21-neoforge.jar"
     },
     {
       "path": "mods/supplementaries-1.21.1-4.0.2-neoforge.jar",
@@ -644,10 +698,52 @@
       "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q.1.21.zip"
     },
     {
+      "path": "resourcepacks/als-skeletons-x-fresh-animations.zip",
+      "sha512": "dcbe4ad25489435bde4d4a23d2dbaa6895fcfc7a6440d03fbb74898cea259e2bca7c28eb66613ae16afbc05e233a022208edece6325fd4cc30419560b289b7b4",
+      "size": 655107,
+      "url": "https://cdn.modrinth.com/data/Q1DELmr6/versions/je8RM98s/AL%27s%20Skeletons%20Revamped%2BFA%201.4.zip"
+    },
+    {
+      "path": "resourcepacks/better-3d-beds.zip",
+      "sha512": "cbae31fd16d757eba34e539c60b979e6fb5062a01810a33633914d2cce98d4072a902c4119bd9c192f461b755c676c0ac2eb866725e3a58a2e72cdc1d0ad56dd",
+      "size": 114299,
+      "url": "https://cdn.modrinth.com/data/LukwUauE/versions/d3akIBaA/%C2%A7lBetter%20Beds.zip"
+    },
+    {
+      "path": "resourcepacks/biome-bloom.zip",
+      "sha512": "990f7204e571232fc7c32a0b4cdc7795127bbb2dc70f00c20d44186b7b4e62730efc52a94bfc3475ed948a487479101a1c798203d7cdfcc2c1a472a2ee53db2c",
+      "size": 26427,
+      "url": "https://cdn.modrinth.com/data/zZQBkAbo/versions/cfuxc2Bo/%C2%A7aBiomeBloom%C2%A78.zip"
+    },
+    {
+      "path": "resourcepacks/chat-reporting-helper.zip",
+      "sha512": "aa96f74c7838cf687fbd175dca07ebc6a012de525701d55ca7867484cfc8e983001db99294de158343b64021df25e280e56a433f33d1bc162181091bc3395970",
+      "size": 74278,
+      "url": "https://cdn.modrinth.com/data/tN4E9NfV/versions/fEeReREe/Chat%20Reporting%20Helper.zip"
+    },
+    {
+      "path": "resourcepacks/fluid-foolish.zip",
+      "sha512": "09544efccdb63bbd6a2f583184bea82cfe01c78cd36f9bf9343cd8cc0243b19d7993aa280481d42c68c4b19e6abb3b52346d93115d48b50e1e37be9c53efafb9",
+      "size": 1881476,
+      "url": "https://cdn.modrinth.com/data/fQdwNxte/versions/UAp4jRDk/Fluid%20%26%20Foolish%201.0.1.zip"
+    },
+    {
+      "path": "resourcepacks/fresh-animations.zip",
+      "sha512": "e64c2fc73d2c61f6814d1223ac2a2bb1dda7ed55edb75efef23449475140a42ef2a490c4789f42e022eca96ffa6b50b63de70a2858fc7b257421b36aab5c10b3",
+      "size": 742790,
+      "url": "https://cdn.modrinth.com/data/50dA9Sha/versions/HC1XRKGD/FreshAnimations_v1.11.2_1.20%2B.zip"
+    },
+    {
       "path": "resourcepacks/fresh-buckets.zip",
       "sha512": "7216427b9a9fe1a9a0643807fee123d2fc28bc07e7c5268dc5a30ae3c83eb1da39b8136b0ebb4bced540c911aa37f8321d2431719dcb158b7276a1071c71a06f",
       "size": 579481,
       "url": "https://cdn.modrinth.com/data/Sb5mtr2w/versions/wjnaVig2/Fresh%20Buckets.zip"
+    },
+    {
+      "path": "resourcepacks/fresh-flower-pots.zip",
+      "sha512": "20f6b1d45f824fd5218bb9ab0798170de158e9d58f71b0ddf3fad1e7a22c90aca8d1f08c8d9a1f1e932754d619c0f9480d81ad4ba2c1746b7c832c241cd2e817",
+      "size": 43374,
+      "url": "https://cdn.modrinth.com/data/CmEN0T1m/versions/YEM2pUsf/%C2%A73Fresh%20%C2%A7bFlower%20Pots.zip"
     },
     {
       "path": "resourcepacks/fresh-flowers-and-plants.zip",
@@ -680,16 +776,52 @@
       "url": "https://cdn.modrinth.com/data/BZUceKlq/versions/Fv1DcGhl/Fresh%20Paintings.zip"
     },
     {
+      "path": "resourcepacks/fyoncles-3d-trims.zip",
+      "sha512": "ec23dab932d5dd4a798d49742e01f47439a6c1f85a7db247e045affa53408d14ca77509c04d2453b33ee1907232aba809e4c957c59422be2fadd2335680634d7",
+      "size": 208306,
+      "url": "https://cdn.modrinth.com/data/Ik3Z3RFx/versions/G6jdCgwE/Fyoncle%27s%203D%20Trims.zip"
+    },
+    {
+      "path": "resourcepacks/nature-x.zip",
+      "sha512": "3ec135859c5cbb824e8ae51a226088b91d41fe63ea3eb86c7558e32635ae52282d9cf3a43265d909690b4b7cc78aa69cfe94b94170f561072b4708b0a15971f3",
+      "size": 1802203,
+      "url": "https://cdn.modrinth.com/data/8d8M3Qoz/versions/L1fTfVef/Nature%20X%20-%2012.2%20%5B1.21.1%5D.zip"
+    },
+    {
       "path": "resourcepacks/os-colorful-grasses.zip",
       "sha512": "d14efd9fd5efaaa2f8ac325193c7c0f2095caacfeded5a3658377777e0871395577a9de650a90a714efdf93d450f0bd70b8081f493fea5641770b1a187a6b6a3",
       "size": 338633,
       "url": "https://cdn.modrinth.com/data/O2zhH8n8/versions/9KieAB5z/Os%27%20Colorful%20Grasses%20%28Mix%29.zip"
     },
     {
+      "path": "resourcepacks/rays-3d-ladders.zip",
+      "sha512": "56f0f53da4647908a5204023470b9e81528025a4182c219482f9b32056157e4f97f00c1c92308de5d83cf71308cb738ea3f1dec3d59bd9b6884050e0480371ed",
+      "size": 1936943,
+      "url": "https://cdn.modrinth.com/data/Uupo7yGf/versions/lfVriRcD/RAYs_3D_Ladders_v2.4.zip"
+    },
+    {
+      "path": "resourcepacks/rays-3d-rails.zip",
+      "sha512": "203183e91f4b30e98538ff16e84e4a49a2be85e04afc2c8610c31b3110bf7794bd86251abb4f6a8df010173baa00126b15c05f3ef48fd4498fc865e181eec33e",
+      "size": 6228445,
+      "url": "https://cdn.modrinth.com/data/jKa9Ievs/versions/tKWH9VdI/RAYs_3D_Rails_v3.7.zip"
+    },
+    {
+      "path": "resourcepacks/refined-torches.zip",
+      "sha512": "0e0b7379c26523003e0c0084c0c1fa5b529bdec16c78552937769effae7a4855427a86fd3f91af252e601eb4c4992fa0537b76a721c32ef19ae37ad33065d069",
+      "size": 1704477,
+      "url": "https://cdn.modrinth.com/data/M6aa729D/versions/e7EW6ibn/refined%20torches%202.1.zip"
+    },
+    {
       "path": "resourcepacks/visual-effects-plus.zip",
       "sha512": "8af769ccc78d3fb84e173386f5029f155d8ec7e413ca34c10b209ada5845b31fd9da71b7fec342e1301013e52f6b1c3c7be114e3766de4e0538afdfb78ba0cad",
       "size": 22829210,
       "url": "https://cdn.modrinth.com/data/ZyZknBVG/versions/MgC4Oa2v/Visual%20Effects%2B.zip"
+    },
+    {
+      "path": "resourcepacks/vocal-villagers.zip",
+      "sha512": "a23021136442512a150a06c557ffd995763d6a4ced24e6b9e2c6ab0c185b243d24bbcafd6a81064d8abdcb4063c59957e2e7efbc70d55f1a93182f3181079c56",
+      "size": 1148267,
+      "url": "https://cdn.modrinth.com/data/SEt2q8cl/versions/dYoh6GWk/%C2%A7a%C2%A7lVocal%20Villagers%20%C2%A7r%C2%A771.5.zip"
     }
   ],
   "remove": [],
@@ -717,6 +849,12 @@
       "sha512": "928d16f1f1e6c9d22d5c45764c8c994f7a49a5776871b6a45b7e6557f7fee7b1106aa3403cdd9d90c6ec4f4817b9456cdd08e38be66c07f00c0e758ef4d59245",
       "size": 3364,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/ambient_camera-client.toml"
+    },
+    {
+      "path": "config/ambientfog/biome_fog.json",
+      "sha512": "09d00f08418e6b7e81fa2dd68bcf357e071d372e16539c86411151164f0defb13ede6e325aa160c7d3e2cb3990f240675271ceea28cdc4d8d9629b10b9224079",
+      "size": 81127,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/ambientfog/biome_fog.json"
     },
     {
       "path": "config/amendments-client.toml",
@@ -839,6 +977,12 @@
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/corpse-server.toml"
     },
     {
+      "path": "config/cosycritters.json",
+      "sha512": "77ebacc3da2743e5f25b676e284c9e19be29a72404ec87ef3c6f218d0665f9a13ff5b3fe01d0436a1d6d4b0301f8e6f9cfb36e78717ff787b7ddc66f32329d56",
+      "size": 1008,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/cosycritters.json"
+    },
+    {
       "path": "config/crawl.properties",
       "sha512": "ede3076f9a02ee65f92bc6772a6cd2273684d5d6ca47188b536dc509b6aa24bfcd0ed5ade6b73bcc6a7871801bd4e4fdfcc2654bde9098e40cf23107bd80c698",
       "size": 61,
@@ -923,10 +1067,28 @@
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/emotecraft_emote_map.json"
     },
     {
+      "path": "config/entity_model_features.json",
+      "sha512": "41a20a467585e174666ae2b882b9b1131042f243f7b7250a01e1aae3ba74de6c7885dbcb077e4b25ddba64bf159ff0038058f37581a93f8eab9b75ce96191643",
+      "size": 1258,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/entity_model_features.json"
+    },
+    {
+      "path": "config/entity_texture_features.json",
+      "sha512": "8639359ab828eaa4f7a423c75d070b88808afdc4772dfd189cb5fa0b070b5afd3dffd512b10eeb1ef9d8642c5c4694470359eda01d12efb279b74bd6dbf58c90",
+      "size": 1452,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/entity_texture_features.json"
+    },
+    {
       "path": "config/entityculling.json",
       "sha512": "4ec9e69b2a81ec56e68680ca8f9536c18b50565b6ea4fd40f66cab50ea34bc7be7be55d21cd506c481cd7a0a56e37f1a562cf488ecaeabe71f937576635552df",
       "size": 2248,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/entityculling.json"
+    },
+    {
+      "path": "config/etf_warnings.json",
+      "sha512": "90da2ea8902edc596d35780dcdf9754f70eef8f5ee88cc119db6b1df7c437c45e0bb34159574ff11a0503cabe1621f9318354fd8fa5c7ed1ca42eb4e772bdd2b",
+      "size": 28,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/etf_warnings.json"
     },
     {
       "path": "config/explosiveenhancement.json",
@@ -963,6 +1125,12 @@
       "sha512": "737017d256a26b32dec29d9a97e0b8a76fc236c78090c83087b844ab498a44e8a3dfef1116d64c06957c89f3ac24bf61c9701bd0403bfc7707939f02ae1c7978",
       "size": 1550,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fml.toml"
+    },
+    {
+      "path": "config/fwa-blacklist.json",
+      "sha512": "702c390eb4309a959a965469d650dc1d094f5b2a86fc1eb4bbb42bb91bf282cdb4d22cea12be337fc589547d46bc6d64fcbc4da491d23780116fd88746c42555",
+      "size": 57,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fwa-blacklist.json"
     },
     {
       "path": "config/fzzy_config/keybinds.toml",
@@ -1062,8 +1230,8 @@
     },
     {
       "path": "config/invmove/unrecognized.json",
-      "sha512": "fe4ac78aa9added171bd140f952e4ad2c5c08527429c808758bf8166f178b329cfa0b21511981a4bb18d7484c85effcf26e220cb3ed33adcf1d7116d8b4b1797",
-      "size": 1904,
+      "sha512": "35d86d36a9c58b01c7c8efabbde83136c06fbff436b49064d97ccec1639d8bcf5989dd9836d14be546786efe4b16daf990d2554437bd9767d79ef6ab1acc29af",
+      "size": 2076,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/invmove/unrecognized.json"
     },
     {
@@ -1080,7 +1248,7 @@
     },
     {
       "path": "config/iris.properties",
-      "sha512": "116e6b683a1fbd6b8973dc5c26814605e1d454e96decb7e702eecbf68dcef44ec2c716533e1225fc35d08b57d04fc909e47ec8b34bb20c557eeaccb098359a3e",
+      "sha512": "1d79c3c486cd4c152a3c36ba899e15b8f86eb4fdc62a25ece4ffa4a7c2ce146848b2f2637172fad76482a60d2c93f5e0dd65e561efe9a99147a4dfc72c60e919",
       "size": 282,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/iris.properties"
     },
@@ -1104,14 +1272,14 @@
     },
     {
       "path": "config/jade/plugins.json",
-      "sha512": "8c1a3fa42e9a76ef20fd0d2b06118e106f7bce7982181feb449006200ba8b97b3e0f9720a156ca0a972801cd8b2a9f04f54cc797e14619698616b25343bcf974",
-      "size": 2267,
+      "sha512": "780f9ac7f170eb90c07e76d20b5ac1f4785b0a27f082aed8114886b831802b365925b5331c81199215de73979e82c7f6980a5e20c1140dd9fe2465e9481f4706",
+      "size": 2321,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jade/plugins.json"
     },
     {
       "path": "config/jade/sort-order.json",
-      "sha512": "3b38b3c9dc6754c8d6b42f7f0b214e7ececa06f227554629106a7e2cc086ff8ab99fcff91a3c8cdbbea18cf0528d4a0ab9ccf34c29e329f22c6a426a05ea3d28",
-      "size": 2383,
+      "sha512": "bc7380fdf2333411994d4b4430e30dfb7f2c66814be645fd749da72f574e77520c3dcd24f472f345fbbd891e05f09c787b67be8faf26d6bd4c499be9ea9e2196",
+      "size": 2424,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jade/sort-order.json"
     },
     {
@@ -1146,8 +1314,8 @@
     },
     {
       "path": "config/jei/client/ingredient-list-mod-sort-order.ini",
-      "sha512": "527b9874a930c79e81336e08b840894ed8193dba002c65e37868f6d42be373ef6cd1ebb474175faf28a32300cf2c120e77db0f18b408a4b4d7b91d01b4915619",
-      "size": 534,
+      "sha512": "d608a88c4244e9b1915640184c0ccaa530fdb3a759e8ee06abacc4d8210d813c7c6a6173fc00b06ce6f1b9c05c3ca18704e43854609f6ce408f179bfcc462895",
+      "size": 590,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jei/client/ingredient-list-mod-sort-order.ini"
     },
     {
@@ -1175,10 +1343,28 @@
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jei/world/local/%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%BC%D0%B8%D1%80/lookupHistory.json"
     },
     {
+      "path": "config/jei/world/server/F8Q (мой сервер) (f8quit_exaroton_me 30096)/lookupHistory.json",
+      "sha512": "620478ccd900423059bbf34d513201a4ff09b5989234d80b2683fdc0c4ea7f6b3dd20a20adb9ecd00a9400abc24368f221347a36ef6b859425e20fcb9a0576c6",
+      "size": 114,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jei/world/server/F8Q%20%28%D0%BC%D0%BE%D0%B9%20%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%29%20%28f8quit_exaroton_me%2030096%29/lookupHistory.json"
+    },
+    {
       "path": "config/journeymap-server.toml",
       "sha512": "44dd89795b418c23f72df84a3c92bf0a0a0bce175291673973e2098cc2ddf38a8925733a520637f4dd31fcfab928874abec9845deb9b25027b8f574da938decb",
       "size": 550,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/journeymap-server.toml"
+    },
+    {
+      "path": "config/kingsandmonsters-client.toml",
+      "sha512": "9aabe2a04e5ca0d9289e64b4ed68ed8a189dc64297b9b724813deeb4d1e458ccd2451336812e42f1b45e8e54d55586f58f4a0dac448474abc37a44f7201ceb8a",
+      "size": 171,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/kingsandmonsters-client.toml"
+    },
+    {
+      "path": "config/kingsandmonsters-server.toml",
+      "sha512": "4282716197fc17348b2af357cd0d12b14f7443fb1948d306975be4ade4de7760758e8808900881e5d3b19ba01307ad49e6f2f2a1e77e2ef1d53535d8cbe71d8d",
+      "size": 8611,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/kingsandmonsters-server.toml"
     },
     {
       "path": "config/lambdynlights.toml",
@@ -1271,6 +1457,12 @@
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/neoforge-server.toml"
     },
     {
+      "path": "config/patchouli-client.toml",
+      "sha512": "8f50a9633e852380bb85e2d770a3180beb3523b4a07fb6709af7a60e9b61ef5ed9cb9844124492adaa4a456723621094add590c1f71c6f8e24c6731e4cf9d49f",
+      "size": 1089,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/patchouli-client.toml"
+    },
+    {
       "path": "config/pickupnotifier/pickupnotifier-client.toml",
       "sha512": "f7205b717dc361c8cfa3f89781d058fd433a11aa0aec76ce9fb6834af92807518a8b76a48103eba5c0c8e6a67d00781ab1e475329444d2fff16e5b4921ae3456",
       "size": 3614,
@@ -1325,9 +1517,21 @@
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/punchy/triggerable-keybindings.json"
     },
     {
+      "path": "config/punchy_moves/camera.json",
+      "sha512": "278910b9ae7a9b028aa676270b8bb5e5c37bceaec601995f693fa8d7afadbd637d922c08fb9260f20035960d37b6d15612d0e416f570fc73441cd130481cdb60",
+      "size": 359,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/punchy_moves/camera.json"
+    },
+    {
+      "path": "config/punchy_moves/tutorial_seen_v1",
+      "sha512": "75244b3c4eff246045fccc2bf79e9b4493074b21dbda0ea5fc5d39919361df42aec1374212eb402be76390ca3e67f00518f4db906a29f0f39b1755903574cd4f",
+      "size": 5,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/punchy_moves/tutorial_seen_v1"
+    },
+    {
       "path": "config/respackopts/_respackopts.conf",
-      "sha512": "c8f86d10da934c01ba4416fdb7636e0afd0edae5c03c8a6d94e0156d399855b18d7cd90197b342065f6d4816c1033cd2a30f61cfd6a73fec8bcecc3c9b6b1ab6",
-      "size": 122,
+      "sha512": "4c03bdc24faa1b417a289dbd9a44084fd812166bf4bc7e21fb969109157b42215020d7023bc45c62afa5d6596ee57a72b159e08510e5f993ec5fd94016876588",
+      "size": 456,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/respackopts/_respackopts.conf"
     },
     {
@@ -1591,8 +1795,46 @@
   ],
   "updater": {
     "path": "f8q-updater.exe",
-    "sha512": "b15fce60db94f23cdaca6c31d874825a4f4ad00d30a8f844794cff48012bc7e2f766f42cc317f95aa9b5bddbdb661be5835fe3c077eb1448e29e26049723dc22",
-    "size": 2908160,
+    "sha512": "39a43e2f44c974e9f84b6fb8fb36c701a3a9d3008632257dabab8ecd0e30a2ac137c607837040f6192db33d4965ea4eb9afb21103048175626017741dcc25f84",
+    "size": 2931712,
     "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater.exe"
-  }
+  },
+  "packs": [
+    "mod/punchy:resourcepacks/punchy",
+    "vanilla",
+    "file/os-colorful-grasses.zip",
+    "file/nature-x.zip",
+    "file/F8Q 1.21.zip",
+    "file/Cozy-Russian.zip",
+    "file/fresh-buckets.zip",
+    "file/fresh-flowers-and-plants.zip",
+    "file/fresh-food.zip",
+    "file/fresh-music-discs.zip",
+    "file/fresh-ores-and-ingots.zip",
+    "file/fresh-paintings.zip",
+    "file/biome-bloom.zip",
+    "file/fresh-flower-pots.zip",
+    "file/refined-torches.zip",
+    "file/rays-3d-rails.zip",
+    "file/rays-3d-ladders.zip",
+    "file/better-3d-beds.zip",
+    "file/fresh-animations.zip",
+    "file/als-skeletons-x-fresh-animations.zip",
+    "file/fyoncles-3d-trims.zip",
+    "file/vocal-villagers.zip",
+    "file/chat-reporting-helper.zip",
+    "file/fluid-foolish.zip",
+    "file/visual-effects-plus.zip",
+    "mod_resources",
+    "moonlight:merged_pack"
+  ],
+  "incompatible_packs": [
+    "file/fresh-buckets.zip",
+    "file/fresh-flowers-and-plants.zip",
+    "file/fresh-food.zip",
+    "file/fresh-music-discs.zip",
+    "file/fresh-ores-and-ingots.zip",
+    "file/fresh-paintings.zip",
+    "file/better-3d-beds.zip"
+  ]
 }

@@ -1,0 +1,317 @@
+#Configure regular ogre stats.
+["Mob Config"]
+
+	["Mob Config"."Ogre Grunt"]
+		#Maximum health.
+		# Default: 60.0
+		# Range: 1.0 ~ 200.0
+		maxHealth = 60.0
+		#Base melee damage.
+		# Default: 10.5
+		# Range: 0.0 ~ 100.0
+		attackDamage = 10.5
+		#Movement speed.
+		# Default: 0.2772
+		# Range: 0.0 ~ 1.0
+		movementSpeed = 0.2772
+		#How far away it can notice targets.
+		# Default: 30.0
+		# Range: 1.0 ~ 128.0
+		followRange = 30.0
+		#Base armor points.
+		# Default: 8.0
+		# Range: 0.0 ~ 30.0
+		armor = 8.0
+		#Base melee knockback strength.
+		# Default: 0.9
+		# Range: 0.0 ~ 10.0
+		attackKnockback = 0.9
+		#How high it can step while walking.
+		# Default: 1.0
+		# Range: 0.0 ~ 2.0
+		stepHeight = 1.0
+		#How far it can safely path downward.
+		# Default: 4.0
+		# Range: 0.0 ~ 16.0
+		safeFallDistance = 4.0
+
+	["Mob Config"."Grunt Captain"]
+		#Maximum health.
+		# Default: 100.0
+		# Range: 1.0 ~ 300.0
+		maxHealth = 100.0
+		#Base armor points.
+		# Default: 12.0
+		# Range: 0.0 ~ 40.0
+		armor = 12.0
+
+	["Mob Config"."Ogre Archer"]
+		#Maximum health.
+		# Default: 60.0
+		# Range: 1.0 ~ 200.0
+		maxHealth = 60.0
+		#Base melee (punch) damage.
+		# Default: 5.0
+		# Range: 0.0 ~ 100.0
+		meleeDamage = 5.0
+		#Base arrow damage before bow variant bonuses.
+		# Default: 11.0
+		# Range: 0.0 ~ 100.0
+		arrowDamage = 11.0
+		#Movement speed.
+		# Default: 0.288
+		# Range: 0.0 ~ 1.0
+		movementSpeed = 0.288
+		#How far away it can notice targets.
+		# Default: 34.0
+		# Range: 1.0 ~ 128.0
+		followRange = 34.0
+		#Base armor points.
+		# Default: 9.0
+		# Range: 0.0 ~ 30.0
+		armor = 9.0
+
+	["Mob Config"."Ogre Guard"]
+		#Maximum health.
+		# Default: 70.0
+		# Range: 1.0 ~ 250.0
+		maxHealth = 70.0
+		#Base punch damage.
+		# Default: 7.0
+		# Range: 0.0 ~ 100.0
+		meleeDamage = 7.0
+		#Base thrown spear damage.
+		# Default: 10.0
+		# Range: 0.0 ~ 100.0
+		spearDamage = 10.0
+		#Movement speed.
+		# Default: 0.275
+		# Range: 0.0 ~ 1.0
+		movementSpeed = 0.275
+		#How far away it can notice targets.
+		# Default: 34.0
+		# Range: 1.0 ~ 128.0
+		followRange = 34.0
+		#Base armor points.
+		# Default: 11.0
+		# Range: 0.0 ~ 40.0
+		armor = 11.0
+
+	["Mob Config"."Ogre Mage"]
+		#Maximum health.
+		# Default: 100.0
+		# Range: 1.0 ~ 200.0
+		maxHealth = 100.0
+		#Base melee damage.
+		# Default: 6.0
+		# Range: 0.0 ~ 100.0
+		attackDamage = 6.0
+		#Movement speed.
+		# Default: 0.189
+		# Range: 0.0 ~ 1.0
+		movementSpeed = 0.189
+		#How far away it can notice targets.
+		# Default: 30.0
+		# Range: 1.0 ~ 128.0
+		followRange = 30.0
+		#Base armor points.
+		# Default: 10.0
+		# Range: 0.0 ~ 30.0
+		armor = 10.0
+
+	["Mob Config"."Ogre Brute"]
+		#Maximum health.
+		# Default: 120.0
+		# Range: 1.0 ~ 500.0
+		maxHealth = 120.0
+		#Base melee damage.
+		# Default: 11.0
+		# Range: 0.0 ~ 100.0
+		attackDamage = 11.0
+		#Movement speed.
+		# Default: 0.325
+		# Range: 0.0 ~ 1.0
+		movementSpeed = 0.325
+		#How far away it can notice targets.
+		# Default: 30.0
+		# Range: 1.0 ~ 128.0
+		followRange = 30.0
+		#Base armor points.
+		# Default: 18.0
+		# Range: 0.0 ~ 40.0
+		armor = 18.0
+
+#Configure boss stats and attack damage overrides.
+["Boss Config"]
+
+	["Boss Config"."Ogre Lord"]
+		#Maximum health.
+		# Default: 300.0
+		# Range: 1.0 ~ 1000.0
+		maxHealth = 300.0
+		#Base melee damage.
+		# Default: 18.0
+		# Range: 0.0 ~ 100.0
+		attackDamage = 18.0
+		#Movement speed.
+		# Default: 0.333
+		# Range: 0.0 ~ 1.0
+		movementSpeed = 0.333
+		#How far away it can notice targets.
+		# Default: 34.0
+		# Range: 1.0 ~ 128.0
+		followRange = 34.0
+		#Base armor points.
+		# Default: 20.0
+		# Range: 0.0 ~ 50.0
+		armor = 20.0
+		#Flat bonus damage added to the phase-transition club swing.
+		# Default: 10.0
+		# Range: 0.0 ~ 100.0
+		pullOutBonusDamage = 10.0
+		#Flat bonus damage added to the phase-two club upswing.
+		# Default: 10.0
+		# Range: 0.0 ~ 100.0
+		clubUpswingBonusDamage = 10.0
+		#Flat bonus damage added to Club Double Overhead.
+		# Default: 10.0
+		# Range: 0.0 ~ 100.0
+		clubDoubleOverheadBonusDamage = 10.0
+		#Flat bonus damage added to Single Overhead Slam.
+		# Default: 10.0
+		# Range: 0.0 ~ 100.0
+		singleOverheadBonusDamage = 10.0
+
+#Configure weapons, enchantments, and combat effects.
+[Combat]
+	#Crippled duration from an Ogre Grunt bite.
+	# Default: 80
+	# Range: 1 ~ 1200
+	crippledBiteDurationTicks = 80
+	#Crippled duration from Hunter's Spear thrown hits.
+	# Default: 100
+	# Range: 1 ~ 1200
+	crippledSpearDurationTicks = 100
+	#Base chance (0.0-1.0) for any Hunter's Spear thrown hit to apply Crippled. Barbed guarantees the effect.
+	# Default: 0.25
+	# Range: 0.0 ~ 1.0
+	huntersSpearCrippleChance = 0.25
+	#Fraction (0.0-1.0) of the target's armor damage reduction that Hunter's Spear hits (melee or thrown) bypass.
+	# Default: 0.2
+	# Range: 0.0 ~ 1.0
+	huntersSpearArmorPierce = 0.2
+	#Dazed duration from Brute and Ogre King heavy attacks.
+	# Default: 100
+	# Range: 1 ~ 1200
+	dazedHeavyAttackDurationTicks = 100
+	#Bonus thrown damage per Heavy Throw level.
+	# Default: 2.0
+	# Range: 0.0 ~ 50.0
+	heavyThrowDamagePerLevel = 2.0
+	#Bonus knockback per Heavy Throw level.
+	# Default: 0.35
+	# Range: 0.0 ~ 5.0
+	heavyThrowKnockbackPerLevel = 0.35
+	#Projectile speed reduction per Heavy Throw level.
+	# Default: 0.08
+	# Range: 0.0 ~ 0.4
+	heavyThrowSpeedPenaltyPerLevel = 0.08
+	#Chance (0.0-1.0) for Barbed melee or thrown hits to apply Bleeding.
+	# Default: 0.5
+	# Range: 0.0 ~ 1.0
+	barbedBleedChance = 0.5
+	#Bleeding duration applied by Barbed.
+	# Default: 100
+	# Range: 1 ~ 1200
+	barbedBleedDurationTicks = 100
+	#Damage dealt by each Bleeding tick per Barbed level.
+	# Default: 1.25
+	# Range: 0.0 ~ 100.0
+	barbedBleedDamage = 1.25
+	#Radius used to count nearby hostile mobs for Tyrant.
+	# Default: 8.0
+	# Range: 1.0 ~ 32.0
+	tyrantSearchRadius = 8.0
+
+#Configure the ogre faction anger and tribute systems.
+[Tribute]
+	#Maximum anger the ogre faction can store.
+	# Default: 30
+	# Range: 1 ~ 30
+	maxAnger = 30
+	#Anger added when a tribute chest is looted (legacy fallback).
+	# Default: 1
+	# Range: -100 ~ 100
+	defaultAngerDelta = 1
+	#Anger added when a player loots a tribute chest.
+	# Default: 10
+	# Range: 0 ~ 100
+	tributeChestAngerDelta = 10
+	#Anger added when a player kills a camp ogre near the outpost.
+	# Default: 1
+	# Range: 0 ~ 100
+	campKillAnger = 1
+	#Radius in blocks around a camp origin that counts as a camp kill.
+	# Default: 64
+	# Range: 16 ~ 256
+	campKillRadius = 64
+	#Chance (0.0-1.0) that looting a tribute chest schedules a delayed retaliation patrol.
+	# Default: 0.2
+	# Range: 0.0 ~ 1.0
+	tributePatrolChance = 0.2
+	#How many ticks between each passive ogre faction anger decay of -1 (48000 = 2 in-game days).
+	# Default: 48000
+	# Range: 1200 ~ 1728000
+	angerDecayIntervalTicks = 48000
+	#Radius in blocks within which a player near any camp sees the faction anger HUD.
+	# Default: 80
+	# Range: 16 ~ 512
+	angerHudRadius = 80
+
+#Configure structure discovery and map availability.
+[Worldgen]
+
+	[Worldgen."Fort Map Discovery"]
+		#Chance (0.0-1.0) that a swamp outpost's tribute chest contains an Ogre King's Fort map.
+		# Default: 0.3
+		# Range: 0.0 ~ 1.0
+		swampOutpostMapChance = 0.3
+		#Whether cartographers can sell an Ogre King's Fort map.
+		cartographerTradeEnabled = true
+		#Emerald cost of the cartographer fort map trade. The trade also requires one compass.
+		# Default: 48
+		# Range: 1 ~ 64
+		cartographerTradePrice = 48
+		#Villager level for the fort map trade (5 is Master).
+		# Default: 5
+		# Range: 1 ~ 5
+		cartographerTradeLevel = 5
+
+#Configure patrol spawning caused by ogre faction anger.
+[Patrols]
+	#Whether angered camps can send patrols after nearby players.
+	enabled = true
+	#How often loaded camps check whether to spawn a patrol (ticks).
+	# Default: 200
+	# Range: 20 ~ 12000
+	checkIntervalTicks = 200
+	#Minimum cooldown between patrols from the same camp (ticks).
+	# Default: 12000
+	# Range: 200 ~ 72000
+	minCooldownTicks = 12000
+	#Maximum cooldown between patrols from the same camp (ticks).
+	# Default: 18000
+	# Range: 200 ~ 72000
+	maxCooldownTicks = 18000
+	#Maximum distance from a camp where players can be targeted for patrols.
+	# Default: 384
+	# Range: 32 ~ 1024
+	playerSearchRadius = 384
+	#Minimum distance from the target player where patrols spawn.
+	# Default: 28
+	# Range: 8 ~ 128
+	minSpawnDistance = 28
+	#Maximum distance from the target player where patrols spawn.
+	# Default: 48
+	# Range: 8 ~ 192
+	maxSpawnDistance = 48

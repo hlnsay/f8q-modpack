@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "horizontal": 1.17,
+  "vertical": -0.11,
+  "depth": 2.5,
+  "fov": 70.0,
+  "rotationYaw": 0.0,
+  "rotationPitch": 0.0,
+  "fenceCamera": true,
+  "ladderCamera": true,
+  "proximityCamera": true,
+  "elytraCamera": true,
+  "mapCamera": true,
+  "bowAndCrossbowCameraFix": true,
+  "spearAndTridentCameraFix": true,
+  "ladderBodyLock": true
+}
