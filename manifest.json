@@ -963,16 +963,6 @@
     }
   ],
   "remove": [
-    "config/emotecraft.json",
-    "config/emotecraft_emote_map.json",
-    "config/livingwind-client.toml",
-    "config/livingwind-common.toml",
-    "config/sereneseasons/fertility.toml",
-    "config/sereneseasons/seasons.toml",
-    "config/sophisticatedbackpacks-common.toml",
-    "config/sophisticatedbackpacks-server.toml",
-    "config/sophisticatedcore-client.toml",
-    "config/sophisticatedcore-common.toml",
     "mods/SereneSeasons-neoforge-1.21.1-10.1.0.9.jar",
     "mods/emotecraft-for-MC1.21.1-2.4.12-neoforge.jar",
     "mods/sophisticatedbackpacks-1.21.1-3.26.19.2243.jar",
@@ -2334,7 +2324,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-new-worlds",
+  "revision": "2026-11-05-remove-fix",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
