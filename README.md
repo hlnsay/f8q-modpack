@@ -1,10 +1,10 @@
-﻿# F8Q 1.21.1 [AUTUMN]
+# F8Q 1.21.1 [AUTUMN]
 
 Список модов и файлы для сервера F8Q.
 
 ## Как установить
 
-1. Скачайте [F8Q-Launcher-Setup-v0.0.1.exe](https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.1.exe) и установите F8Q Launcher.
+1. Скачайте [F8Q-Launcher-Setup.exe](https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup.exe) и установите F8Q Launcher.
 2. Откройте его и нажмите «Скачать сборку». Прогресс виден прямо в лаунчере. Если официального Horizon нет, он установится сам.
 3. Войдите в аккаунт Microsoft в Horizon.
 4. Откройте F8Q Launcher и нажмите «Играть».
