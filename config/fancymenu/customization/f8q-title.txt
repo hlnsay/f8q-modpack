@@ -697,9 +697,9 @@ vanilla_button {
   auto_sizing_base_screen_width = 0
   auto_sizing_base_screen_height = 0
   sticky_anchor = false
-  anchor_point = bottom-left
-  x = 6
-  y = -13
+  anchor_point = vanilla
+  x = 762
+  y = 530
   width = 196
   height = 10
   stretch_x = false
@@ -1082,9 +1082,9 @@ element {
   auto_sizing_base_screen_width = 1920
   auto_sizing_base_screen_height = 1080
   sticky_anchor = false
-  anchor_point = bottom-right
-  x = -76
-  y = -76
+  anchor_point = mid-left
+  x = 94
+  y = -153
   width = 64
   height = 64
   stretch_x = false
