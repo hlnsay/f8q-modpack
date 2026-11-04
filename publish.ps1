@@ -1,5 +1,5 @@
-# Publishes the current F8Q instance: the mod list, the files Modrinth doesn't have and the settings.
-# Players get the mods at their next start; the settings only reach new installs.
+# Publishes the current F8Q instance: the mod list, the settings and the files Modrinth doesn't have.
+# Players get what changed or was removed through the launcher's Update button or their next Play.
 $ErrorActionPreference = 'Stop'
 $repo = 'hlnsay/f8q-modpack'
 $base = "https://github.com/$repo/releases/download/files"
@@ -21,8 +21,11 @@ $files = @(Get-ChildItem (Join-Path $out 'upload') -File | ForEach-Object FullNa
 if ($LASTEXITCODE -ne 0) { throw 'upload failed' }
 
 Copy-Item (Join-Path $out 'manifest.json') (Join-Path $here 'manifest.json') -Force
+$config = Join-Path $here 'config'
+if (Test-Path $config) { Remove-Item $config -Recurse -Force }
+Copy-Item (Join-Path $out 'config') $config -Recurse
 Set-Location $here
-git add manifest.json
+git add manifest.json config .gitattributes
 git diff --cached --quiet
 if ($LASTEXITCODE -eq 0) { Write-Output 'The list did not change.'; exit 0 }
 git commit -q -m 'Update the mod list'
