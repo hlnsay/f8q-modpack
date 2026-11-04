@@ -776,12 +776,6 @@
       "url": "https://cdn.modrinth.com/data/Ik3Z3RFx/versions/G6jdCgwE/Fyoncle%27s%203D%20Trims.zip"
     },
     {
-      "path": "resourcepacks/nature-x.zip",
-      "sha512": "3ec135859c5cbb824e8ae51a226088b91d41fe63ea3eb86c7558e32635ae52282d9cf3a43265d909690b4b7cc78aa69cfe94b94170f561072b4708b0a15971f3",
-      "size": 1802203,
-      "url": "https://cdn.modrinth.com/data/8d8M3Qoz/versions/L1fTfVef/Nature%20X%20-%2012.2%20%5B1.21.1%5D.zip"
-    },
-    {
       "path": "resourcepacks/os-colorful-grasses.zip",
       "sha512": "d14efd9fd5efaaa2f8ac325193c7c0f2095caacfeded5a3658377777e0871395577a9de650a90a714efdf93d450f0bd70b8081f493fea5641770b1a187a6b6a3",
       "size": 338633,
@@ -2091,7 +2085,6 @@
     "mod/punchy:resourcepacks/punchy",
     "vanilla",
     "file/os-colorful-grasses.zip",
-    "file/nature-x.zip",
     "file/F8Q 1.21.zip",
     "file/Cozy-Russian.zip",
     "file/fresh-buckets.zip",
@@ -2209,5 +2202,5 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-04-spruce-leaves"
+  "revision": "2026-11-04-no-nature-x"
 }
