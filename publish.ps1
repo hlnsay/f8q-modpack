@@ -12,7 +12,7 @@ $out = Join-Path $env:TEMP 'f8q-publish'
 if (Test-Path $out) { Remove-Item $out -Recurse -Force }
 & $updater publish $home_dir $out $base | Write-Output
 if ($LASTEXITCODE -ne 0) { throw 'publish failed' }
-& $updater starter $home_dir (Join-Path $out 'upload\f8q-starter.zip')
+& $updater starter $home_dir (Join-Path $out 'upload\f8q-starter.zip') | Write-Output
 if ($LASTEXITCODE -ne 0) { throw 'starter failed' }
 Copy-Item $updater (Join-Path $out 'upload\f8q-updater.exe')
 
