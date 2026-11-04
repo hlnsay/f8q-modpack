@@ -882,6 +882,12 @@
       "sha512": "f86ce34f2759c69df82578c397ff55b666c84626229a98f598458b960c21b38c95d6bfef4772af7f963c4f4868e5e2d9aef6b99c1d51bab55bf45e0e6e6b5ed4",
       "size": 3642581,
       "url": "https://cdn.modrinth.com/data/l6YH9Als/versions/v5qtqRQi/spark-1.10.124-neoforge.jar"
+    },
+    {
+      "path": "mods/f8qknock-1.0.0.jar",
+      "sha512": "c217ee154bc1acd08e124f9d972fa664c716860f12d6531e742e35605b180dfea02a888235b8f9f004a7ac96396788bde1363a9aafa1faeede5e2e28441f8aed",
+      "size": 13686,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.0.jar"
     }
   ],
   "remove": [
@@ -2115,6 +2121,15 @@
     {
       "date": "2026-11-05",
       "added": [
+        "Новый экран нокаута: шкала, красная пиксельная виньетка, сердцебиение",
+        "Подсказка и подсветка у лежачего игрока"
+      ],
+      "updated": [],
+      "removed": []
+    },
+    {
+      "date": "2026-11-05",
+      "added": [
         "ModernFix",
         "Dynamic FPS",
         "More Culling",
@@ -2231,7 +2246,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-optimized",
+  "revision": "2026-11-05-knock-screen",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
