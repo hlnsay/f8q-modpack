@@ -2099,8 +2099,8 @@
   "updater": {
     "path": "f8q-updater.exe",
     "size": 2981888,
-    "sha512": "c1b1d4dfc601034d2bcb3e845f4736e638cd688646c673ff3570f108e51e937f1df57fb109961a6dacbe8b8a64aa6283c07f02520fdf4e2e1e30d0b068902ee7",
-    "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater-build20.exe"
+    "sha512": "3a57747dd41c98d15e8db0d68b74019268740fe60a67a38f5d1eef8b355b122ae2c8816745eb4e86d671c6026afca177f4265816d63f6931bcfda5a602b63d7a",
+    "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater-build21.exe"
   },
   "packs": [
     "mod/punchy:resourcepacks/punchy",
@@ -2238,7 +2238,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-04-backpacked-trees",
+  "revision": "2026-11-04-no-console",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
