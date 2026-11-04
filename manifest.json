@@ -2027,9 +2027,9 @@
     },
     {
       "path": "config/fancymenu/customization/f8q-title.txt",
-      "size": 39291,
-      "sha512": "de72324df53048db62118e4f5eb98d471823f08129b1728d6b29babe9b90210d5a0659265006de7565c0f1e8b47ccc7bc126d55c0df37ab83840bc12e9a50f22",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/1095909d30cb6cf182d3a2470f4443ee3d690234/config/fancymenu/customization/f8q-title.txt"
+      "size": 39285,
+      "sha512": "e0061af9830bf674c521e0ca4ef049e6a4cd01ca977233a4eb61625c20c39c36b3aa72c53724503364440b4efdfcadefd8b0fc5aa5482f1ff7de351dd8cf6859",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/89dfa37825d42e1b09063f5c67fb84e09573929f/config/fancymenu/customization/f8q-title.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-VideoSettingsScreen.txt",
@@ -2190,7 +2190,7 @@
       "date": "2026-11-05",
       "added": [],
       "updated": [
-        "Главное меню: логотип в углу, новые кнопки",
+        "Главное меню: новые кнопки",
         "Сумки Pikafishing показывают слоты: 0/16",
         "Деревья с толстым стволом рубятся чище"
       ],
@@ -2340,7 +2340,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-menu-and-trunks",
+  "revision": "2026-11-05-logo-above",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
