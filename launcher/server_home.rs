@@ -20,7 +20,7 @@ const CHANGELOG: &str = "https://raw.githubusercontent.com/hlnsay/f8q-modpack/ma
 const INSTALLER: &str =
     "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater.exe";
 /// This build's number: `launcher.json` on GitHub names the newest.
-pub(super) const BUILD: u32 = 13;
+pub(super) const BUILD: u32 = 14;
 /// Horizon's releases: its launcher's are tagged `launcher@`, among the game's.
 const ENGINE_RELEASE: &str =
     "https://api.github.com/repos/horizon-rust/horizon/releases?per_page=40";
@@ -396,11 +396,7 @@ fn newer_launcher() -> Option<serde_json::Value> {
     let exe = installed_exe()?;
     // What the last update moved aside can go now that this copy runs.
     let _ = std::fs::remove_file(exe.with_extension("old"));
-    let agent = ureq::AgentBuilder::new()
-        .timeout(Duration::from_secs(4))
-        .build();
-    let text = agent.get(LAUNCHER_INFO).call().ok()?.into_string().ok()?;
-    let info: serde_json::Value = serde_json::from_str(&text).ok()?;
+    let info = public_json(LAUNCHER_INFO)?;
     (info["build"].as_u64()? > u64::from(BUILD)).then_some(info)
 }
 
@@ -1063,7 +1059,7 @@ impl Launcher {
                 Some(exe),
                 vec![
                     "sync".to_string(),
-                    MANIFEST.to_string(),
+                    format!("{MANIFEST}?refresh={}", std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap_or_default().as_nanos()),
                     i.home.display().to_string(),
                 ],
             ),
