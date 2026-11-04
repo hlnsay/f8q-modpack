@@ -1,10 +1,17 @@
 {
-  "build": 20,
-  "version": "0.0.6",
-  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.6.exe",
-  "size": 55885824,
-  "sha512": "a1a17258a754b62a6663d3db05ef5e7bb74af5a44b57935f1e538bbb727475459d0ab0195ca9f7da49ae33331ad72bf6fcabbda8438f35188932bfa870d22180",
+  "build": 21,
+  "version": "0.0.7",
+  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.7.exe",
+  "size": 55910400,
+  "sha512": "5f0f5489ea23b700dfb5a6f20a593c11e38e09c589734ade3de69544e34d3de1538e69e438d5b64ae0f22972643caec5b4f9ccca04b548742c737d6adabd7959",
   "changelog": [
+    {
+      "version": "0.0.7",
+      "date": "2026-11-04",
+      "changes": [
+        "«Обновить» использует свежий обновлятор и больше не мешает нажать «Играть»."
+      ]
+    },
     {
       "version": "0.0.6",
       "date": "2026-11-04",
