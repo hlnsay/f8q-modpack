@@ -858,6 +858,12 @@
       "sha512": "bd9a1d087bcc8ab8705372b0591171232fc18da5ceb62f14e089e80bd5a023358307f9d771a3bf4e927c048ed25bfba9e7ea8a767197b9c2654cf325b16268a4",
       "size": 8951,
       "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Fixes.zip"
+    },
+    {
+      "path": "mods/dtbop-3.4.0.jar",
+      "sha512": "6aa2c96eaad69ba271bd90d394129e8afa02e23d0b0f07704f7c2e781cde741dbaab87cd059fc3a99bf9bc0a3fa0c3da37f7b4aae0c5f551fc7e206a401f750b",
+      "size": 411408,
+      "url": "https://cdn.modrinth.com/data/8QHjGuhP/versions/YZ8VDP0n/dtbop-3.4.0.jar"
     }
   ],
   "remove": [],
@@ -2209,5 +2215,5 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-04-f8q-ores"
+  "revision": "2026-11-04-dynamic-bop-trees"
 }
