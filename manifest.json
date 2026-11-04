@@ -116,12 +116,6 @@
       "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/PlayerRevive_NEOFORGE_v2.1.2_mc1.21.1-cozy-fix.jar"
     },
     {
-      "path": "mods/SereneSeasons-neoforge-1.21.1-10.1.0.9.jar",
-      "sha512": "a85209de65af7999b29af850e05ad3a045c208a005ec3a7e4e66a58f1c9d90fda501ba80a6245209a4aad856ee053c21c4f679efe8c02981746e907915e31fe1",
-      "size": 163020,
-      "url": "https://cdn.modrinth.com/data/e0bNACJD/versions/pHEgQQUE/SereneSeasons-neoforge-1.21.1-10.1.0.9.jar"
-    },
-    {
       "path": "mods/SubtleEffects-neoforge-1.21.1-1.15.1.jar",
       "sha512": "4bc61c3cb3df0d774f623eb9177c0ec3d74617c044d3a80a5b564094d2b14c9ebc98b79893a01bb5461d92141787bb814dd869101a293a840dade027bd0a56a1",
       "size": 3445062,
@@ -873,6 +867,9 @@
     }
   ],
   "remove": [
+    "config/sereneseasons/fertility.toml",
+    "config/sereneseasons/seasons.toml",
+    "mods/SereneSeasons-neoforge-1.21.1-10.1.0.9.jar",
     "mods/sophisticatedbackpacks-1.21.1-3.26.19.2243.jar",
     "mods/sophisticatedcore-1.21.1-1.5.25.2451.jar"
   ],
@@ -1586,18 +1583,6 @@
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/seamless_loading_screen.json"
     },
     {
-      "path": "config/sereneseasons/fertility.toml",
-      "sha512": "a9fc820b35f3197e86f067c03d09480dda3bb73dfba572220de65d29236912ccf86e6226d670213dac5fcb9197685d85cdf198365d8916712485b734d035d84a",
-      "size": 481,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/sereneseasons/fertility.toml"
-    },
-    {
-      "path": "config/sereneseasons/seasons.toml",
-      "sha512": "c409aa737b6e800033e5c76a79eb9814511c927ebe94836cbaead2bec4190af0de37c258e36f8f68955c0d0b52ef03ebd13417f6111038942237f8da057a051d",
-      "size": 21059,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/sereneseasons/seasons.toml"
-    },
-    {
       "path": "config/skinlayers.json",
       "sha512": "0ccb7e655e79f5af02e7c7a33b342906f51caaa63bf33bb3e7aad265cbefa78cd53086b423d1b68ed27fb5dcf3c7abaec90197debf137fea8c36af866eabfb60",
       "size": 497,
@@ -2143,6 +2128,14 @@
   ],
   "changelog": [
     {
+      "date": "2026-11-05",
+      "added": [],
+      "updated": [],
+      "removed": [
+        "Serene Seasons"
+      ]
+    },
+    {
       "date": "2026-11-04",
       "added": [
         "Backpacked",
@@ -2238,7 +2231,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-seeds-all-seasons",
+  "revision": "2026-11-05-no-seasons",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
