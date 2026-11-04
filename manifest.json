@@ -182,12 +182,6 @@
       "url": "https://cdn.modrinth.com/data/b1ZV3DIJ/versions/dJgL278E/athena-neoforge-1.21.1-4.0.6.jar"
     },
     {
-      "path": "mods/atmospherics-2.6.5-mc-1.21.1.jar",
-      "sha512": "e01173f579a93035f278f53fcf253ad069b6413aa2d8aace777dcd4c023971ba6435abc43a7fd808766e2734ab0db721e93ccca155ae1b2dfdb42d2a553973c1",
-      "size": 2342565,
-      "url": "https://cdn.modrinth.com/data/ft2cYBpB/versions/yJJkB7Qc/atmospherics-2.6.5-mc-1.21.1.jar"
-    },
-    {
       "path": "mods/autumnity-1.21.1-6.0.1.jar",
       "sha512": "6d7afea7903b494465742e1def892edc35a86cd29d0c0c90f0b46249ecf63dd62bc52d44b71dc216a06972cd4d33ee956bfd73cea2f8a3a798ddf68c1d232327",
       "size": 1261462,
@@ -855,8 +849,8 @@
     },
     {
       "path": "resourcepacks/F8Q-Fixes.zip",
-      "sha512": "bd9a1d087bcc8ab8705372b0591171232fc18da5ceb62f14e089e80bd5a023358307f9d771a3bf4e927c048ed25bfba9e7ea8a767197b9c2654cf325b16268a4",
-      "size": 8951,
+      "sha512": "f5ee972dd001717ed6b40f17df381a7c64b1b6dd23a9303398d321b5767c3b3dfbf466fd8002f72ee9b8c7cae1123c5abf4242965b583a3ce48d3c0c833d8e60",
+      "size": 36887,
       "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Fixes.zip"
     },
     {
@@ -2215,5 +2209,5 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-04-dynamic-bop-trees"
+  "revision": "2026-11-04-one-sun-kings-ru"
 }
