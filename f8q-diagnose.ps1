@@ -12,7 +12,7 @@ $r = New-Object Collections.ArrayList
 $list = @()
 if ($engine) {
     $text = & $engine instance list --json 2>&1 | Out-String
-    try { $list = @($text | ConvertFrom-Json) } catch { [void]$r.Add("list failed: $text") }
+    try { $list = @(($text | ConvertFrom-Json) | ForEach-Object { $_ }) } catch { [void]$r.Add("list failed: $text") }
     foreach ($i in $list) {
         [void]$r.Add("instance id=$($i.id) name=$($i.name) kind=$($i.kind) selected=$($i.selected) java=$($i.java | ConvertTo-Json -Compress) home=$($i.home) home_exists=$(Test-Path $i.home)")
     }
