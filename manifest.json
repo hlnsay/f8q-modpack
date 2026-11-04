@@ -855,8 +855,8 @@
     },
     {
       "path": "resourcepacks/F8Q-Fixes.zip",
-      "sha512": "1894b638adab035cfddc08c95da7ac48b754b480343a6a9d978519eec541b43beaee905a57a4ff10bdab3e58032c7260750abd20deb18c9ec9d6403fe44f1d57",
-      "size": 4397,
+      "sha512": "bd9a1d087bcc8ab8705372b0591171232fc18da5ceb62f14e089e80bd5a023358307f9d771a3bf4e927c048ed25bfba9e7ea8a767197b9c2654cf325b16268a4",
+      "size": 8951,
       "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Fixes.zip"
     }
   ],
@@ -2209,5 +2209,5 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-04-pause-ores"
+  "revision": "2026-11-04-f8q-ores"
 }
