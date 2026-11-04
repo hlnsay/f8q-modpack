@@ -2083,9 +2083,9 @@
   ],
   "updater": {
     "path": "f8q-updater.exe",
-    "size": 2958848,
-    "sha512": "21704474e4b39ddca614851ae0d87b18df4f915d398d95743010d525435b39f272962f75ecf5175f6ae3223b8dc1683e8894b8719ca1f15e4e86fcc5ff99bef9",
-    "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater-build18.exe"
+    "size": 2975232,
+    "sha512": "87ed8a1c6fc6694285ecdb92ce0efcc84c4c72c554a9d3e09ffbb4214d77383b1c2699cddc347c6ffb4086d6404f780aaa4f45569022977c2fdea000ca52d461",
+    "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater-build19.exe"
   },
   "packs": [
     "mod/punchy:resourcepacks/punchy",
@@ -2199,5 +2199,5 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-04-launcher-v004"
+  "revision": "2026-11-04-neoforge-mirror"
 }
