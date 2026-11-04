@@ -20,7 +20,7 @@ const CHANGELOG: &str = "https://raw.githubusercontent.com/hlnsay/f8q-modpack/ma
 const INSTALLER: &str =
     "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater.exe";
 /// This build's number: `launcher.json` on GitHub names the newest.
-pub(super) const BUILD: u32 = 14;
+pub(super) const BUILD: u32 = 15;
 /// Horizon's releases: its launcher's are tagged `launcher@`, among the game's.
 const ENGINE_RELEASE: &str =
     "https://api.github.com/repos/horizon-rust/horizon/releases?per_page=40";
@@ -48,6 +48,45 @@ struct Change {
     added: Vec<String>,
     updated: Vec<String>,
     removed: Vec<String>,
+}
+
+#[derive(Clone, Default, serde::Deserialize)]
+struct LauncherChange {
+    #[serde(default)] version: String,
+    #[serde(default)] date: String,
+    #[serde(default)] changes: Vec<String>,
+}
+
+fn launcher_changes(info: &serde_json::Value) -> Vec<LauncherChange> {
+    serde_json::from_value(info["changelog"].clone()).unwrap_or_default()
+}
+
+pub(super) fn after_update_handoff() -> bool {
+    static UPDATED: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
+    *UPDATED.get_or_init(|| {
+        std::env::var("F8Q_UPDATED_BUILD").ok().and_then(|v| v.parse::<u32>().ok()) == Some(BUILD)
+            || std::env::current_exe().ok().is_some_and(|p| p.file_name().is_some_and(|n| n == "f8q-launcher.exe") && p.with_extension("old").is_file())
+    })
+}
+
+pub(super) fn handoff_ready_path() -> Option<PathBuf> {
+    let p = PathBuf::from(std::env::var_os("F8Q_UPDATE_READY")?);
+    (after_update_handoff() && p.parent() == Some(std::env::temp_dir().as_path())
+        && p.file_name()?.to_str()?.starts_with("f8q-update-ready-")).then_some(p)
+}
+
+impl ServerHome {
+    pub(super) fn new() -> Self {
+        Self { update_answered: after_update_handoff(), update_checked: after_update_handoff(), ..Self::default() }
+    }
+    fn complete_run(&mut self, run: &Arc<Mutex<Run>>, result: Result<(), String>) -> bool {
+        if !self.run.as_ref().is_some_and(|active| Arc::ptr_eq(active, run)) { return false; }
+        self.run = None;
+        if self.self_update.as_ref().is_some_and(|active| Arc::ptr_eq(active, run)) { self.self_update = None; }
+        self.note = result.err();
+        true
+    }
+
 }
 
 /// `create-1.21.1-6.0.10.jar`: `Create`. The file name is all the list knows of a mod.
@@ -172,6 +211,8 @@ struct Check {
     /// The mods in the list, by name.
     mods: Vec<String>,
     changelog: Vec<Change>,
+    launcher_changes: Vec<LauncherChange>,
+    packs: usize,
 }
 
 /// An update under way, shared with its thread.
@@ -205,6 +246,7 @@ pub(super) struct ServerHome {
     mods_open: bool,
     /// The changelog is unfolded independently of the mod list.
     changes_open: bool,
+    launcher_changes_open: bool,
     /// Ignore checks started before a newer refresh.
     check_generation: u64,
     /// The server's icon, and whether it was asked for.
@@ -287,6 +329,8 @@ fn check_files(own: Option<PathBuf>, others: Vec<(String, PathBuf)>) -> Check {
         total,
         mods,
         changelog: read_changelog(&manifest),
+        launcher_changes: public_json(LAUNCHER_INFO).as_ref().map(launcher_changes).unwrap_or_default(),
+        packs: manifest["files"].as_array().into_iter().flatten().filter(|f| f["path"].as_str().is_some_and(|p| p.starts_with("resourcepacks/"))).count(),
         no_account,
         ..Check::default()
     };
@@ -438,9 +482,22 @@ fn replace_launcher(run: &Mutex<Run>, info: &serde_json::Value) -> Result<(), St
         let _ = std::fs::rename(&old, &exe);
         return Err(e.to_string());
     }
-    std::process::Command::new(&exe)
-        .spawn()
-        .map_err(|e| e.to_string())?;
+    let ready = std::env::temp_dir().join(format!("f8q-update-ready-{}-{}.txt", std::process::id(), info["build"].as_u64().unwrap_or(0)));
+    let _ = std::fs::remove_file(&ready);
+    let mut child = std::process::Command::new(&exe)
+        .env("F8Q_UPDATED_BUILD", info["build"].as_u64().unwrap_or(0).to_string())
+        .env("F8Q_UPDATE_READY", &ready).spawn().map_err(|e| e.to_string())?;
+    run.lock().unwrap().fraction = 1.;
+    let until = Instant::now() + Duration::from_secs(15);
+    while !ready.is_file() && Instant::now() < until {
+        if child.try_wait().map_err(|e| e.to_string())?.is_some() {
+            let _ = std::fs::rename(&exe, &fresh);
+            let _ = std::fs::rename(&old, &exe);
+            return Err(tr("The update failed. Try again.").to_string());
+        }
+        std::thread::sleep(Duration::from_millis(50));
+    }
+    let _ = std::fs::remove_file(&ready);
     std::process::exit(0);
 }
 
@@ -757,10 +814,7 @@ impl Launcher {
             let done = run.lock().unwrap().done.take();
             let finished = done.is_some();
             let alive = this.update(cx, |this, cx| {
-                if let Some(result) = done {
-                    this.server_home.run = None;
-                    this.server_home.self_update = None;
-                    this.server_home.note = result.err();
+                if done.is_some_and(|result| this.server_home.complete_run(&run, result)) {
                     this.reload_instances();
                     this.server_home.asked = None;
                     this.ask_server_status(cx);
@@ -788,6 +842,11 @@ impl Launcher {
                     cx.notify();
                     return;
                 };
+                if this.server_home.run.is_some() {
+                    this.server_home.update_waiting = true;
+                    cx.notify();
+                    return;
+                }
                 let run = Arc::new(Mutex::new(Run {
                     line: tr("Updating the launcher…").to_string(),
                     ..Run::default()
@@ -828,13 +887,19 @@ impl Launcher {
                     20.,
                     crate::glass_ui::white(horizon_theme::glass::ink::FULL),
                 )))
-                .on_click(|_, _, _| {
-                    if let Some(exe) = installed_exe() {
-                        if std::process::Command::new(exe).spawn().is_ok() {
-                            std::process::exit(0);
-                        }
+                .on_click(cx.listener(|this, _: &ClickEvent, window, cx| {
+                    if this.server_home.run.is_some() { return; }
+                    this.server_home.update_waiting = false;
+                    this.server_home.update_checked = false;
+                    this.server_home.update_answered = false;
+                    if this.opening.is_none() {
+                        let focus = cx.focus_handle();
+                        window.focus(&focus, cx);
+                        this.opening = Some(Opening { started: None, reveal: None, focus });
                     }
-                }),
+                    this.check_for_launcher_update(cx);
+                    cx.notify();
+                })),
         )
     }
 
@@ -894,7 +959,7 @@ impl Launcher {
                 .child(
                     shell::text(night::UI, c(n.ink_soft))
                         .min_w_0()
-                        .truncate()
+                        .flex_1()
                         .child(name.clone()),
                 )
         };
@@ -1006,6 +1071,30 @@ impl Launcher {
             .gap(px(12.))
             .child(log)
             .child(list)
+    }
+
+    pub(super) fn launcher_version_button(&self, cx: &mut Context<Self>) -> Div {
+        let n = self.theme.night;
+        let open = self.server_home.launcher_changes_open;
+        let fallback: serde_json::Value = serde_json::from_str(include_str!("../F8Q_CHANGELOG.json")).unwrap_or_default();
+        let changes = if self.server_home.check.launcher_changes.is_empty() { launcher_changes(&fallback) } else { self.server_home.check.launcher_changes.clone() };
+        let mut body = div().id("launcher-release-body").flex().flex_col().gap(px(12.)).max_h(px(420.)).overflow_y_scroll();
+        for release in changes.iter().take(5) {
+            body = body.child(shell::text(night::TITLE, c(n.ink)).child(format!("v.{} · {}", release.version, release.date)));
+            for text in &release.changes {
+                body = body.child(div().flex().items_start().gap(px(8.))
+                    .child(shell::text(night::UI, c(n.ink_soft)).child("•"))
+                    .child(shell::text(night::UI, c(n.ink_soft)).min_w_0().flex_1().child(text.clone())));
+            }
+        }
+        let panel = crate::glass::float(16.).absolute().top_0().right(px(196.)).w(px(392.)).p(px(20.)).flex().flex_col().gap(px(16.))
+            .child(shell::text(night::TITLE, c(n.ink)).relative().child(tr("Launcher updates")))
+            .child(body);
+        div().relative().flex_none().child(crate::glass::plate(16.).id("launcher-version-toggle").flex().items_center().gap(px(10.)).h(px(44.)).px(px(16.)).cursor_pointer()
+            .child(shell::text(night::UI, c(n.ink)).relative().child(format!("F8Q Launcher v.{}", backend::F8Q_VERSION)))
+            .child(crate::glass_ui::icon("arrow-down-01", 14., c(n.ink_soft)).with_transformation(gpui::Transformation::rotate(gpui::radians(if open { std::f32::consts::PI } else { 0. }))))
+            .on_click(cx.listener(|this, _: &ClickEvent, _, cx| { this.server_home.launcher_changes_open = !this.server_home.launcher_changes_open; cx.notify(); })))
+            .when(open, |d| d.child(gpui::deferred(panel).with_priority(10)))
     }
 
     /// A new progress for Home's page, already shown.
@@ -1239,7 +1328,7 @@ impl Launcher {
                         } else {
                             "-".to_string()
                         },
-                        tr("Files in the pack").into(),
+                        trf("{mods} mods · {packs} resource packs", &[("mods", &self.server_home.check.mods.len().to_string()), ("packs", &self.server_home.check.packs.to_string())]).into(),
                     ))
                     .child(fact("1.21.1".to_string(), "NeoForge".into())),
             )
@@ -1313,6 +1402,24 @@ impl Launcher {
 #[cfg(test)]
 mod pack_panel_tests {
     use super::*;
+    #[test]
+    fn stale_task_completion_keeps_newer_update_visible() {
+        let old = Arc::new(Mutex::new(Run::default()));
+        let updating = Arc::new(Mutex::new(Run {fraction:0.6, ..Run::default()}));
+        let mut home = ServerHome {run:Some(updating.clone()), self_update:Some(updating.clone()), ..ServerHome::default()};
+        assert!(!home.complete_run(&old, Ok(())));
+        assert_eq!(home.self_update.as_ref().unwrap().lock().unwrap().fraction, 0.6);
+        assert!(home.complete_run(&updating, Err("network interrupted".to_string())));
+        assert!(home.run.is_none() && home.self_update.is_none());
+        assert_eq!(home.note.as_deref(), Some("network interrupted"));
+    }
+    #[test]
+    fn launcher_history_uses_its_own_versioned_entries() {
+        let metadata = serde_json::json!({"version":"0.0.1", "changelog":[{"version":"0.0.1","date":"2026-11-04","changes":["UI updated"]}]});
+        let changes=launcher_changes(&metadata);
+        assert_eq!(changes[0].version,"0.0.1");
+        assert_eq!(changes[0].changes,["UI updated"]);
+    }
     #[test]
     fn published_snapshot_includes_config_only_changes() {
         let manifest = serde_json::json!({"files": [{"path":"mods/a.jar"}], "changelog": [

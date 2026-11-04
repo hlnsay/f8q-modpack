@@ -822,6 +822,12 @@
       "sha512": "a23021136442512a150a06c557ffd995763d6a4ced24e6b9e2c6ab0c185b243d24bbcafd6a81064d8abdcb4063c59957e2e7efbc70d55f1a93182f3181079c56",
       "size": 1148267,
       "url": "https://cdn.modrinth.com/data/SEt2q8cl/versions/dYoh6GWk/%C2%A7a%C2%A7lVocal%20Villagers%20%C2%A7r%C2%A771.5.zip"
+    },
+    {
+      "path": "mods/customloadingscreen-0.2.1+1.21.1-neoforge.jar",
+      "sha512": "ecc64c7047af792bf96b15a3d5991067363979a18e04e7d2da25febf71698b7f94fad08a83c3862b848cd7fcb953c722f3cb8abac54df151f4d0799c61eccb99",
+      "size": 71022,
+      "url": "https://mediafilez.forgecdn.net/files/9272/43/customloadingscreen-0.2.1%2B1.21.1-neoforge.jar"
     }
   ],
   "remove": [],
@@ -1119,12 +1125,6 @@
       "sha512": "f05026e7f99ae41a6de20a396a7045f03401796592a94b65c9b6d8ace65c67417eed08f708d5f8cb12aedd52d0ede0f013d9ba2949534696f0ff22fe645d0510",
       "size": 637,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/flywheel-client.toml?sha512=f05026e7f99ae41a6de20a396a7045f03401796592a94b65c9b6d8ace65c67417eed08f708d5f8cb12aedd52d0ede0f013d9ba2949534696f0ff22fe645d0510"
-    },
-    {
-      "path": "config/fml.toml",
-      "sha512": "737017d256a26b32dec29d9a97e0b8a76fc236c78090c83087b844ab498a44e8a3dfef1116d64c06957c89f3ac24bf61c9701bd0403bfc7707939f02ae1c7978",
-      "size": 1550,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fml.toml?sha512=737017d256a26b32dec29d9a97e0b8a76fc236c78090c83087b844ab498a44e8a3dfef1116d64c06957c89f3ac24bf61c9701bd0403bfc7707939f02ae1c7978"
     },
     {
       "path": "config/fwa-blacklist.json",
@@ -1791,13 +1791,43 @@
       "sha512": "7526857a528fc7d87fc20905a1028ab920b0b3e15f69cc55b891f833abdab41238275063960f5fe3f9fadd0e31417cd523b23761136b234ea1427557a371286f",
       "size": 2405,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/zume.json5?sha512=7526857a528fc7d87fc20905a1028ab920b0b3e15f69cc55b891f833abdab41238275063960f5fe3f9fadd0e31417cd523b23761136b234ea1427557a371286f"
+    },
+    {
+      "path": "config/fml.toml",
+      "sha512": "5320fdbf89cd2809f9a253c912c42fe3b2bc89fc4deec3f7fa8f6fc767b6b68062f76b037780737c9cb55869c3bfbbcb852d5e649d404ed0be99612f3a977073",
+      "size": 1523,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fml.toml?sha512=5320fdbf89cd2809f9a253c912c42fe3b2bc89fc4deec3f7fa8f6fc767b6b68062f76b037780737c9cb55869c3bfbbcb852d5e649d404ed0be99612f3a977073"
+    },
+    {
+      "path": "config/customloadingscreen/scene.json",
+      "sha512": "8ea02a99390a69aaff2e3f33c8db4a9411dd5c038b4d8b97dbbde21dd74b88419b9bad18fe07ee6e6413ae6590031576848e0357292dc0dc8571150a6226404a",
+      "size": 10170,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/customloadingscreen/scene.json?sha512=8ea02a99390a69aaff2e3f33c8db4a9411dd5c038b4d8b97dbbde21dd74b88419b9bad18fe07ee6e6413ae6590031576848e0357292dc0dc8571150a6226404a"
+    },
+    {
+      "path": "config/f8q/window-icon-helper.jar",
+      "sha512": "3ff4c6259cb1c0e002ba068960ef9db0eed6f3428dbcd039ab2f5b97b6a32802136d2f135c7840e24580fc49d5a68436ffbf89621f255db87bf41217a70b1081",
+      "size": 433070,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/f8q/window-icon-helper.jar?sha512=3ff4c6259cb1c0e002ba068960ef9db0eed6f3428dbcd039ab2f5b97b6a32802136d2f135c7840e24580fc49d5a68436ffbf89621f255db87bf41217a70b1081"
+    },
+    {
+      "path": "config/f8q/window-title-agent.jar",
+      "sha512": "bf9dc10855a23b390c599b610a9086f1f3e784a678bfdc0ba763d923318ea0c34c4b4fe39a4bd822f5c2ad3efbaabd95118dda4a7af8fa5713418c20477b3a7a",
+      "size": 136191,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/f8q/window-title-agent.jar?sha512=bf9dc10855a23b390c599b610a9086f1f3e784a678bfdc0ba763d923318ea0c34c4b4fe39a4bd822f5c2ad3efbaabd95118dda4a7af8fa5713418c20477b3a7a"
+    },
+    {
+      "path": "config/customloadingscreen/assets/logo.png",
+      "sha512": "249926a9a5ac5f34aaa0d511d63ad672dab21728f3f78de440bd6567fda7979bd0d7bf64e764830805fa6f9248245027d97647246aa0c7040a98bdc7dcff27b5",
+      "size": 433087,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/customloadingscreen/assets/logo.png?sha512=249926a9a5ac5f34aaa0d511d63ad672dab21728f3f78de440bd6567fda7979bd0d7bf64e764830805fa6f9248245027d97647246aa0c7040a98bdc7dcff27b5"
     }
   ],
   "updater": {
     "path": "f8q-updater.exe",
-    "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater-build14.exe",
-    "sha512": "81d244bfbc1ac588c2362f6160488a8e6259fdcbcf300cd3a04bee4d204d575564047b328b3ab6238277005127a0aec515245b83fa1d1d32ce7299b3e84efb23",
-    "size": 2938880
+    "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater-build15.exe",
+    "size": 2939392,
+    "sha512": "d3de6e0abef7c30a06f06ab05a63a5a0e921e9c21a902aaf3d7314ee052e8927d164e5fcb75fbea6b314775bd414009f68292cd6cbb6014fd616212d7e5afb43"
   },
   "packs": [
     "mod/punchy:resourcepacks/punchy",
@@ -1840,10 +1870,19 @@
   "changelog": [
     {
       "date": "2026-11-04",
+      "added": [
+        "Custom Loading Screen: чёрный экран запуска с логотипом F8Q и полосой реального прогресса."
+      ],
+      "updated": [
+        "Заголовок игры F8Q NEOFORGE 1.21.1 и значок F8Q для окна и панели задач."
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-04",
       "added": [],
       "updated": [
-        "Punchy! Moves: отключены камера, свободная камера и колесо эмоций; обычные анимации сохранены.",
-        "Лаунчер: значок обновления, сворачиваемый блок «Что нового», обновление списка модов после установки."
+        "Punchy! Moves: отключены камера, свободная камера и колесо эмоций; обычные анимации сохранены."
       ],
       "removed": []
     },
@@ -1881,5 +1920,5 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-04-punchy-camera-emotes-off-cache-fix"
+  "revision": "2026-11-04-f8q-loading-v001"
 }

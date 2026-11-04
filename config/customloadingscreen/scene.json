@@ -1,0 +1,471 @@
+{
+  "canvasWidth": 1920,
+  "canvasHeight": 1080,
+  "debug": false,
+  "exitDuration": 0.2,
+  "elements": [
+    {
+      "id": "background",
+      "type": "rect",
+      "width": 1920,
+      "height": 1080,
+      "tint": "#000000FF",
+      "opacity": 1
+    },
+    {
+      "id": "f8q_logo",
+      "type": "sprite",
+      "texture": "logo.png",
+      "anchor": "center",
+      "x": 960,
+      "y": 410,
+      "width": 420,
+      "height": 420,
+      "opacity": 1,
+      "tint": "#FFFFFFFF",
+      "layer": 1
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "text": "F8Q NEOFORGE 1.21.1",
+      "anchor": "center",
+      "x": 960,
+      "y": 645,
+      "width": 640,
+      "height": 30,
+      "opacity": 1,
+      "tint": "#FFFFFFFF",
+      "layer": 2
+    },
+    {
+      "id": "progress_track",
+      "type": "rect",
+      "x": 640,
+      "y": 728,
+      "width": 640,
+      "height": 4,
+      "tint": "#303030FF",
+      "layer": 2
+    },
+    {
+      "id": "progress_fill",
+      "type": "rect",
+      "x": 640,
+      "y": 728,
+      "width": 0,
+      "height": 4,
+      "tint": "#FFFFFFFF",
+      "layer": 3,
+      "animations": [
+        {
+          "property": "width",
+          "from": 0,
+          "to": 640,
+          "trigger": "overall_progress",
+          "easing": "linear"
+        }
+      ]
+    },
+    {
+      "id": "stage_boot",
+      "type": "text",
+      "text": "Starting NeoForge",
+      "x": 640,
+      "y": 684,
+      "width": 640,
+      "height": 24,
+      "tint": "#C8C8C8FF",
+      "opacity": 1,
+      "layer": 4,
+      "animations": [
+        {
+          "property": "opacity",
+          "from": 0,
+          "to": 1,
+          "duration": 0.001,
+          "stage": "BOOT",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "MOD_DISCOVERY",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "MOD_CONSTRUCTION",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "COMMON_SETUP",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "CLIENT_SETUP",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "RESOURCE_LOADING",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "FINALIZING",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "COMPLETE",
+          "trigger": "stage"
+        }
+      ]
+    },
+    {
+      "id": "stage_mod_discovery",
+      "type": "text",
+      "text": "Discovering mods",
+      "x": 640,
+      "y": 684,
+      "width": 640,
+      "height": 24,
+      "tint": "#C8C8C8FF",
+      "opacity": 0,
+      "layer": 4,
+      "animations": [
+        {
+          "property": "opacity",
+          "from": 0,
+          "to": 1,
+          "duration": 0.001,
+          "stage": "MOD_DISCOVERY",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "MOD_CONSTRUCTION",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "COMMON_SETUP",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "CLIENT_SETUP",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "RESOURCE_LOADING",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "FINALIZING",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "COMPLETE",
+          "trigger": "stage"
+        }
+      ]
+    },
+    {
+      "id": "stage_mod_construction",
+      "type": "text",
+      "text": "Loading mods",
+      "x": 640,
+      "y": 684,
+      "width": 640,
+      "height": 24,
+      "tint": "#C8C8C8FF",
+      "opacity": 0,
+      "layer": 4,
+      "animations": [
+        {
+          "property": "opacity",
+          "from": 0,
+          "to": 1,
+          "duration": 0.001,
+          "stage": "MOD_CONSTRUCTION",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "COMMON_SETUP",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "CLIENT_SETUP",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "RESOURCE_LOADING",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "FINALIZING",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "COMPLETE",
+          "trigger": "stage"
+        }
+      ]
+    },
+    {
+      "id": "stage_common_setup",
+      "type": "text",
+      "text": "Preparing game systems",
+      "x": 640,
+      "y": 684,
+      "width": 640,
+      "height": 24,
+      "tint": "#C8C8C8FF",
+      "opacity": 0,
+      "layer": 4,
+      "animations": [
+        {
+          "property": "opacity",
+          "from": 0,
+          "to": 1,
+          "duration": 0.001,
+          "stage": "COMMON_SETUP",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "CLIENT_SETUP",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "RESOURCE_LOADING",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "FINALIZING",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "COMPLETE",
+          "trigger": "stage"
+        }
+      ]
+    },
+    {
+      "id": "stage_client_setup",
+      "type": "text",
+      "text": "Preparing client",
+      "x": 640,
+      "y": 684,
+      "width": 640,
+      "height": 24,
+      "tint": "#C8C8C8FF",
+      "opacity": 0,
+      "layer": 4,
+      "animations": [
+        {
+          "property": "opacity",
+          "from": 0,
+          "to": 1,
+          "duration": 0.001,
+          "stage": "CLIENT_SETUP",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "RESOURCE_LOADING",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "FINALIZING",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "COMPLETE",
+          "trigger": "stage"
+        }
+      ]
+    },
+    {
+      "id": "stage_resource_loading",
+      "type": "text",
+      "text": "Loading resources",
+      "x": 640,
+      "y": 684,
+      "width": 640,
+      "height": 24,
+      "tint": "#C8C8C8FF",
+      "opacity": 0,
+      "layer": 4,
+      "animations": [
+        {
+          "property": "opacity",
+          "from": 0,
+          "to": 1,
+          "duration": 0.001,
+          "stage": "RESOURCE_LOADING",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "FINALIZING",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "COMPLETE",
+          "trigger": "stage"
+        }
+      ]
+    },
+    {
+      "id": "stage_finalizing",
+      "type": "text",
+      "text": "Finalizing",
+      "x": 640,
+      "y": 684,
+      "width": 640,
+      "height": 24,
+      "tint": "#C8C8C8FF",
+      "opacity": 0,
+      "layer": 4,
+      "animations": [
+        {
+          "property": "opacity",
+          "from": 0,
+          "to": 1,
+          "duration": 0.001,
+          "stage": "FINALIZING",
+          "trigger": "stage"
+        },
+        {
+          "property": "opacity",
+          "from": 1,
+          "to": 0,
+          "duration": 0.001,
+          "stage": "COMPLETE",
+          "trigger": "stage"
+        }
+      ]
+    },
+    {
+      "id": "stage_complete",
+      "type": "text",
+      "text": "Ready",
+      "x": 640,
+      "y": 684,
+      "width": 640,
+      "height": 24,
+      "tint": "#C8C8C8FF",
+      "opacity": 0,
+      "layer": 4,
+      "animations": [
+        {
+          "property": "opacity",
+          "from": 0,
+          "to": 1,
+          "duration": 0.001,
+          "stage": "COMPLETE",
+          "trigger": "stage"
+        }
+      ]
+    }
+  ]
+}

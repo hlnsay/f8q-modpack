@@ -213,6 +213,10 @@ pub fn arguments(root: &Path, home: &Path, incoming: &[&str]) -> Result<Vec<Stri
         args.push("-XX:+UseZGC".into());
         args.push("-XX:+ZGenerational".into());
     }
+    let title_agent = home.join("config/f8q/window-title-agent.jar");
+    if title_agent.is_file() {
+        args.push(format!("-javaagent:{}", title_agent.display()));
+    }
     args.extend([
         "-Dfile.encoding=UTF-8".to_string(),
         "-Dminecraft.launcher.brand=Horizon".to_string(),
