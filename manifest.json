@@ -849,9 +849,9 @@
     },
     {
       "path": "resourcepacks/F8Q-Fixes.zip",
-      "sha512": "fda4919ea257ce984cd02ba8d6a61ebda1b70448f560d0edcaffec446281dcbf8b21466ed4402d5540d3bc6946cc4e4f8054379c3ccc14ca4e74c332e114b899",
-      "size": 36896,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Fixes.zip"
+      "sha512": "741fa585e7bc0148d6396235eb22c62ee4e5a3f69121e570cd491e56e7b77b33d5d8dcdc1444b9c0411cd73400badae2b87722771438cbcb790450b586ee53db",
+      "size": 37365,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Fixes-r4.zip"
     },
     {
       "path": "mods/dtbop-3.4.0.jar",
@@ -2209,5 +2209,5 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-04-one-sun-kings-ru2"
+  "revision": "2026-11-04-spruce-leaves"
 }
