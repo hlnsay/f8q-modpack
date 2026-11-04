@@ -1089,9 +1089,9 @@
     },
     {
       "path": "config/dynamictrees-common.toml",
-      "sha512": "8706c657b44355e12cae2276db404861ef3eb8da9951495b25b73bd43a8e62069ce2a571d8d2fca742aea62d639428b67fc7380a49e70c7256bb5bae1e090ef9",
-      "size": 2212,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/dynamictrees-common.toml"
+      "sha512": "24a8b134ae39f1b66378820a376911bfecd2610744e3ecbd345e8bfd85b7793f59da21dbe7a901f5e937e93181abadb1c9a62f22d3c4cf711f2dada60e9b245b",
+      "size": 2213,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/fb350bcf17e749a2e05471c6c03aeae54e4c49a8/config/dynamictrees-common.toml"
     },
     {
       "path": "config/dynamictrees-server.toml",
@@ -2238,7 +2238,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-waypoints-on",
+  "revision": "2026-11-05-seeds-all-seasons",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
