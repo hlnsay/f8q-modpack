@@ -2,10 +2,22 @@
   "version": 1,
   "files": [
     {
+      "path": "mods/AdvancementPlaques-1.21.1-neoforge-1.6.8.jar",
+      "sha512": "94724dd77d005f0a189c4843efcc2800cf3d3e01d1f1ac184c6f6ad7c921aec508e93fa0bfac0e641a74c1629d4e5e4d06b8c1a3e0d8e63f97db89b2f879c106",
+      "size": 195730,
+      "url": "https://cdn.modrinth.com/data/9NM0dXub/versions/OWylG33I/AdvancementPlaques-1.21.1-neoforge-1.6.8.jar"
+    },
+    {
       "path": "mods/BadOptimizations-2.4.1-1.21.1.jar",
       "sha512": "2b66428bd98bd5ec0e09f2ec6af801cefb7b9b99cc4f0993daeaffe8d0ccc5ee0c2a73e9f38d4f92540ead0181704d2c9e946837ec05cf710fc3b20fce3b0cac",
       "size": 283566,
       "url": "https://cdn.modrinth.com/data/g96Z4WVZ/versions/S2qthD5S/BadOptimizations-2.4.1-1.21.1.jar"
+    },
+    {
+      "path": "mods/BetterThirdPerson-neoforge-1.9.0.jar",
+      "sha512": "053acb813940aac69578810558056942966f2f0a24006a3a5de545c82888f8190b3bdc27a2401d0f70200dc4c927c0f84a45bf17821fb94fb9b886d633644619",
+      "size": 60941,
+      "url": "https://cdn.modrinth.com/data/G1s2WpNo/versions/aG5y4JUQ/BetterThirdPerson-neoforge-1.9.0.jar"
     },
     {
       "path": "mods/BiomesOPlenty-neoforge-1.21.1-21.1.0.14.jar",
@@ -42,6 +54,18 @@
       "sha512": "7a009ed163d03536fdfaee7b37cb1ec3073204dffcb06a683369aa88da8dbc3780b0ac69d466bb32a3ad9394c97b698d0fda676e1b4dd4edfc50ac5aa2283c32",
       "size": 90717,
       "url": "https://cdn.modrinth.com/data/s3dmwKy5/versions/S2TfWrZR/GlitchCore-neoforge-1.21.1-2.1.0.2.jar"
+    },
+    {
+      "path": "mods/Highlighter-1.21-neoforge-1.1.11.jar",
+      "sha512": "41e1d2b3f73cf81b94563f04877528d0076672f95a456e959ca8f72162c8803bb9cf5ad540d1fbd15642a1d974bf11362a6b161003cd0853de050a443458a13b",
+      "size": 30417,
+      "url": "https://cdn.modrinth.com/data/cVNW5lr6/versions/AsQ0Y2G9/Highlighter-1.21-neoforge-1.1.11.jar"
+    },
+    {
+      "path": "mods/Iceberg-1.21.1-neoforge-1.3.2.jar",
+      "sha512": "19d33195cfee0a640f40fb64d82346df7ac970ddb43ed68ba2dacb4793b18d577fd57dd43a4c2e94f731487c024b8d7ebcc52721764ec9d8a87bd68fc7df5c96",
+      "size": 213853,
+      "url": "https://cdn.modrinth.com/data/5faXoLqX/versions/IMssx9du/Iceberg-1.21.1-neoforge-1.3.2.jar"
     },
     {
       "path": "mods/ImmediatelyFast-NeoForge-1.6.15+1.21.1.jar",
@@ -120,6 +144,12 @@
       "sha512": "40513bacd13fa9860abcab507b1fc09dc51649af4b615ce466e0ec361557f02d35e6e44bea1cc17cb4120805f862aad01394eb185f46611e7be63dfd97f272df",
       "size": 782160,
       "url": "https://cdn.modrinth.com/data/o1C1Dkj5/versions/D6aZn0Em/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar"
+    },
+    {
+      "path": "mods/ambient_camera-1.21.1-1.1.0.jar",
+      "sha512": "fe5ab1a12d4ed0156ebf5791f166148e17351e7c1609cde63036ac54f2f3b7602d060be2979b7cf5b6d7a52800acb5a4586d7a73e196d5cf880255715d9a9025",
+      "size": 50617,
+      "url": "https://cdn.modrinth.com/data/clAZIcaY/versions/F5xffOiZ/ambient_camera-1.21.1-1.1.0.jar"
     },
     {
       "path": "mods/amendments-1.21-2.2.7-neoforge.jar",
@@ -278,6 +308,12 @@
       "url": "https://cdn.modrinth.com/data/8BmcQJ2H/versions/Grwn5rUB/geckolib-neoforge-1.21.1-4.9.3.jar"
     },
     {
+      "path": "mods/ghosts-neoforge-1.21.1-1.3.5.jar",
+      "sha512": "6a0ef6a42e4201008ac3d9939b9496cea77e9f45633d26e0a82dbfad50f191c2a77b5c5620b3355d7c468c88d5cfa41b54221ccb9485a00d84304278cd704c82",
+      "size": 710662,
+      "url": "https://cdn.modrinth.com/data/gJKLGvbS/versions/M9RpS3bH/ghosts-neoforge-1.21.1-1.3.5.jar"
+    },
+    {
       "path": "mods/handcrafted-neoforge-1.21.1-4.0.3.jar",
       "sha512": "4ff5fb2aa9582b886d03f647fe9b8c12a828d29a1787e9c9b463be18192ea798e6a4ac83479623042791bce0bacbf6e3e2c2e9ef086640aeeb6970d3404e7ee4",
       "size": 7132842,
@@ -294,6 +330,12 @@
       "sha512": "0108b6c78d1e1b78693aec4b7e40a1f3fff60068ecfec336c0a348b33c395dc3e3168f982809b1cac956115acf11036b21269c4cfef803814822676bb3c8ca72",
       "size": 43077,
       "url": "https://cdn.modrinth.com/data/L2FnkRE2/versions/QwHM2orG/hide-hud-neoforge-1.2%2B1.21.jar"
+    },
+    {
+      "path": "mods/ice_caves_backport-neoforge-0.1.11+1.21.1.jar",
+      "sha512": "2454b734712e27044e61544f739d3b25def54d2933bde8b803facd63d978f4c8c270f1b1b5671e8f59d5dbad8d6201de96d9379464eb86d380b2b1f279bcfa0f",
+      "size": 8319302,
+      "url": "https://cdn.modrinth.com/data/8laIEMSc/versions/TPtHes4J/ice_caves_backport-neoforge-0.1.11%2B1.21.1.jar"
     },
     {
       "path": "mods/icys-better-horses-2.1.8-neo-1.21.1.jar",
@@ -558,6 +600,12 @@
       "sha512": "aaa000077d162cd00e4fbc78b5b165cd61b41756d9c7e28b7f88342482c6dbfa5bca138bbb821a02af4ed32315f8e0423ccabaf2fd24cb0c8d8bbda77348ebdf",
       "size": 344392,
       "url": "https://cdn.modrinth.com/data/qi1sj2da/versions/j4CtkXVs/weaponmaster_ydm-1.21.1-neoforge-4.2.7.jar"
+    },
+    {
+      "path": "mods/yakisugi-26.09.18-1.21-neoforge.jar",
+      "sha512": "e1c8a0070cdfc7325fc5ccd6f89564ee562b35a91c53f9be418aeebb4af85c7c1b64e5ee604d097101fd45503e20493bfbaba53f8a23eb81b333f7e3bd80964d",
+      "size": 342681,
+      "url": "https://cdn.modrinth.com/data/7w59EFfI/versions/uclAntCy/yakisugi-26.09.18-1.21-neoforge.jar"
     },
     {
       "path": "mods/yet_another_config_lib_v3-3.8.2+1.21.1-neoforge.jar",
