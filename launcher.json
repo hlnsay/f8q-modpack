@@ -1,10 +1,17 @@
 {
-  "build": 19,
-  "version": "0.0.5",
-  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.5.exe",
-  "size": 55889408,
-  "sha512": "0aac0b5515709693d34ece792892abe0bd48b1f4d9b915cb801906fd32f310bd2f15351f08c8721936f4a734c59341fe9beaabd4e61ff94804d12fb8e9f10821",
+  "build": 20,
+  "version": "0.0.6",
+  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.6.exe",
+  "size": 55885824,
+  "sha512": "a1a17258a754b62a6663d3db05ef5e7bb74af5a44b57935f1e538bbb727475459d0ab0195ca9f7da49ae33331ad72bf6fcabbda8438f35188932bfa870d22180",
   "changelog": [
+    {
+      "version": "0.0.6",
+      "date": "2026-11-04",
+      "changes": [
+        "Кнопка «Обновить» больше не остаётся без действия сразу после выхода обновления."
+      ]
+    },
     {
       "version": "0.0.5",
       "date": "2026-11-04",
