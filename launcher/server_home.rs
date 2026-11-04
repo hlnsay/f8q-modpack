@@ -20,7 +20,7 @@ const CHANGELOG: &str = "https://raw.githubusercontent.com/hlnsay/f8q-modpack/ma
 const INSTALLER: &str =
     "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater.exe";
 /// This build's number: `launcher.json` on GitHub names the newest.
-pub(super) const BUILD: u32 = 15;
+pub(super) const BUILD: u32 = 16;
 /// Horizon's releases: its launcher's are tagged `launcher@`, among the game's.
 const ENGINE_RELEASE: &str =
     "https://api.github.com/repos/horizon-rust/horizon/releases?per_page=40";
@@ -260,6 +260,11 @@ pub(super) struct ServerHome {
     update_checked: bool,
     /// A newer launcher came out while this one is open.
     update_waiting: bool,
+    game_phase: game_session::Phase,
+    launch_requested: Option<Instant>,
+    launch_process: Option<std::process::Child>,
+    game_poll: Option<Instant>,
+    game_watch_started: bool,
 }
 
 /// The manifest's files `home` holds at the right size.
@@ -678,6 +683,8 @@ pub(super) fn official_launcher() -> Option<PathBuf> {
 impl Launcher {
     /// Asks the server for its players, at most once a minute: the sidebar calls it on every frame.
     pub(super) fn ask_server_status(&mut self, cx: &mut Context<Self>) {
+        self.watch_game_launch(cx);
+        self.poll_game_launch(cx);
         self.load_server_icon(cx);
         self.check_for_launcher_update(cx);
         if self.selected_instance().is_none_or(|i| i.java.is_none()) {
@@ -1176,7 +1183,38 @@ impl Launcher {
 
     /// This build has no Microsoft sign-in of its own, so the official launcher starts the game
     /// with the player's session.
+    fn watch_game_launch(&mut self,cx:&mut Context<Self>) {
+        if std::mem::replace(&mut self.server_home.game_watch_started,true) {return;}
+        cx.spawn(async move |this,cx| loop {
+            cx.background_executor().timer(Duration::from_millis(500)).await;
+            if this.update(cx,|this,cx|this.poll_game_launch(cx)).is_err() {break;}
+        }).detach();
+    }
+
+    fn poll_game_launch(&mut self,cx:&mut Context<Self>) {
+        if self.server_home.game_poll.is_some_and(|at|at.elapsed()<Duration::from_millis(400)) {return;}
+        self.server_home.game_poll=Some(Instant::now());
+        let previous=self.server_home.game_phase;
+        let phase=self.server_instance().map(|i|game_session::probe(&i.home)).unwrap_or_default();
+        let mut phase=phase;
+        if phase==game_session::Phase::Idle {
+            let child_state=self.server_home.launch_process.as_mut().map(|c|c.try_wait());
+            let child_alive=matches!(child_state,Some(Ok(None)));
+            let failed=matches!(child_state,Some(Err(_))) || matches!(child_state,Some(Ok(Some(status))) if !status.success());
+            if failed {
+                self.server_home.launch_requested=None;
+                self.server_home.note=Some(tr("Could not start the game. Check the game log.").to_string());
+            }
+            let recent=self.server_home.launch_requested.is_some_and(|at|at.elapsed()<Duration::from_secs(45));
+            if child_alive || (previous==game_session::Phase::Starting && recent) {phase=game_session::Phase::Starting;}
+            else {self.server_home.launch_process=None;self.server_home.launch_requested=None;}
+        }
+        self.server_home.game_phase=phase;
+        if phase!=previous {cx.notify();}
+    }
+
     pub(super) fn play_on_server(&mut self) {
+        if self.server_home.game_phase != game_session::Phase::Idle { return; }
         let Some(instance) = self.server_instance() else {
             return;
         };
@@ -1193,19 +1231,24 @@ impl Launcher {
             use std::os::windows::process::CommandExt;
             command.creation_flags(0x0800_0000);
         }
-        self.server_home.note = match command.spawn() {
-            Ok(_) => {
-                Some(tr("Starting the game… The first start takes a few minutes.").to_string())
+        match command.spawn() {
+            Ok(child)=>{
+                self.server_home.launch_process=Some(child);
+                self.server_home.launch_requested=Some(Instant::now());
+                self.server_home.game_phase=game_session::Phase::Starting;
+                self.server_home.note=Some(tr("Starting the game… The first start takes a few minutes.").to_string());
             }
-            Err(e) => Some(e.to_string()),
-        };
+            Err(error)=>self.server_home.note=Some(error.to_string()),
+        }
+
     }
 
     pub(super) fn server_home_page(&mut self, cx: &mut Context<Self>) -> Div {
         let t = self.theme;
         let n = t.night;
         let (line, online) = self.server_status_line();
-        let running = self.client.is_some() || self.starting_client.is_some();
+        let launching=self.server_home.game_phase==game_session::Phase::Starting;
+        let running = self.client.is_some() || self.starting_client.is_some() || self.server_home.game_phase==game_session::Phase::Running;
         let state = div()
             .flex()
             .items_center()
@@ -1257,7 +1300,9 @@ impl Launcher {
                 c(n.on_accent),
             ))
             .child(label(
-                tr(if busy {
+                tr(if launching {
+                    "Launching…"
+                } else if busy {
                     "Updating…"
                 } else if running {
                     "Running"
@@ -1271,7 +1316,7 @@ impl Launcher {
                 })
                 .to_string(),
             ));
-        if running || busy {
+        if launching || running || busy {
             play = disabled(play);
         } else if need == Need::Play {
             play = play.on_click(cx.listener(|this, _: &ClickEvent, _, cx| {

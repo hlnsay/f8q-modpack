@@ -76,10 +76,10 @@ impl Setup {
         titlebar::apply_appearance(window, settings.appearance);
         Self {
             mode,
-            theme: Theme::for_appearance(settings.appearance, settings.accent, window.appearance()),
+            theme: Theme::for_appearance(settings.appearance, settings.accent, window.appearance()).with_glass(settings.glass_tint(), settings.glass_blur()),
             sky: Sky::default(),
             started: Instant::now(),
-            spots: crate::aurora::spots(true, 0xffffff),
+            spots: crate::aurora::spots(Theme::for_appearance(settings.appearance, settings.accent, window.appearance()).dark, settings.accent.rgb()),
             sky_wake: None,
             options: Options::new(),
             update: installer::installed().is_some(),
@@ -400,8 +400,8 @@ impl Render for Setup {
             .flex_col()
             .relative()
             .size_full()
-            .bg(gpui::rgb(crate::aurora::BASE_DARK))
-            .child(crate::aurora::scene(self.started.elapsed().as_secs_f32(), f32::from(window.viewport_size().width), f32::from(window.viewport_size().height), true, &self.spots))
+            .bg(t.page)
+            .child(crate::aurora::scene(self.started.elapsed().as_secs_f32(), f32::from(window.viewport_size().width), f32::from(window.viewport_size().height), t.dark, &self.spots))
             .children(titlebar::render(&t, window))
             .child(
                 div()

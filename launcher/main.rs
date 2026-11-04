@@ -14,6 +14,7 @@ mod collection;
 mod console;
 mod console_page;
 mod server_home;
+mod game_session;
 mod cull;
 mod datapacks_page;
 mod dev_options;
@@ -5096,7 +5097,7 @@ impl Render for Launcher {
         self.aurora
             .update(cx, |aurora, _| aurora.set_look(dark_look, accent_rgb));
         // The player's picture: plates frost it, a veil keeps text readable on it.
-        let picture: Option<std::path::PathBuf> = None;
+        let picture = self.home_background();
         let wanted = picture.clone().map(|path| {
             (
                 path,

@@ -83,7 +83,7 @@ pub struct Theme {
 /// The light appearance's look: the soft accent (links, ticks, the sliders) is the accent
 /// itself, which reads on white where the dark look's half-white mix would not.
 fn light_look(mut look: tokens::glass::Glass) -> tokens::glass::Glass {
-    look.accent_soft = look.accent;
+    look.accent_soft = if tokens::contrast(look.accent, 0xffffff) < 3. { 0x222222 } else { look.accent };
     look
 }
 
@@ -126,22 +126,18 @@ impl Theme {
     }
 
     pub fn for_appearance(choice: Appearance, accent: Accent, system: WindowAppearance) -> Self {
-        let _ = (choice, accent, system);
-        let dark = true;
-        let accent = Accent::from_rgb(0xffffff);
-        let night = night::NIGHT;
+        let system_dark = !matches!(
+            system,
+            WindowAppearance::Light | WindowAppearance::VibrantLight
+        );
+        let dark = pinned_dark(choice).unwrap_or(system_dark);
+        let night = if dark { night::NIGHT } else { night::DAWN };
         let mut theme = Self::from(accent.apply(night.blocks()), night).glass(accent);
         // Everything that takes the accent takes the player's, in both appearances.
         let rgb = accent.rgb();
         theme.night.accent = rgb;
         theme.night.accent_hi = rgb;
         theme.night.on_accent = theme.look.on_accent;
-        theme.night.success = 0xdddddd;
-        theme.night.warn = 0xbbbbbb;
-        theme.night.danger = 0xffffff;
-        theme.success = c(0xdddddd);
-        theme.warn = c(0xbbbbbb);
-        theme.danger = c(0xffffff);
         let base = if dark { crate::aurora::BASE_DARK } else { crate::aurora::BASE_LIGHT };
         theme.side = c(base);
         theme.page = c(base);

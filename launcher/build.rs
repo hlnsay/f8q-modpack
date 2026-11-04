@@ -10,11 +10,13 @@ fn main() {
         resource.set_icon(&ico);
         let version = std::fs::read_to_string(format!("{dir}/F8Q_VERSION")).expect("F8Q version");
         println!("cargo:rerun-if-changed={dir}/F8Q_VERSION");
+        let mut parts=version.trim().split('.').map(|v|v.parse::<u64>().expect("numeric version"));
+        let version_number=(parts.next().unwrap_or(0)<<48)|(parts.next().unwrap_or(0)<<32)|(parts.next().unwrap_or(0)<<16);
         resource.set("FileDescription", "F8Q Launcher")
             .set("ProductName", "F8Q Launcher").set("CompanyName", "F8Q")
             .set("FileVersion", version.trim()).set("ProductVersion", version.trim())
-            .set_version_info(winresource::VersionInfo::FILEVERSION, 1 << 16)
-            .set_version_info(winresource::VersionInfo::PRODUCTVERSION, 1 << 16);
+            .set_version_info(winresource::VersionInfo::FILEVERSION, version_number)
+            .set_version_info(winresource::VersionInfo::PRODUCTVERSION, version_number);
         if let Err(e) = resource.compile() {
             panic!("embedding {ico}: {e}");
         }

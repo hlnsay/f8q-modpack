@@ -60,9 +60,8 @@ fn spot(color: Hsla, strength: f32) -> Arc<Image> {
 
 /// The spots' pictures for an accent, in [`GLOWS`]' order.
 pub fn spots(dark: bool, accent: u32) -> Vec<Arc<Image>> {
-    let _ = accent;
-    let base: Hsla = Rgba::from(rgb(0xffffff)).into();
-    let strength = if dark { 0.20 } else { 0.2 };
+    let base: Hsla = Rgba::from(rgb(if accent==0xffffff && !dark {0x888888} else {accent})).into();
+    let strength = if accent == 0xffffff { 0.20 } else if dark { 0.42 } else { 0.5 };
     GLOWS
         .iter()
         .map(|g| {

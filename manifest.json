@@ -828,6 +828,24 @@
       "sha512": "ecc64c7047af792bf96b15a3d5991067363979a18e04e7d2da25febf71698b7f94fad08a83c3862b848cd7fcb953c722f3cb8abac54df151f4d0799c61eccb99",
       "size": 71022,
       "url": "https://mediafilez.forgecdn.net/files/9272/43/customloadingscreen-0.2.1%2B1.21.1-neoforge.jar"
+    },
+    {
+      "path": "mods/fancymenu_neoforge_3.9.14_MC_1.21.1.jar",
+      "sha512": "57ea23ab4424217770025a9447f3990fa39befdb51ac99d7e6bcde4bf7d926b125ceed824f38e7cf504e389bc0d30edb3a7592b47d4763516c9cb0ef4ab2a9c3",
+      "size": 25922080,
+      "url": "https://cdn.modrinth.com/data/Wq5SjeWM/versions/P9dDosz2/fancymenu_neoforge_3.9.14_MC_1.21.1.jar"
+    },
+    {
+      "path": "mods/konkrete_neoforge_1.9.9_MC_1.21.jar",
+      "sha512": "378bd12e3c32329abbae5cd514e1d1cc2a3cc3a45979fedb1d4e4c0a6732bdcf4b7d1bf7f7a112074bf288957edf86152c9c090a27d1d5de84a9a7825d3d6511",
+      "size": 618842,
+      "url": "https://cdn.modrinth.com/data/J81TRJWm/versions/stJDU839/konkrete_neoforge_1.9.9_MC_1.21.jar"
+    },
+    {
+      "path": "mods/melody_neoforge_1.0.10_MC_1.21.jar",
+      "sha512": "3bd96b851a65fa95d92d051851e6a7a415927f718fcb05f0dfb5983eb3ca54edfb842ea85f1497e1b3510b5884181b8f9c6080d2b15642ceadac695011c00ec1",
+      "size": 36096,
+      "url": "https://cdn.modrinth.com/data/CVT4pFB2/versions/efcdRVZP/melody_neoforge_1.0.10_MC_1.21.jar"
     }
   ],
   "remove": [],
@@ -1821,13 +1839,79 @@
       "sha512": "249926a9a5ac5f34aaa0d511d63ad672dab21728f3f78de440bd6567fda7979bd0d7bf64e764830805fa6f9248245027d97647246aa0c7040a98bdc7dcff27b5",
       "size": 433087,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/customloadingscreen/assets/logo.png?sha512=249926a9a5ac5f34aaa0d511d63ad672dab21728f3f78de440bd6567fda7979bd0d7bf64e764830805fa6f9248245027d97647246aa0c7040a98bdc7dcff27b5"
+    },
+    {
+      "path": "config/fancymenu/options.txt",
+      "size": 4615,
+      "sha512": "2712855dae5d1a8cf31af6358ad8d3425926c7e49f4178570c6c0e80bfa26a47b6d45f0f1be63362d027feb4a9626248cad2ac8090f66d59bf0163eace597738",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fancymenu/options.txt?sha512=2712855dae5d1a8cf31af6358ad8d3425926c7e49f4178570c6c0e80bfa26a47b6d45f0f1be63362d027feb4a9626248cad2ac8090f66d59bf0163eace597738"
+    },
+    {
+      "path": "config/fancymenu/customizablemenus.txt",
+      "size": 75,
+      "sha512": "bbb4562f65e38657cf44142f5a601b696bbe55b06b3b9d4adedcf072790a4ad384f2fed3d8a2ed7a737280aa695da72f99bf8ff3d382ed2234adc9d01855ec7a",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fancymenu/customizablemenus.txt?sha512=bbb4562f65e38657cf44142f5a601b696bbe55b06b3b9d4adedcf072790a4ad384f2fed3d8a2ed7a737280aa695da72f99bf8ff3d382ed2234adc9d01855ec7a"
+    },
+    {
+      "path": "config/fancymenu/customization/f8q-title.txt",
+      "size": 37943,
+      "sha512": "836f9c4f65a64b6bc42427d6a14c48f74df563d7d37db47ea0a63ed9578326466ec20735c9270e797d397ca2262c60ba8d5c75ad34c0580e5faca72b63d7d66d",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fancymenu/customization/f8q-title.txt?sha512=836f9c4f65a64b6bc42427d6a14c48f74df563d7d37db47ea0a63ed9578326466ec20735c9270e797d397ca2262c60ba8d5c75ad34c0580e5faca72b63d7d66d"
+    },
+    {
+      "path": "config/fancymenu/assets/f8q/autumn-ruins.png",
+      "size": 2590600,
+      "sha512": "ec3ea4e78094380d844f8935e25102db31799456b36eac0281ed169c4286828a0a54809cc9dff269c9e65eddda5d62056f92486a813243fc0788bf3f8364df59",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fancymenu/assets/f8q/autumn-ruins.png?sha512=ec3ea4e78094380d844f8935e25102db31799456b36eac0281ed169c4286828a0a54809cc9dff269c9e65eddda5d62056f92486a813243fc0788bf3f8364df59"
+    },
+    {
+      "path": "config/fancymenu/assets/f8q/button.png",
+      "size": 133,
+      "sha512": "2b64cb1f3abff311be0a750e2758af947f045eb50978f19f82ca7a714cd41caeff6db7230eddb0763f8a050779eefbac2e37f9969e25b0929d3bcf6c2f7232ea",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fancymenu/assets/f8q/button.png?sha512=2b64cb1f3abff311be0a750e2758af947f045eb50978f19f82ca7a714cd41caeff6db7230eddb0763f8a050779eefbac2e37f9969e25b0929d3bcf6c2f7232ea"
+    },
+    {
+      "path": "config/fancymenu/assets/f8q/exit.png",
+      "size": 142,
+      "sha512": "1825abbc7de8320f9fc0aed3840e2e0217c209f2c833bc47c055e408ec55567e86726adb950d717058352bcf57c5fce8b0ae9b7fceff618ddd4c598851d24e50",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fancymenu/assets/f8q/exit.png?sha512=1825abbc7de8320f9fc0aed3840e2e0217c209f2c833bc47c055e408ec55567e86726adb950d717058352bcf57c5fce8b0ae9b7fceff618ddd4c598851d24e50"
+    },
+    {
+      "path": "config/fancymenu/assets/f8q/hover.png",
+      "size": 134,
+      "sha512": "ec44e2ff5a2879de7589b2b6cb6211cc9a34fad86cb8654943c50b4aa82a12c44c7e4bf6780d724fd8041d333774b6381e8dffc160a47341e9a76841555a17b6",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fancymenu/assets/f8q/hover.png?sha512=ec44e2ff5a2879de7589b2b6cb6211cc9a34fad86cb8654943c50b4aa82a12c44c7e4bf6780d724fd8041d333774b6381e8dffc160a47341e9a76841555a17b6"
+    },
+    {
+      "path": "config/fancymenu/assets/f8q/inactive.png",
+      "size": 133,
+      "sha512": "42f689b344e5dfb86bf75aee810be0c80d08223fc9b1b572308f33ed7061438fa259b340d00feda3f75992b5f08afceecbc56e496234e78184754340803e0d0e",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fancymenu/assets/f8q/inactive.png?sha512=42f689b344e5dfb86bf75aee810be0c80d08223fc9b1b572308f33ed7061438fa259b340d00feda3f75992b5f08afceecbc56e496234e78184754340803e0d0e"
+    },
+    {
+      "path": "config/fancymenu/assets/f8q/logo.png",
+      "size": 53824,
+      "sha512": "df7d126d1575dcdf37e59e8ecf785d5d8cd4a61b5624fcb44dda3ffc868d23a76a8403d7f7ef3bb3b13ecb014b5805f1eedc36f809d221660fd6979e8c6381fa",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fancymenu/assets/f8q/logo.png?sha512=df7d126d1575dcdf37e59e8ecf785d5d8cd4a61b5624fcb44dda3ffc868d23a76a8403d7f7ef3bb3b13ecb014b5805f1eedc36f809d221660fd6979e8c6381fa"
+    },
+    {
+      "path": "config/fancymenu/assets/f8q/mainmenu.ogg",
+      "size": 12293209,
+      "sha512": "b11463120a9fcc48eee517a65ffa2706ba6d22ea8bce74936de3764189f215fad4c247cc66a83e45b7f72cfe4ea2ab76e6fd2b118a2ca22160aabb777d21fcca",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fancymenu/assets/f8q/mainmenu.ogg?sha512=b11463120a9fcc48eee517a65ffa2706ba6d22ea8bce74936de3764189f215fad4c247cc66a83e45b7f72cfe4ea2ab76e6fd2b118a2ca22160aabb777d21fcca"
+    },
+    {
+      "path": "config/fancymenu/assets/f8q/shade.png",
+      "size": 185,
+      "sha512": "b999558b7328c632f4cb04a4cce8790fc3c01d6f64ea29c6f2f864697cd3d550f8fc5de23f427f7927ead3c86dac4baae60fa2ded0299cab3a1137a1e8ac0acd",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fancymenu/assets/f8q/shade.png?sha512=b999558b7328c632f4cb04a4cce8790fc3c01d6f64ea29c6f2f864697cd3d550f8fc5de23f427f7927ead3c86dac4baae60fa2ded0299cab3a1137a1e8ac0acd"
     }
   ],
   "updater": {
     "path": "f8q-updater.exe",
-    "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater-build15.exe",
-    "size": 2939392,
-    "sha512": "d3de6e0abef7c30a06f06ab05a63a5a0e921e9c21a902aaf3d7314ee052e8927d164e5fcb75fbea6b314775bd414009f68292cd6cbb6014fd616212d7e5afb43"
+    "size": 2952192,
+    "sha512": "2d47faa2f8f8f5d683a9aee51e6fbefe1f03db8a2323d1704b8d37dfbb90a5413c474269aba2b3f932669ad63515be637e0a4549a65a9049fbfbdcc557c22e04",
+    "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater-build16.exe"
   },
   "packs": [
     "mod/punchy:resourcepacks/punchy",
@@ -1868,6 +1952,17 @@
     "file/better-3d-beds.zip"
   ],
   "changelog": [
+    {
+      "date": "2026-11-04",
+      "added": [
+        "FancyMenu, Konkrete и Melody для NeoForge 1.21.1.",
+        "Главное меню F8Q: осенние руины, строгие тёмные кнопки, логотип и музыка."
+      ],
+      "updated": [
+        "Общее оформление кнопок игровых меню. Экран загрузки и значки F8Q сохранены."
+      ],
+      "removed": []
+    },
     {
       "date": "2026-11-04",
       "added": [
@@ -1920,5 +2015,5 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-04-f8q-loading-v001"
+  "revision": "2026-11-04-f8q-menu-v002"
 }

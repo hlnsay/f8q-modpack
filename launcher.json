@@ -1,10 +1,19 @@
 {
-  "build": 15,
-  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.1.exe",
-  "size": 55828480,
-  "sha512": "4ea8a832ebeb67fe9dd89725250e4d8443ec01178ac8201354ed2f4aa17e7f1e7fb7b28b7ffe2b1b972922264eb7f727d6da03d24442585af096752ea490b80d",
-  "version": "0.0.1",
+  "build": 16,
+  "version": "0.0.2",
+  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.2.exe",
+  "size": 55836672,
+  "sha512": "b95dc0e9207bedbe8a7b3d0de164336976f10b0c6f00201d32e3296ff516861617d2e7b1cd07f1ee7bef565485845787570ac77ef40801da8f8f3349057bd352",
   "changelog": [
+    {
+      "version": "0.0.2",
+      "date": "2026-11-04",
+      "changes": [
+        "Восстановлены настройки темы, цвета, фона, прозрачности и размытия. Чёрно-белый акцент добавлен отдельным вариантом по умолчанию.",
+        "Кнопка «Играть» сразу показывает «Запускаем…». Повторный запуск профиля блокируется, в том числе из второго окна лаунчера.",
+        "После запуска отображается «Игра запущена»; кнопка снова доступна после закрытия игры."
+      ]
+    },
     {
       "version": "0.0.1",
       "date": "2026-11-04",

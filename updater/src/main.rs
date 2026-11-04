@@ -7,6 +7,7 @@
 //! Sync stays out of the way when it can: an unreachable list means the game starts with what it
 //! has, but a failed update stops it, since a half-updated instance can't join the server.
 mod install;
+mod game_session;
 mod neoforge;
 mod sync;
 
@@ -154,6 +155,11 @@ fn run_wrapped(source: &str, game: &[&str]) -> ExitCode {
         eprintln!("[f8q] no game folder");
         return ExitCode::FAILURE;
     };
+    let session=match game_session::Session::acquire(&home) {
+        Ok(Some(session))=>session,
+        Ok(None)=>{println!("[f8q] The game is already starting or running.");return ExitCode::SUCCESS;}
+        Err(error)=>{eprintln!("[f8q] Can't reserve the game launch: {error}");return ExitCode::FAILURE;}
+    };
     if run_sync(source, &home) != ExitCode::SUCCESS {
         return ExitCode::FAILURE;
     }
@@ -168,10 +174,8 @@ fn run_wrapped(source: &str, game: &[&str]) -> ExitCode {
             return ExitCode::FAILURE;
         }
     };
-    let started = std::process::Command::new(game[0])
-        .args(&args)
-        .current_dir(&home)
-        .status();
+    let started = std::process::Command::new(game[0]).args(&args).current_dir(&home).spawn()
+        .and_then(|mut child| { session.phase("running");child.wait() });
     match started {
         Ok(status) if status.success() => ExitCode::SUCCESS,
         Ok(status) => ExitCode::from(status.code().unwrap_or(1).clamp(1, 255) as u8),

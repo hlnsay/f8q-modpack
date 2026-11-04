@@ -153,7 +153,7 @@
   "crash reports beside it": "отчёты о сбоях рядом",
   "Install all": "Установить все",
   "No group": "Без группы",
-  "Running": "Запущено",
+  "Running": "Игра запущена",
   "Export to share": "Экспорт для отправки",
   "Installs into {instance}.": "Устанавливается в {instance}.",
   "its MCP settings (a stdio server)": "its MCP settings (a stdio server)",
@@ -1130,5 +1130,8 @@
   "Its mods made for Minecraft {from} stay in its folder; some may not load in {to}.": "Её моды для Minecraft {from} останутся в её папке; некоторые могут не загрузиться в {to}.",
   "Its worlds were saved by Minecraft {from}: {to} upgrades them for good, and can't open them if it is older.": "Её миры сохранены в Minecraft {from}: {to} обновит их навсегда, а если он старше — не сможет открыть.",
   "Launcher updates": "Обновления лаунчера",
-  "{mods} mods · {packs} resource packs": "{mods} модов · {packs} ресурс-пака"
+  "{mods} mods · {packs} resource packs": "{mods} модов · {packs} ресурс-пака",
+  "Launching…": "Запускаем…",
+  "White by default. Choose any accent colour.": "Белый по умолчанию. Можно выбрать любой цвет акцента.",
+  "Could not start the game. Check the game log.": "Не удалось запустить игру. Проверьте журнал игры."
 }

@@ -16,7 +16,7 @@
 
 Build 14 также обходит кэш метаданных GitHub при обновлении лаунчера, первой установке и обновлении сборки.
 
-Внутренний номер автообновления — 15; он увеличивается независимо от публичной версии.
+Внутренний номер автообновления — 16; он увеличивается независимо от публичной версии.
 История лаунчера находится в `launcher.json`, история модпака — в `changelog.json`.
 Панель истории рисуется поверх страницы, а тема и установщик используют общую чёрно-белую палитру.
 Кнопка закрытия сохраняет стандартное красное наведение Windows.
@@ -24,3 +24,5 @@ Build 14 также обходит кэш метаданных GitHub при о�
 Остальные файлы `.rs` из этой папки заменяют одноимённые файлы в `launcher/src/`;
 `build.rs`, `F8Q_VERSION` и `F8Q_CHANGELOG.json` размещаются в `launcher/`,
 `ru.json` — в `launcher/lang/`, `f8q-icon.ico` — в `packaging/icons/horizon.ico`.
+
+Version 0.0.2 restores saved appearance, accent, background, glass and blur settings. Monochrome is an additional default accent. game_session.rs prevents duplicate game starts and drives the immediate launch status. FancyMenu assets are distributed in config/fancymenu.
