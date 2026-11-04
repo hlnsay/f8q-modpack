@@ -849,8 +849,8 @@
     },
     {
       "path": "resourcepacks/F8Q-Fixes.zip",
-      "sha512": "f5ee972dd001717ed6b40f17df381a7c64b1b6dd23a9303398d321b5767c3b3dfbf466fd8002f72ee9b8c7cae1123c5abf4242965b583a3ce48d3c0c833d8e60",
-      "size": 36887,
+      "sha512": "fda4919ea257ce984cd02ba8d6a61ebda1b70448f560d0edcaffec446281dcbf8b21466ed4402d5540d3bc6946cc4e4f8054379c3ccc14ca4e74c332e114b899",
+      "size": 36896,
       "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Fixes.zip"
     },
     {
@@ -2209,5 +2209,5 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-04-one-sun-kings-ru"
+  "revision": "2026-11-04-one-sun-kings-ru2"
 }
