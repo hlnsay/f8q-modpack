@@ -531,9 +531,9 @@
     },
     {
       "path": "mods/punchy-moves-1.0.6-hotfix-neoforge-1.21.1.jar",
-      "sha512": "127d662b2b99d8799bc1e455674bb8b6e7526239b8fd14cfbbc979535edb5ec3534dda42f1716a341d1792049a9b54c092ab8dc27ada68fd56a225bf5a8ff764",
-      "size": 1126701,
-      "url": "https://cdn.modrinth.com/data/mzgtK8pY/versions/7EwG435J/punchy-moves-1.0.6-hotfix-neoforge-1.21.1.jar"
+      "sha512": "c4a4ff1df0f66ce6c294c25d448b1198d402235077cd598995a3f677682694ad4de6ac23b671da53901879ee2fb6c5ccd9422034145edcc93d9db6e25cfe27fd",
+      "size": 1131824,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/punchy-moves-1.0.6-hotfix-neoforge-1.21.1-f8q.jar"
     },
     {
       "path": "mods/puzzleslib-v21.1.66-mc1.21.1+neoforge.jar",
@@ -1518,7 +1518,7 @@
     },
     {
       "path": "config/punchy_moves/camera.json",
-      "sha512": "278910b9ae7a9b028aa676270b8bb5e5c37bceaec601995f693fa8d7afadbd637d922c08fb9260f20035960d37b6d15612d0e416f570fc73441cd130481cdb60",
+      "sha512": "a06440257d09cbedd8c14338b5da8116875119dc2399d21f21ab7ba88bba165905a47b19e15d0bb48e5d34fddb3266147d0f6e3274512d0bd55691f30b1840f5",
       "size": 359,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/punchy_moves/camera.json"
     },
@@ -1836,5 +1836,50 @@
     "file/fresh-ores-and-ingots.zip",
     "file/fresh-paintings.zip",
     "file/better-3d-beds.zip"
-  ]
+  ],
+  "changelog": [
+    {
+      "date": "2026-11-04",
+      "added": [],
+      "updated": [
+        "Punchy! Moves: отключены камера, свободная камера и колесо эмоций; обычные анимации сохранены.",
+        "Лаунчер: значок обновления, сворачиваемый блок «Что нового», обновление списка модов после установки."
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-04",
+      "added": [
+        "Atmospherics",
+        "Cosycritters",
+        "Entity model features",
+        "Entity texture features",
+        "Fwa+1.21.1",
+        "Kingsandmonsters1.2.2",
+        "Patchouli",
+        "Punchy moves",
+        "Storagedelight"
+      ],
+      "updated": [],
+      "removed": []
+    },
+    {
+      "date": "2026-11-04",
+      "added": [
+        "Sophisticated Backpacks",
+        "Sophisticated Core",
+        "Yakisugi",
+        "Ghost",
+        "Ice Caves Backport",
+        "Better Third Person",
+        "Advancement Plaques",
+        "Item Highlighter",
+        "Ambient Camera",
+        "Iceberg"
+      ],
+      "updated": [],
+      "removed": []
+    }
+  ],
+  "revision": "2026-11-04-punchy-camera-emotes-off"
 }

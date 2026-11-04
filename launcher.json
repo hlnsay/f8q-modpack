@@ -1,6 +1,6 @@
 {
-    "build":  12,
-    "url":  "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup.exe",
-    "size":  55731712,
-    "sha512":  "c292e27bf1ee80e7b4a277fd34b180be34286dee3dcbee217b61ce3c807203cbd899497f7493c5876f620f8019d924dc5e5c67b2c1ffd8b71786cd83d1f1199c"
+  "build": 13,
+  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup.exe",
+  "size": 55646720,
+  "sha512": "75d448b74ec7572b4f6460fb41f4bc44365722d843c207dc2feaa9a73d0311e74a7d4d37c3cbe4f0904f66a7a679fd3ccfede42a84679a1df983e6c903e7f4b3"
 }

@@ -27,21 +27,35 @@ function Title($path) {
     if ($name.Length -gt 0) { $name.Substring(0, 1).ToUpper() + $name.Substring(1) } else { $name }
 }
 $listPath = Join-Path $here 'manifest.json'
-$before = @((Get-Content $listPath -Raw | ConvertFrom-Json).files | Where-Object { $_.path -like 'mods/*' })
-$after = @((Get-Content (Join-Path $out 'manifest.json') -Raw | ConvertFrom-Json).files | Where-Object { $_.path -like 'mods/*' })
+$beforeManifest = Get-Content $listPath -Raw -Encoding UTF8 | ConvertFrom-Json
+$afterManifest = Get-Content (Join-Path $out 'manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
+$before = @($beforeManifest.files | Where-Object { $_.path -like 'mods/*' })
+$after = @($afterManifest.files | Where-Object { $_.path -like 'mods/*' })
 $old = @{}; foreach ($m in $before) { $old[(Title $m.path)] = $m.sha512 }
 $new = @{}; foreach ($m in $after) { $new[(Title $m.path)] = $m.sha512 }
 $added = @($new.Keys | Where-Object { -not $old.ContainsKey($_) } | Sort-Object)
 $removed = @($old.Keys | Where-Object { -not $new.ContainsKey($_) } | Sort-Object)
 $updated = @($new.Keys | Where-Object { $old.ContainsKey($_) -and $old[$_] -ne $new[$_] } | Sort-Object)
+$oldSettings = @{}; foreach ($f in $beforeManifest.config) { $oldSettings[$f.path] = $f.sha512 }
+$settingsChanged = @($afterManifest.config | Where-Object { -not $oldSettings.ContainsKey($_.path) -or $oldSettings[$_.path] -ne $_.sha512 })
+$settingsRemoved = @($beforeManifest.config | Where-Object { $_.path -notin @($afterManifest.config.path) })
+if ($settingsChanged.Count + $settingsRemoved.Count -gt 0) { $updated += 'Pack settings' }
+$oldPacks = @{}; foreach ($f in @($beforeManifest.files | Where-Object { $_.path -like 'resourcepacks/*' })) { $oldPacks[$f.path] = $f.sha512 }
+$packsChanged = @($afterManifest.files | Where-Object { $_.path -like 'resourcepacks/*' -and (-not $oldPacks.ContainsKey($_.path) -or $oldPacks[$_.path] -ne $_.sha512) })
+$packsRemoved = @($beforeManifest.files | Where-Object { $_.path -like 'resourcepacks/*' -and $_.path -notin @($afterManifest.files.path) })
+if ($packsChanged.Count + $packsRemoved.Count -gt 0) { $updated += 'Resource packs' }
+$logPath = Join-Path $here 'changelog.json'
+$log = @(Get-Content $logPath -Raw -Encoding UTF8 | ConvertFrom-Json)
 if ($added.Count + $removed.Count + $updated.Count -gt 0) {
-    $logPath = Join-Path $here 'changelog.json'
-    $log = @(Get-Content $logPath -Raw | ConvertFrom-Json)
     $entry = [pscustomobject]@{ date = (Get-Date -Format 'yyyy-MM-dd'); added = $added; updated = $updated; removed = $removed }
-    $json = ConvertTo-Json -InputObject @(@($entry) + $log) -Depth 4
+    $json = ConvertTo-Json -InputObject ([object[]](@($entry) + @($log))) -Depth 8
     [IO.File]::WriteAllText($logPath, $json, (New-Object Text.UTF8Encoding $false))
 }
-Copy-Item (Join-Path $out 'manifest.json') (Join-Path $here 'manifest.json') -Force
+# Both panels use one publication snapshot, including settings-only updates.
+$log = @(Get-Content $logPath -Raw -Encoding UTF8 | ConvertFrom-Json)
+$afterManifest | Add-Member -NotePropertyName changelog -NotePropertyValue @($log) -Force
+$afterManifest | Add-Member -NotePropertyName revision -NotePropertyValue (Get-Date -Format 'yyyyMMddTHHmmss') -Force
+[IO.File]::WriteAllText($listPath, ($afterManifest | ConvertTo-Json -Depth 12), (New-Object Text.UTF8Encoding $false))
 $config = Join-Path $here 'config'
 if (Test-Path $config) { Remove-Item $config -Recurse -Force }
 Copy-Item (Join-Path $out 'config') $config -Recurse
