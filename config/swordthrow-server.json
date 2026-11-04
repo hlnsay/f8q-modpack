@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "baseHandDamage": 1.0,
+  "velocityDamageBase": 0.65,
+  "velocityDamageFactor": 0.7,
+  "cleanFlightDamageMultiplier": 1.35,
+  "standardDamageMultiplier": 1.0,
+  "spearDamageMultiplier": 1.0,
+  "spearMinimumAttackDamage": 4.0,
+  "spearBaseDamageMultiplier": 1.45,
+  "spearFlatDamageBonus": 2.5,
+  "swordDamageMultiplier": 1.0,
+  "axeDamageMultiplier": 0.75,
+  "axeMinimumDamage": 3.5,
+  "pickaxeDamageMultiplier": 0.6,
+  "pickaxeMinimumDamage": 2.0,
+  "shovelAndHoeDamageMultiplier": 0.5,
+  "shovelAndHoeMinimumDamage": 1.25,
+  "damageableItemDamageMultiplier": 0.4,
+  "damageableItemMinimumDamage": 1.0,
+  "blockItemBaseDamage": 0.35,
+  "miscItemBaseDamage": 0.6
+}

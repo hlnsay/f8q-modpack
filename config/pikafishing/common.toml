@@ -1,0 +1,889 @@
+#通用玩法开关
+#General gameplay switches.
+[general]
+	#是否启用钓鱼小游戏；禁用后，鱼咬钩直接上鱼，完全原版钓鱼流程，跳过小游戏；
+	#Enable the fishing minigame. When disabled, a bite is landed directly and the minigame is skipped.
+	minigame_enabled = true
+	#乱流视觉与环境音的过渡时长（秒）；
+	#设为 0 时立即切换。
+	#Transition duration in seconds for strong winds visuals and ambient sound; controlled by the server and synced to clients.
+	#Set to 0 for an immediate transition.
+	# Default: 1.5
+	# Range: 0.0 ~ 10.0
+	strong_winds_transition_seconds = 1.5
+	#是否启用精简模式；启用后，会隐藏并禁用特定标签中的内容以及部分玩法，尽可能保证模组体量精简；
+	#Enable lite mode. When enabled, everything in the #pikafishing:lite_mode_disabled tag and its recipes are hidden and disabled.
+	lite_mode = false
+	#村民职业交易使用的银币替代物品 ID；无效时回退为 pikafishing:silver_coin
+	#Item ID used in villager trades instead of the silver coin. Invalid IDs fall back to pikafishing:silver_coin.
+	villager_trade_silver_currency = "pikafishing:silver_coin"
+	#村民职业交易使用的金币替代物品 ID；无效时回退为 pikafishing:gold_coin
+	#Item ID used in villager trades instead of the gold coin. Invalid IDs fall back to pikafishing:gold_coin.
+	villager_trade_gold_currency = "pikafishing:gold_coin"
+	#是否必须亲手钓到水产才会解锁图鉴条目
+	#默认关闭：只需要物品栏中有水产即可解锁条目；启用后不再扫描物品栏，只有实际钓获时才会解锁
+	#Require a personal catch to unlock guide entries.
+	#Disabled by default: both catching an aquatic item and merely holding one in the inventory unlock entries. When enabled the inventory is never scanned and entries unlock only on an actual catch.
+	guide_require_personal_catch = false
+	#水产图鉴展示数据的预分析时间预算（秒）
+	#世界启动时一次性建立“实体 ↔ 自然生成群系”“水产 ↔ 钓鱼战利品表 ↔ 群系”“实体掉落物”索引，
+	#之后图鉴详情页只读取索引，不再读取文件或遍历群系注册表。
+	#超时后保留已完成的部分并在日志中给出警告；设为 0 时完全关闭预分析，
+	#图鉴中的自然生成群系、可钓群系与掉落物将保持为空。
+	#Time budget in seconds for pre-analysing the data shown in the aquatic guide.
+	#At world start the mod builds the "entity <-> natural spawn biomes", "aquatic item <-> fishing loot table <-> biomes" and "entity drops" indexes once,
+	#after which guide detail pages only read the index instead of files or the biome registry.
+	#On timeout the completed part is kept and a warning is logged; 0 disables pre-analysis entirely,
+	#leaving natural spawn biomes, catchable biomes and drops empty in the guide.
+	# Default: 8
+	# Range: 0 ~ 600
+	guide_data_analysis_timeout_seconds = 8
+	#钓鱼图鉴总目录列表；顺序即图鉴中的显示顺序；
+	#格式: "modid:item_id"
+	#Aquatic guide entry list. The order is the display order in the guide.
+	#Format: "modid:item_id".
+	guide_fish = ["minecraft:cod", "minecraft:salmon", "minecraft:tropical_fish", "minecraft:pufferfish", "pikafishing:squid", "pikafishing:glow_squid", "pikafishing:guardian", "pikafishing:elder_guardian", "pikafishing:phantom", "pikafishing:lucy_axolotl", "pikafishing:wild_axolotl", "pikafishing:gold_axolotl", "pikafishing:cyan_axolotl", "pikafishing:blue_axolotl", "pikafishing:nautilus", "pikafishing:zombie_nautilus", "pikafishing:coral_zombie_nautilus", "pikafishing:ender_dragon", "pikafishing:cold_variant_frog", "pikafishing:frog", "pikafishing:warm_variant_frog", "pikafishing:blue_frog", "pikafishing:tadpole", "pikafishing:turtle", "pikafishing:dolphin", "pikafishing:largemouth_bass", "pikafishing:red_snapper", "pikafishing:tuna", "pikafishing:rainbow_trout", "pikafishing:carp", "pikafishing:koi", "pikafishing:red_koi", "pikafishing:gold_koi", "pikafishing:flying_fish", "pikafishing:black_flying_fish", "pikafishing:blue_guppy", "pikafishing:orange_guppy", "pikafishing:red_lionfish", "pikafishing:black_lionfish", "pikafishing:goldfish", "pikafishing:neon_tetra", "pikafishing:killifish", "pikafishing:angelfish", "pikafishing:slimefish", "pikafishing:magmafish", "pikafishing:orange_seahorse", "pikafishing:pink_seahorse", "pikafishing:brown_mushfin", "pikafishing:red_mushfin", "pikafishing:anglerfish", "pikafishing:silver_chimaera", "pikafishing:black_silver_chimaera", "pikafishing:eel", "pikafishing:spark_eel", "pikafishing:silver_arowana", "pikafishing:gold_arowana", "pikafishing:red_arowana", "pikafishing:oarfish", "pikafishing:red_oarfish", "pikafishing:manta_ray", "pikafishing:rainbow_manta_ray", "pikafishing:crayfish", "pikafishing:brine_shrimp", "pikafishing:krill", "pikafishing:crab", "pikafishing:sand_crab", "pikafishing:hermit_crab", "pikafishing:rock_lobster", "pikafishing:mussel", "pikafishing:oyster", "pikafishing:sea_cucumber", "pikafishing:sea_slug", "pikafishing:sea_angel", "pikafishing:man_o_war", "pikafishing:blue_starfish", "pikafishing:pink_starfish", "pikafishing:sea_anemone", "pikafishing:blue_sea_anemone"]
+	#水产图鉴“标签分类”分页显示的标签列表；一个条目可同时命中多个标签；
+	#格式: "modid:tag_id"
+	#Item tags listed on the "tag categories" page of the aquatic guide. One entry may match several tags.
+	#Format: "modid:tag_id".
+	guide_tag_categories = ["pikafishing:river_fishes", "pikafishing:ocean_fishes", "pikafishing:cephalopods", "pikafishing:echinoderms", "pikafishing:cnidarians"]
+	#特定鱼获物品的钓鱼经验值覆盖；默认按物品等级提供经验；
+	#格式: "modid:item_id=经验值"，例如 "pikafishing:goldfish=100"
+	#该值为基础经验值，完美判定等额外加成仍会应用；
+	#Fishing XP overrides for specific items. Without an override the XP comes from the item level.
+	#Format: "modid:item_id=xp", for example "pikafishing:goldfish=100".
+	#The value is the base XP; the perfect-judgement bonus is still applied.
+	fishing_xp_overrides = ["pikafishing:manta_ray=600", "pikafishing:rainbow_manta_ray=600", "pikafishing:oarfish=600", "pikafishing:red_oarfish=600"]
+	#活体冻结鱼钩的物品到生物映射；
+	#格式: "物品ID=实体ID" 或 "物品ID=实体ID|{实体SNBT}"。未列出的物品会尝试匹配同名实体ID。
+	#可在此追加其他模组的映射，例如 "alexsmob:catfish=alexsmob:catfish"。带 SNBT 的映射会选定指定变种。
+	#Item-to-entity mappings for the cryogenic fishing hook.
+	#Format: "item_id=entity_id" or "item_id=entity_id|{entity SNBT}". Items that are not listed match an entity id with the same name.
+	#Mappings for other mods can be appended here, for example "minecraft:cod=minecraft:cod". Entries with SNBT keep the specified variant.
+	cryogenic_catch_mappings = ["pikafishing:squid=minecraft:squid", "pikafishing:glow_squid=minecraft:glow_squid", "pikafishing:guardian=minecraft:guardian", "pikafishing:elder_guardian=minecraft:elder_guardian", "pikafishing:phantom=minecraft:phantom", "pikafishing:lucy_axolotl=minecraft:axolotl|{Variant:0}", "pikafishing:wild_axolotl=minecraft:axolotl|{Variant:1}", "pikafishing:gold_axolotl=minecraft:axolotl|{Variant:2}", "pikafishing:cyan_axolotl=minecraft:axolotl|{Variant:3}", "pikafishing:blue_axolotl=minecraft:axolotl|{Variant:4}", "pikafishing:cold_variant_frog=minecraft:frog|{variant:\"minecraft:cold\"}", "pikafishing:frog=minecraft:frog|{variant:\"minecraft:temperate\"}", "pikafishing:warm_variant_frog=minecraft:frog|{variant:\"minecraft:warm\"}", "pikafishing:blue_frog=minecraft:frog|{variant:\"pikafishing:blue_frog\"}", "pikafishing:tadpole=minecraft:tadpole", "pikafishing:turtle=minecraft:turtle", "pikafishing:dolphin=minecraft:dolphin", "pikafishing:coral_zombie_nautilus=pikafishing:zombie_nautilus|{Variant:\"warm\"}", "pikafishing:ender_dragon=minecraft:ender_dragon"]
+	#魔法海螺的额外奖励物品；填写的物品即使不是食物也可被抽中，并会在失败时被冷却；
+	#格式: "modid:item_id" 或 "#modid:item_tag"
+	#Extra rewards for the magic conch shell. They can be rolled even when they are not food and go on cooldown when the roll fails.
+	#Format: "modid:item_id" or "#modid:item_tag".
+	magic_conch_extra_items = ["minecraft:cake"]
+	#魔法海螺黑名单；无论如何都不会被抽中，也不会在失败时被冷却；
+	#格式: "modid:item_id" 或 "#modid:item_tag"
+	#Magic conch shell blacklist. These entries are never rolled and never go on cooldown when a roll fails.
+	#Format: "modid:item_id" or "#modid:item_tag".
+	magic_conch_blacklist = ["#minecraft:fishes"]
+	#魔法海螺白名单；非空时仅从此名单抽奖，失败时也只冷却白名单物品；优先级高于黑名单与额外名单；
+	#格式: "modid:item_id" 或 "#modid:item_tag"
+	#Magic conch shell whitelist. When it is not empty only these entries are rolled and only whitelisted items go on cooldown after a failure; the extra list and the blacklist are ignored.
+	#Format: "modid:item_id" or "#modid:item_tag".
+	magic_conch_whitelist = []
+
+	#鹦鹉螺相关内容开关
+	#Switches for the nautilus content.
+	[general.nautilus]
+		#是否启用鹦鹉螺及其护甲战利品；禁用后，鹦鹉螺及其变种不会自然生成，鹦鹉螺护甲也不会生成在沉船结构等宝箱中；
+		#Whether the nautilus and its armor loot are enabled.
+		enabled = true
+		#是否允许鹦鹉螺及僵尸鹦鹉螺自然生成；此项仅在启用鹦鹉螺时生效
+		#Allow nautilus and zombie nautilus to spawn naturally. Only takes effect while the nautilus is enabled.
+		natural_spawns = true
+
+	#天气玻璃珠的可使用维度限制；白名单非空时仅允许白名单中的维度，黑名单会被忽略；
+	#Dimension restrictions for weather glass balls. When a whitelist is not empty, only its dimensions are allowed and the blacklist is ignored.
+	[general.glass_balls]
+		#靛蓝色玻璃珠白名单；默认仅主世界可用；
+		#Indigo Glass Ball whitelist. By default only the Overworld is allowed.
+		blue_whitelist = ["minecraft:overworld"]
+		#靛蓝色玻璃珠黑名单；白名单非空时忽略；
+		#Indigo Glass Ball blacklist. Ignored when the whitelist is not empty.
+		blue_blacklist = []
+		#朱红色玻璃珠白名单；默认仅主世界可用；
+		#Vermilion Glass Ball whitelist. By default only the Overworld is allowed.
+		red_whitelist = ["minecraft:overworld"]
+		#朱红色玻璃珠黑名单；白名单非空时忽略；
+		#Vermilion Glass Ball blacklist. Ignored when the whitelist is not empty.
+		red_blacklist = []
+		#草绿色玻璃珠白名单；为空时使用黑名单；
+		#Grass Green Glass Ball whitelist. When empty, the blacklist is used.
+		green_whitelist = []
+		#草绿色玻璃珠黑名单；默认禁止末地；
+		#Grass Green Glass Ball blacklist. By default the End is forbidden.
+		green_blacklist = ["minecraft:the_end"]
+
+	#成功钓上物品时的鱼饵消耗概率；仅对 #minecraft:fishes 标签内的鱼获生效；
+	#脱钩和断线始终消耗 1 个鱼饵，不按概率；；
+	#Bait consumption chances when a fish is caught. They apply only to catches inside the #minecraft:fishes tag.
+	#Unhooking and line breaks always consume one bait.
+	[general.bait_consumption]
+		#大型鱼获的鱼饵消耗概率
+		#Consumption chance for large catches.
+		# Default: 1.0
+		# Range: 0.0 ~ 1.0
+		large_fish_chance = 1.0
+		#中型鱼获的鱼饵消耗概率
+		#Consumption chance for medium catches.
+		# Default: 0.4
+		# Range: 0.0 ~ 1.0
+		medium_fish_chance = 0.4
+		#其余鱼获（非中大型）的鱼饵消耗概率
+		#Consumption chance for other catches that are neither large nor medium.
+		# Default: 0.15
+		# Range: 0.0 ~ 1.0
+		other_fish_chance = 0.15
+
+	#使用锄类工具成功锄地时刨出蚯蚓的概率；
+	#有额外概率改为刨出 2 个；
+	#下界合金锄使用单独的覆盖值；如果希望仅下界合金锄会刨出蚯蚓，将通用概率设为 0.0 即可；
+	#Chance to dig up an angleworm when a hoe successfully tills soil.
+	#After the first hit a second roll decides whether two angleworms are dug up instead; when both are 0 nothing drops.
+	#Netherite hoes use their own overrides, 20% / 50% by default.
+	[general.hoe_digging]
+		#锄地刨出蚯蚓的概率
+		#Chance for a hoe to dig up an angleworm.
+		# Default: 0.1
+		# Range: 0.0 ~ 1.0
+		angleworm_chance = 0.1
+		#锄地一次刨出 2 个蚯蚓的概率
+		#Chance to dig up two angleworms instead of one.
+		# Default: 0.3
+		# Range: 0.0 ~ 1.0
+		angleworm_double_chance = 0.3
+		#下界合金锄刨出蚯蚓的概率
+		#Angleworm chance for netherite hoes.
+		# Default: 0.2
+		# Range: 0.0 ~ 1.0
+		netherite_angleworm_chance = 0.2
+		#下界合金锄一次刨出 2 个蚯蚓的概率
+		#Chance for netherite hoes to dig up two angleworms instead of one.
+		# Default: 0.5
+		# Range: 0.0 ~ 1.0
+		netherite_angleworm_double_chance = 0.5
+
+[weight]
+	#巨型重量曲线指数：1.0 为均匀随机；数值越大，越偏向巨型区间下限
+	#Giant weight curve exponent: 1.0 rolls uniformly, larger values bias the result toward the lower bound of the giant range.
+	# Default: 2.5
+	# Range: 1.0 ~ 10.0
+	giant_weight_curve_exponent = 2.5
+	#巨型水产的默认视觉缩放下限；用于标本与活体冻结鱼钩钓获的实体
+	#Default lower bound of the visual scale for giant aquatic items; used by specimens and by entities caught with the cryogenic fishing hook.
+	# Default: 1.5
+	# Range: 0.01 ~ 100.0
+	giant_visual_scale_min = 1.5
+	#巨型水产的默认视觉缩放上限；用于标本与活体冻结鱼钩钓获的实体
+	#Default upper bound of the visual scale for giant aquatic items; used by specimens and by entities caught with the cryogenic fishing hook.
+	# Default: 3.0
+	# Range: 0.01 ~ 100.0
+	giant_visual_scale_max = 3.0
+	#每物品自定义重量、曲线与巨型视觉尺寸
+	#格式: "modid:item_id; normal=min:max; giant=min:max; [curve=指数;] [giant_size=min:max]"
+	#示例: "pikafishing:manta_ray; normal=300:1800; giant=1900:2400; curve=3.2; giant_size=1.8:3.6"
+	#normal 与 giant 必填；curve 和 giant_size 可省略，分别使用全局默认值
+	#字段顺序不限；这些条目会覆盖默认体型区间
+	#Per-item weight, curve and giant visual size overrides.
+	#Format: "modid:item_id; normal=min:max; giant=min:max; [curve=exponent;] [giant_size=min:max]".
+	#Example: "pikafishing:manta_ray; normal=300:1800; giant=1900:2400; curve=3.2; giant_size=1.8:3.6".
+	#normal and giant are required; curve and giant_size are optional and fall back to the global defaults.
+	#Fields may appear in any order; these entries override the default size ranges.
+	item_weight_overrides = ["minecraft:cod; normal=1.0:15.0; giant=18.0:35.0", "pikafishing:tuna; normal=15.0:140.0; giant=145.0:181.0", "pikafishing:manta_ray; normal=300.0:1800.0; giant=1900.0:2400.0", "pikafishing:rainbow_manta_ray; normal=300.0:1800.0; giant=1900.0:2400.0", "pikafishing:oarfish; normal=30.0:220.0; giant=230.0:272.0", "pikafishing:red_oarfish; normal=30.0:220.0; giant=230.0:272.0", "pikafishing:dolphin; normal=140.0:500.0; giant=510.0:635.0", "pikafishing:turtle; normal=80.0:150.0; giant=160.0:181.0"]
+
+	#普通体型重量区间 (单位: kg)
+	#Normal-size weight ranges (unit: kg).
+	[weight.normal_weight_ranges]
+		#小型水产的普通重量下限
+		#Minimum normal weight of small aquatic items.
+		# Default: 0.02
+		# Range: 0.0 ~ 1.7976931348623157E308
+		small_normal_min = 0.02
+		#小型水产的普通重量上限
+		#Maximum normal weight of small aquatic items.
+		# Default: 1.0
+		# Range: 0.0 ~ 1.7976931348623157E308
+		small_normal_max = 1.0
+		#中型水产的普通重量下限
+		#Minimum normal weight of medium aquatic items.
+		# Default: 1.0
+		# Range: 0.0 ~ 1.7976931348623157E308
+		medium_normal_min = 1.0
+		#中型水产的普通重量上限
+		#Maximum normal weight of medium aquatic items.
+		# Default: 12.0
+		# Range: 0.0 ~ 1.7976931348623157E308
+		medium_normal_max = 12.0
+		#大型水产的普通重量下限
+		#Minimum normal weight of large aquatic items.
+		# Default: 25.0
+		# Range: 0.0 ~ 1.7976931348623157E308
+		large_normal_min = 25.0
+		#大型水产的普通重量上限
+		#Maximum normal weight of large aquatic items.
+		# Default: 350.0
+		# Range: 0.0 ~ 1.7976931348623157E308
+		large_normal_max = 350.0
+
+	#巨型体型重量区间 (单位: kg)
+	#Giant-size weight ranges (unit: kg).
+	[weight.giant_weight_ranges]
+		#小型水产的巨型重量下限
+		#Minimum giant weight of small aquatic items.
+		# Default: 1.1
+		# Range: 0.0 ~ 1.7976931348623157E308
+		small_giant_min = 1.1
+		#小型水产的巨型重量上限
+		#Maximum giant weight of small aquatic items.
+		# Default: 2.0
+		# Range: 0.0 ~ 1.7976931348623157E308
+		small_giant_max = 2.0
+		#中型水产的巨型重量下限
+		#Minimum giant weight of medium aquatic items.
+		# Default: 14.0
+		# Range: 0.0 ~ 1.7976931348623157E308
+		medium_giant_min = 14.0
+		#中型水产的巨型重量上限
+		#Maximum giant weight of medium aquatic items.
+		# Default: 25.0
+		# Range: 0.0 ~ 1.7976931348623157E308
+		medium_giant_max = 25.0
+		#大型水产的巨型重量下限
+		#Minimum giant weight of large aquatic items.
+		# Default: 400.0
+		# Range: 0.0 ~ 1.7976931348623157E308
+		large_giant_min = 400.0
+		#大型水产的巨型重量上限
+		#Maximum giant weight of large aquatic items.
+		# Default: 700.0
+		# Range: 0.0 ~ 1.7976931348623157E308
+		large_giant_max = 700.0
+
+#鱼板条箱的容量与物品占用权重
+#Capacity and item weight of the fish crate.
+[fish_crate]
+	#每物品权重覆盖
+	#格式: "modid:item_id=weight"
+	#示例: "pikafishing:oarfish=64"
+	#这些条目会覆盖体型标签映射
+	#Per-item weight overrides.
+	#Format: "modid:item_id=weight".
+	#Example: "pikafishing:oarfish=64".
+	#These entries override the size tag mapping.
+	weight_overrides = ["pikafishing:oarfish=64", "pikafishing:red_oarfish=64"]
+
+	#鱼板条箱容量与权重
+	#总存储空间按权重单位计，物品按权重占用空间，占满即转为装满/满溢的鱼板条箱
+	#Fish crate capacity and item weights.
+	#Total crate space is measured in weight units; items occupy space by weight and the crate turns into a full or overflowing crate once it is filled.
+	[fish_crate.crate]
+		#鱼板条箱的总空间（权重单位）
+		#Total space of a fish crate in weight units.
+		# Default: 256
+		# Range: > 1
+		capacity = 256
+		#小型水产占用的空间
+		#Space taken by a small aquatic item.
+		# Default: 2
+		# Range: > 1
+		weight_small = 2
+		#中型水产占用的空间
+		#Space taken by a medium aquatic item.
+		# Default: 4
+		# Range: > 1
+		weight_medium = 4
+		#大型水产占用的空间
+		#Space taken by a large aquatic item.
+		# Default: 16
+		# Range: > 1
+		weight_large = 16
+		#未命中体型标签的水产占用的空间
+		#Space taken by an aquatic item that matches no size tag.
+		# Default: 4
+		# Range: > 1
+		weight_default = 4
+		#巨型水产的权重倍率；会将基础权重值乘以这个倍率；
+		#Weight multiplier applied to giant aquatic items.
+		# Default: 16
+		# Range: > 1
+		giant_multiplier = 16
+
+#储物袋的额外禁用物品
+#Additional items rejected by the storage bag.
+[storage_bag]
+	#额外禁止放入储物袋的物品 ID
+	#容器类物品默认被拒绝；此列表用于自定义的限制
+	#Additional item ids that cannot be placed inside a storage bag.
+	#Container items are rejected by default; this list is for modpack-specific restrictions.
+	disallowed_items = ["metalbundles:leather_bundle", "metalbundles:copper_bundle", "metalbundles:iron_bundle", "metalbundles:golden_bundle", "metalbundles:diamond_bundle", "metalbundles:netherite_bundle", "sophisticatedbackpacks:backpack", "sophisticatedbackpacks:copper_backpack", "sophisticatedbackpacks:iron_backpack", "sophisticatedbackpacks:gold_backpack", "sophisticatedbackpacks:diamond_backpack", "sophisticatedbackpacks:netherite_backpack"]
+
+#钓鱼战利品表映射
+#Fishing loot table mappings for the four independent categories (water / lava / cloud / void).
+[loot]
+
+	#水域钓鱼群系映射
+	#格式: "群系标签ID:战利品表子路径"
+	#示例: "minecraft:is_ocean:ocean" → 解析为 pikafishing:fishing/ocean
+	#未匹配任何群系标签时直接使用原版 minecraft:gameplay/fishing
+	#Water fishing biome mappings.
+	#Format: "biome_tag_id:loot_table_subpath".
+	#Example: "minecraft:is_ocean:ocean" resolves to pikafishing:fishing/ocean.
+	#When no biome tag matches, the vanilla minecraft:gameplay/fishing table is used.
+	[loot.water]
+		#按列表顺序匹配，越靠前的群系标签优先级越高
+		#Mappings are matched in list order; earlier biome tags take precedence.
+		mappings = ["minecraft:is_end:end", "c:is_mushroom:mushroom", "c:is_cherry:cherry", "c:is_spooky:spooky", "minecraft:allows_surface_slime_spawns:slime", "c:is_magical:magical", "c:is_warm_ocean:warm_ocean", "c:is_frozen_ocean:frozen_ocean", "c:is_cold_ocean:cold_ocean", "minecraft:is_deep_ocean:deep_ocean", "minecraft:is_river:river", "minecraft:is_beach:beach", "c:is_mountain/peak:peak", "c:is_mountain/slope:slope", "c:is_plateau:plateau", "c:is_desert:desert", "minecraft:is_badlands:badlands", "minecraft:is_savanna:savanna", "minecraft:is_ocean:ocean", "minecraft:is_mountain:mountain", "minecraft:is_hill:hill", "c:is_cave:cave", "c:is_swamp:swamp", "minecraft:is_forest:forest", "minecraft:is_jungle:jungle", "minecraft:is_taiga:taiga", "c:is_plains:plains", "c:is_lush:lush", "c:is_cold:cold", "c:is_hot:hot", "c:is_aquatic:water"]
+
+	#熔岩钓鱼群系映射
+	#Lava fishing biome mappings.
+	[loot.lava]
+		#格式同水域映射；未匹配任何群系标签时使用 default_table
+		#Same format as the water mappings; default_table is used when no biome tag matches.
+		mappings = ["minecraft:has_structure/ancient_city:lava/ancient_city", "minecraft:is_nether:lava/nether"]
+		#熔岩钓鱼的默认战利品表（相对于 data/pikafishing/loot_table 的子路径，自动补全命名空间）
+		#Default lava fishing loot table (subpath under data/pikafishing/loot_table; the namespace is filled in automatically).
+		default_table = "fishing/lava/default"
+
+	#境云钓鱼群系映射
+	#Cloud fishing biome mappings.
+	[loot.cloud]
+		#格式同水域映射；未匹配任何群系标签时使用 default_table
+		#Same format as the water mappings; default_table is used when no biome tag matches.
+		mappings = ["aether:is_aether:cloud/aether"]
+		#境云钓鱼的默认战利品表（相对于 data/pikafishing/loot_table 的子路径，自动补全命名空间）
+		#Default cloud fishing loot table (subpath under data/pikafishing/loot_table; the namespace is filled in automatically).
+		default_table = "fishing/cloud/default"
+
+	#虚空钓鱼群系映射
+	#Void fishing biome mappings.
+	[loot.void]
+		#格式同水域映射；未匹配任何群系标签时使用 default_table
+		#Same format as the water mappings; default_table is used when no biome tag matches.
+		mappings = ["minecraft:is_end:void/end"]
+		#虚空钓鱼的默认战利品表（相对于 data/pikafishing/loot_table 的子路径，自动补全命名空间）
+		#Default void fishing loot table (subpath under data/pikafishing/loot_table; the namespace is filled in automatically).
+		default_table = "fishing/void/default"
+
+#钓鱼小游戏挣扎性格的覆盖表
+#Override table for fishing minigame struggle behaviors.
+[fish_behavior_overrides]
+	#钓鱼小游戏挣扎性格的按物品覆盖
+	#格式: "modid:item_id=性格"，性格可选 calm、drift、dart、erratic、legendary
+	#此处条目优先于数据包标签
+	#Fish minigame behavior overrides.
+	#Format: "modid:item_id=behavior" with behavior one of calm, drift, dart, erratic or legendary.
+	#Overrides take precedence over data tags.
+	overrides = []
+
+#钓鱼小游戏的进度、等级成长、挣扎性格、宝藏与失败惩罚参数
+#Fishing minigame progress, level curve, struggle behaviors, treasure and failure penalty settings.
+[minigame]
+
+	#光标操控、进度、计时与蓄力攻击的核心参数
+	#Core marker control, progress, timer, and pulse settings.
+	[minigame.base_control]
+		#小游戏开始时的初始进度（0-100）
+		#Initial progress when the minigame starts (0-100).
+		# Default: 25.0
+		# Range: 0.0 ~ 100.0
+		initial_progress = 25.0
+		#判定区与光标的初始中心位置（0-1）
+		#Initial center position of the catch zone and the marker (0-1).
+		# Default: 0.5
+		# Range: 0.0 ~ 1.0
+		initial_zone_center = 0.5
+		#判定区的基础宽度（0-1）
+		#Base width of the catch zone (0-1).
+		# Default: 0.33
+		# Range: 0.01 ~ 1.0
+		base_zone_width = 0.33
+		#光标的初始速度，正值向右
+		#Initial marker velocity; positive values move right.
+		# Default: 0.0
+		# Range: -1.0 ~ 1.0
+		initial_marker_velocity = 0.0
+		#光标在判定区外时每刻向左的漂移速度
+		#Leftward marker drift per tick while the marker is outside the catch zone.
+		# Default: 0.004
+		# Range: 0.0 ~ 1.0
+		left_drift_outside_zone = 0.004
+		#光标在判定区内时每刻向左的漂移速度
+		#Leftward marker drift per tick while the marker is inside the catch zone.
+		# Default: 0.0024
+		# Range: 0.0 ~ 1.0
+		left_drift_inside_zone = 0.0024
+		#光标在判定区外时按住控制键的向右加速度
+		#Rightward marker acceleration per tick while the control key is held outside the catch zone.
+		# Default: 0.0085
+		# Range: 0.0 ~ 1.0
+		right_control_outside_zone = 0.0085
+		#光标在判定区内时按住控制键的向右加速度
+		#Rightward marker acceleration per tick while the control key is held inside the catch zone.
+		# Default: 0.0055
+		# Range: 0.0 ~ 1.0
+		right_control_inside_zone = 0.0055
+		#光标每刻的速度阻尼倍率，越小减速越快
+		#Marker velocity damping multiplier applied every tick; smaller values slow the marker down faster.
+		# Default: 0.92
+		# Range: 0.0 ~ 1.0
+		velocity_damping = 0.92
+		#光标位于判定区内并按住控制键时每刻获得的进度
+		#Progress gained per tick while the marker is inside the catch zone and the control key is held.
+		# Default: 1.2
+		# Range: 0.0 ~ 100.0
+		progress_gain_in_zone_while_pressing = 1.2
+		#光标位于判定区内但未按住控制键时每刻损失的进度
+		#Progress lost per tick while the marker is inside the catch zone but the control key is not held.
+		# Default: 0.2
+		# Range: 0.0 ~ 100.0
+		progress_decay_in_zone = 0.2
+		#光标位于判定区外时每刻损失的进度
+		#Progress lost per tick while the marker is outside the catch zone.
+		# Default: 1.2
+		# Range: 0.0 ~ 100.0
+		progress_decay_outside_zone = 1.2
+		#单次小游戏的最长持续时间（刻）
+		#Maximum duration of a single minigame in ticks.
+		# Default: 600
+		# Range: 1 ~ 72000
+		max_duration_ticks = 600
+		#服务端向客户端同步小游戏状态的间隔（刻）;将该值调高可降低性能消耗，但小游戏画面会出现明显卡顿；
+		#Interval in ticks between server-to-client minigame state syncs.
+		# Default: 1
+		# Range: 1 ~ 1200
+		sync_interval_ticks = 1
+		#微型脉冲浮标充能完全蓄满所需的刻数
+		#Ticks required to fully charge the pulse attack.
+		# Default: 80
+		# Range: 1 ~ 72000
+		pulse_charge_ticks = 80
+		#微型脉冲浮标释放的脉冲的持续时长（刻）
+		#Duration of the pulse attack in ticks.
+		# Default: 20
+		# Range: 1 ~ 72000
+		pulse_duration_ticks = 20
+		#微型脉冲浮标释放的脉冲生效期间每刻获得的进度
+		#Progress gained per tick while the pulse attack is active.
+		# Default: 2.5
+		# Range: 0.0 ~ 100.0
+		pulse_progress_gain_per_tick = 2.5
+		#鱼获为巨型水产时的进度增益倍率；小于 1 的值会使进度获取减慢， 1 时不变，大于 1 则获取加速；
+		#Progress gain multiplier when the catch is a giant aquatic item.
+		# Default: 0.7
+		# Range: 0.0 ~ 1.0
+		giant_progress_gain_multiplier = 0.7
+
+	#玩家与钓竿等级带来的缩放、等级成长曲线以及默认钓鱼经验
+	#Player/rod level scaling, level progression, and default fishing XP.
+	[minigame.level_curve]
+		#钓竿等级高于鱼获等级时，每级增加的判定区宽度
+		#Catch zone width added per rod level above the catch's item level.
+		# Default: 0.05
+		# Range: -1.0 ~ 1.0
+		zone_width_per_rod_level = 0.05
+		#判定区宽度下限
+		#Minimum catch zone width.
+		# Default: 0.2
+		# Range: 0.01 ~ 1.0
+		min_zone_width = 0.2
+		#判定区宽度上限
+		#Maximum catch zone width.
+		# Default: 0.67
+		# Range: 0.01 ~ 1.0
+		max_zone_width = 0.67
+		#玩家等级高于鱼获等级时，每级降低的光标灵敏度倍率
+		#Marker sensitivity multiplier removed per player level above the catch's item level.
+		# Default: 0.15
+		# Range: -10.0 ~ 10.0
+		movement_multiplier_per_level = 0.15
+		#光标灵敏度倍率下限
+		#Minimum marker sensitivity multiplier.
+		# Default: 0.55
+		# Range: 0.01 ~ 10.0
+		movement_multiplier_min = 0.55
+		#光标灵敏度倍率上限
+		#Maximum marker sensitivity multiplier.
+		# Default: 1.45
+		# Range: 0.01 ~ 10.0
+		movement_multiplier_max = 1.45
+		#钓竿等级高于鱼获等级时，每级降低的判定区移动速度倍率
+		#Catch zone movement speed multiplier removed per rod level above the catch's item level.
+		# Default: 0.25
+		# Range: -10.0 ~ 10.0
+		rod_movement_multiplier_per_level = 0.25
+		#判定区移动速度倍率下限
+		#Minimum catch zone movement speed multiplier.
+		# Default: 0.25
+		# Range: 0.01 ~ 10.0
+		rod_movement_multiplier_min = 0.25
+		#判定区移动速度倍率上限
+		#Maximum catch zone movement speed multiplier.
+		# Default: 1.75
+		# Range: 0.01 ~ 10.0
+		rod_movement_multiplier_max = 1.75
+		#玩家等级高于鱼获等级时，每级增加的进度增益倍率
+		#Progress gain multiplier added per player level above the catch's item level.
+		# Default: 0.15
+		# Range: -10.0 ~ 10.0
+		progress_gain_multiplier_per_level = 0.15
+		#进度增益倍率下限
+		#Minimum progress gain multiplier.
+		# Default: 0.7
+		# Range: 0.01 ~ 10.0
+		progress_gain_multiplier_min = 0.7
+		#进度增益倍率上限
+		#Maximum progress gain multiplier.
+		# Default: 2.05
+		# Range: 0.01 ~ 10.0
+		progress_gain_multiplier_max = 2.05
+		#非鱼类鱼获（不在 #minecraft:fishes 中）的钓鱼进度增益固定倍率
+		#该值直接覆盖等级差与钓具、效果等其他因素带来的进度增益修正
+		#Fixed progress gain multiplier for non-fish catches (items outside #minecraft:fishes).
+		#The value replaces the progress gain modifiers from level difference, rods and effects.
+		# Default: 2.05
+		# Range: 0.01 ~ 10.0
+		non_fish_progress_gain_multiplier = 2.05
+		#玩家的初始钓鱼等级
+		#Initial fishing level of a player.
+		# Default: 1
+		# Range: 1 ~ 99
+		initial_fishing_level = 1
+		#钓鱼等级上限
+		#Maximum fishing level.
+		# Default: 10
+		# Range: 1 ~ 99
+		max_fishing_level = 10
+		#升到下一级所需的基础经验
+		#Base XP required to reach the next fishing level.
+		# Default: 100
+		# Range: > 1
+		base_xp_to_next_level = 100
+		#每级所需经验的增长倍率；所需经验会以这个值进行逐级指数提升；
+		#Multiplier applied to the XP requirement of every further level.
+		# Default: 3
+		# Range: 1 ~ 100
+		xp_to_next_level_multiplier = 3
+		#完美判定额外获得的经验比例，0.25 表示 +25%
+		#Extra XP fraction granted by a perfect judgement; 0.25 means +25%.
+		# Default: 0.25
+		# Range: 0.0 ~ 100.0
+		perfect_xp_bonus = 0.25
+		#鱼获等级 0 的默认钓鱼经验值
+		#Default fishing XP for a level 0 catch.
+		# Default: 1
+		# Range: > 0
+		default_loot_xp_level_0 = 1
+		#鱼获等级 1 的默认钓鱼经验值
+		#Default fishing XP for a level 1 catch.
+		# Default: 4
+		# Range: > 0
+		default_loot_xp_level_1 = 4
+		#鱼获等级 2 的默认钓鱼经验值
+		#Default fishing XP for a level 2 catch.
+		# Default: 16
+		# Range: > 0
+		default_loot_xp_level_2 = 16
+		#鱼获等级 3 的默认钓鱼经验值
+		#Default fishing XP for a level 3 catch.
+		# Default: 32
+		# Range: > 0
+		default_loot_xp_level_3 = 32
+		#鱼获等级 4 的默认钓鱼经验值
+		#Default fishing XP for a level 4 catch.
+		# Default: 64
+		# Range: > 0
+		default_loot_xp_level_4 = 64
+		#鱼获等级 5 的默认钓鱼经验值
+		#Default fishing XP for a level 5 catch.
+		# Default: 128
+		# Range: > 0
+		default_loot_xp_level_5 = 128
+		#鱼获等级 6 的默认钓鱼经验值
+		#Default fishing XP for a level 6 catch.
+		# Default: 256
+		# Range: > 0
+		default_loot_xp_level_6 = 256
+		#鱼获等级 7 的默认钓鱼经验值
+		#Default fishing XP for a level 7 catch.
+		# Default: 512
+		# Range: > 0
+		default_loot_xp_level_7 = 512
+		#鱼获等级 8 的默认钓鱼经验值
+		#Default fishing XP for a level 8 catch.
+		# Default: 1024
+		# Range: > 0
+		default_loot_xp_level_8 = 1024
+		#鱼获等级 9 的默认钓鱼经验值
+		#Default fishing XP for a level 9 catch.
+		# Default: 2048
+		# Range: > 0
+		default_loot_xp_level_9 = 2048
+
+	#各挣扎性格下鱼判定区的移动方式
+	#Fish catch-zone movement by behavior.
+	[minigame.fish_behavior]
+		#所有挣扎性格共用的判定区基础移动速度
+		#Base movement speed of the catch zone, shared by every behavior.
+		# Default: 0.006
+		# Range: 0.0 ~ 1.0
+		base_zone_speed = 0.006
+
+		#平静：移动缓慢、停留时间长
+		#Calm: the catch zone moves slowly and holds still for longer.
+		[minigame.fish_behavior.calm]
+			#两次改变目标位置之间的间隔（刻）
+			#Ticks between two target-position decisions.
+			# Default: 28
+			# Range: 1 ~ 72000
+			decision_ticks = 28
+			#判定区目标位置的下限（0-1）
+			#Lower bound of the catch zone target position (0-1).
+			# Default: 0.22
+			# Range: 0.0 ~ 1.0
+			target_min = 0.22
+			#判定区目标位置的上限（0-1）
+			#Upper bound of the catch zone target position (0-1).
+			# Default: 0.78
+			# Range: 0.0 ~ 1.0
+			target_max = 0.78
+			#判定区常规移动的速度倍率
+			#Movement speed multiplier of the catch zone under normal movement.
+			# Default: 0.55
+			# Range: 0.0 ~ 100.0
+			speed_multiplier = 0.55
+			#判定区冲刺时的速度倍率
+			#Movement speed multiplier while the catch zone bursts.
+			# Default: 0.55
+			# Range: 0.0 ~ 100.0
+			burst_speed_multiplier = 0.55
+			#判定区速度的阻尼倍率，越小减速越快
+			#Velocity damping multiplier of the catch zone; smaller values slow it down faster.
+			# Default: 0.86
+			# Range: 0.0 ~ 1.0
+			velocity_damping = 0.86
+
+		#漂移：判定区持续缓慢漂移
+		#Drift: the catch zone keeps drifting slowly.
+		[minigame.fish_behavior.drift]
+			#两次改变目标位置之间的间隔（刻）
+			#Ticks between two target-position decisions.
+			# Default: 18
+			# Range: 1 ~ 72000
+			decision_ticks = 18
+			#判定区目标位置的下限（0-1）
+			#Lower bound of the catch zone target position (0-1).
+			# Default: 0.12
+			# Range: 0.0 ~ 1.0
+			target_min = 0.12
+			#判定区目标位置的上限（0-1）
+			#Upper bound of the catch zone target position (0-1).
+			# Default: 0.88
+			# Range: 0.0 ~ 1.0
+			target_max = 0.88
+			#判定区常规移动的速度倍率
+			#Movement speed multiplier of the catch zone under normal movement.
+			# Default: 0.9
+			# Range: 0.0 ~ 100.0
+			speed_multiplier = 0.9
+			#判定区冲刺时的速度倍率
+			#Movement speed multiplier while the catch zone bursts.
+			# Default: 0.9
+			# Range: 0.0 ~ 100.0
+			burst_speed_multiplier = 0.9
+			#判定区速度的阻尼倍率，越小减速越快
+			#Velocity damping multiplier of the catch zone; smaller values slow it down faster.
+			# Default: 0.86
+			# Range: 0.0 ~ 1.0
+			velocity_damping = 0.86
+
+		#冲刺：判定区频繁短距离冲刺
+		#Dart: the catch zone makes frequent short dashes.
+		[minigame.fish_behavior.dart]
+			#两次改变目标位置之间的间隔（刻）
+			#Ticks between two target-position decisions.
+			# Default: 7
+			# Range: 1 ~ 72000
+			decision_ticks = 7
+			#判定区目标位置的下限（0-1）
+			#Lower bound of the catch zone target position (0-1).
+			# Default: 0.08
+			# Range: 0.0 ~ 1.0
+			target_min = 0.08
+			#判定区目标位置的上限（0-1）
+			#Upper bound of the catch zone target position (0-1).
+			# Default: 0.92
+			# Range: 0.0 ~ 1.0
+			target_max = 0.92
+			#判定区常规移动的速度倍率
+			#Movement speed multiplier of the catch zone under normal movement.
+			# Default: 1.6
+			# Range: 0.0 ~ 100.0
+			speed_multiplier = 1.6
+			#判定区冲刺时的速度倍率
+			#Movement speed multiplier while the catch zone bursts.
+			# Default: 1.6
+			# Range: 0.0 ~ 100.0
+			burst_speed_multiplier = 1.6
+			#判定区速度的阻尼倍率，越小减速越快
+			#Velocity damping multiplier of the catch zone; smaller values slow it down faster.
+			# Default: 0.74
+			# Range: 0.0 ~ 1.0
+			velocity_damping = 0.74
+
+		#紊乱：判定区频繁改变方向
+		#Erratic: the catch zone changes direction unpredictably.
+		[minigame.fish_behavior.erratic]
+			#两次改变目标位置之间的间隔（刻）
+			#Ticks between two target-position decisions.
+			# Default: 7
+			# Range: 1 ~ 72000
+			decision_ticks = 7
+			#判定区目标位置的下限（0-1）
+			#Lower bound of the catch zone target position (0-1).
+			# Default: 0.05
+			# Range: 0.0 ~ 1.0
+			target_min = 0.05
+			#判定区目标位置的上限（0-1）
+			#Upper bound of the catch zone target position (0-1).
+			# Default: 0.95
+			# Range: 0.0 ~ 1.0
+			target_max = 0.95
+			#判定区常规移动的速度倍率
+			#Movement speed multiplier of the catch zone under normal movement.
+			# Default: 1.5
+			# Range: 0.0 ~ 100.0
+			speed_multiplier = 1.5
+			#判定区冲刺时的速度倍率
+			#Movement speed multiplier while the catch zone bursts.
+			# Default: 1.5
+			# Range: 0.0 ~ 100.0
+			burst_speed_multiplier = 1.5
+			#判定区速度的阻尼倍率，越小减速越快
+			#Velocity damping multiplier of the catch zone; smaller values slow it down faster.
+			# Default: 0.86
+			# Range: 0.0 ~ 1.0
+			velocity_damping = 0.86
+
+		#传说：判定区范围最宽、冲刺极快
+		#Legendary: the widest catch zone with the fastest bursts.
+		[minigame.fish_behavior.legendary]
+			#两次改变目标位置之间的间隔（刻）
+			#Ticks between two target-position decisions.
+			# Default: 5
+			# Range: 1 ~ 72000
+			decision_ticks = 5
+			#判定区目标位置的下限（0-1）
+			#Lower bound of the catch zone target position (0-1).
+			# Default: 0.03
+			# Range: 0.0 ~ 1.0
+			target_min = 0.03
+			#判定区目标位置的上限（0-1）
+			#Upper bound of the catch zone target position (0-1).
+			# Default: 0.97
+			# Range: 0.0 ~ 1.0
+			target_max = 0.97
+			#判定区常规移动的速度倍率
+			#Movement speed multiplier of the catch zone under normal movement.
+			# Default: 1.35
+			# Range: 0.0 ~ 100.0
+			speed_multiplier = 1.35
+			#判定区冲刺时的速度倍率
+			#Movement speed multiplier while the catch zone bursts.
+			# Default: 2.35
+			# Range: 0.0 ~ 100.0
+			burst_speed_multiplier = 2.35
+			#判定区速度的阻尼倍率，越小减速越快
+			#Velocity damping multiplier of the catch zone; smaller values slow it down faster.
+			# Default: 0.74
+			# Range: 0.0 ~ 1.0
+			velocity_damping = 0.74
+
+	#神秘宝藏的出现、拾取与经验奖励参数
+	#Mystery treasure appearance, pickup, and XP reward settings.
+	[minigame.treasure]
+		#小游戏中出现神秘宝藏的概率
+		#Chance for a mystery treasure to appear during the minigame.
+		# Default: 0.1
+		# Range: 0.0 ~ 1.0
+		appear_chance = 0.1
+		#神秘宝藏出现前的最短延迟（刻）
+		#Minimum delay in ticks before a mystery treasure appears.
+		# Default: 20
+		# Range: 0 ~ 72000
+		min_delay_ticks = 20
+		#神秘宝藏出现前的最长延迟（刻）
+		#Maximum delay in ticks before a mystery treasure appears.
+		# Default: 60
+		# Range: 0 ~ 72000
+		max_delay_ticks = 60
+		#神秘宝藏的拾取判定宽度（0-1）
+		#Pickup hitbox width of the mystery treasure (0-1).
+		# Default: 0.09
+		# Range: 0.0 ~ 1.0
+		hitbox_width = 0.09
+		#拾取神秘宝藏时获得的额外钓鱼经验值倍率
+		#Base XP multiplier applied when a mystery treasure is collected.
+		# Default: 1.5
+		# Range: 1.0 ~ 10.0
+		collected_base_xp_multiplier = 1.5
+		#神秘宝藏图标的额外映射
+		#格式: "奖励物品ID=图标类型"，贴图文件为 treasure_<图标类型>_icon.png
+		#此处条目会覆盖内置的宝箱图标映射
+		#Additional mystery-treasure icon mappings.
+		#Format: "reward_item_id=icon_type"; the texture file is treasure_<icon_type>_icon.png.
+		#Entries here override the built-in chest mappings.
+		icon_mappings = []
+
+	#小游戏失败时对鱼竿造成的耐久损失
+	#Durability costs when the minigame fails.
+	[minigame.failure_cost]
+		#脱钩时鱼竿损失的耐久点数
+		#Durability points lost by the fishing rod when the hook escapes.
+		# Default: 2
+		# Range: > 0
+		unhook_rod_damage = 2
+		#断线时鱼竿损失的最大耐久比例，0.20 表示 20%
+		#Fraction of the rod's maximum durability lost on a line break; 0.20 means 20%.
+		# Default: 0.2
+		# Range: 0.0 ~ 1.0
+		line_break_durability_ratio = 0.2
+
+	#小游戏被切换钓竿或无效状态打断时，是否给所有鱼竿施加冷却
+	#Apply a fishing-rod cooldown when a running minigame is interrupted by switching rods or an invalid state.
+	[minigame.abandonment_penalty]
+		#是否启用中断惩罚
+		#Whether the interruption penalty is enabled.
+		enabled = true
+
+#展示牌标本物品与渲染规则
+#Plaque specimen items and display rules.
+[specimen]
+	#标本物品列表
+	#仅列出应在展示牌上渲染为实体标本的物品 ID。
+	#格式: "物品ID"。不在此列表中的物品始终按普通物品模型渲染。
+	#Specimen item list.
+	#Lists only the aquatic item ids that should render as entity specimens on plaques.
+	#Format: "item_id". Items that are not listed always render as a plain item model.
+	specimens = ["minecraft:cod", "minecraft:salmon", "minecraft:tropical_fish", "minecraft:pufferfish", "pikafishing:largemouth_bass", "pikafishing:red_snapper", "pikafishing:eel", "pikafishing:tuna", "pikafishing:rainbow_trout", "pikafishing:carp", "pikafishing:koi", "pikafishing:red_koi", "pikafishing:gold_koi", "pikafishing:flying_fish", "pikafishing:slimefish", "pikafishing:goldfish", "pikafishing:brown_mushfin", "pikafishing:red_mushfin", "pikafishing:anglerfish", "pikafishing:blue_guppy", "pikafishing:orange_guppy", "pikafishing:neon_tetra", "pikafishing:killifish", "pikafishing:orange_seahorse", "pikafishing:pink_seahorse", "pikafishing:manta_ray", "pikafishing:angelfish", "pikafishing:red_lionfish", "pikafishing:black_lionfish", "pikafishing:silver_chimaera", "pikafishing:black_silver_chimaera", "pikafishing:spark_eel", "pikafishing:oarfish", "pikafishing:red_oarfish", "pikafishing:black_flying_fish", "pikafishing:rainbow_manta_ray", "pikafishing:magmafish", "pikafishing:silver_arowana", "pikafishing:gold_arowana", "pikafishing:red_arowana", "pikafishing:guardian", "pikafishing:elder_guardian", "pikafishing:phantom", "pikafishing:dolphin", "pikafishing:turtle", "pikafishing:nautilus", "pikafishing:zombie_nautilus", "pikafishing:coral_zombie_nautilus"]
+	#展示牌渲染规则
+	#仅对 specimens 列表中的物品生效。默认使用活体冻结鱼钩的物品到实体映射来渲染静态实体标本；无实体映射时自动回退至物品模型。
+	#格式: "物品ID=entity|scale=1|offset=x,y,z|rotation=x,y,z|entity_nbt={实体SNBT}"。可省略任意变换参数。
+	#entity_nbt 只影响展示牌伪实体，会覆盖活体冻结鱼钩映射中的同名 NBT 字段。
+	#热带鱼可用 "minecraft:tropical_fish#small=offset_x=..." 或 #large 为对应体型覆盖单项变换；未填写的字段继承热带鱼基础规则。
+	#使用 "物品ID=item" 可强制使用普通物品模型。
+	#Plaque display rules.
+	#Only entries whose item is in the specimens list are affected. By default the item-to-entity mapping of the cryogenic fishing hook renders a static entity specimen; without a mapping the rule falls back to the item model.
+	#Format: "item_id=entity|scale=1|offset=x,y,z|rotation=x,y,z|entity_nbt={entity SNBT}". Any transform parameter may be omitted.
+	#entity_nbt affects only the plaque pseudo-entity and overrides same-named NBT fields from the cryogenic fishing hook mapping.
+	#For tropical fish, "minecraft:tropical_fish#small=offset_x=..." or #large overrides single transform values for that body type; omitted fields inherit the base tropical fish rule.
+	#Use "item_id=item" to force the plain item model.
+	display_rules = ["minecraft:cod=entity|offset=0,0.2125,0.125", "minecraft:salmon=entity|offset=0,0.2125,0.125", "minecraft:pufferfish=entity|offset=-0.4375,0.1825,0|rotation=0,45,-90|entity_nbt={PuffState:2}", "minecraft:tropical_fish=entity|offset=0,0.2125,0", "minecraft:tropical_fish#small=offset_x=0.0625|offset_z=0.09375", "minecraft:tropical_fish#large=offset_x=-0.125|offset_z=0.125", "pikafishing:manta_ray=entity|offset=0,0.55,0|rotation=90,-90,90", "pikafishing:rainbow_manta_ray=entity|offset=0,0.55,0|rotation=90,-90,90", "pikafishing:turtle=entity|offset=0.0625,0.4,0|rotation=90,-90,90", "pikafishing:phantom=entity|offset=0,0.45,0|rotation=90,-90,90", "pikafishing:dolphin=entity|offset=-0.3125,0.125,0.1875|rotation=0,0,-90", "pikafishing:guardian=entity|offset=-0.5,-0.15,0|rotation=0,0,-90", "pikafishing:elder_guardian=entity|offset=-1.175,-0.775,0|rotation=0,0,-90", "pikafishing:black_silver_chimaera=entity|offset=-0.5,0.275,0|rotation=0,0,-90", "pikafishing:goldfish=entity|offset=-0.03125,0.025,0", "pikafishing:nautilus=entity|offset=-0.5,-0.0375,0.25|rotation=0,0,-90", "pikafishing:zombie_nautilus=entity|offset=-0.5,-0.0375,0.25|rotation=0,0,-90", "pikafishing:coral_zombie_nautilus=entity|offset=-0.5,-0.0375,0.25|rotation=0,0,-90", "pikafishing:anglerfish=entity|offset=0,0.0375,0", "pikafishing:blue_guppy=entity|offset=0,0.2125,0", "pikafishing:orange_guppy=entity|offset=0,0.2125,0", "pikafishing:angelfish=entity|offset=0,0.2125,0", "pikafishing:killifish=entity|offset=0,0.2125,0", "pikafishing:slimefish=entity|offset=0,0.025,0", "pikafishing:magmafish=entity|offset=0,0.025,0", "pikafishing:brown_mushfin=entity|offset=0,-0.0375,0", "pikafishing:red_mushfin=entity|offset=0,-0.0375,0"]
+
+#生物的自然生成权重
+#Natural spawn weights of the mod's waterlife.
+[natural_spawns]
+	#生物自然生成频率
+	#格式: "实体ID=注入权重,判定次数"
+	#注入权重为 0 时关闭该生物的群系注入；判定次数为 0 时必定通过，数值越大每次生成越稀有
+	#群系、群体数量、流体与栖息地要求仍由模组的自然生成设计决定
+	#Natural-waterlife spawn frequency.
+	#Format: "entity_id=weight,rolls".
+	#Weight 0 disables biome injection; rolls 0 always passes and higher values make each spawn attempt rarer.
+	#Biome, group size, fluid and habitat requirements remain defined by the mod's natural-spawn design.
+	settings = ["pikafishing:largemouth_bass=12,0", "pikafishing:crayfish=10,0", "pikafishing:carp=10,0", "pikafishing:eel=5,0", "pikafishing:rainbow_trout=8,0", "pikafishing:koi=4,0", "pikafishing:red_koi=1,0", "pikafishing:killifish=6,0", "pikafishing:slimefish=5,0", "pikafishing:brown_mushfin=6,0", "pikafishing:blue_guppy=12,0", "pikafishing:neon_tetra=10,0", "pikafishing:silver_arowana=4,0", "pikafishing:brine_shrimp=8,0", "pikafishing:red_snapper=6,0", "pikafishing:tuna=6,0", "pikafishing:flying_fish=6,0", "pikafishing:orange_seahorse=8,0", "pikafishing:blue_starfish=8,0", "pikafishing:red_lionfish=5,0", "pikafishing:man_o_war=2,0", "pikafishing:rock_lobster=6,0", "pikafishing:sea_cucumber=6,0", "pikafishing:sea_slug=6,0", "pikafishing:silver_chimaera=2,0", "pikafishing:krill=8,0", "pikafishing:magmafish=4,0"]

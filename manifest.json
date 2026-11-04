@@ -693,10 +693,906 @@
     }
   ],
   "remove": [],
+  "config": [
+    {
+      "path": "config/DistantHorizons.toml",
+      "sha512": "05f158d28cf4170b9a44939fea2a3d79b1b2c703ede3c348cfd5b1651488f601143228b716f56f5dfa18fa1ec92823f316f0c3708e83ac80ae8f1005ad3a3fb6",
+      "size": 37993,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/DistantHorizons.toml"
+    },
+    {
+      "path": "config/MouseTweaks.cfg",
+      "sha512": "5a86dc45e2999e337cb36f69ca9d388495ea496058b7346d24369c272bec91af055d3fbc37a26a86d0af03a1a29605c4c846612eb58280bafdb648716220927c",
+      "size": 135,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/MouseTweaks.cfg"
+    },
+    {
+      "path": "config/advancementplaques.toml",
+      "sha512": "330ddde4ec6ae024eb7dff234e9fa1e9402ea7037988133c806f27956d5e6028a52acf4ab92196c0252b186ba5876a09aae8f7bd2e2d572b0480c551746f3c3d",
+      "size": 3284,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/advancementplaques.toml"
+    },
+    {
+      "path": "config/ambient_camera-client.toml",
+      "sha512": "928d16f1f1e6c9d22d5c45764c8c994f7a49a5776871b6a45b7e6557f7fee7b1106aa3403cdd9d90c6ec4f4817b9456cdd08e38be66c07f00c0e758ef4d59245",
+      "size": 3364,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/ambient_camera-client.toml"
+    },
+    {
+      "path": "config/amendments-client.toml",
+      "sha512": "5453974c45d6b66561b2699ac4fad0e47825a84a6dce5a68b005a4f99bad05f7d792d6a971835087d00782cee8587553f9ad20d28def20b9827ecb472038e032",
+      "size": 5819,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/amendments-client.toml"
+    },
+    {
+      "path": "config/amendments-common.toml",
+      "sha512": "ecd05d502fc532ce9e2e5f01f5f1e9359c479d721b8a7344edab38cdda0573e2df557224f013b9d966192f1730aa4db86992a815cd6436e992c713193cde2a7c",
+      "size": 5764,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/amendments-common.toml"
+    },
+    {
+      "path": "config/appleskin-client.toml",
+      "sha512": "b9536fa807019d5395ee1ae5e97c9fa6b7d2e573508a87381873b0b46e8fc199a71787831b4a8ec64a2fed370514f4dc0d4a9f7033f39bd5f0fba324cbed94d9",
+      "size": 1376,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/appleskin-client.toml"
+    },
+    {
+      "path": "config/armoredarms-client.toml",
+      "sha512": "8155ec0206ad3942531e410c7a08b5750455708453252a262425a43e42bc150099b5b4d867a56ae647778ecdd883b4a512ec1e5257a824b8fbde9880802080c0",
+      "size": 981,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/armoredarms-client.toml"
+    },
+    {
+      "path": "config/autumnity-common.toml",
+      "sha512": "bc34a6acf0cd265f9e1b439b70771324732127232b9b71ea23efa8f30a3e5863018659c9f18239cb8a959e2f9672ca38a50d4a0849c96ec99d2b0dc0af8cb383",
+      "size": 165,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/autumnity-common.toml"
+    },
+    {
+      "path": "config/backslots-server.toml",
+      "sha512": "49f205294e04e75a40ac0404a12ff543b8f3f9583aadafa4720c8e8cce0304215dfdcdb52bb57cf3f383a5bf3faa8b81b99c5642c32788690d9d4e36305152e9",
+      "size": 231,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/backslots-server.toml"
+    },
+    {
+      "path": "config/badoptimizations.txt",
+      "sha512": "d2d40b2ca9bc67a990a7f84c79411eba44e6b80a34b47ed1ff026488e6dc782b91727fb8be69cc6dcf8204c3d709298ff8438d7816a5b7db028f2ed118225a83",
+      "size": 3458,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/badoptimizations.txt"
+    },
+    {
+      "path": "config/betterdays-client.toml",
+      "sha512": "a00a618a5ec8214fd687e9e4939ee46544709147023ae2ba39c7500db5f10884a9f902e1fe9099b8a650107cef292e877ef237205bd321c22ddf04017733b591",
+      "size": 1044,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/betterdays-client.toml"
+    },
+    {
+      "path": "config/betterdays-common.toml",
+      "sha512": "c3ae8c7f1f02161defa85a9e94710593c346cd7a6a409619bf11724771758a534b4badad4279ac4d5fa31ad717d3e0fe356e1c317746678beec3dd77bce5a0f3",
+      "size": 11743,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/betterdays-common.toml"
+    },
+    {
+      "path": "config/betterdungeons-neoforge-1_21.toml",
+      "sha512": "49bf9789b66ae632a7a0568ce6b1a1f2a714195ab75dcbc7baf75fdedbac99a5904b0c6ba5c5c62443febf56de9266734a39501f0ccec6b4887fc2905a3962c6",
+      "size": 3486,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/betterdungeons-neoforge-1_21.toml"
+    },
+    {
+      "path": "config/betterthirdperson-common.toml",
+      "sha512": "6f5203b92946a5b88ee65839aee4c366c19fa8cdc70151ec885d4a2e986fdf72f68ef0b77f10d8cdc11b7925bcd6c9e8a01ab77b89fdb2bf26f8740e477126fb",
+      "size": 749,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/betterthirdperson-common.toml"
+    },
+    {
+      "path": "config/biomesoplenty/biome_toggles.json",
+      "sha512": "941feb4204af8d410b679555425956c25e7a9eadb577cc8f3def75bc8a953d31a6d6c3cd17fe40a3fd4e284384b8253e2a38440e5c9e26ce626317da37863603",
+      "size": 2192,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/biomesoplenty/biome_toggles.json"
+    },
+    {
+      "path": "config/biomesoplenty/gameplay.toml",
+      "sha512": "8298b22afb60e5b5efa2f363fd1ea45e27a2fa4cf3eca7e3389762685cf0b7fcbf6a0a03f8d8be709d1871ff0a179ed323f6d3be29e361530dd03d2e88b111a4",
+      "size": 109,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/biomesoplenty/gameplay.toml"
+    },
+    {
+      "path": "config/biomesoplenty/generation.toml",
+      "sha512": "aba5bc48665f1b7c1170a3349cad0035dfbb913258ff6ed47c4e7b21e654034fe1daeb8dcb758c087a84105d8c2e448b77f46db978bfb602e8d47ddb905e84c7",
+      "size": 521,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/biomesoplenty/generation.toml"
+    },
+    {
+      "path": "config/blueprint-client.toml",
+      "sha512": "01aa8fbd4511b0e98f6d280d7a8fd48d518f4df6fea8494c427e02a065728c8e6b87c61a1c256f3f9273462d9b15cd8f28f1868d8697c3f55787e377b0a01c31",
+      "size": 1035,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/blueprint-client.toml"
+    },
+    {
+      "path": "config/blueprint-common.toml",
+      "sha512": "4bde4d9a98d2ef64db626f6e21c848d24e70e11978aec8cb8a73b4fd6ffaadfc1a1ffa713d32607eb3ca547dda78b761fa8d41b1d146d8ad68b4c1820866a2fe",
+      "size": 523,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/blueprint-common.toml"
+    },
+    {
+      "path": "config/chestsearchbar.json",
+      "sha512": "e015b52b5c44a5a9e6bd9fc4e7ce5dd5397432cbaa8c22b8968e4f2f440aca32035949991994346f7193fb7ffd67c6fe96070ffc4afaf4af22728244de007f76",
+      "size": 728,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/chestsearchbar.json"
+    },
+    {
+      "path": "config/colored_lighting.json",
+      "sha512": "a784b9d470c36f492fb7d07dc5c03db452a04df518ffd54b691e901d9c9910ed893e8278f7e526d87f5714826871367ca04c245f5eb257248340805ae361d836",
+      "size": 2080,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/colored_lighting.json"
+    },
+    {
+      "path": "config/continuity.json",
+      "sha512": "7fd46c3ffde96e45dabfced020f477a21d9b0f0fd9fce11caa11b07d4505eaaa5fb27157abea54bae0b2a2b591a327cefe95c28c358f01928d2627a0d5e33ab4",
+      "size": 122,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/continuity.json"
+    },
+    {
+      "path": "config/corpse-server.toml",
+      "sha512": "8be95acb3de6070931c0f9b6b5d9d2d5bae6600579f852fff1284314d56870b8f234d26c89ac2c7fcb6f4d3f311c2297d6ecf9d5a1b27cf32a0e9be60d124284",
+      "size": 1092,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/corpse-server.toml"
+    },
+    {
+      "path": "config/crawl.properties",
+      "sha512": "ede3076f9a02ee65f92bc6772a6cd2273684d5d6ca47188b536dc509b6aa24bfcd0ed5ade6b73bcc6a7871801bd4e4fdfcc2654bde9098e40cf23107bd80c698",
+      "size": 61,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/crawl.properties"
+    },
+    {
+      "path": "config/create-client.toml",
+      "sha512": "ced98482f870dd1badef392df9d0f20b3afd6bc7bffd6afa0b65b32eeb85e92361f39f326709789a9b1d1a146f3e00cb20aa6c170f1086e8f98cd9cd977df8f4",
+      "size": 4795,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/create-client.toml"
+    },
+    {
+      "path": "config/create-common.toml",
+      "sha512": "7e2aeb6c5ed8bb0db13e8a6aa638bf34ba945f0352691ce4c748ea9721deb3031eda49aae7a3d4b518fddc63dcd6da94a4df369dd4427cc115f440351c653b14",
+      "size": 153,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/create-common.toml"
+    },
+    {
+      "path": "config/create-server.toml",
+      "sha512": "1dd1fae38999bdf978de461268fd821df767cfe0eea4616a20972627f556f8aceb563fbcbb90d371eb74eb7f60613d649114bc6c759f6484b8a3b3c683fe69d4",
+      "size": 16890,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/create-server.toml"
+    },
+    {
+      "path": "config/creativecore-client.json",
+      "sha512": "8ccaa9213a22d85ee861ab0d1f67ba605aca8378b953361dbf61abdbf7c738381539369050da4d8df134751d169466af348ccb913552f671f17e7a17a0b4d02e",
+      "size": 23,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/creativecore-client.json"
+    },
+    {
+      "path": "config/creativecore.json",
+      "sha512": "96d723f4a27c27cd8d0371cf51c23dbdf2708671c53b135ed6f0989aa78d3b66eb052709100a2c9dababd3122de025f315373a6b2d952e5adcce51d0325ec31e",
+      "size": 274,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/creativecore.json"
+    },
+    {
+      "path": "config/curios-client.toml",
+      "sha512": "6bf222ee862df0a5f3b36697d7b0ff56a3ed38146b3fa0e9226b5a58cfd331b40d59bdb9ad8e4fb1036ac7af35815a63b32a6c9876e4a78093e5815b8a69668c",
+      "size": 766,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/curios-client.toml"
+    },
+    {
+      "path": "config/curios-common.toml",
+      "sha512": "db96906ef78b65bf73d2bb9b8ee925cdff002e6caa33df9782deb24c474aef50a5ae7ad2cfbbee683944cf817fb053b1f6e2bd49461777399dcba6025a4ea9db",
+      "size": 159,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/curios-common.toml"
+    },
+    {
+      "path": "config/curios-server.toml",
+      "sha512": "f78a8d5241baf2bf65666a2821a670259ffbdb18a75f983bcfb63fe86d635ae3d842c30f996a3c7104945aea13e6708daa4235a91b9c96126e50f0a92ec1ab3d",
+      "size": 483,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/curios-server.toml"
+    },
+    {
+      "path": "config/dynamiccrosshair.json5",
+      "sha512": "fc2d9173a7e0f0a8dc1f494972eb574fab8f21ca6b4c8a2d4a3b2e650acacf6fb9c9ff214afb9eca9d44791bba3c6ee6685bd85047582a7e570790e54dd7844c",
+      "size": 3369,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/dynamiccrosshair.json5"
+    },
+    {
+      "path": "config/dynamictrees-common.toml",
+      "sha512": "8706c657b44355e12cae2276db404861ef3eb8da9951495b25b73bd43a8e62069ce2a571d8d2fca742aea62d639428b67fc7380a49e70c7256bb5bae1e090ef9",
+      "size": 2212,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/dynamictrees-common.toml"
+    },
+    {
+      "path": "config/dynamictrees-server.toml",
+      "sha512": "5d161cc8e8f12045bd63204012d8b114e6d28ef35601cd38fb7e6ceb30bc771e56938b7caab7ad5db8d2fd9da53a7fd1aecac7e07c09901b93d76c48c09039df",
+      "size": 6365,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/dynamictrees-server.toml"
+    },
+    {
+      "path": "config/emotecraft.json",
+      "sha512": "3c79d3de6255f4b1cbbadfbf0a2c77bd1c25275c6bb097895f1c0adfceef6b6843a4c1a7ae710ec09a78e8329c87b25f7e538df5e9c00dbb665694e1ca5dbe43",
+      "size": 840,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/emotecraft.json"
+    },
+    {
+      "path": "config/emotecraft_emote_map.json",
+      "sha512": "6bd56a5f2bfd22c15516e6d836f421e76f77a7efba038c9a8b5e06b91b6aeb9a63ccc8eae3f2e09f58d1ab6238ead97d339d82249936774bcaebd75ed261a084",
+      "size": 117,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/emotecraft_emote_map.json"
+    },
+    {
+      "path": "config/entityculling.json",
+      "sha512": "4ec9e69b2a81ec56e68680ca8f9536c18b50565b6ea4fd40f66cab50ea34bc7be7be55d21cd506c481cd7a0a56e37f1a562cf488ecaeabe71f937576635552df",
+      "size": 2248,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/entityculling.json"
+    },
+    {
+      "path": "config/explosiveenhancement.json",
+      "sha512": "ebdc693d530728c277818776233fd408cbf24eff7e41608dd58832bba7342212c479b88995a493ae66c1bee8c4b1165755cd8682349134fd97eef154e01952fd",
+      "size": 885,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/explosiveenhancement.json"
+    },
+    {
+      "path": "config/farmersdelight-client.toml",
+      "sha512": "0ed16c548bc978e9da8c655f0580dbfc97fd92a218e448fef0391c9d639f330fec01eca2ab98bd15ee4fcf313b25cd2c72df518b58ad8b7d223e61549a2556ea",
+      "size": 476,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/farmersdelight-client.toml"
+    },
+    {
+      "path": "config/farmersdelight-common.toml",
+      "sha512": "8cfd428010af8f8d19414433c382255a798325c55ab013da0f88da9013fddd432cb3f99aa26e6db08e62d22dd19e5b0c44d7f02b7d1abc7e2fd90e1709876024",
+      "size": 3817,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/farmersdelight-common.toml"
+    },
+    {
+      "path": "config/ferritecore-mixin.toml",
+      "sha512": "8424c53a4203d2b4389697493b2e0240ed42f15ff20fc9a73ad771802013669090d2e89db9881ad421d70e585f33f8e48f89802a140cd3c8ef28468b7c9ea054",
+      "size": 1603,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/ferritecore-mixin.toml"
+    },
+    {
+      "path": "config/flywheel-client.toml",
+      "sha512": "f05026e7f99ae41a6de20a396a7045f03401796592a94b65c9b6d8ace65c67417eed08f708d5f8cb12aedd52d0ede0f013d9ba2949534696f0ff22fe645d0510",
+      "size": 637,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/flywheel-client.toml"
+    },
+    {
+      "path": "config/fml.toml",
+      "sha512": "737017d256a26b32dec29d9a97e0b8a76fc236c78090c83087b844ab498a44e8a3dfef1116d64c06957c89f3ac24bf61c9701bd0403bfc7707939f02ae1c7978",
+      "size": 1550,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fml.toml"
+    },
+    {
+      "path": "config/fzzy_config/keybinds.toml",
+      "sha512": "d895dbe570376791c8e854f077d6f6dfa822a3a32609dbfdb2b2ffa7a5b4f39d737680e710efd0a01bf873e9b82f0c7dadd9b0537ee36c89bd67c5e6a645e8f5",
+      "size": 6403,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/fzzy_config/keybinds.toml"
+    },
+    {
+      "path": "config/ghosts.toml",
+      "sha512": "1eff03e3962f0942c330a0e1fc7fb31d41cd961edcca9511c6dac77b46c767758c3800f5fa37c963f7d21315671824a074f989b382c454a979d14d0a1aab4456",
+      "size": 1065,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/ghosts.toml"
+    },
+    {
+      "path": "config/hauntedharvest-common.toml",
+      "sha512": "46c2dd8952f1f9e82418392b80cff823d447e3acdff7ffaf64f4b677ce7f0d2f85bd3547f1445b4cf92fa0f6c0310fee3a374555b8f5cb12fc2ba6a6201c56a7",
+      "size": 2223,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/hauntedharvest-common.toml"
+    },
+    {
+      "path": "config/highlighter.toml",
+      "sha512": "9359ad04609a18bf99a5b0a218d3591bafefef3ffac5590070a76f81dd5cbc1637de14936a03af300f89bbbce58ba9b537a917ef226fa3c52c378d74831bf47f",
+      "size": 716,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/highlighter.toml"
+    },
+    {
+      "path": "config/holdmyitemsnf-client.toml",
+      "sha512": "a36d67fbaeb9e64071fbdc5a978f43ccfb0adbd2375d10df2dc5b94e116946c2f37d7ade410d1aab14f1376eea34c14569d482ba5452dc883d933d69f9c0593d",
+      "size": 3023,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/holdmyitemsnf-client.toml"
+    },
+    {
+      "path": "config/ice_caves_backport-compat.json5",
+      "sha512": "d50c844eea4f951ca87408cd61b47bcea34daf1f31f8375a73817737ce2c81b8a2edae68624ef8a4b112e9f646d770029a3b69dfee5968cb450d04b17813dbd0",
+      "size": 2234,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/ice_caves_backport-compat.json5"
+    },
+    {
+      "path": "config/icys-better-horses.json",
+      "sha512": "cb27fb925766d6e4c7fc63822628e15d7b9ac4e79ed9634ed3a3b2dbc777d2178dc7daaff63e47a95000bcee148ea85a230c2c22f9aeff475c78586422cfdeab",
+      "size": 2509,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/icys-better-horses.json"
+    },
+    {
+      "path": "config/immediatelyfast.json",
+      "sha512": "b2e4c22100d3990d8d887a7b10459f2fe380adc691e3fa5c29d4afe71092430054a7fdef463c1615ced5ea5849deddce32bda213f572692edc13722b8a215a90",
+      "size": 1114,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/immediatelyfast.json"
+    },
+    {
+      "path": "config/inventoryprofilesnext/f8quit.exaroton.me/prev-villager-trading-config-v2.json",
+      "sha512": "cd571a0a04e5cac8742a477a92037aace3384b27ec079c308221a88c56dd9fa6cfc938cfa538a322b2ef0149c358ebc03d3b4f048436eb5cd6ed90786cffbad1",
+      "size": 1177,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/inventoryprofilesnext/f8quit.exaroton.me/prev-villager-trading-config-v2.json"
+    },
+    {
+      "path": "config/inventoryprofilesnext/f8quit.exaroton.me/villager-trading-config-v2.json",
+      "sha512": "cd571a0a04e5cac8742a477a92037aace3384b27ec079c308221a88c56dd9fa6cfc938cfa538a322b2ef0149c358ebc03d3b4f048436eb5cd6ed90786cffbad1",
+      "size": 1177,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/inventoryprofilesnext/f8quit.exaroton.me/villager-trading-config-v2.json"
+    },
+    {
+      "path": "config/inventoryprofilesnext/integrationHints/exampleIntegrationHints.json",
+      "sha512": "31eafa01c3969f48fcb38d988b801f6d30159c02b552b4d3e9acc375d84e5769f4dc589d14cc3c6eb0f3088b4024e1ca2011da002ad6081c823207509a517f40",
+      "size": 1450,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/inventoryprofilesnext/integrationHints/exampleIntegrationHints.json"
+    },
+    {
+      "path": "config/inventoryprofilesnext/inventoryprofiles.json",
+      "sha512": "5cddfa9728245a87b3a99b5f7bcb2ab1b68a6b619f4184a2feae2e584054c8b964d98f590f32764552a252f550fe27342091b6ad934bf3757836f0f7540e2746",
+      "size": 5183,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/inventoryprofilesnext/inventoryprofiles.json"
+    },
+    {
+      "path": "config/inventoryprofilesnext/villager-trading-config-v2.json",
+      "sha512": "cd571a0a04e5cac8742a477a92037aace3384b27ec079c308221a88c56dd9fa6cfc938cfa538a322b2ef0149c358ebc03d3b4f048436eb5cd6ed90786cffbad1",
+      "size": 1177,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/inventoryprofilesnext/villager-trading-config-v2.json"
+    },
+    {
+      "path": "config/inventoryprofilesnext/Новый мир/prev-villager-trading-config-v2.json",
+      "sha512": "cd571a0a04e5cac8742a477a92037aace3384b27ec079c308221a88c56dd9fa6cfc938cfa538a322b2ef0149c358ebc03d3b4f048436eb5cd6ed90786cffbad1",
+      "size": 1177,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/inventoryprofilesnext/%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%BC%D0%B8%D1%80/prev-villager-trading-config-v2.json"
+    },
+    {
+      "path": "config/inventoryprofilesnext/Новый мир/villager-trading-config-v2.json",
+      "sha512": "cd571a0a04e5cac8742a477a92037aace3384b27ec079c308221a88c56dd9fa6cfc938cfa538a322b2ef0149c358ebc03d3b4f048436eb5cd6ed90786cffbad1",
+      "size": 1177,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/inventoryprofilesnext/%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%BC%D0%B8%D1%80/villager-trading-config-v2.json"
+    },
+    {
+      "path": "config/invmove.json",
+      "sha512": "594a96db12d6c5ad5ae954c96177616f26893b38ad73e025d26edd3d7bdf6ed2d2aea05b1323d09352a042520369dc246aa55204789f663463b872ea7c871f0e",
+      "size": 449,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/invmove.json"
+    },
+    {
+      "path": "config/invmove/unrecognized.json",
+      "sha512": "fe4ac78aa9added171bd140f952e4ad2c5c08527429c808758bf8166f178b329cfa0b21511981a4bb18d7484c85effcf26e220cb3ed33adcf1d7116d8b4b1797",
+      "size": 1904,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/invmove/unrecognized.json"
+    },
+    {
+      "path": "config/invmove/vanilla.json",
+      "sha512": "91f2935913cbbfde2135c1884a1451def8af25b39d33e456108baf000925df7bceebabe582e3926793a83c548f7a9ddb18312ea72c8d81aa2b1de19029a0af65",
+      "size": 1092,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/invmove/vanilla.json"
+    },
+    {
+      "path": "config/iris-excluded.json",
+      "sha512": "a18eb1b4aa4664969acdbc278fecdb547b072445cfccc7524455d40a20c46fee7f34d9dc58dedf8cb238cd4c120a56cb821b9117ad1a51a53a416b587d9fb348",
+      "size": 31,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/iris-excluded.json"
+    },
+    {
+      "path": "config/iris.properties",
+      "sha512": "116e6b683a1fbd6b8973dc5c26814605e1d454e96decb7e702eecbf68dcef44ec2c716533e1225fc35d08b57d04fc909e47ec8b34bb20c557eeaccb098359a3e",
+      "size": 282,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/iris.properties"
+    },
+    {
+      "path": "config/jade/hide-blocks.json",
+      "sha512": "05292934dcf31e2b88fc177e4003fbaada87eedc2efa6c24d1cca62d399d85e497e98d07072c1f2e3d2c9223240e970b8ca89932cc569cf386667b97733a855e",
+      "size": 149,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jade/hide-blocks.json"
+    },
+    {
+      "path": "config/jade/hide-entities.json",
+      "sha512": "7e20668be689f3cf6c961afd950bf263f762250fbf6597bd0225d0b8e9b5357f00362f684aa73ce19f712571bb0478a0a7c3bb2e8eb2efeff69f1e3ff4fbab0d",
+      "size": 243,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jade/hide-entities.json"
+    },
+    {
+      "path": "config/jade/jade.json",
+      "sha512": "d70aa414465eeb73e5f7c3422c8a00d460d407992ef168935ed2b521904b42b2eef99a8f4b33f26f6b6749081c8685b016fad66f86ea876922fb7dc26ded0b28",
+      "size": 1138,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jade/jade.json"
+    },
+    {
+      "path": "config/jade/plugins.json",
+      "sha512": "8c1a3fa42e9a76ef20fd0d2b06118e106f7bce7982181feb449006200ba8b97b3e0f9720a156ca0a972801cd8b2a9f04f54cc797e14619698616b25343bcf974",
+      "size": 2267,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jade/plugins.json"
+    },
+    {
+      "path": "config/jade/sort-order.json",
+      "sha512": "3b38b3c9dc6754c8d6b42f7f0b214e7ececa06f227554629106a7e2cc086ff8ab99fcff91a3c8cdbbea18cf0528d4a0ab9ccf34c29e329f22c6a426a05ea3d28",
+      "size": 2383,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jade/sort-order.json"
+    },
+    {
+      "path": "config/jei/blacklist.json",
+      "sha512": "81642eeec041a8913fee828a23ee0a103334b5c749396bc21cf7d8c543305a503a417f5384873ba649a28749065bcfb533c285a7f3c4a8cd4bcb820324c49017",
+      "size": 19,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jei/blacklist.json"
+    },
+    {
+      "path": "config/jei/client/default/jei-client.ini",
+      "sha512": "6faa39dbabc9a36911a6f33f022fd26dd8d2cee3c03bcaa0545b09e5be91f10dd1c617ef9d904bf83585f402b2c440554263ed59603937eb6ca56531cb4cb7ca",
+      "size": 16752,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jei/client/default/jei-client.ini"
+    },
+    {
+      "path": "config/jei/client/default/jei-colors.ini",
+      "sha512": "8607835e0e9ccecd5980d6df539689b27862c10e5983ae13f8289c473739aa67cfd04f689c3029a5ab60641671952f94d01ef6bcf77036b728d4cbadebcf2f62",
+      "size": 1655,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jei/client/default/jei-colors.ini"
+    },
+    {
+      "path": "config/jei/client/default/jei-debug.ini",
+      "sha512": "561872b0f40448977dbfc261d71c4acd04dc40b3f84e8e84de3093d1d7f10b9ca50ab966ba85e9b5cb926b8b99898d93b51f9a3c7dd0462f98b0f8798ef2cea0",
+      "size": 1174,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jei/client/default/jei-debug.ini"
+    },
+    {
+      "path": "config/jei/client/default/jei-mod-id-format.ini",
+      "sha512": "8025cf48db77d092f21b963957e4a5b382e734f83344c3e9a38315f6c7b2b52012403fd53cf255c01d8fcb39a40a7529dc7e3357c254df674eb33f2241b0a79d",
+      "size": 863,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jei/client/default/jei-mod-id-format.ini"
+    },
+    {
+      "path": "config/jei/client/ingredient-list-mod-sort-order.ini",
+      "sha512": "527b9874a930c79e81336e08b840894ed8193dba002c65e37868f6d42be373ef6cd1ebb474175faf28a32300cf2c120e77db0f18b408a4b4d7b91d01b4915619",
+      "size": 534,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jei/client/ingredient-list-mod-sort-order.ini"
+    },
+    {
+      "path": "config/jei/client/ingredient-list-type-sort-order.ini",
+      "sha512": "ed512beca25990cf6f532e27b1498826d33389fa0bd289c71833862b1466f24b1151faac4b2986a4c41e0d035df88e7c3280cc5acd3c889554679daa3f527141",
+      "size": 103,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jei/client/ingredient-list-type-sort-order.ini"
+    },
+    {
+      "path": "config/jei/client/recipe-category-sort-order.ini",
+      "sha512": "5d982c6b19bbc20c466e28f46dc0ce4b1bf483b17300eb58c36d03b2e5f4b484e6c2d114fdce3e8668ad31012d50aaed90b74c78bcc6c549ba90c0f62189ab90",
+      "size": 1260,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jei/client/recipe-category-sort-order.ini"
+    },
+    {
+      "path": "config/jei/server/world/default/jei-server.ini",
+      "sha512": "b28d484975aa38b690208e89c121339cba45c4cc5d931ce61a78d3a89929dd3ea3c900dfddfcdfaf611d61479b10ad7480d689992735701b1b10acf559af4373",
+      "size": 760,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jei/server/world/default/jei-server.ini"
+    },
+    {
+      "path": "config/jei/world/local/Новый мир/lookupHistory.json",
+      "sha512": "4b74c5fe8bbb7024ca4c8dd8abe4b159be10632740ebcb8746b980d6fc990843aed17b82662bc4d773c24db9d7547ca1b5e7b6c46ec521b6bd65a9bd12ffc3e5",
+      "size": 118,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/jei/world/local/%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%BC%D0%B8%D1%80/lookupHistory.json"
+    },
+    {
+      "path": "config/journeymap-server.toml",
+      "sha512": "44dd89795b418c23f72df84a3c92bf0a0a0bce175291673973e2098cc2ddf38a8925733a520637f4dd31fcfab928874abec9845deb9b25027b8f574da938decb",
+      "size": 550,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/journeymap-server.toml"
+    },
+    {
+      "path": "config/lambdynlights.toml",
+      "sha512": "815472cd8f9ae88fac01efaf3c5ce416ebc47a49af50414e3128183170fea9f61dd41a49eead0374091f7f89673e5ef10dc5997e0cb11b3f86ae0cab6b6095f9",
+      "size": 1448,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/lambdynlights.toml"
+    },
+    {
+      "path": "config/libjf_config_core_v2.json5",
+      "sha512": "a0fd6464c4c994fb888a0e0267b74fcb96fb5a6ab5bb7375a55a9b6a07345a22628142aecf6eaa484f6b0c83fa061dfe364bcfbbc675d79389acfbd92e3687e1",
+      "size": 29,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/libjf_config_core_v2.json5"
+    },
+    {
+      "path": "config/libjf_translate_v1.json5",
+      "sha512": "78ad177f333935643e59d717206911c580c87e4a1283df6c70b49ad76dfca97de44731ebe6a66d96503c14252424a4ed34fb41300c2c3802fbfed54c64006184",
+      "size": 111,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/libjf_translate_v1.json5"
+    },
+    {
+      "path": "config/libjf_web_v1.json5",
+      "sha512": "636d55582ac81221c96a16d378ba8ee89914a867af72b96e76ab87e7da50d8a04086f9c7efb797a3a685e708b9385d27d692a1d68494ab80af164113ca7fff78",
+      "size": 126,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/libjf_web_v1.json5"
+    },
+    {
+      "path": "config/lithium.properties",
+      "sha512": "7cc1ad34b644be80c01adecf595809874a1d0a86e9b954e4ba39226bb96ec39c8433ce787c7e11280c598a2cf103c00949ea37406abc3e573fb7d28cca1a0573",
+      "size": 267,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/lithium.properties"
+    },
+    {
+      "path": "config/livingwind-client.toml",
+      "sha512": "88c84d89a5eba1faa0c97bcfc099beb0988c3b1a480baff65ec2022c358ceb8454dd5008030ed507ec606ab4def6988f20bdc52ade01e5eb27d9c5377e5a4d0b",
+      "size": 17705,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/livingwind-client.toml"
+    },
+    {
+      "path": "config/livingwind-common.toml",
+      "sha512": "c16141d1234aabd7677f9fc06b613503f0a7c779274e10fe7d0c1e43f6015f076a4244cb704047e2741ed8f30b03dd59352617173322114e6181cd3e4dcd2be8",
+      "size": 10907,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/livingwind-common.toml"
+    },
+    {
+      "path": "config/mezz_config/client/default/settings.ini",
+      "sha512": "9b483241dd637e55ab133efd38632011c2d4a9e9944238553bcee59c6bf96c3d34469e355235b0b139f3d80c86b71630da0d6cfc44602c4c2e208e3b69b8bc2d",
+      "size": 1452,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/mezz_config/client/default/settings.ini"
+    },
+    {
+      "path": "config/modelfix-client.toml",
+      "sha512": "e7d1a4d62bdd71dc136dd05820ab37c3647f2091bdb463b9a1dae8fcdbd9f008fdc141f67ba40fa39a1b1ef44b48e5932bb40adb03614c8fe90c70f04b28b8bd",
+      "size": 1383,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/modelfix-client.toml"
+    },
+    {
+      "path": "config/modonomicon-client.toml",
+      "sha512": "87801293560984073a40198954bdee20ea3e733db4aaf007e65fb9e6159fa285a6b3bd572e640d10d8861f616217aae604f1aa132d5292b0a3bcea6244e6f44c",
+      "size": 563,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/modonomicon-client.toml"
+    },
+    {
+      "path": "config/moonlight-client.toml",
+      "sha512": "a37fa0a3d73ba0dc6b238fdefea850e97e5567d6167e0981d018b74e609876117210cbdbbb70f2f94d12b2b50463c7493b3346fec23d855fe0b4730f662966f7",
+      "size": 2320,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/moonlight-client.toml"
+    },
+    {
+      "path": "config/moonlight-common.toml",
+      "sha512": "2b537719780dde0b9b640e74e446a42db124149c2b5f91398cad3c81e204259d4d3628aef6b260e4043804fd56afbe7d98060fa683f6e275e0cd21f66050a23e",
+      "size": 960,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/moonlight-common.toml"
+    },
+    {
+      "path": "config/neoforge-client.toml",
+      "sha512": "3b2cddc1c8a2b7b8dd29a716d58b998dbd028ddcad35275eeac0a7100540dab4170975d0b420af2e3152cff5b509977fee15eca1decdff2e899c287963efff51",
+      "size": 578,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/neoforge-client.toml"
+    },
+    {
+      "path": "config/neoforge-common.toml",
+      "sha512": "5483ff3efb2699d53ac5c2f5104dd9053a7d1d54535c00137b1259ef8e99df16f525ec3f182aac82797ad48d5daaeddaf00d08574412fde2f4b724a8ffb8366a",
+      "size": 1050,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/neoforge-common.toml"
+    },
+    {
+      "path": "config/neoforge-server.toml",
+      "sha512": "164c8ef51cb19ef4e8421378fa20d56a803b07b2cfb8d5d36b44e32c17bb4bc097ceaee1c2e363bcd8059e2fe710fca2bf3d14500879aaa35c4f98e0fc3ff2e5",
+      "size": 1177,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/neoforge-server.toml"
+    },
+    {
+      "path": "config/pickupnotifier/pickupnotifier-client.toml",
+      "sha512": "f7205b717dc361c8cfa3f89781d058fd433a11aa0aec76ce9fb6834af92807518a8b76a48103eba5c0c8e6a67d00781ab1e475329444d2fff16e5b4921ae3456",
+      "size": 3614,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/pickupnotifier/pickupnotifier-client.toml"
+    },
+    {
+      "path": "config/pickupnotifier/pickupnotifier-server.toml",
+      "sha512": "ce7dc5544775799014d7e157525b9365541275a757bbd786910ddcc1623ed53622c24b94fea8fd10f853a3d8dea60c3a41bd1dfa054ce8964d0a1259f320c131",
+      "size": 505,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/pickupnotifier/pickupnotifier-server.toml"
+    },
+    {
+      "path": "config/pikafishing/common.toml",
+      "sha512": "a2a6131c8d389538b9dc3a7181db2a89444ba1c3680d667168041287dc62ac3fe2b79254cd3126c4467eb8c8b252af9ee8213b7ed912baca5b2a0106399f3286",
+      "size": 48681,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/pikafishing/common.toml"
+    },
+    {
+      "path": "config/playerrevive-client.json",
+      "sha512": "051c3314703064e545bcae8e351328a1706e82fa1146e4e954a40c700525289561191e36df0f76e0b2de1eb1d8b6b443489cf4829133e22d0916bc327237feaa",
+      "size": 131,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/playerrevive-client.json"
+    },
+    {
+      "path": "config/playerrevive.json",
+      "sha512": "529312fd3e342308872967b6e0a0214ac299e945a10de2aedb3993cd1787b801974150f45f6925d0e6cad9815f65ae40f19b1270246d27ba07625024ebeb656d",
+      "size": 2274,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/playerrevive.json"
+    },
+    {
+      "path": "config/ponder-client.toml",
+      "sha512": "b4ddb4e184d57860197d94e3747f79e4d1569f86fc4c149d578f6281bf62732f062d247385f234efd719f9f3b89e53837800eb53ddb8bc2b25ce173f18ab0292",
+      "size": 635,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/ponder-client.toml"
+    },
+    {
+      "path": "config/punchy/menu_prefs.json",
+      "sha512": "b0b78bbb45f0aa699ea9c7b7c61c97a8a8ef0018775640e3b4657f4683453e6630ba132a270ba210af1107fbfae1978078585c2334beeca58564e601b75a2472",
+      "size": 126,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/punchy/menu_prefs.json"
+    },
+    {
+      "path": "config/punchy/punchy_config.json",
+      "sha512": "700f41ac3c9a42e0ed91780efb3f076cc6fc14b127bde64b18b95233cc4e75df8bd336d824fe5c13e1630489054d9c8eefc6d52d13e84742fc56e60e341ee2e6",
+      "size": 3604,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/punchy/punchy_config.json"
+    },
+    {
+      "path": "config/punchy/triggerable-keybindings.json",
+      "sha512": "ffdc4b4b66a6ce2f2caab283f0ee73a063584701c49a5ddb6b6cf6a27060ccd3c2c65f3885be5d3ba3dd7dc67c2a839df7887421e7235587bade74ebddb97d58",
+      "size": 118,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/punchy/triggerable-keybindings.json"
+    },
+    {
+      "path": "config/respackopts/_respackopts.conf",
+      "sha512": "c8f86d10da934c01ba4416fdb7636e0afd0edae5c03c8a6d94e0156d399855b18d7cd90197b342065f6d4816c1033cd2a30f61cfd6a73fec8bcecc3c9b6b1ab6",
+      "size": 122,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/respackopts/_respackopts.conf"
+    },
+    {
+      "path": "config/rimlight.json",
+      "sha512": "2b4917364db61ce17cf35bd5fcde4835f84e9fd0cf3b18da01d1ee1759d08bcec5b03686309b2f8d1f0c812220931423e8c7b3bdf69eb72303c77414c010274c",
+      "size": 232,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/rimlight.json"
+    },
+    {
+      "path": "config/seamless_loading_screen.json",
+      "sha512": "ab493aeafd6f282a5c2cb14e8ae6b415fa0f06a93ac2e905d27581b233e56cd6b60b60c3dca1f581e055471c086edc6ce64461387531889c50a349481ea3cb0c",
+      "size": 511,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/seamless_loading_screen.json"
+    },
+    {
+      "path": "config/sereneseasons/fertility.toml",
+      "sha512": "a9fc820b35f3197e86f067c03d09480dda3bb73dfba572220de65d29236912ccf86e6226d670213dac5fcb9197685d85cdf198365d8916712485b734d035d84a",
+      "size": 481,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/sereneseasons/fertility.toml"
+    },
+    {
+      "path": "config/sereneseasons/seasons.toml",
+      "sha512": "c409aa737b6e800033e5c76a79eb9814511c927ebe94836cbaead2bec4190af0de37c258e36f8f68955c0d0b52ef03ebd13417f6111038942237f8da057a051d",
+      "size": 21059,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/sereneseasons/seasons.toml"
+    },
+    {
+      "path": "config/skinlayers.json",
+      "sha512": "0ccb7e655e79f5af02e7c7a33b342906f51caaa63bf33bb3e7aad265cbefa78cd53086b423d1b68ed27fb5dcf3c7abaec90197debf137fea8c36af866eabfb60",
+      "size": 497,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/skinlayers.json"
+    },
+    {
+      "path": "config/smoothgui.json",
+      "sha512": "0a74f44ca41ee4c9d8517fb929784c8bd2b11866dc69a9d78cc3739d83462e051553ec33e3575554f5691b498027ff5b942479ecadf6b0c524e2fb4e7ec07cb6",
+      "size": 448,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/smoothgui.json"
+    },
+    {
+      "path": "config/smoothscrolling.json",
+      "sha512": "b3c27dd0ef68ae8ae7ba2039370d1f713d3bd6db63eab5a3c37807a0d464d40a900bdba77b6f35bd665ec84baed2d2491e8978eea30f8dc3562f0df5b6cd1994",
+      "size": 231,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/smoothscrolling.json"
+    },
+    {
+      "path": "config/smoothskies.json",
+      "sha512": "2e4760d2c9460f0fd69a94ae5057d7399c71618b18af3887495eb944888bbaffbf34dabd83444afa0b7dac6c9f4201bbde68ee5661972a9c0caf5548a6ccdd64",
+      "size": 72,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/smoothskies.json"
+    },
+    {
+      "path": "config/sodium-fingerprint.json",
+      "sha512": "2e29cebdec67b440a2ac74537664a798371dbb880445e47431bb67ff711e7e14c7dbe36c7c7e160afcc204038032ec795bec037f41c4486ef766b1b124aeea23",
+      "size": 427,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/sodium-fingerprint.json"
+    },
+    {
+      "path": "config/sodium-mixins.properties",
+      "sha512": "6acd2f3e4956788d0abd2bd941c5bcb3003b63c58eeedb3db727e5abfd37f036e49e7b97310bd37b9d3c29e2adbcbb3e5109af0482842f704a64a409a59bb437",
+      "size": 258,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/sodium-mixins.properties"
+    },
+    {
+      "path": "config/sodium-options.json",
+      "sha512": "c82101b2f926a50e4609f67f0e68267d03ec54497338e4951c374b23d99f389acbc4827dd0ae9fe661022a49d6337300fe1f1077b11d73990e487b04135ab61a",
+      "size": 762,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/sodium-options.json"
+    },
+    {
+      "path": "config/sophisticatedbackpacks-common.toml",
+      "sha512": "4bda96a33735b62706fd7b7e785cc0dcac04670c9047f7079a05b70e300621899c3c5106da4bbd86de1d74b3ac3eac1a3038200e54d06f1f051ac2e5b07404c6",
+      "size": 118,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/sophisticatedbackpacks-common.toml"
+    },
+    {
+      "path": "config/sophisticatedbackpacks-server.toml",
+      "sha512": "976374d0abf66406395da87075e3ad966eb0ac1beeaf65cb746585aab57f238cb94884c667fb7b8d2cbfea06ddfdd8f3929e56cc3791c65e7d5a7aff601fb20c",
+      "size": 24153,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/sophisticatedbackpacks-server.toml"
+    },
+    {
+      "path": "config/sophisticatedcore-client.toml",
+      "sha512": "76233eb0781280c1556eebb54c4ac51933a35f487bb3fd4dcc4976154e543da114c01ad04890cd82b3e5d00c1bb2dc1f75afef4e3a191e0f252b5e5f2ecfc8d2",
+      "size": 478,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/sophisticatedcore-client.toml"
+    },
+    {
+      "path": "config/sophisticatedcore-common.toml",
+      "sha512": "b41ce19b086b67dc7b866dea008e0715d97a3e117b4e65116992dab4a74ab62f63a6b0211dec6c4f9ea431f9ed0cf9a0c2bc5d3cc5ffe5324e119595b6357d11",
+      "size": 4259,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/sophisticatedcore-common.toml"
+    },
+    {
+      "path": "config/sounds/event.json",
+      "sha512": "c33fbec0a49e24904dcb496d2f9f778382f1ba27dbb567be90dc253baf89219c6138d0742da110a3481d42629a63f1755dbed7f27b92594c48a94cd3e59ae6e4",
+      "size": 882,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/sounds/event.json"
+    },
+    {
+      "path": "config/sounds/mod_utils.json",
+      "sha512": "679b9efcc66d91c7e0c5f122e08a41f36f0a5da03e4efb678bbe188dbcaa2998aa26862516b67c0e9e83a12bc62284dfff42a495c77f0a2fd2aaa4ff25b09b29",
+      "size": 41,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/sounds/mod_utils.json"
+    },
+    {
+      "path": "config/sounds/ui.json",
+      "sha512": "e40a8d66ff9ecb03a91abc4d19aed0a7391f32038170d4c7db0b647f4bcaa2c92e361cfa5f714755ca7113ff61e217fc911dd7f376ca5d925c101c7588663aa5",
+      "size": 2362,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/sounds/ui.json"
+    },
+    {
+      "path": "config/sounds/world.json",
+      "sha512": "a01a59771747ed31d083fc0e1276c59f7281d319f6c392e3ca55154f3b4816a1ca124104e8abb92250a10da5e8aabd038e7308b530d164ddab7fd81ed3f4ac1d",
+      "size": 1993,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/sounds/world.json"
+    },
+    {
+      "path": "config/subtle_effects/blocks.toml",
+      "sha512": "3d1d4985ad48fd06d19a76fb079699b184731bdd7896b0f77fa2c7d00207100b1f8b9e4c3fe348ea789209787601e92f3564836af15ae407e132254a68e0579d",
+      "size": 4419,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/subtle_effects/blocks.toml"
+    },
+    {
+      "path": "config/subtle_effects/entities.toml",
+      "sha512": "a9e18fb4625ad134e5f7ffcb4d2c171d84f9f9e9e30915253166065fd41e4401dd56fcba6f3b2285a2af80ce21d1b6bb180f7fcdb87efd994a459fef74872e46",
+      "size": 4491,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/subtle_effects/entities.toml"
+    },
+    {
+      "path": "config/subtle_effects/environment.toml",
+      "sha512": "db165866712f41d3d9938cc19918e92e3462ba63b10f77bc18a429ee3c6e6fd6df72aa555143a34115d81ee9e43e8aae77ba4a5ae9563f82a3a00dbeb4888e49",
+      "size": 2503,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/subtle_effects/environment.toml"
+    },
+    {
+      "path": "config/subtle_effects/general.toml",
+      "sha512": "5ee1fe677cfcd51e0a18d83a5e2f2f04319a9fd36536e73c2f1aa3618b4625a4ed8d107d6686f2db081e6a877eff47bbcbbb65ba0782f7d53359bfee106450aa",
+      "size": 1323,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/subtle_effects/general.toml"
+    },
+    {
+      "path": "config/subtle_effects/items.toml",
+      "sha512": "e376f0ac132647f06802165eb83e7106dac2cd3f9b9bdef0437debd7b59b806ac64327cf5ac10712c457ffb5f68772c6014011a084cfb460bfe9a9fa36257821",
+      "size": 1159,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/subtle_effects/items.toml"
+    },
+    {
+      "path": "config/supplementaries-client.toml",
+      "sha512": "c7beb5aa5c2043d850e59c5ec1ac39419cf4307e5e01dd7c423feecb2f4a81dbf436360c89f1408064dbc02b60e6c0db23285a45ebf806416a05b398a7e5b352",
+      "size": 9113,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/supplementaries-client.toml"
+    },
+    {
+      "path": "config/supplementaries-common.toml",
+      "sha512": "7f48ba7507d2bdb489c669cf44dad510d2f5934a745a53de9b50679dff6cf99b555eeb6985053a23ad7c825efb620cb520108165cdab9c13f5023ad322b8a8f9",
+      "size": 32792,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/supplementaries-common.toml"
+    },
+    {
+      "path": "config/swinginglanterns/README.txt",
+      "sha512": "9f64d5ca9ee454a6c7238233fbb3c20d5b2d55cb3e995ac8e3ea569b40e06a14b01e4ed714d86cbe0eccd40b971c61df13e3005ef931a078a242abf7770d003c",
+      "size": 4651,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/swinginglanterns/README.txt"
+    },
+    {
+      "path": "config/swinginglanterns/lantern_overrides.json",
+      "sha512": "abc51c743c252643e3424936cc6e4d1baac0ea759cac4ee3ddb3cd852844b967392234232eedbeed79ee86f0fee38e4310706d0f979ee032f9fdb43d8df7eea1",
+      "size": 1563,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/swinginglanterns/lantern_overrides.json"
+    },
+    {
+      "path": "config/swinginglanterns/raycast_ignored_blocks.json",
+      "sha512": "8b7f9d849c5db65e2a431c95a528d487110f268314c54cc19adb8100b6c5940e2979cb3259859e2ef4415f8cfee8dc573b7be09e99c4be35abc0b12d8857e99e",
+      "size": 557,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/swinginglanterns/raycast_ignored_blocks.json"
+    },
+    {
+      "path": "config/swinginglanterns/swinginglanterns.json",
+      "sha512": "d759094686b21d4376f016f963af95e483a89d10b3ba240d91590743bd10c69026874b26bc09d3847be8131bda357d5afb25697263f2dcc06b2e50c9df4cd56f",
+      "size": 1360,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/swinginglanterns/swinginglanterns.json"
+    },
+    {
+      "path": "config/swordthrow-client.json",
+      "sha512": "d80dbe8d90c900bbd982e4fc85a30fe60ddeff6d313ab4b46d633d7cab55291c55de5966d3015a4f1b963fc6d58cc00d89a41227fa5980a521873a620ddf8d80",
+      "size": 120,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/swordthrow-client.json"
+    },
+    {
+      "path": "config/swordthrow-server.json",
+      "sha512": "8e3290c5a70a48a49083a4d7e5334ca0ffb29032901a79137d111de69e85e89ed50ca5147f21a523eba23798c747ec171a4a9bdd462cae3f6fbffdeaadb21b32",
+      "size": 689,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/swordthrow-server.json"
+    },
+    {
+      "path": "config/terrablender.toml",
+      "sha512": "7b5c1211abacc526a39d96e732ad43b929dd1f1c20c9274dc1b22e34fde96c88983c158fd3b574db96a08a8f81189f9caf72ed7bb690cbc7104ece237db0476d",
+      "size": 988,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/terrablender.toml"
+    },
+    {
+      "path": "config/threadtweak.json",
+      "sha512": "2a28ebc3baaa317b3bed93e6a04724e7282d9dba76273d4d8eab5a67a76509267c9ee125060c56d947e402821851a4184c9696c7e3b9117fd17db3638924c5c0",
+      "size": 177,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/threadtweak.json"
+    },
+    {
+      "path": "config/transition.json",
+      "sha512": "5a6cd1e9fb12a87ebf415c26ea086aa03da9d05e31366514eda23eab19b7eb96709eb25c7e0cb16de5e77555bed58abb68d88ce4dd4c6e44d67a0abd97dc98ac",
+      "size": 97,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/transition.json"
+    },
+    {
+      "path": "config/trender.json",
+      "sha512": "cea3e69c7848e74fbacd78f0c663c0ce8c03e9a9725c9ff5b9850325c59552fdbf9624a1c89c606a3de365d04199c6a01e6e1ce4052a050836d935d6f958cf61",
+      "size": 47,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/trender.json"
+    },
+    {
+      "path": "config/variantsandventures.json",
+      "sha512": "4546f9e44f2cab5e44e40b19f26b75fe941f62a4477739740cdb096da2a2072491825cc074c9461dbe242600081cd2408a5b3d0ece4c2ae385d2ef3c625bae4e",
+      "size": 1316,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/variantsandventures.json"
+    },
+    {
+      "path": "config/vinery-common.toml",
+      "sha512": "4c09fdaed03fee0f44b766f45d4828de7cd35e7976a63a9cd41d7af9ef67144a97bfe8eea4eed62447b6651e6856bc049ea31fc54dec73797face05f4a633570",
+      "size": 6841,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/vinery-common.toml"
+    },
+    {
+      "path": "config/weaponmaster_ydm-common.toml",
+      "sha512": "ca551f328844914dd31ac16a63e3a06a0dc017415be76cca0e111ec0f565657a52ee7ab818b6e81a32d73c33f4762060205a058e134a9762ae2e4b7a5bf2b07c",
+      "size": 9417,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/weaponmaster_ydm-common.toml"
+    },
+    {
+      "path": "config/whitenoise-client.toml",
+      "sha512": "c380e672da7ee8d11a53e51b5bc18d6104d3f3e047e74701f6d606d74bbb8ab87b7264d98311b483a60083f60c0bfff61181e003cce8069ecb59d0c8bbd70f06",
+      "size": 346,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/whitenoise-client.toml"
+    },
+    {
+      "path": "config/windy-config.toml",
+      "sha512": "ac4f3e4ccf648939fb7333a17d4384801b5ea73f0cd9f544b75b189d1a26758d595505c2115f87ef749a77d7a2ea0fdc61e9fe8749b539693b705b3fac9e1d87",
+      "size": 2212,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/windy-config.toml"
+    },
+    {
+      "path": "config/yacl.json5",
+      "sha512": "9c0887731d03d4f3debca1e4820dec95c303c3d261f2869019e20fa4ff96945c9908e41ef39110062a392fc98e2f28de86b178b73293a7ee7056a533e4089cae",
+      "size": 250,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/yacl.json5"
+    },
+    {
+      "path": "config/zume.json5",
+      "sha512": "7526857a528fc7d87fc20905a1028ab920b0b3e15f69cc55b891f833abdab41238275063960f5fe3f9fadd0e31417cd523b23761136b234ea1427557a371286f",
+      "size": 2405,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/main/config/zume.json5"
+    }
+  ],
   "updater": {
     "path": "f8q-updater.exe",
-    "sha512": "c2bb922e6d760217e4236004bcf3893d6a78d556e6f14502f6c9e1be2b1c64718044a6432a7c7165eb87fc3e3de5235492d2f05501aa32943de6c60ba428dc78",
-    "size": 2871296,
+    "sha512": "d280f7e1c5c093863362580903dc09df6363ccc6d6bee7dd1e343527f573422fe59ef35e5dd2dc690df60c44b93d0262dbca1f8464a4c50fa1c8175c8323fb2c",
+    "size": 2906112,
     "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater.exe"
   }
 }

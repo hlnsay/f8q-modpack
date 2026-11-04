@@ -1,0 +1,35 @@
+{
+  "allowMovement": {
+    "net.minecraft.client.gui.screens.PauseScreen": true,
+    "top.theillusivec4.curios.client.gui.CuriosScreen": true,
+    "journeymap.client.ui.dialog.about.AboutScreen": true,
+    "journeymap.client.ui.fullscreen.Fullscreen": true,
+    "com.minenash.seamless_loading_screen.FadeScreen": true,
+    "net.minecraft.client.gui.screens.options.OptionsScreen": true,
+    "net.minecraft.client.gui.screens.options.SoundOptionsScreen": true,
+    "punchy.client.config.PunchyConfigScreen": true,
+    "io.github.kosmx.emotes.arch.screen.ingame.FastMenuScreen": true,
+    "de.maxhenkel.corpse.gui.CorpseInventoryScreen": true,
+    "net.caffeinemc.mods.sodium.client.gui.VideoSettingsScreen": true,
+    "net.irisshaders.iris.gui.screen.ShaderPackScreen": true,
+    "org.anti_ad.mc.ipnext.gui.GUIDEEditorScreen": true,
+    "org.anti_ad.mc.common.gui.screen.ConfigScreenBase": true,
+    "punchy.client.tuning.TuningWorkbenchScreen": true,
+    "journeymap.client.ui.option.ClientOptionsManager": true,
+    "net.minecraft.client.gui.screens.packs.PackSelectionScreen": true,
+    "journeymap.client.ui.component.screens.ScrollPaneScreen": true,
+    "journeymap.client.ui.fullscreen.menu.FullScreenPopupMenu": true,
+    "io.github.kosmx.emotes.arch.screen.ingame.FullMenuScreen": true,
+    "io.github.kosmx.emotes.arch.screen.EmoteMenu": true,
+    "net.mehvahdjukaar.supplementaries.client.screens.CannonScreen": true,
+    "net.p3pp3rf1y.sophisticatedbackpacks.client.gui.BackpackScreen": true,
+    "net.p3pp3rf1y.sophisticatedbackpacks.client.gui.BackpackSettingsScreen": true,
+    "mezz.jei.gui.recipes.RecipesGui": true
+  },
+  "hideBackground": {
+    "io.github.kosmx.emotes.arch.screen.ingame.FastMenuScreen": true,
+    "org.anti_ad.mc.ipnext.gui.GUIDEEditorScreen": true,
+    "io.github.kosmx.emotes.arch.screen.ingame.FullMenuScreen": true,
+    "mezz.jei.gui.recipes.RecipesGui": true
+  }
+}

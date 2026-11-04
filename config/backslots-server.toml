@@ -1,0 +1,4 @@
+#Define per-item render transforms for the back slot.
+#Format: "modid:itemid,rotX,rotY,rotZ,scale,transX,transY,transZ"
+#Example: "minecraft:shield,180,0,0,2.0,0,0,0.0"
+itemTransforms = ["minecraft:shield,180,0,0,2.0,0,0,0.0"]

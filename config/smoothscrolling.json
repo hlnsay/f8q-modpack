@@ -1,0 +1,10 @@
+{
+  "hotbarSmoothness": 0.2,
+  "hotbarRollover": true,
+  "chatSmoothness": 0.5,
+  "chatOpeningSmoothness": 0.5,
+  "creativeScreenSmoothness": 0.5,
+  "entryListSmoothness": 0.5,
+  "entryListSpeed": 30.0,
+  "enableMaskDebug": false
+}

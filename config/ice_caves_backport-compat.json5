@@ -1,0 +1,40 @@
+{
+  // Restart the game/server after changes. Default: no integration.
+  // Use the same file on clients and servers (display names are client-side;
+  // this common configuration is not automatically synchronized).
+  // OFF: original blocks, recipes, names and world generation are untouched.
+  // REPLACE: supported icicle items, recipe/loot references and placed/generated
+  // blocks become minecraft:icicle. Unique tools/biomes/other blocks remain.
+  // WARNING: replacement is permanent once inventories/chunks are saved.
+  // Back up worlds first! Changing back to OFF does not reverse conversions.
+  // RESPECT: retain each mod's blocks, physics and generation; distinguish
+  // default item names and add reversible 1:1 conversion crafting recipes.
+  // Respect does NOT silently remove either mod's world generation.
+  "mode": "OFF",
+
+  // Supported exact duplicates (no name-based guessing):
+  // YUNG's Cave Biomes: yungscavebiomes:icicle (ceiling-only -> down).
+  // Immersive Weathering: immersive_weathering:icicle (up/down, waterlogged).
+  // Frostiful: frostiful:icicle (up/down, waterlogged).
+  // Replace uses vanilla backport mechanics instead of throwable-item,
+  // Thermoo temperature or block-entity vibration mechanics of those icicles.
+  // Those special mechanics are retained in Respect. Tools such as the
+  // Ice Sickle are not replaced; their icicle recipe inputs are adapted.
+  // Winterly is intentionally excluded: it has wall-facing icicles and
+  // unique icicle building materials with no native equivalent.
+  // Mods only activate if their exact block AND item are registered.
+  // INHERIT uses the global mode. Any listed mod can be configured separately.
+  "perMod": {
+    "yungscavebiomes": "INHERIT",
+    "immersive_weathering": "INHERIT",
+    "frostiful": "INHERIT"
+  },
+
+  // Replace only: also convert matching blocks in existing loaded chunks.
+  // False disables scanning on load, including newly generated chunks;
+  // placement/weathering writes in already loaded chunks still convert.
+  "convertExistingChunks": true,
+  // Replacement is deferred to the server tick, never mid-generation.
+  // Work is bounded; unloaded chunks are never force-loaded.
+  "maxConversionsPerTick": 512
+}
