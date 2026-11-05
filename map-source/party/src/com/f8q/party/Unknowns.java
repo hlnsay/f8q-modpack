@@ -34,6 +34,7 @@ final class Unknowns {
         .registerTypeAdapter(Place.class,(com.google.gson.JsonDeserializer<Place>)(json,type,context)->{
             var o=json.getAsJsonObject();return new Place(o.get("key").getAsString(),o.get("dimension").getAsString(),o.get("structure").getAsString(),o.get("kind").getAsInt(),o.get("x").getAsDouble(),o.get("y").getAsDouble(),o.get("z").getAsDouble(),o.get("minX").getAsInt(),o.get("maxX").getAsInt(),o.get("minZ").getAsInt(),o.get("maxZ").getAsInt(),o.get("block").getAsBoolean());
         }).create();
+    private static final Map<Job,Long> delayed=new HashMap<>();
     private static final Queue<Job> queue=new ConcurrentLinkedQueue<>();
     private static final Set<Job> pending=java.util.concurrent.ConcurrentHashMap.newKeySet();
     private static final Map<Job,Long> scanned=new LinkedHashMap<>();
@@ -84,7 +85,7 @@ final class Unknowns {
     }
     static void reconnect(UUID player){deletedSent.remove(player);lastSent.remove(player);origins.remove(player);sharedHashes.clear();}
     static void membershipChanged(){sharedHashes.clear();}
-    static void stopped(){sharedHashes.clear();deletedSent.clear();queue.clear();pending.clear();scanned.clear();origins.clear();lastSent.clear();store=new Store();loaded=dirty=false;saveClock=0;}
+    static void stopped(){sharedHashes.clear();deletedSent.clear();delayed.clear();queue.clear();pending.clear();scanned.clear();origins.clear();lastSent.clear();store=new Store();loaded=dirty=false;saveClock=0;}
     static void stopping(MinecraftServer s){save(s);}
     /** FULL chunk was already sent to a player. Only queue a coordinate here. */
     static void sent(ChunkWatchEvent.Sent event){
@@ -92,8 +93,19 @@ final class Unknowns {
         Exploration.observe(event.getPlayer(),event.getPos());
         if(c.getLevel() instanceof ServerLevel level)offer(level.dimension().location().toString(),c.getPos());
     }
-    static void changed(net.neoforged.neoforge.event.level.BlockEvent e){if(e.getLevel() instanceof ServerLevel level){var pos=new ChunkPos(e.getPos());String dim=level.dimension().location().toString();scanned.remove(new Job(dim,pos.toLong()));offer(dim,pos);}}
+    static void changed(net.neoforged.neoforge.event.level.BlockEvent e){
+        var state=e instanceof net.neoforged.neoforge.event.level.BlockEvent.EntityPlaceEvent placed?placed.getPlacedBlock():e.getState();
+        if(!BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString().contains("waystone"))return;
+        if(e.getLevel() instanceof ServerLevel level){
+            Job job=new Job(level.dimension().location().toString(),new ChunkPos(e.getPos()).toLong());
+            // Events precede block entity creation/removal. Coalesce nearby block changes,
+            // then inspect the actual settled world, without loading new chunks.
+            delayed.put(job,level.getGameTime()+4);
+            if(delayed.size()>2048)delayed.remove(delayed.keySet().iterator().next());
+        }
+    }
     static void renamed(net.blay09.mods.waystones.api.Waystone waystone){
+        Job changedChunk=new Job(waystone.getDimension().location().toString(),new ChunkPos(waystone.getPos()).toLong());scanned.remove(changedChunk);offer(changedChunk.dimension,new ChunkPos(changedChunk.chunk));
         String key=waystone.getDimension().location()+"|block|"+waystone.getPos().asLong();String name=waystone.getName().getString();if(name.length()>128)name=name.substring(0,128);
         if(!Objects.equals(store.labels.put(key,name),name)){dirty=true;sharedHashes.clear();}
     }
@@ -158,7 +170,7 @@ final class Unknowns {
             if(state.hasProperty(net.minecraft.world.level.block.state.properties.BlockStateProperties.DOUBLE_BLOCK_HALF)&&state.getValue(net.minecraft.world.level.block.state.properties.BlockStateProperties.DOUBLE_BLOCK_HALF)==net.minecraft.world.level.block.state.properties.DoubleBlockHalf.UPPER)continue;
             BlockPos b=entry.getKey();
             if(level.dimension().equals(net.minecraft.world.level.Level.OVERWORLD)) {
-                int ground=chunk.getHeight(net.minecraft.world.level.levelgen.Heightmap.Types.OCEAN_FLOOR,b.getX()&15,b.getZ()&15);
+                int ground=chunk.getHeight(net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,b.getX()&15,b.getZ()&15);
                 if(PlaceKinds.buried(b.getY()+2,ground))continue;
             }
             String key=job.dimension+"|block|"+b.asLong();blocks.add(key);
@@ -200,17 +212,7 @@ final class Unknowns {
     }
     private static final Map<UUID,Set<String>> deletedSent=new HashMap<>();
     private static final Map<String,Integer> sharedHashes=new HashMap<>();
-    private static void share(ServerPlayer player){
-        var party=F8qParty.partyOf(player.getUUID());String dim=player.level().dimension().location().toString();if(party==null)return;
-        for(UUID owner:party){if(owner.equals(player.getUUID()))continue;var known=store.known.getOrDefault(owner.toString(),Set.of());
-            if(store.known.computeIfAbsent(player.getUUID().toString(),k->new HashSet<>()).addAll(known))dirty=true;
-            var points=new ArrayList<Net.Place>();
-            for(Place p:store.places.values())if(p.dimension.equals(dim)&&known.contains(p.key))points.add(new Net.Place(p.key,p.structure,p.x,p.y,p.z,p.kind,true,store.labels.getOrDefault(p.key,"")));
-            String key=player.getUUID()+":"+owner+":"+dim;int hash=points.hashCode();if(Objects.equals(sharedHashes.put(key,hash),hash))continue;
-            if(points.isEmpty())PacketDistributor.sendToPlayer(player,new Net.SharedPlaces(owner,true,new Net.Unknowns(dim,List.of())));
-            for(int offset=0;offset<points.size();offset+=128)PacketDistributor.sendToPlayer(player,new Net.SharedPlaces(owner,offset==0,new Net.Unknowns(dim,List.copyOf(points.subList(offset,Math.min(points.size(),offset+128))))));
-        }
-    }
+    private static void share(ServerPlayer player){ /* Exploration and POIs stay personal. */ }
     private static int obeliskCursor;
     private static void validateObelisks(MinecraftServer server){
         var blocks=store.places.values().stream().filter(Place::block).toList();if(blocks.isEmpty())return;
@@ -223,7 +225,12 @@ final class Unknowns {
         }
     }
     static void tick(MinecraftServer server){
-        load(server);if(server.getTickCount()%40==0)validateObelisks(server);long deadline=System.nanoTime()+2_000_000L;
+        load(server);
+        for(var it=delayed.entrySet().iterator();it.hasNext();){var entry=it.next();var level=server.getLevel(net.minecraft.resources.ResourceKey.create(Registries.DIMENSION,net.minecraft.resources.ResourceLocation.parse(entry.getKey().dimension)));
+            if(level==null){it.remove();continue;}
+            if(level.getGameTime()>=entry.getValue()){scanned.remove(entry.getKey());offer(entry.getKey().dimension,new ChunkPos(entry.getKey().chunk));it.remove();}
+        }
+        if(server.getTickCount()%40==0)validateObelisks(server);long deadline=System.nanoTime()+2_000_000L;
         for(int n=0;n<4&&!queue.isEmpty()&&System.nanoTime()<deadline;n++){Job j=queue.poll();if(j!=null){pending.remove(j);scan(server,j);}}
         if(server.getTickCount()%40==0){Set<UUID> active=new HashSet<>();for(ServerPlayer p:server.getPlayerList().getPlayers()){active.add(p.getUUID());plan(p);if(server.getTickCount()%600==0)offer(p.level().dimension().location().toString(),p.chunkPosition());send(p);share(p);}lastSent.keySet().retainAll(active);origins.keySet().retainAll(active);}
         if(++saveClock>=1200){saveClock=0;save(server);}

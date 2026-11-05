@@ -151,8 +151,8 @@ public final class PartyClient {
         }
         if (me != null && mc.level != null) {
             com.velorise.simplemap.client.LiveMapColors.tick(mc);
-            shareMarks(mc);
-            com.velorise.simplemap.client.SharedExploration.tick(tiles->PacketDistributor.sendToServer(new Net.TilesUp(tiles.stream().map(t->new Net.Tile(t.dimension(),t.x(),t.z(),t.pixels())).toList())));
+
+
             placeMates(mc, me);
         }
         if (me == null || mc.level == null) {
@@ -242,14 +242,8 @@ public final class PartyClient {
         }
     }
 
-    static void tiles(Net.TilesDown packet){
-        if(!isMate(packet.owner()))return;
-        com.velorise.simplemap.client.SharedExploration.receive(packet.owner(),packet.tiles().stream().map(t->new com.velorise.simplemap.client.SharedExploration.Tile(t.dimension(),t.x(),t.z(),t.pixels())).toList());
-    }
-    static void places(Net.SharedPlaces packet){
-        if(!isMate(packet.owner()))return;
-        TeamMarks.setSharedLocations(packet.owner(),packet.data().dimension(),packet.reset(),packet.data().places().stream().map(p->new TeamMarks.Location(p.id(),p.structure(),p.x(),p.y(),p.z(),p.kind(),p.open(),p.label())).toList());
-    }
+    static void tiles(Net.TilesDown packet){ /* Ignore cached/old party raster packets. */ }
+    static void places(Net.SharedPlaces packet){ /* Automatic discoveries are personal. */ }
     static void unknowns(Net.Unknowns unknowns) {
         List<TeamMarks.Location> places = new ArrayList<>();
         for (Net.Place p : unknowns.places()) {
@@ -259,11 +253,7 @@ public final class PartyClient {
         TeamMarks.setLocations(unknowns.dimension(), places);
     }
 
-    static void marks(Net.MarksDown down) {
-        theirs.put(down.owner(), down.spots());
-        seen.put(down.owner(), ticks);
-        publish();
-    }
+    static void marks(Net.MarksDown down){ /* Private waypoints stay on their owner's client. */ }
 
     /** Teammates' marks in their colours; whoever left the party or fell silent drops out. */
     private static void publish() {

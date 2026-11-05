@@ -1,5 +1,14 @@
 # F8Q map integration РІР‚вЂќ NeoForge 1.21.1
 
+## Current policy: private maps (v18)
+
+Exploration, POI discovery and private markers are no longer shared through parties. Player positions, party HUD, invites and revival remain. Raster channels remain as compatibility boundaries, with no upload, receive, rendering or export logic. The server ignores obsolete raster uploads, skips their arrays when reading old journals, and rewrites the file with personal observed coverage only. Previously learned discoveries are retained: the old schema did not distinguish personal discoveries from permanently learned party discoveries, so deleting those would risk user data loss.
+
+A live 60-second server profile identified Exploration.save taking 2,840 ms, including 2,796 ms in ImmutableCollections.SetN. Dense x/z keys made Set.copyOf pathological. Snapshotting now uses an owned ArrayList without hashing, then compression and disk writes run on the IO executor. Reproduction used the actual 52,435/52,418-chunk datasets (not included in this repository); old copies took 2,867/2,952 ms and the replacement 8.03/0.61 ms.
+
+Waystone-only place/break events are coalesced and scanned four ticks later, after block entities settle; renames also request a non-loading refresh. The height check excludes leaves. A separate test-only mod passed placement below a canopy, break, and replacement at the same position. Existing location journals, routes, dimensions, stale deltas and reconnect persistence are covered by MapPlacesTest. The known-places panel collapses to a right-edge arrow tab without changing other map controls.
+
+
 SimpleMap modifications and F8Q Party server discovery code. No Minecraft binaries or Minecraft source are included.
 
 Generated places come only from already-loaded FULL chunks: registered structure starts/references, real waystone block entities, and waystone block entities. Underground generation steps, spawners, mineshafts, ancient cities, strongholds and trial chambers are excluded; persisted underground entries are pruned at startup. Structure coordinates use the inclusive bounding box centre. No locate calls, seed guesses, forced loads or world generation. Each tick reads at most four queued chunks within a soft 2 ms budget. Scanned chunks have a cooldown; network deltas have at most 128 records and are sent only when changed.

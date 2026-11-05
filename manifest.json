@@ -951,9 +951,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "f197cd9b7ffff821815175e345fe74f92dca5361150ff45f44aa5bc0b57a796dffe45614ff936492ed19517160f3d45d79f926c6d6cf383829c1ff4fcb3675a7",
-      "size": 639559,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.17-f197cd9b7fff.jar"
+      "sha512": "cd4779be80d01c458b63ba43e198a1e034c0c458c1e188a19546f49bbc8daff4a1286be42c8b146a90036cadb80323ddca65ed9355835acb259ed498695de006",
+      "size": 635858,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.18-cd4779be80d0.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -1035,9 +1035,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 4227304,
-      "sha512": "81c9b459b68ffd7d265dcbab3788f3768484dc81e1bafb0707938a06501c0b3ebf83e71f0043c81d9ab4bf875501b43f0f51a3aa13f3a1c967fe7e90be9ef924",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q17-81c9b459b68f.jar"
+      "size": 4218011,
+      "sha512": "c4d84983dd75425b75ee16439c8b175c5e037c7de4a0f2c4095cc050bf1c5c6122bc79c06ea68a8da522a8bd62bea2a73f74d4f70b64d723b28c31053685722f",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q18-c4d84983dd75.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2301,6 +2301,19 @@
       "date": "2026-11-06",
       "added": [],
       "updated": [
+        "Исправлена минутная задержка сервера при сохранении исследованных чанков: устранено медленное копирование большого набора координат. Сохранение выполняется в фоне.",
+        "Обелиски под листвой отображаются корректно; после установки и разрушения выполняется отложенная проверка реального блока.",
+        "Список известных мест сворачивается вправо стрелкой."
+      ],
+      "removed": [
+        "Обмен исследованной картой, точками интереса и метками через пати. Карта и новые открытия теперь личные. Участники пати остаются видны.",
+        "Загрузка, передача и отрисовка сохранённых картинок карты пати."
+      ]
+    },
+    {
+      "date": "2026-11-06",
+      "added": [],
+      "updated": [
         "Исправлены отсутствующие модели PikaFishing giant_icon и locked_icon: добавлены ссылки на существующие модели и текстуры предметов."
       ],
       "removed": []
@@ -2661,6 +2674,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-06-pikafishing-model-aliases",
+  "revision": "2026-11-06-private-map-performance-v18",
   "journeymap": []
 }

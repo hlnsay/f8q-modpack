@@ -69,8 +69,8 @@ public final class F8qParty {
 
     private static void payloads(RegisterPayloadHandlersEvent event) {
         var registrar = event.registrar("1");
-        registrar.versioned("1").playToServer(Net.TilesUp.TYPE,Net.TilesUp.CODEC,(p,c)->c.enqueueWork(()->{if(c.player() instanceof ServerPlayer player)Exploration.upload(player,p);}));
-        registrar.versioned("1").playToClient(Net.TilesDown.TYPE,Net.TilesDown.CODEC,(p,c)->c.enqueueWork(()->PartyClientBridge.tiles(p)));
+        registrar.versioned("2").playToServer(Net.TilesUp.TYPE,Net.TilesUp.CODEC,(p,c)->c.enqueueWork(()->{if(c.player() instanceof ServerPlayer player)Exploration.upload(player,p);}));
+        registrar.versioned("2").playToClient(Net.TilesDown.TYPE,Net.TilesDown.CODEC,(p,c)->c.enqueueWork(()->PartyClientBridge.tiles(p)));
         registrar.versioned("2").playToClient(Net.SharedPlaces.TYPE,Net.SharedPlaces.CODEC,(p,c)->c.enqueueWork(()->PartyClientBridge.places(p)));
 
         registrar.playToServer(Net.Action.TYPE, Net.Action.CODEC, (payload, context) -> context.enqueueWork(() -> {
@@ -90,19 +90,7 @@ public final class F8qParty {
         registrar.playToClient(Net.State.TYPE, Net.State.CODEC, (payload, context) -> context.enqueueWork(() -> PartyClientBridge.state(payload)));
     }
 
-    private static void relay(ServerPlayer from, Net.MarksUp marks) {
-        List<UUID> party = partyOf(from.getUUID());
-        if (party == null) {
-            return;
-        }
-        Net.MarksDown down = new Net.MarksDown(from.getUUID(), marks.spots().stream().limit(48).toList());
-        for (UUID id : party) {
-            ServerPlayer mate = from.getServer().getPlayerList().getPlayer(id);
-            if (mate != null && mate != from) {
-                net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(mate, down);
-            }
-        }
-    }
+    private static void relay(ServerPlayer from,Net.MarksUp marks){ /* Personal markers are not relayed. */ }
 
     static List<UUID> partyOf(UUID player) {
         for (List<UUID> party : parties) {

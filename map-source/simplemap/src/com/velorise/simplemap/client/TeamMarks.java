@@ -242,13 +242,7 @@ public final class TeamMarks {
     }
     private static final java.util.Map<java.util.UUID,java.util.Map<String,java.util.Map<String,Location>>> sharedPlaces=new java.util.HashMap<>();
     public static void retainParty(java.util.Set<java.util.UUID> owners){sharedPlaces.keySet().retainAll(owners);SharedExploration.retainParty(owners);}
-    public static void setSharedLocations(java.util.UUID owner,String dim,boolean reset,List<Location> points){
-        // Shared discoveries become personal knowledge by explicit pack policy.
-        setLocations(dim,points);
-        var dims=sharedPlaces.computeIfAbsent(owner,k->new java.util.HashMap<>());
-        var map=dims.computeIfAbsent(dim,k->new java.util.LinkedHashMap<>());if(reset)map.clear();
-        for(var p:points)if(p.open()&&p.kind()>=0&&p.kind()!=4&&!hiddenUnderground(p))map.put(p.id(),p);
-    }
+    public static void setSharedLocations(java.util.UUID owner,String dim,boolean reset,List<Location> points){ /* Personal discovery policy. */ }
     public static void setLocations(String dimension,List<Location> changes) {
         if(dimension.isEmpty()){closeJournal();return;}
         if(!LocalPlaces.isBound()){var queued=pendingChanges.computeIfAbsent(dimension,k->new java.util.LinkedHashMap<>());for(var p:changes)queued.put(p.id(),p);}

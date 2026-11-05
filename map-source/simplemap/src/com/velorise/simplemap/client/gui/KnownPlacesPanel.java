@@ -20,13 +20,16 @@ public final class KnownPlacesPanel {
     private boolean inside(double mx,double my){return mx>=x&&mx<=x+w&&my>=y&&my<=y+h;}
     public void render(MapScreen parent,GuiGraphics g,int mouseX,int mouseY){
         var mc=Minecraft.getInstance();var font=mc.font;
-        if(System.nanoTime()-refreshed>1_000_000_000L){entries=PlaceEntry.all();refreshed=System.nanoTime();}
         w=Math.min(200,Math.max(130,parent.width/3));x=parent.width-w-8;y=parent.placeListTop();h=Math.max(38,parent.height-y-25);
-        if(collapsed)h=29;
+        if(collapsed){w=19;x=parent.width-w-2;h=30;
+            g.pose().pushPose();g.pose().translate(0,0,85);MapPanels.places(g,x,y,w,h,0,0);
+            g.drawCenteredString(font,"‹",x+w/2,y+10,0xFFE9DEC0);g.pose().popPose();return;
+        }
+        if(System.nanoTime()-refreshed>1_000_000_000L){entries=PlaceEntry.all();refreshed=System.nanoTime();}
         g.pose().pushPose();g.pose().translate(0,0,85);
         MapPanels.places(g,x,y,w,h,28,collapsed?0:18);
         g.drawString(font,"Известные места · "+entries.size(),x+8,y+9,0xFFE9DEC0,false);
-        g.drawString(font,collapsed?"+":"−",x+w-13,y+9,0xFFBAB19A,false);
+        g.drawString(font,"›",x+w-13,y+9,0xFFBAB19A,false);
         if(!collapsed){
             target=Math.max(0,Math.min(max(),target));offset+=(target-offset)*.35;if(Math.abs(target-offset)<.2)offset=target;
             int first=Math.max(0,(int)(offset/ROW)),last=Math.min(entries.size(),first+(bodyBottom()-bodyTop())/ROW+2);

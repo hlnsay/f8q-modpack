@@ -114,7 +114,7 @@ public final class MapPlacesTest {
             com.velorise.simplemap.client.TeamMarks.setLocations("minecraft:overworld",List.of(new com.velorise.simplemap.client.TeamMarks.Location("reconnect","",32,70,64,-1,false)));
             com.velorise.simplemap.client.TeamMarks.closeJournal();com.velorise.simplemap.client.TeamMarks.openJournal(file);
             check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").isEmpty(),"explicit removals remain removed after reload");
-            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.delete(file);try(var files=java.nio.file.Files.list(tmp)){for(var extra:files.toList())java.nio.file.Files.delete(extra);}java.nio.file.Files.delete(tmp);
+            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.deleteIfExists(file);try(var files=java.nio.file.Files.list(tmp)){for(var extra:files.toList())java.nio.file.Files.delete(extra);}java.nio.file.Files.delete(tmp);
         } catch(java.io.IOException e){throw new AssertionError(e);}
         try {
             var root=java.nio.file.Files.createTempDirectory("early-delete-");var file=root.resolve("journal.json");
@@ -123,7 +123,7 @@ public final class MapPlacesTest {
             com.velorise.simplemap.client.TeamMarks.setLocations("minecraft:overworld",List.of(new com.velorise.simplemap.client.TeamMarks.Location(stone.id(),"",0,0,0,-1,false)));
             com.velorise.simplemap.client.TeamMarks.openJournal(file);
             check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").isEmpty(),"deletion arriving before journal bind must not resurrect saved obelisk");
-            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.delete(file);try(var files=java.nio.file.Files.list(root)){for(var extra:files.toList())java.nio.file.Files.delete(extra);}
+            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.deleteIfExists(file);try(var files=java.nio.file.Files.list(root)){for(var extra:files.toList())java.nio.file.Files.delete(extra);}
             java.nio.file.Files.delete(root);
         }catch(java.io.IOException e){throw new AssertionError(e);}
         var obelisk=new com.velorise.simplemap.client.TeamMarks.Location("obelisk-test","waystones:waystone",10,70,12,0,true,"Дом");
@@ -144,12 +144,19 @@ public final class MapPlacesTest {
             com.velorise.simplemap.client.TeamMarks.retainParty(java.util.Set.of(owner));
             com.velorise.simplemap.client.TeamMarks.setSharedLocations(owner,"minecraft:overworld",true,List.of(own));
             com.velorise.simplemap.client.TeamMarks.retainParty(java.util.Set.of());
-            check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").contains(own),"learned party places survive leaving party");
+            check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").isEmpty(),"party membership must not import discoveries");
             com.velorise.simplemap.client.TeamMarks.closeJournal();com.velorise.simplemap.client.TeamMarks.openJournal(file);
-            check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").contains(own),"learned party places survive reconnect");
-            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.delete(file);try(var files=java.nio.file.Files.list(root)){for(var extra:files.toList())java.nio.file.Files.delete(extra);}
+            check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").isEmpty(),"shared discoveries must not enter personal persistence");
+            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.deleteIfExists(file);try(var files=java.nio.file.Files.list(root)){for(var extra:files.toList())java.nio.file.Files.delete(extra);}
             java.nio.file.Files.delete(root);
         }catch(java.io.IOException e){throw new AssertionError(e);}
+        var foreign=java.util.UUID.randomUUID();
+        com.velorise.simplemap.client.SharedExploration.retainParty(java.util.Set.of(foreign));
+        com.velorise.simplemap.client.SharedExploration.receive(foreign,java.util.List.of(new com.velorise.simplemap.client.SharedExploration.Tile("minecraft:overworld",0,0,new int[256])));
+        check(!com.velorise.simplemap.client.SharedExploration.learned("minecraft:overworld",0,0),"party raster cannot reveal personal map");
+        com.velorise.simplemap.client.SharedExploration.tick(batch->{throw new AssertionError("private map must not upload imagery");});
+        var dense=new java.util.HashSet<Exploration.Key>();for(int x=0;x<230;x++)for(int z=0;z<230;z++)dense.add(new Exploration.Key("minecraft:overworld",x,z));
+        var copy=Exploration.snapshot(dense);int copied=copy.size();dense.clear();check(copy.size()==copied&&copied==52900,"large coverage snapshot is an independent owned copy");
         var alice=java.util.UUID.randomUUID();var stranger=java.util.UUID.randomUUID();
         try {
             var f=Exploration.class.getDeclaredField("watched");f.setAccessible(true);
