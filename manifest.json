@@ -945,9 +945,9 @@
     },
     {
       "path": "mods/f8qmenu-1.0.0.jar",
-      "sha512": "61414d630becfed58a34700c3497e0e433019b3f98f9868e6113af8a340a0ecf54f131f192b12c4ee19835a45aee610d6baa4606d1714a7a811c4001bdcd2ade",
-      "size": 1421646,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.6.jar"
+      "sha512": "8ba7414f42d678d20c8fe0cfa85c31f01ba8c684ddfd1f8fa5451d2c4e636988a28d8ab7ef491db81853716ff48177a22d92097c42138919e500e5c7739b3af6",
+      "size": 1420777,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.7-models-8ba7414f42d6.jar"
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
@@ -2301,6 +2301,14 @@
       "date": "2026-11-06",
       "added": [],
       "updated": [
+        "Исправлены отсутствующие модели PikaFishing giant_icon и locked_icon: добавлены ссылки на существующие модели и текстуры предметов."
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-06",
+      "added": [],
+      "updated": [
         "Откат переноса JourneyMap: карта снова использует собственные данные. Старый слой изображений архивируется и не подмешивается к карте.",
         "PNG клавиш ё / ~ в подсказке пати и значок мыши с подсвеченной ЛКМ при поднятии игрока.",
         "AppleSkin перемещается вместе с нижним HUD и скрывается во время нока."
@@ -2653,6 +2661,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-06-native-map-rollback-v17",
+  "revision": "2026-11-06-pikafishing-model-aliases",
   "journeymap": []
 }
