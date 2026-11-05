@@ -174,7 +174,7 @@ public final class TeamMarks {
         java.util.Map.entry("igloo","Иглу"),java.util.Map.entry("swamp_hut","Хижина ведьмы"),
         java.util.Map.entry("ogre_kings_fort","Форт короля огров"),java.util.Map.entry("ogre_outpost_plains","Равнинный лагерь огров"),
         java.util.Map.entry("ogre_outpost_swamp","Болотный лагерь огров"),java.util.Map.entry("ribbit_village","Поселение Ribbits"),
-        java.util.Map.entry("mayan_ruins","Руины майя"),java.util.Map.entry("roman_ruined_temple","Разрушенный римский храм"),
+        java.util.Map.entry("wild_ruin","Заброшенные руины"),java.util.Map.entry("mayan_ruins","Руины майя"),java.util.Map.entry("roman_ruined_temple","Разрушенный римский храм"),
         java.util.Map.entry("ruined_german_village","Заброшенная деревня"),java.util.Map.entry("illager_camp","Лагерь разбойников"),
         java.util.Map.entry("illager_hideout","Убежище разбойников"),java.util.Map.entry("illager_manor","Поместье разбойников"),
         java.util.Map.entry("jungle_ruins","Руины в джунглях"),java.util.Map.entry("desert_ruins","Руины в пустыне"),
@@ -185,18 +185,18 @@ public final class TeamMarks {
         if(kind==0||kind==11||structure.isEmpty())return placeName(kind);
         String path=structure.substring(structure.indexOf(':')+1);
         if(structure.startsWith("croaks:"))return path.equals("outpost")?"Лагерь злых лягушек":path.equals("shed")?"Хижина злых лягушек":"Грибное убежище Croaks";
+        if(path.startsWith("tavern_"))return "Поселение · таверна";
         String title=STRUCTURE_TITLES.get(path);if(title!=null)return title;
         if(path.startsWith("ruined_portal"))return "Разрушенный портал";
         if(path.startsWith("ocean_ruin"))return "Подводные руины";
         if(path.startsWith("village_"))return "Деревня жителей";
         if(kind==5||kind==6||kind==7||kind==9)return placeName(kind);
-        // An unrecognised modded structure keeps its actual registered name, rather than pretending to be a village.
-        String words=path.replace('/',' ').replace('_',' ');
-        return words.isEmpty()?placeName(kind):Character.toUpperCase(words.charAt(0))+words.substring(1);
+        // Do not expose raw English registry names as player-facing map labels.
+        return placeName(kind);
     }
     private static volatile List<Location> locations = List.of();
     private static final String[] PLACE_FILES = { "poi_waystone", "poi_dungeon", "poi_witch", "poi_village", "poi_dungeon", "poi_ogre", "poi_frog", "poi_frog_enemy", "poi_ruins", "poi_pillager", "poi_portal", "poi_home" };
-    private static final String[] PLACE_NAMES = { "Камень телепорта", "Данж", "Ведьмины земли", "Деревня", "Данж", "Лагерь огров", "Поселение Ribbits", "Лагерь злых лягушек", "Руины", "Лагерь разбойников", "Разрушенный портал", "Ваш дом" };
+    private static final String[] PLACE_NAMES = { "Камень телепорта", "Данж", "Ведьмины земли", "Поселение", "Данж", "Лагерь огров", "Поселение Ribbits", "Лагерь злых лягушек", "Руины", "Лагерь разбойников", "Разрушенный портал", "Ваш дом" };
     private static final String[] PLACE_DESCRIPTIONS = {
         "Древний путевой камень. Активируйте его, чтобы открыть новую точку для путешествий.",
         "Запутанное сооружение, которое может скрывать опасности и ценные находки. Прихватите факелы и припасы.",
@@ -221,7 +221,8 @@ public final class TeamMarks {
     private static boolean hiddenUnderground(Location p) {
         String id=p.structure().isEmpty()?p.id():p.structure();
         return id.contains("minecraft:spawner")||id.contains("mineshaft")||id.contains("ancient_city")
-            ||id.contains("stronghold")||id.contains("trial_chamber")||id.contains("betterdungeons:");
+            ||id.contains("stronghold")||id.contains("trial_chamber")||id.contains("betterdungeons:")||id.contains("monster_room")||id.contains("underground")
+            ||id.contains("catacomb")||id.contains("small_dungeon");
     }
     private record Snapshot(List<Location> locations,List<double[]> points) {}
     private static final java.util.Map<String,java.util.LinkedHashMap<String,Location>> placeCache=new java.util.HashMap<>();
@@ -232,7 +233,7 @@ public final class TeamMarks {
     public static void setLocations(String dimension,List<Location> changes) {
         if(dimension.isEmpty()){placeCache.clear();placeSnapshots=java.util.Map.of();return;}
         var cache=placeCache.computeIfAbsent(dimension,d->new java.util.LinkedHashMap<>());
-        for(Location p:changes){if(p.kind()<0||hiddenUnderground(p))cache.remove(p.id());else cache.put(p.id(),p);}
+        for(Location p:changes){if(p.kind()<0||(p.open()&&p.kind()==4)||hiddenUnderground(p))cache.remove(p.id());else cache.put(p.id(),p);}
         cache.values().removeIf(TeamMarks::hiddenUnderground);
         while(cache.size()>16384)cache.remove(cache.keySet().iterator().next());
         var list=List.copyOf(cache.values());
@@ -246,7 +247,7 @@ public final class TeamMarks {
     }
     public static List<double[]> unknown(String dimension) {
         Snapshot snapshot=placeSnapshots.get(dimension);
-        return snapshot==null?(dimension.equals(unknownDimension)?unknown:List.of()):snapshot.points();
+        return snapshot==null?List.of():snapshot.points();
     }
 
     /** The map's cross: the plain one for the player, the party colour for a teammate. */
@@ -259,22 +260,35 @@ public final class TeamMarks {
         g.pose().popPose();
     }
 
+    public static boolean autoPlacesVisible() {
+        var mc=Minecraft.getInstance();
+        return mc!=null&&com.velorise.simplemap.client.cave.CaveMode.getCaveType(mc)==com.velorise.simplemap.client.cave.CaveMode.CaveType.OFF;
+    }
+    public static int placeHalf(int kind,boolean open){return !open?6:kind==8?11:8;}
+
     /** Called by the full map inside its world-to-screen transform. */
-    public static void drawOnMap(GuiGraphics g, Font font, double minX, double maxX, double minZ, double maxZ, float scale, float overlay) {
-        for (Location location : locations(MapManager.getInstance().getCurrentDimensionResourceId())) {
-            if (location.x() < minX || location.x() > maxX || location.z() < minZ || location.z() > maxZ) {
-                continue;
+    public static void drawOnMap(GuiGraphics g, Font font, double minX, double maxX, double minZ, double maxZ, float scale, float overlay, double hoverX, double hoverZ) {
+        MapMarkerLayout layout=new MapMarkerLayout();
+        var screen=Minecraft.getInstance().screen instanceof com.velorise.simplemap.client.gui.MapScreen map?map:null;
+        for (Location location : autoPlacesVisible()?locations(MapManager.getInstance().getCurrentDimensionResourceId()):List.<Location>of()) {
+            if(location.x()<minX||location.x()>maxX||location.z()<minZ||location.z()>maxZ)continue;
+            int half=placeHalf(location.kind(),location.open());
+            boolean selected=screen!=null&&screen.isSelectedLocation(location.id());
+            boolean hover=Math.hypot((location.x()-hoverX)*scale,(location.z()-hoverZ)*scale)<=(half+3)*overlay;
+            boolean focused=selected||hover;
+            int sx=(int)Math.round((location.x()-minX)*scale/overlay),sy=(int)Math.round((location.z()-minZ)*scale/overlay);
+            if(!layout.icon(sx,sy,half,focused))continue;
+            float size=overlay/scale;
+            g.pose().pushPose();g.pose().translate(location.x(),location.z(),5);g.pose().scale(size,size,1);
+            icon(g,location.open()?placeIcon(location.kind()):UNKNOWN,0,0,half);
+            // Questions are symbols, not a wall of repeated labels. Hover or selection reveals their caption.
+            if(location.open()||focused) {
+                String title=location.title();int width=font.width(title),labelY=half+3;
+                if(layout.label(sx-width/2-2,sy+labelY-1,width+4,12,focused)) {
+                    g.fill(-width/2-2,labelY-1,width/2+2,labelY+11,0xB0000000);
+                    g.drawString(font,title,-width/2,labelY,0xFFD9CBA0,false);
+                }
             }
-            float size = 1F / scale * overlay;
-            g.pose().pushPose();
-            g.pose().translate(location.x(), location.z(), 5);
-            g.pose().scale(size, size, 1F);
-            boolean open = location.open();
-            icon(g, open ? placeIcon(location.kind()) : UNKNOWN, 0, 0, open ? 8 : 6);
-            String title = location.title();
-            int width = font.width(title);
-            g.fill(-width / 2 - 2, 8, width / 2 + 2, 19, 0xB0000000);
-            g.drawString(font, title, -width / 2, 10, 0xFFD9CBA0, false);
             g.pose().popPose();
         }
         for (Mate mate : mates(MapManager.getInstance().getCurrentDimensionResourceId())) {

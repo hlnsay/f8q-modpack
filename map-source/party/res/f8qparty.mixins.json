@@ -3,6 +3,16 @@
   "minVersion": "0.8",
   "package": "com.f8q.party.mixin",
   "compatibilityLevel": "JAVA_21",
-  "client": ["DownedPickMixin", "HoverGlowMixin", "JukeboxRangeMixin", "KneelPoseMixin"],
-  "injectors": {"defaultRequire": 1}
+  "client": [
+    "DownedPickMixin",
+    "HoverGlowMixin",
+    "JukeboxRangeMixin",
+    "KneelPoseMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "PortalPlacementAccessor"
+  ]
 }

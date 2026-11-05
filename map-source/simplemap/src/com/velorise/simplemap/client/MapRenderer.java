@@ -798,7 +798,7 @@ public class MapRenderer {
         }
 
         if (!isMinimap && drawPinContent && viewingLiveDim) {
-            TeamMarks.drawOnMap(guiGraphics, mc.font, minX, maxX, minZ, maxZ, scale, fixedOverlayScale);
+            TeamMarks.drawOnMap(guiGraphics, mc.font, minX, maxX, minZ, maxZ, scale, fixedOverlayScale, mouseWorldX, mouseWorldZ);
         }
 
         // 6.5. Render pin marker if active and within visible bounds

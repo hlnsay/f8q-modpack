@@ -120,6 +120,22 @@ public class MapScreen extends Screen {
     private boolean hasFocusedCoordinateOverride;
     private boolean cameraInitialized;
     private TeamMarks.Location selectedLocation;
+    private long selectedAtNanos;
+    public boolean isSelectedLocation(String id){return selectedLocation!=null&&selectedLocation.id().equals(id);}
+    private void drawSelectedMarker(GuiGraphics g) {
+        if(selectedLocation==null||!cardDimension.equals(MapManager.getInstance().getCurrentDimensionResourceId()))return;
+        if(!selectedLocation.id().startsWith("waypoint:")&&!TeamMarks.autoPlacesVisible()){selectedLocation=null;return;}
+        float x=(float)(width*.5+(selectedLocation.x()-centerX)*currentRenderScale);
+        float y=(float)(height*.5+(selectedLocation.z()-centerZ)*currentRenderScale);
+        if(x<0||x>width||y<0||y>height)return;
+        double seconds=(System.nanoTime()-selectedAtNanos)/1_000_000_000.0;
+        float pulse=MapMarkerLayout.pulseScale(seconds);
+        int half=Math.round(TeamMarks.placeHalf(selectedLocation.kind(),selectedLocation.open())*pulse);
+        g.pose().pushPose();g.pose().translate(0,0,65);
+        drawCircleRing(g,x,y,half+2,half+2.8f,40,0xA8E9DEC0);
+        if(!selectedLocation.id().startsWith("waypoint:"))TeamMarks.icon(g,selectedLocation.open()?TeamMarks.placeIcon(selectedLocation.kind()):TeamMarks.UNKNOWN,x,y,half);
+        g.pose().popPose();
+    }
     private String cardDimension = "";
     private java.util.List<net.minecraft.util.FormattedCharSequence> cardLines = java.util.List.of();
     private int cardWidth, cardHeight;
@@ -133,7 +149,7 @@ public class MapScreen extends Screen {
         String dim = MapManager.getInstance().getCurrentDimensionResourceId();
         double best = 14.0 / currentRenderScale;
         TeamMarks.Location hit = null;
-        for (TeamMarks.Location place : TeamMarks.locations(dim)) {
+        for (TeamMarks.Location place : TeamMarks.autoPlacesVisible()?TeamMarks.locations(dim):java.util.List.<TeamMarks.Location>of()) {
             double d = Math.hypot(place.x()-x, place.z()-z);
             if (d <= best) { best=d; hit=place; }
         }
@@ -146,7 +162,7 @@ public class MapScreen extends Screen {
             if(d<=best){best=d;hit=new TeamMarks.Location("waypoint:"+mark.title(),"",mark.x(),mark.y(),mark.z(),13,true);}
         }
         if (hit == null) return false;
-        freezeCamera(); selectedLocation=hit; cardDimension=dim;
+        freezeCamera(); selectedLocation=hit; cardDimension=dim; selectedAtNanos=System.nanoTime();
         cardWidth=Math.min(186,Math.max(110,width/3));
         cardLines=font.split(Component.literal(hit.description()),cardWidth-16);
         cardHeight=49+cardLines.size()*10;
@@ -813,6 +829,7 @@ public class MapScreen extends Screen {
 
         // Draw coordinates overlay
         drawCoordsOverlay(guiGraphics, mouseX, mouseY);
+        drawSelectedMarker(guiGraphics);
         drawSelectionCard(guiGraphics);
 
         // Draw the custom context menu if open

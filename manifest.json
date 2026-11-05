@@ -963,9 +963,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "451e8650130dac0edfa3d8251c802abd6cb232231d97bd0d5a4fef9ce32ee3a4b677465787acbc101853cf213b48846bb66990d37acdb44e8853a4dd3525818f",
-      "size": 70420,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.11.jar"
+      "sha512": "1aab16a7a69b4156a1fab3adc23da822c19fec9b11a16bd7313d7aed7665550810ec460a3572127e96db0a6cdf604cbdc05a7759c4499c91854ffe0ac406f25b",
+      "size": 75784,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.12.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -1047,9 +1047,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 1540681,
-      "sha512": "5831fd8835fd35259c099202c94965173abfb65716dc67d4c1c381c955f5305269e9762681cc927e86a1f037cfac63090d1e0300f81961d9cf30b3256eb9f1e1",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q11.jar"
+      "size": 2164383,
+      "sha512": "f094a7bfca881c2e1d286c8e73fb83c142eb64eefc345836a63d7de65a9d454829d07cb97ad23abe8652b88ae1485b943377fb1e71816af1848ea884ec153d45",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q12.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2299,6 +2299,19 @@
   "changelog": [
     {
       "date": "2026-11-05",
+      "added": [
+        "Выбранная на карте точка увеличивается и плавно пульсирует, пока открыта её карточка."
+      ],
+      "updated": [
+        "Убрана сетка подземных комнат TREK и старый кэш автоматических меток. Подземные порталы и другие подземные локации не отображаются.",
+        "Увеличены иконки руин. Добавлена защита от наложения подписей; вопросики подписываются при наведении или выборе.",
+        "Таверны отмечаются как поселения. Переведены названия руин; неопознанные объекты больше не получают метку «Что-то интересное».",
+        "Лагеря разбойников TREK с названиями desert_outpost и jungle_outpost получили нужную категорию. Исправлено смешение villager и illager."
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-05",
       "added": [],
       "updated": [
         "Карта: убраны комнаты со спавнерами, шахты, древние города и подземные структуры, включая ранее сохранённые метки.",
@@ -2568,6 +2581,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-toolbar-fixed",
+  "revision": "2026-11-05-map-polish-v12",
   "journeymap": []
 }

@@ -13,20 +13,28 @@ final class PlaceKinds {
                 if (id.contains(word)) return 7;
             return 6;
         }
-        if (id.contains("pillager") || id.contains("illager")) return 9;
+        if (id.equals("trek:overworld/medium/desert_outpost")||id.equals("trek:overworld/medium/jungle_outpost")) return 9;
+        if (id.equals("trek:overworld/medium/camp_1")||id.equals("trek:overworld/medium/camp_3")
+                ||id.equals("trek:overworld/medium/camp_4")||id.equals("trek:overworld/medium/spruce_camp")) return 3;
+        if (id.contains("pillager") || (id.contains("illager")&&!id.contains("villager"))) return 9;
         if (id.contains("ruin") || id.contains("remnant") || id.contains("abandoned")) return 8;
         if (id.contains("witch") || id.contains("swamp_hut")) return 2;
-        if (id.contains("village") || id.contains("hamlet") || id.contains("town")) return 3;
+        if (id.contains("village") || id.contains("hamlet") || id.contains("town") || id.contains("tavern") || id.contains("inn_")) return 3;
         for (String word : new String[]{"dungeon", "crypt", "catacomb", "tomb", "fort", "citadel", "keep", "donjon", "lair", "castle", "temple", "pyramid", "bastion", "mansion", "monument", "sanctum", "manor", "ancient_city", "chamber", "stronghold", "mineshaft"})
             if (id.contains(word)) return 1;
-        return 4;
+        return -1;
     }
     static boolean hidden(String value) {
         String id=value.toLowerCase(Locale.ROOT);
         return id.equals("minecraft:spawner") || id.contains("mineshaft") || id.contains("ancient_city")
             || id.contains("stronghold") || id.contains("trial_chamber")
-            || id.startsWith("betterdungeons:");
+            || id.startsWith("betterdungeons:") || id.contains("monster_room") || id.contains("underground")
+            || id.contains("catacomb") || id.contains("small_dungeon");
     }
+    static boolean portalUnderground(String placement) {
+        return placement.equals("UNDERGROUND") || placement.equals("IN_MOUNTAIN");
+    }
+    static boolean buried(int top,int ground) {return top<ground-2;}
     static boolean undergroundStep(String step) {
         return step.equals("UNDERGROUND_STRUCTURES") || step.equals("UNDERGROUND_DECORATION");
     }

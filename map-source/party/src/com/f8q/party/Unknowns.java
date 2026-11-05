@@ -36,7 +36,7 @@ final class Unknowns {
     private static Store store=new Store();
     private static boolean loaded,dirty;
     private static int saveClock;
-    private static Path file(MinecraftServer s) {return s.getWorldPath(LevelResource.ROOT).resolve("f8q-generated-places-v2.json");}
+    private static Path file(MinecraftServer s) {return s.getWorldPath(LevelResource.ROOT).resolve("f8q-surface-places-v3.json");}
     private static boolean hidden(MinecraftServer server,Place p) {
         if(PlaceKinds.hidden(p.structure))return true;
         for(ServerLevel level:server.getAllLevels())if(level.dimension().location().toString().equals(p.dimension)) {
@@ -48,6 +48,14 @@ final class Unknowns {
     private static void load(MinecraftServer s) {
         if(loaded)return;loaded=true;
         try {
+            if(!Files.exists(file(s))) {
+                Path legacy=s.getWorldPath(LevelResource.ROOT).resolve("f8q-generated-places-v2.json");
+                if(Files.exists(legacy)) {
+                    Store old=GSON.fromJson(Files.readString(legacy),Store.class);
+                    if(old!=null&&old.known!=null)store.known=old.known;
+                }
+                dirty=true;
+            }
             if(Files.exists(file(s))) {
                 Store read=GSON.fromJson(Files.readString(file(s)),Store.class);
                 if(read!=null&&read.places!=null&&read.known!=null)store=read;
@@ -110,13 +118,18 @@ final class Unknowns {
             if(id.contains("ribbit")||id.contains("frog")){
                 int n=0;for(var piece:start.getPieces()){if(++n>128)break;if(piece instanceof PoolElementStructurePiece pool)hints+=" "+pool.getElement();}
             }
+            if(PlaceKinds.classify(hints)<0)return;
+            for(var piece:start.getPieces())if(piece instanceof net.minecraft.world.level.levelgen.structure.structures.RuinedPortalPiece
+                    &&piece instanceof com.f8q.party.mixin.PortalPlacementAccessor portal
+                    &&PlaceKinds.portalUnderground(portal.f8q$getPlacement().name()))return;
             var b=start.getBoundingBox();double x=PlaceKinds.center(b.minX(),b.maxX()),z=PlaceKinds.center(b.minZ(),b.maxZ());
-            // Some mods mislabel wholly buried structures as surface structures.
+            // Check every category against real generated terrain, including portals and ruins.
+            // Missing centre chunk means wait; never load or generate it to obtain a marker.
             LevelChunk centerChunk=level.getChunkSource().getChunkNow(((int)Math.floor(x))>>4,((int)Math.floor(z))>>4);
-            if(centerChunk!=null&&level.dimension().equals(net.minecraft.world.level.Level.OVERWORLD)
-                    &&(PlaceKinds.classify(hints)==1||PlaceKinds.classify(hints)==4)) {
+            if(centerChunk==null)return;
+            if(level.dimension().equals(net.minecraft.world.level.Level.OVERWORLD)) {
                 int ground=centerChunk.getHeight(net.minecraft.world.level.levelgen.Heightmap.Types.OCEAN_FLOOR,((int)Math.floor(x))&15,((int)Math.floor(z))&15);
-                if(b.maxY()<ground-8)return;
+                if(PlaceKinds.buried(b.maxY(),ground))return;
             }
             String key=job.dimension+"|"+id+"|"+b.minX()+","+b.minY()+","+b.minZ();
             put(new Place(key,job.dimension,id,PlaceKinds.classify(hints),x,PlaceKinds.center(b.minY(),b.maxY()),z,b.minX(),b.maxX(),b.minZ(),b.maxZ(),false));
@@ -126,6 +139,10 @@ final class Unknowns {
             String id=BuiltInRegistries.BLOCK.getKey(entry.getValue().getBlockState().getBlock()).toString();
             if(!id.contains("waystone")||id.contains("warp_plate")||id.contains("sharestone"))continue;
             BlockPos b=entry.getKey();
+            if(level.dimension().equals(net.minecraft.world.level.Level.OVERWORLD)) {
+                int ground=chunk.getHeight(net.minecraft.world.level.levelgen.Heightmap.Types.OCEAN_FLOOR,b.getX()&15,b.getZ()&15);
+                if(PlaceKinds.buried(b.getY()+2,ground))continue;
+            }
             String key=job.dimension+"|block|"+b.asLong();blocks.add(key);
             put(new Place(key,job.dimension,id,0,b.getX()+.5,b.getY(),b.getZ()+.5,b.getX(),b.getX(),b.getZ(),b.getZ(),true));
         }
@@ -142,7 +159,7 @@ final class Unknowns {
         List<Net.Place> result=new ArrayList<>();
         for(Place p:near){
             boolean open=known.contains(p.key);
-            result.add(new Net.Place(p.key,open?p.structure:"",p.x,p.y,p.z,open?p.kind:4,open));
+            result.add(new Net.Place(p.key,p.structure,p.x,p.y,p.z,open?p.kind:4,open));
         }
         BlockPos home=player.getRespawnPosition();
         if(home!=null&&player.getRespawnDimension().location().toString().equals(dim))result.add(new Net.Place("home:"+player.getUUID(),"minecraft:respawn",home.getX()+.5,home.getY(),home.getZ()+.5,11,true));
