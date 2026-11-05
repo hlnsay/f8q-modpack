@@ -237,14 +237,16 @@ public final class TeamMarks {
     public static void setLocations(String dimension,List<Location> changes) {
         if(dimension.isEmpty()){closeJournal();return;}
         var cache=placeCache.computeIfAbsent(dimension,d->new java.util.LinkedHashMap<>());
-        for(Location p:changes){if(p.kind()<0||(p.open()&&p.kind()==4)||hiddenUnderground(p))cache.remove(p.id());else cache.put(p.id(),p);}
+        for(Location p:changes){if(p.kind()<0||(p.open()&&p.kind()==4)||hiddenUnderground(p))cache.remove(p.id());else { Location previous=cache.get(p.id()); cache.put(p.id(),previous!=null&&previous.open()&&!p.open()?previous:p); }}
         cache.values().removeIf(TeamMarks::hiddenUnderground);
         while(cache.size()>16384)cache.remove(cache.keySet().iterator().next());
         var list=List.copyOf(cache.values());
         var next=new java.util.HashMap<>(placeSnapshots);
         next.put(dimension,new Snapshot(list,list.stream().map(p->new double[]{p.x(),p.z(),p.kind(),p.open()?1:0,LocalPlaces.color(p.id())}).toList()));
         placeSnapshots=java.util.Map.copyOf(next);
-        LocalPlaces.journal().receive(dimension,changes.stream().map(p->hiddenUnderground(p)||(p.open()&&p.kind()==4)?new Location(p.id(),p.structure(),p.x(),p.y(),p.z(),-1,false):p).toList());
+        LocalPlaces.journal().state.places.put(dimension,new java.util.LinkedHashMap<>(cache));
+        LocalPlaces.journal().changed();
+        LocalPlaces.journal().flush();
     }
     public static void setUnknown(String dimension,List<double[]> places) {
         // Compatibility with older callers; authoritative locations use setLocations.
@@ -294,8 +296,7 @@ public final class TeamMarks {
     }
 
     public static boolean autoPlacesVisible() {
-        var mc=Minecraft.getInstance();
-        return LocalPlaces.showPois&&mc!=null&&com.velorise.simplemap.client.cave.CaveMode.getCaveType(mc)==com.velorise.simplemap.client.cave.CaveMode.CaveType.OFF;
+        return LocalPlaces.showPois;
     }
     public static int placeHalf(int kind,boolean open){return !open?6:kind==8?11:8;}
 
@@ -313,7 +314,11 @@ public final class TeamMarks {
             if(!layout.icon(sx,sy,half,focused))continue;
             float size=overlay/scale;
             g.pose().pushPose();g.pose().translate(location.x(),location.z(),5);g.pose().scale(size,size,1);
+            g.pose().pushPose();
+            float selectedScale=screen==null?1f:screen.selectionScale(location.id());
+            g.pose().scale(selectedScale,selectedScale,1);
             icon(g,location.open()?placeIcon(location.kind()):UNKNOWN,0,0,half,LocalPlaces.color(location.id()));
+            g.pose().popPose();
             // Questions are symbols, not a wall of repeated labels. Hover or selection reveals their caption.
             if(location.open()||focused) {
                 String title=location.title();int width=font.width(title),labelY=half+3;

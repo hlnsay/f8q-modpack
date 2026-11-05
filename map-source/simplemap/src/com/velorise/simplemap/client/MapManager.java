@@ -285,6 +285,7 @@ public class MapManager {
 
         if (level == observedIdentityLevel && observedWorldDirectory != null
                 && !observedWorldId.isEmpty()) {
+            if (!LocalPlaces.isBound()) TeamMarks.openJournal(observedWorldDirectory.toPath().resolve("f8q-places-"+minecraft.getUser().getProfileId()+".json"));
             liveDimensionId = observedLiveDimensionId;
             liveDimensionResourceId = observedLiveDimensionResourceId;
             visitedDimensionsInWorld.add(liveDimensionResourceId);

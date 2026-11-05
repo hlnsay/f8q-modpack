@@ -183,19 +183,8 @@ public class MapScreen extends Screen {
     }
     private long selectedAtNanos;
     public boolean isSelectedLocation(String id){return selectedLocation!=null&&selectedLocation.id().equals(id);}
-    private void drawSelectedMarker(GuiGraphics g) {
-        if(selectedLocation==null||!cardDimension.equals(MapManager.getInstance().getCurrentDimensionResourceId()))return;
-        if(!selectedLocation.id().startsWith("waypoint:")&&!TeamMarks.autoPlacesVisible()){selectedLocation=null;selectedEntry=null;return;}
-        float x=(float)(width*.5+(selectedLocation.x()-centerX)*currentRenderScale);
-        float y=(float)(height*.5+(selectedLocation.z()-centerZ)*currentRenderScale);
-        if(x<0||x>width||y<0||y>height)return;
-        double seconds=(System.nanoTime()-selectedAtNanos)/1_000_000_000.0;
-        float pulse=MapMarkerLayout.pulseScale(seconds);
-        int half=Math.round(TeamMarks.placeHalf(selectedLocation.kind(),selectedLocation.open())*pulse);
-        g.pose().pushPose();g.pose().translate(0,0,65);
-        drawCircleRing(g,x,y,half+2,half+2.8f,40,0xA8E9DEC0);
-        if(selectedEntry!=null)selectedEntry.icon(g,x,y,half);
-        g.pose().popPose();
+    public float selectionScale(String id) {
+        return isSelectedLocation(id) ? MapMarkerLayout.pulseScale((System.nanoTime()-selectedAtNanos)/1_000_000_000.0) : 1f;
     }
     private String cardDimension = "";
     private java.util.List<net.minecraft.util.FormattedCharSequence> cardLines = java.util.List.of();
@@ -357,7 +346,7 @@ public class MapScreen extends Screen {
         // Pos 1: Settings
         minimapConfigButton = new PixelIconButton(0, 0, TOOLBAR_BUTTON_SIZE, TOOLBAR_BUTTON_SIZE, MapUiIcons.Icon.SETTINGS, button -> {
             if (this.minecraft != null) {
-                this.minecraft.setScreen(new MapStyleScreen(this));
+                this.minecraft.setScreen(new MapConfigScreen(this));
             }
         });
         this.addRenderableWidget(minimapConfigButton);
@@ -497,6 +486,7 @@ public class MapScreen extends Screen {
             MapManager.getInstance().ensureCeilingSurfaceRegionsBackfilled();
         }
         layoutToolbar();
+        updateCaveControlLayout();
         updateToolbarTooltips();
     }
 
@@ -504,17 +494,15 @@ public class MapScreen extends Screen {
         Button[] buttons = { minimapConfigButton, waypointsToggleButton, waypointListButton,
                 nightModeButton, refreshMapButton, teamPinsButton, teamWaypointsButton, worldMarksButton };
         toolbarStartX = TOOLBAR_MARGIN;
-        toolbarStartY = Math.max(8,(this.height-10*Math.min(TOOLBAR_BUTTON_SIZE+TOOLBAR_GAP,Math.max(18,(this.height-16)/10)))/2);
-        toolbarStepY = Math.min(TOOLBAR_BUTTON_SIZE+TOOLBAR_GAP,Math.max(18,(this.height-16)/10));
+        toolbarStartY = TOOLBAR_MARGIN;
+        toolbarStepY = TOOLBAR_BUTTON_SIZE + TOOLBAR_GAP;
         toolbarWidth = TOOLBAR_BUTTON_SIZE;
         toolbarRows = buttons.length;
         for (int i = 0; i < buttons.length; i++) {
             buttons[i].setX(toolbarStartX);
             buttons[i].setY(toolbarStartY + i * toolbarStepY);
             buttons[i].setWidth(TOOLBAR_BUTTON_SIZE);
-            buttons[i].setHeight(Math.min(TOOLBAR_BUTTON_SIZE,toolbarStepY-2));
         }
-        updateCaveControlLayout();
     }
 
     private void drawToolbarBackground(GuiGraphics guiGraphics) {
@@ -634,7 +622,7 @@ public class MapScreen extends Screen {
     }
 
     private void updateCaveControlLayout() {
-        int controlY = toolbarStartY+(toolbarRows+1)*toolbarStepY;
+        int controlY = this.height - TOOLBAR_BUTTON_SIZE - TOOLBAR_MARGIN;
         if (caveLayerModeButton != null) {
             updateCaveTooltip();
             caveLayerModeButton.setWidth(TOOLBAR_BUTTON_SIZE);
@@ -644,7 +632,7 @@ public class MapScreen extends Screen {
         if (dimensionSwitchButton != null) {
             dimensionSwitchButton.setWidth(TOOLBAR_BUTTON_SIZE);
             dimensionSwitchButton.setX(TOOLBAR_MARGIN);
-            dimensionSwitchButton.setY(controlY-toolbarStepY);
+            dimensionSwitchButton.setY(controlY - TOOLBAR_BUTTON_SIZE - TOOLBAR_GAP);
         }
         if (caveLayerSlider == null || caveLayerModeButton == null) return;
 
@@ -863,6 +851,13 @@ public class MapScreen extends Screen {
             }
         }
 
+        // End map rendering before drawing the original screen-space controls.
+        guiGraphics.flush();
+        com.mojang.blaze3d.systems.RenderSystem.enableBlend();
+        com.mojang.blaze3d.systems.RenderSystem.defaultBlendFunc();
+        com.mojang.blaze3d.systems.RenderSystem.setShaderColor(1,1,1,1);
+        guiGraphics.pose().pushPose();
+        guiGraphics.pose().translate(0,0,200);
         // Draw GUI widgets (buttons)
         drawToolbarBackground(guiGraphics);
         drawCaveControlBackground(guiGraphics);
@@ -870,13 +865,13 @@ public class MapScreen extends Screen {
 
         // Draw coordinates overlay
         drawCoordsOverlay(guiGraphics, mouseX, mouseY);
-        drawSelectedMarker(guiGraphics);
         if(!editingPreview){drawSelectionCard(guiGraphics);knownPlaces.render(this,guiGraphics,mouseX,mouseY);}
 
         // Draw the custom context menu if open
         if (isPopupMenuOpen) {
             drawPopupMenu(guiGraphics, mouseX, mouseY);
         }
+        guiGraphics.pose().popPose();
     }
 
     static void drawSolidCircleHelper(GuiGraphics guiGraphics, float cx, float cy, float radius, int numSegments,
@@ -1009,8 +1004,13 @@ public class MapScreen extends Screen {
             int y0 = getY();
             int x1 = x0 + getWidth();
             int y1 = y0 + getHeight();
-            float iconScale=TOOLBAR_ICON_SCALE*(hover?1.12f:1f);
-            MapUiIcons.drawScaled(graphics, displayedIcon, x0 + getWidth() / 2, y0 + getHeight() / 2, active && on, iconScale);
+            graphics.fill(x0, y0, x1, y1, hover ? 0xF02A2115 : 0xE6120E0A);
+            int edge = hover ? 0xFFE0B84C : 0xFF4A3D2C;
+            graphics.fill(x0, y0, x1, y0 + 1, edge);
+            graphics.fill(x0, y1 - 1, x1, y1, edge);
+            graphics.fill(x0, y0, x0 + 1, y1, edge);
+            graphics.fill(x1 - 1, y0, x1, y1, edge);
+            MapUiIcons.drawScaled(graphics, displayedIcon, x0 + getWidth() / 2, y0 + getHeight() / 2, active && on, TOOLBAR_ICON_SCALE);
         }
     }
 

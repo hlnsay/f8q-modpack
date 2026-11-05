@@ -963,9 +963,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "716eba5a1e092c3fa08cf005f107a4ad31377235ee0955ae7d759fa6a1148c7a3dce426d57b2b4af303e4475264cab77db5ae7d24cec6cbaeb90d15bfc34a30e",
-      "size": 76711,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.13-716eba5a1e09.jar"
+      "sha512": "2eeaef6ea2062238081aba19f0c3ac2567718236c9df1365c574e068a9b8f4dfda185610a702f1bfc7c03476166e544dab589614f25320573d66dcaa3ed0f08b",
+      "size": 76778,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.14-2eeaef6ea206.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -1047,9 +1047,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 4212507,
-      "sha512": "2cf175626636f46a22ef7829e468f7fef9365e45b58d47db69e92b1a8dc730218d83094cfaa4565f3cb00a65039f766e029da50f265c6e56e662e9b6463202e6",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q13-2cf175626636.jar"
+      "size": 4212387,
+      "sha512": "36e4c4961862f9ec3f1e5f7019a3542213bcf5d2bb1bc767fb9568fdfeb81702c4e270ea5ce0898a7d8eaeaecc1ff28f93e3405eca73649d5193ceb0f105cf03",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q14-36e4c4961862.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2305,6 +2305,16 @@
   "changelog": [
     {
       "date": "2026-11-05",
+      "updated": [
+        "Восстановлены прежние меню настроек карты, мира, пати и менеджер меток.",
+        "Исправлено исчезновение поверхностных точек при автоматическом режиме пещер.",
+        "Выбранная точка плавно увеличивается одним значком: убраны круг и двойная отрисовка.",
+        "Усилено восстановление журнала при перезаходе и повторная отправка точек сервером при быстром подключении.",
+        "Исправлен слой отрисовки левой панели кнопок."
+      ]
+    },
+    {
+      "date": "2026-11-05",
       "added": [
         "Список открытых мест, личных меток и меток пати: прокрутка и переход камеры по клику.",
         "Персональный редактор точки интереса: название и цвет Minecraft сохраняются только у игрока.",
@@ -2605,6 +2615,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-place-journal-v13",
+  "revision": "2026-11-05-map-regression-repair-v14",
   "journeymap": []
 }

@@ -203,6 +203,7 @@ public final class F8qParty {
     }
 
     private static void joined(PlayerEvent.PlayerLoggedInEvent event) {
+        Unknowns.reconnect(event.getEntity().getUUID());
         if (event.getEntity() instanceof ServerPlayer player) {
             gone.remove(player.getUUID());
             names.put(player.getUUID(), player.getGameProfile().getName());

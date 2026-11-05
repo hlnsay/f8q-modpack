@@ -79,6 +79,7 @@ final class Unknowns {
             Files.writeString(tmp,GSON.toJson(store));Files.move(tmp,file(s),StandardCopyOption.REPLACE_EXISTING);dirty=false;
         }catch(Exception e){F8qParty.LOG.warn("Could not save confirmed map places",e);}
     }
+    static void reconnect(UUID player){lastSent.remove(player);origins.remove(player);}
     static void stopped(){queue.clear();pending.clear();scanned.clear();origins.clear();lastSent.clear();store=new Store();loaded=dirty=false;saveClock=0;}
     static void stopping(MinecraftServer s){save(s);}
     /** FULL chunk was already sent to a player. Only queue a coordinate here. */

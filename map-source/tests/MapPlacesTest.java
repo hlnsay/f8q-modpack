@@ -100,6 +100,22 @@ public final class MapPlacesTest {
             Object place=gson.fromJson("{\"key\":\"verified\",\"dimension\":\"minecraft:overworld\",\"structure\":\"minecraft:village_plains\",\"kind\":3,\"x\":12.5,\"y\":70,\"z\":-32.5,\"minX\":0,\"maxX\":25,\"minZ\":-40,\"maxZ\":-25,\"block\":false}",record);
             var x=record.getDeclaredMethod("x");x.setAccessible(true);check(((Double)x.invoke(place))==12.5,"server record reload preserves exact coordinates with older Gson");
         }catch(ReflectiveOperationException e){throw new AssertionError(e);}
+        try {
+            var tmp=java.nio.file.Files.createTempDirectory("map-reconnect-");var file=tmp.resolve("account.json");
+            com.velorise.simplemap.client.TeamMarks.openJournal(file);
+            var discovered=new com.velorise.simplemap.client.TeamMarks.Location("reconnect", "minecraft:village_plains",32,70,64,3,true);
+            com.velorise.simplemap.client.TeamMarks.setLocations("minecraft:overworld",List.of(discovered));
+            com.velorise.simplemap.client.TeamMarks.closeJournal();
+            com.velorise.simplemap.client.TeamMarks.openJournal(file);
+            check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").contains(discovered),"actual logout/rebind restores discovery without network packets");
+            com.velorise.simplemap.client.TeamMarks.setLocations("minecraft:overworld",List.of(new com.velorise.simplemap.client.TeamMarks.Location("reconnect","minecraft:village_plains",32,70,64,4,false)));
+            check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").contains(discovered),"stale reconnect delta cannot hide opened place");
+            check(com.velorise.simplemap.client.TeamMarks.autoPlacesVisible(),"POIs visible without depending on cave projection");
+            com.velorise.simplemap.client.TeamMarks.setLocations("minecraft:overworld",List.of(new com.velorise.simplemap.client.TeamMarks.Location("reconnect","",32,70,64,-1,false)));
+            com.velorise.simplemap.client.TeamMarks.closeJournal();com.velorise.simplemap.client.TeamMarks.openJournal(file);
+            check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").isEmpty(),"explicit removals remain removed after reload");
+            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.delete(file);java.nio.file.Files.delete(tmp);
+        } catch(java.io.IOException e){throw new AssertionError(e);}
         System.out.println("PASS: party icon codec, journal restart persistence, world/account isolation, personal names/colors and Minecraft color IDs");
     }
 }
