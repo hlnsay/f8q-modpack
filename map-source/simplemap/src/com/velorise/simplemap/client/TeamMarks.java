@@ -161,8 +161,9 @@ public final class TeamMarks {
         com.mojang.blaze3d.systems.RenderSystem.setShaderColor(1,1,1,1);
     }
 
-    public record Location(String id, String structure, double x, double y, double z, int kind, boolean open) {
-        public String title() { return LocalPlaces.name(id,id.startsWith("waypoint:") ? id.substring(9) : open ? structureTitle(structure,kind) : "Неизвестное место"); }
+    public record Location(String id, String structure, double x, double y, double z, int kind, boolean open,String label) {
+        public Location(String id,String structure,double x,double y,double z,int kind,boolean open){this(id,structure,x,y,z,kind,open,"");}
+        public String title() { return LocalPlaces.name(id,id.startsWith("waypoint:") ? id.substring(9) : open ? (kind==0&&label!=null&&!label.isBlank()?"Обелиск ["+label+"]":structureTitle(structure,kind)) : "Неизвестное место"); }
         public String description() { return kind==12 ? "Место вашей гибели. Здесь стоит поискать оставленные вещи." : kind==13 ? "Ваша сохранённая метка. Ориентир для будущего путешествия." : open ? placeDescription(kind) : "Здесь обнаружена настоящая постройка. Подойдите ближе, чтобы узнать, что это за место."; }
     }
     private static final java.util.Map<String,String> STRUCTURE_TITLES=java.util.Map.ofEntries(
@@ -200,7 +201,7 @@ public final class TeamMarks {
     }
     private static volatile List<Location> locations = List.of();
     private static final String[] PLACE_FILES = { "poi_waystone", "poi_dungeon", "poi_witch", "poi_village", "poi_dungeon", "poi_ogre", "poi_frog", "poi_frog_enemy", "poi_ruins", "poi_pillager", "poi_portal", "poi_home" };
-    private static final String[] PLACE_NAMES = { "Камень телепорта", "Данж", "Ведьмины земли", "Поселение", "Данж", "Лагерь огров", "Поселение Ribbits", "Лагерь злых лягушек", "Руины", "Лагерь разбойников", "Разрушенный портал", "Ваш дом" };
+    private static final String[] PLACE_NAMES = { "Обелиск", "Данж", "Ведьмины земли", "Поселение", "Данж", "Лагерь огров", "Поселение Ribbits", "Лагерь злых лягушек", "Руины", "Лагерь разбойников", "Разрушенный портал", "Ваш дом" };
     private static final String[] PLACE_DESCRIPTIONS = {
         "Древний путевой камень. Активируйте его, чтобы открыть новую точку для путешествий.",
         "Запутанное сооружение, которое может скрывать опасности и ценные находки. Прихватите факелы и припасы.",
@@ -230,13 +231,29 @@ public final class TeamMarks {
     }
     private record Snapshot(List<Location> locations,List<double[]> points) {}
     private static final java.util.Map<String,java.util.LinkedHashMap<String,Location>> placeCache=new java.util.HashMap<>();
+    private static final java.util.Map<String,java.util.LinkedHashMap<String,Location>> pendingChanges=new java.util.HashMap<>();
     private static volatile java.util.Map<String,Snapshot> placeSnapshots=java.util.Map.of();
     public static List<Location> locations(String dimension) {
-        Snapshot snapshot=placeSnapshots.get(dimension);return snapshot==null?List.of():snapshot.locations();
+        var result=new java.util.LinkedHashMap<String,Location>();
+        sharedPlaces.values().forEach(dims->dims.getOrDefault(dimension,java.util.Map.of()).forEach(result::put));
+        Snapshot snapshot=placeSnapshots.get(dimension);if(snapshot!=null)for(var p:snapshot.locations()){
+            var shared=result.get(p.id());result.put(p.id(),shared!=null&&shared.open()&&!p.open()?shared:p);
+        }return List.copyOf(result.values());
+    }
+    private static final java.util.Map<java.util.UUID,java.util.Map<String,java.util.Map<String,Location>>> sharedPlaces=new java.util.HashMap<>();
+    public static void retainParty(java.util.Set<java.util.UUID> owners){sharedPlaces.keySet().retainAll(owners);SharedExploration.retainParty(owners);}
+    public static void setSharedLocations(java.util.UUID owner,String dim,boolean reset,List<Location> points){
+        // Shared discoveries become personal knowledge by explicit pack policy.
+        setLocations(dim,points);
+        var dims=sharedPlaces.computeIfAbsent(owner,k->new java.util.HashMap<>());
+        var map=dims.computeIfAbsent(dim,k->new java.util.LinkedHashMap<>());if(reset)map.clear();
+        for(var p:points)if(p.open()&&p.kind()>=0&&p.kind()!=4&&!hiddenUnderground(p))map.put(p.id(),p);
     }
     public static void setLocations(String dimension,List<Location> changes) {
         if(dimension.isEmpty()){closeJournal();return;}
+        if(!LocalPlaces.isBound()){var queued=pendingChanges.computeIfAbsent(dimension,k->new java.util.LinkedHashMap<>());for(var p:changes)queued.put(p.id(),p);}
         var cache=placeCache.computeIfAbsent(dimension,d->new java.util.LinkedHashMap<>());
+        for(var p:changes)if(p.kind()<0)sharedPlaces.values().forEach(dims->dims.values().forEach(points->points.remove(p.id())));
         for(Location p:changes){if(p.kind()<0||(p.open()&&p.kind()==4)||hiddenUnderground(p))cache.remove(p.id());else { Location previous=cache.get(p.id()); cache.put(p.id(),previous!=null&&previous.open()&&!p.open()?previous:p); }}
         cache.values().removeIf(TeamMarks::hiddenUnderground);
         while(cache.size()>16384)cache.remove(cache.keySet().iterator().next());
@@ -253,26 +270,29 @@ public final class TeamMarks {
         unknownDimension=dimension;unknown=List.copyOf(places);
     }
     public static List<double[]> unknown(String dimension) {
-        Snapshot snapshot=placeSnapshots.get(dimension);
-        return snapshot==null?List.of():snapshot.points();
+        return locations(dimension).stream().filter(p->mapped(p,dimension)).map(p->new double[]{p.x(),p.z(),p.kind(),p.open()?1:0,LocalPlaces.color(p.id())}).toList();
     }
 
     public static void openJournal(Path path) {
         var pending=LocalPlaces.isBound()?java.util.Map.<String,Snapshot>of():placeSnapshots;
+        var queued=new java.util.HashMap<>(pendingChanges);
         if(!LocalPlaces.bind(path))return;
+        pendingChanges.clear();
+        SharedExploration.bind(path.resolveSibling(path.getFileName()+".terrain.dat"));
         placeCache.clear();placeSnapshots=java.util.Map.of();
         var saved=new java.util.LinkedHashMap<>(LocalPlaces.journal().state.places);
         saved.forEach((dim,points)->setLocations(dim,List.copyOf(points.values())));
         pending.forEach((dim,snapshot)->setLocations(dim,snapshot.locations()));
+        queued.forEach((dim,changes)->setLocations(dim,List.copyOf(changes.values())));
     }
     public static void refreshStyles(){
         var next=new java.util.HashMap<String,Snapshot>();
         placeSnapshots.forEach((dim,snapshot)->next.put(dim,new Snapshot(snapshot.locations(),snapshot.locations().stream().map(p->new double[]{p.x(),p.z(),p.kind(),p.open()?1:0,LocalPlaces.color(p.id())}).toList())));
         placeSnapshots=java.util.Map.copyOf(next);
     }
-    public static void closeJournal(){LocalPlaces.close();placeCache.clear();placeSnapshots=java.util.Map.of();}
+    public static void closeJournal(){pendingChanges.clear();sharedPlaces.clear();SharedExploration.clear();LocalPlaces.close();placeCache.clear();placeSnapshots=java.util.Map.of();}
     public static java.util.Map<String,List<Location>> allLocations(){
-        var out=new java.util.LinkedHashMap<String,List<Location>>();placeSnapshots.forEach((dim,snapshot)->out.put(dim,snapshot.locations()));return out;
+        var out=new java.util.LinkedHashMap<String,List<Location>>();var dims=new java.util.HashSet<>(placeSnapshots.keySet());sharedPlaces.values().forEach(m->dims.addAll(m.keySet()));dims.forEach(dim->out.put(dim,locations(dim)));return out;
     }
     public static List<Mark> allVisible(){return marks.stream().filter(m->m.pin()?showPins:showWaypoints).toList();}
     public static Mark localRoute(String dim){
@@ -295,6 +315,11 @@ public final class TeamMarks {
         g.pose().popPose();
     }
 
+    public static boolean mapped(Location p,String dimension){
+        if(p.open())return true;
+        if(SharedExploration.learned(dimension,(int)Math.floor(p.x()),(int)Math.floor(p.z())))return true;
+        return !com.velorise.simplemap.client.color.MapBlockData.isEmpty(MapManager.getInstance().getPackedBlockData((int)Math.floor(p.x()),(int)Math.floor(p.z())));
+    }
     public static boolean autoPlacesVisible() {
         return LocalPlaces.showPois;
     }
@@ -305,6 +330,7 @@ public final class TeamMarks {
         MapMarkerLayout layout=new MapMarkerLayout();
         var screen=Minecraft.getInstance().screen instanceof com.velorise.simplemap.client.gui.MapScreen map?map:null;
         for (Location location : autoPlacesVisible()?locations(MapManager.getInstance().getCurrentDimensionResourceId()):List.<Location>of()) {
+            if(!mapped(location,MapManager.getInstance().getCurrentDimensionResourceId()))continue;
             if(location.x()<minX||location.x()>maxX||location.z()<minZ||location.z()>maxZ)continue;
             int half=placeHalf(location.kind(),location.open());
             boolean selected=screen!=null&&screen.isSelectedLocation(location.id());

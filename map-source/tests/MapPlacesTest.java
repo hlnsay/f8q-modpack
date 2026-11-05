@@ -116,6 +116,46 @@ public final class MapPlacesTest {
             check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").isEmpty(),"explicit removals remain removed after reload");
             com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.delete(file);java.nio.file.Files.delete(tmp);
         } catch(java.io.IOException e){throw new AssertionError(e);}
+        try {
+            var root=java.nio.file.Files.createTempDirectory("early-delete-");var file=root.resolve("journal.json");
+            var stone=new com.velorise.simplemap.client.TeamMarks.Location("broken-stone","waystones:waystone",1,120,1,0,true,"Дом");
+            com.velorise.simplemap.client.TeamMarks.openJournal(file);com.velorise.simplemap.client.TeamMarks.setLocations("minecraft:overworld",List.of(stone));com.velorise.simplemap.client.TeamMarks.closeJournal();
+            com.velorise.simplemap.client.TeamMarks.setLocations("minecraft:overworld",List.of(new com.velorise.simplemap.client.TeamMarks.Location(stone.id(),"",0,0,0,-1,false)));
+            com.velorise.simplemap.client.TeamMarks.openJournal(file);
+            check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").isEmpty(),"deletion arriving before journal bind must not resurrect saved obelisk");
+            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.delete(file);java.nio.file.Files.delete(root);
+        }catch(java.io.IOException e){throw new AssertionError(e);}
+        var obelisk=new com.velorise.simplemap.client.TeamMarks.Location("obelisk-test","waystones:waystone",10,70,12,0,true,"Дом");
+        check(obelisk.title().equals("Обелиск [Дом]"),"obelisk uses actual Waystones name");
+        var namedPacket=new Net.Unknowns("minecraft:overworld",List.of(new Net.Place("obelisk-test","waystones:waystone",10,70,12,0,true,"Дом")));
+        var nameBuf=new net.minecraft.network.FriendlyByteBuf(io.netty.buffer.Unpooled.buffer());Net.Unknowns.CODEC.encode(nameBuf,namedPacket);check(Net.Unknowns.CODEC.decode(nameBuf).equals(namedPacket),"obelisk name survives network codec");nameBuf.release();
+        check(com.velorise.simplemap.client.WorldClock.format(0).equals("06:00"),"world clock sunrise offset");
+        check(com.velorise.simplemap.client.WorldClock.format(6000).equals("12:00"),"world clock noon");
+        check(com.velorise.simplemap.client.WorldClock.format(18000).equals("00:00"),"world clock midnight");
+        int[] raster=new int[256];for(int i=0;i<256;i++)raster[i]=0xff000000|i;
+        var tiles=new Net.TilesDown(java.util.UUID.randomUUID(),List.of(new Net.Tile("minecraft:overworld",-21,17,raster)));
+        var tileBuf=new net.minecraft.network.FriendlyByteBuf(io.netty.buffer.Unpooled.buffer());Net.TilesDown.CODEC.encode(tileBuf,tiles);var decoded=Net.TilesDown.CODEC.decode(tileBuf);
+        check(decoded.owner().equals(tiles.owner())&&java.util.Arrays.equals(decoded.tiles().get(0).pixels(),raster),"party raster payload exact roundtrip");tileBuf.release();
+        var own=new com.velorise.simplemap.client.TeamMarks.Location("shared-settlement","minecraft:village_plains",42,70,18,3,true);
+        try {
+            var root=java.nio.file.Files.createTempDirectory("party-learned-");var file=root.resolve("journal.json");var owner=java.util.UUID.randomUUID();
+            com.velorise.simplemap.client.TeamMarks.openJournal(file);
+            com.velorise.simplemap.client.TeamMarks.retainParty(java.util.Set.of(owner));
+            com.velorise.simplemap.client.TeamMarks.setSharedLocations(owner,"minecraft:overworld",true,List.of(own));
+            com.velorise.simplemap.client.TeamMarks.retainParty(java.util.Set.of());
+            check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").contains(own),"learned party places survive leaving party");
+            com.velorise.simplemap.client.TeamMarks.closeJournal();com.velorise.simplemap.client.TeamMarks.openJournal(file);
+            check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").contains(own),"learned party places survive reconnect");
+            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.delete(file);java.nio.file.Files.delete(root);
+        }catch(java.io.IOException e){throw new AssertionError(e);}
+        var alice=java.util.UUID.randomUUID();var stranger=java.util.UUID.randomUUID();
+        try {
+            var f=Exploration.class.getDeclaredField("watched");f.setAccessible(true);
+            var watched=(java.util.Map<java.util.UUID,java.util.Set<Exploration.Key>>)f.get(null);
+            watched.put(alice,new java.util.HashSet<>(java.util.List.of(new Exploration.Key("minecraft:overworld",-2,3))));
+            check(Exploration.knows(alice,"minecraft:overworld",-17,49),"own chunk coverage grants own POI discovery");
+            check(!Exploration.knows(stranger,"minecraft:overworld",-17,49),"strangers cannot disclose POIs through global generated cache");Exploration.clear();
+        }catch(ReflectiveOperationException e){throw new AssertionError(e);}
         System.out.println("PASS: party icon codec, journal restart persistence, world/account isolation, personal names/colors and Minecraft color IDs");
     }
 }

@@ -191,7 +191,8 @@ final class Net {
     }
 
     /** A place for the map: its chunk, which picture it gets and whether it has been reached. */
-    record Place(String id, String structure, double x, double y, double z, int kind, boolean open) {
+    record Place(String id, String structure, double x, double y, double z, int kind, boolean open,String label) {
+        Place(String id,String structure,double x,double y,double z,int kind,boolean open){this(id,structure,x,y,z,kind,open,"");}
     }
 
     /** The places around a player, reached or not. */
@@ -206,7 +207,7 @@ final class Net {
                     buf.writeUtf(place.structure(), 256);
                     buf.writeDouble(place.x()); buf.writeDouble(place.y()); buf.writeDouble(place.z());
                     buf.writeVarInt(place.kind());
-                    buf.writeBoolean(place.open());
+                    buf.writeBoolean(place.open());buf.writeUtf(place.label(),128);
                 }
             },
             buf -> {
@@ -215,7 +216,7 @@ final class Net {
                 if (size < 0 || size > 128) throw new IllegalArgumentException("Invalid map place count");
                 List<Place> places = new ArrayList<>();
                 for (int i = 0; i < size; i++) {
-                    places.add(new Place(buf.readUtf(256), buf.readUtf(256), buf.readDouble(), buf.readDouble(), buf.readDouble(), buf.readVarInt(), buf.readBoolean()));
+                    places.add(new Place(buf.readUtf(256), buf.readUtf(256), buf.readDouble(), buf.readDouble(), buf.readDouble(), buf.readVarInt(), buf.readBoolean(),buf.readUtf(128)));
                 }
                 return new Unknowns(dimension, places);
             });
@@ -224,5 +225,27 @@ final class Net {
         public Type<Unknowns> type() {
             return TYPE;
         }
+    }
+
+    record Tile(String dimension,int x,int z,int[] pixels) {
+        void write(FriendlyByteBuf b){b.writeUtf(dimension,256);b.writeInt(x);b.writeInt(z);if(pixels.length!=256)throw new IllegalArgumentException("tile size");for(int p:pixels)b.writeInt(p);}
+        static Tile read(FriendlyByteBuf b){String d=b.readUtf(256);int x=b.readInt(),z=b.readInt();int[] p=new int[256];for(int i=0;i<256;i++)p[i]=b.readInt();return new Tile(d,x,z,p);}
+    }
+    private static void writeTiles(FriendlyByteBuf b,List<Tile> tiles){if(tiles.size()>8)throw new IllegalArgumentException("tile count");b.writeVarInt(tiles.size());for(var t:tiles)t.write(b);}
+    private static List<Tile> readTiles(FriendlyByteBuf b){int n=b.readVarInt();if(n<0||n>8)throw new IllegalArgumentException("tile count");var out=new ArrayList<Tile>();for(int i=0;i<n;i++)out.add(Tile.read(b));return out;}
+    record TilesUp(List<Tile> tiles) implements CustomPacketPayload {
+        static final Type<TilesUp> TYPE=id("tiles_up");
+        static final StreamCodec<FriendlyByteBuf,TilesUp> CODEC=StreamCodec.of((b,p)->writeTiles(b,p.tiles()),b->new TilesUp(readTiles(b)));
+        public Type<TilesUp> type(){return TYPE;}
+    }
+    record TilesDown(UUID owner,List<Tile> tiles) implements CustomPacketPayload {
+        static final Type<TilesDown> TYPE=id("tiles_down");
+        static final StreamCodec<FriendlyByteBuf,TilesDown> CODEC=StreamCodec.of((b,p)->{b.writeUUID(p.owner());writeTiles(b,p.tiles());},b->new TilesDown(b.readUUID(),readTiles(b)));
+        public Type<TilesDown> type(){return TYPE;}
+    }
+    record SharedPlaces(UUID owner,boolean reset,Unknowns data) implements CustomPacketPayload {
+        static final Type<SharedPlaces> TYPE=id("shared_places");
+        static final StreamCodec<FriendlyByteBuf,SharedPlaces> CODEC=StreamCodec.of((b,p)->{b.writeUUID(p.owner());b.writeBoolean(p.reset());Unknowns.CODEC.encode(b,p.data());},b->new SharedPlaces(b.readUUID(),b.readBoolean(),Unknowns.CODEC.decode(b)));
+        public Type<SharedPlaces> type(){return TYPE;}
     }
 }

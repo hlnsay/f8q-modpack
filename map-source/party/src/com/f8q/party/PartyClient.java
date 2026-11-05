@@ -90,6 +90,8 @@ public final class PartyClient {
         NeoForge.EVENT_BUS.addListener(PartyClient::tick);
         NeoForge.EVENT_BUS.addListener(PartyClient::level);
         NeoForge.EVENT_BUS.addListener(PartyClient::hud);
+        NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST,HudLayers::before);
+        NeoForge.EVENT_BUS.addListener(HudLayers::after);
         NeoForge.EVENT_BUS.addListener(PartyClient::press);
         NeoForge.EVENT_BUS.addListener(PartyClient::left);
     }
@@ -111,6 +113,8 @@ public final class PartyClient {
 
     static void state(Net.State state) {
         mates = state.mates();
+        var ids=mates.stream().map(Net.Mate::id).filter(id->!id.equals(Minecraft.getInstance().getUser().getProfileId())).collect(java.util.stream.Collectors.toSet());
+        TeamMarks.retainParty(ids);theirs.keySet().retainAll(ids);publish();
     }
 
     private static void left(ClientPlayerNetworkEvent.LoggingOut event) {
@@ -146,7 +150,9 @@ public final class PartyClient {
             inviter = null;
         }
         if (me != null && mc.level != null) {
+            com.velorise.simplemap.client.LiveMapColors.tick(mc);
             shareMarks(mc);
+            com.velorise.simplemap.client.SharedExploration.tick(tiles->PacketDistributor.sendToServer(new Net.TilesUp(tiles.stream().map(t->new Net.Tile(t.dimension(),t.x(),t.z(),t.pixels())).toList())));
             placeMates(mc, me);
         }
         if (me == null || mc.level == null) {
@@ -223,7 +229,7 @@ public final class PartyClient {
         int y = 6;
         for (Net.Mate mate : mates) {
             if (!mate.id().equals(me.getUUID())) {
-                row(mc, g, font, me, mate, 6, y);
+                g.pose().pushPose();g.pose().scale(1.2f,1.2f,1);row(mc,g,font,me,mate,6,y);g.pose().popPose();
                 y += 26;
                 diamond(mc, g, me, mate, partial);
             }
@@ -236,11 +242,19 @@ public final class PartyClient {
         }
     }
 
+    static void tiles(Net.TilesDown packet){
+        if(!isMate(packet.owner()))return;
+        com.velorise.simplemap.client.SharedExploration.receive(packet.owner(),packet.tiles().stream().map(t->new com.velorise.simplemap.client.SharedExploration.Tile(t.dimension(),t.x(),t.z(),t.pixels())).toList());
+    }
+    static void places(Net.SharedPlaces packet){
+        if(!isMate(packet.owner()))return;
+        TeamMarks.setSharedLocations(packet.owner(),packet.data().dimension(),packet.reset(),packet.data().places().stream().map(p->new TeamMarks.Location(p.id(),p.structure(),p.x(),p.y(),p.z(),p.kind(),p.open(),p.label())).toList());
+    }
     static void unknowns(Net.Unknowns unknowns) {
         List<TeamMarks.Location> places = new ArrayList<>();
         for (Net.Place p : unknowns.places()) {
             if (Double.isFinite(p.x()) && Double.isFinite(p.y()) && Double.isFinite(p.z()))
-                places.add(new TeamMarks.Location(p.id(), p.structure(), p.x(), p.y(), p.z(), p.kind(), p.open()));
+                places.add(new TeamMarks.Location(p.id(), p.structure(), p.x(), p.y(), p.z(), p.kind(), p.open(),p.label()));
         }
         TeamMarks.setLocations(unknowns.dimension(), places);
     }
@@ -375,6 +389,7 @@ public final class PartyClient {
         if (at == null) {
             return;
         }
+        if(mate.downed()>=0){PartyHudAssets.heart(g,at[0],at[1]-4,11);return;}
         g.pose().pushPose();
         g.pose().translate(at[0], at[1], 0);
         g.pose().scale(0.75F, -0.75F, 1F);
@@ -384,6 +399,9 @@ public final class PartyClient {
         g.pose().popPose();
     }
 
+    private static void drawPartyArrow(GuiGraphics g,int color,int x,int y,int size){
+        g.blit(ResourceLocation.fromNamespaceAndPath("f8qparty","textures/gui/player_"+new String[]{"blue","red","green"}[Math.floorMod(color,3)]+".png"),x,y,size,size,80f,75f,220,260,362,362);
+    }
     private static int mix(int a, int b, float t) {
         int r = Mth.lerpInt(t, a >> 16 & 255, b >> 16 & 255);
         int g = Mth.lerpInt(t, a >> 8 & 255, b >> 8 & 255);
@@ -411,14 +429,14 @@ public final class PartyClient {
         g.fill(x - 1, y, x, y + 16, 0xC0000000);
         g.fill(x + 16, y, x + 17, y + 16, 0xC0000000);
         if (out && ticks % 20 < 12) {
-            skull(g, x + 4, y - 3);
+            skull(g,x+4,y-3);
         }
         int color = COLORS[mate.color() % 3];
         int bx = x + 21;
-        g.fill(bx, y + 3, bx + 3, y + 8, 0xFF000000 | color);
+        drawPartyArrow(g,mate.color(),bx-2,y-1,9);
         String name = mate.name().isEmpty() ? "Игрок" : mate.name();
         g.pose().pushPose();
-        g.pose().translate(bx + 6, y + 1, 0);
+        g.pose().translate(bx + 12, y + 1, 0);
         g.pose().scale(0.75F, 0.75F, 1F);
         g.drawString(font, name, 0, 0, out ? 0xFFFF7A66 : mate.online() ? 0xFFF2EFE9 : 0xFF8C8578, true);
         g.pose().popPose();
@@ -448,23 +466,7 @@ public final class PartyClient {
 
     /** Thin and notched like the experience bar, but red, tinted by what's hurting them, gold on top. */
     private static void bar(GuiGraphics g, Net.Mate mate, int x, int y) {
-        g.fill(x - 1, y - 1, x + BAR + 1, y + 4, 0xFF0C0505);
-        g.fill(x, y, x + BAR, y + 3, 0xFF3A1214);
-        float max = Math.max(1, mate.max());
-        int fill = Math.round(BAR * Mth.clamp(mate.health() / max, 0, 1));
-        int color = mate.effect() == 2 ? 0xFF4A4A4A : mate.effect() == 1 ? 0xFF4FC23A : 0xFFE0262F;
-        int top = mate.effect() == 2 ? 0xFF7A7A7A : mate.effect() == 1 ? 0xFF9AE887 : 0xFFFF6A5E;
-        g.fill(x, y, x + fill, y + 3, color);
-        g.fill(x, y, x + fill, y + 1, top);
-        if (mate.extra() > 0) {
-            int gold = Math.round(BAR * Mth.clamp(mate.extra() / max, 0, 1));
-            g.fill(x, y, x + gold, y + 3, 0xFFF0C030);
-            g.fill(x, y, x + gold, y + 1, 0xFFFFE9A0);
-        }
-        for (int notch = 1; notch < 10; notch++) {
-            int at = x + BAR * notch / 10;
-            g.fill(at, y, at + 1, y + 3, 0x70000000);
-        }
+        PartyHudAssets.health(g,x,y-1,BAR,5,mate.health()/Math.max(1,mate.max()),mate.effect(),mate.extra()/Math.max(1,mate.max()));
     }
 
     private static void skull(GuiGraphics g, int x, int y) {
@@ -508,11 +510,8 @@ public final class PartyClient {
         if (!"key.keyboard.grave.accent".equals(ACTION.saveString())) {
             return keyCap(g, font, ACTION.getTranslatedKeyMessage(), x, y);
         }
-        RenderSystem.enableBlend();
-        RenderSystem.defaultBlendFunc();
-        boolean russian = ACTION.getTranslatedKeyMessage().getString().toLowerCase(java.util.Locale.ROOT).contains("ё");
-        g.blit(russian ? KEY_YO : KEY_TILDE, x, y - 1, 12, 12, 0F, 0F, 32, 32, 32, 32);
-        return x + 12;
+        boolean russian=Minecraft.getInstance().options.languageCode.startsWith("ru");
+        return keyCap(g,font,Component.literal(russian?"Ё":"~"),x,y);
     }
 
     private static int keyCap(GuiGraphics g, Font font, Component text, int x, int y) {
@@ -538,11 +537,6 @@ public final class PartyClient {
         int w = Math.max(font.width(title), font.width(act) + font.width(key) + 10) + 14;
         int x = Mth.clamp(at[0] + 18, 4, g.guiWidth() - w - 4);
         int y = Mth.clamp(at[1] - 14, 4, g.guiHeight() - 40);
-        g.fill(x, y, x + w, y + 30, 0xE6090909);
-        g.fill(x, y, x + w, y + 1, 0xFFF2EFE9);
-        g.fill(x, y + 29, x + w, y + 30, 0xFF3A3A3A);
-        g.fill(x, y + 1, x + 1, y + 29, 0xFF3A3A3A);
-        g.fill(x + w - 1, y + 1, x + w, y + 29, 0xFF3A3A3A);
         g.drawString(font, title, x + 7, y + 4, 0xFFFFFFFF, true);
         int next = actionKey(g, font, x + 7, y + 16);
         g.drawString(font, act, next + 4, y + 18, 0xFFD9CBA0, true);

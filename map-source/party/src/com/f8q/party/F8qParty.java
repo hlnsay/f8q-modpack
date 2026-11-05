@@ -56,8 +56,12 @@ public final class F8qParty {
         NeoForge.EVENT_BUS.addListener(F8qParty::tick);
         NeoForge.EVENT_BUS.addListener(F8qParty::started);
         NeoForge.EVENT_BUS.addListener(Unknowns::sent);
-        NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.server.ServerStoppingEvent e) -> Unknowns.stopping(e.getServer()));
-        NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.server.ServerStoppedEvent stop) -> Unknowns.stopped());
+        NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.level.BlockEvent.BreakEvent e)->Unknowns.changed(e));
+        NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.level.BlockEvent.EntityPlaceEvent e)->Unknowns.changed(e));
+        net.blay09.mods.balm.api.Balm.getEvents().onEvent(net.blay09.mods.waystones.api.event.WaystoneUpdatedEvent.class,e->Unknowns.renamed(e.getWaystone()));
+
+        NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.server.ServerStoppingEvent e) -> { Unknowns.stopping(e.getServer());Exploration.save(e.getServer()); });
+        NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.server.ServerStoppedEvent stop) -> {Unknowns.stopped();Exploration.clear();});
         NeoForge.EVENT_BUS.addListener(F8qParty::joined);
         NeoForge.EVENT_BUS.addListener(F8qParty::quit);
         NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST, F8qParty::interact);
@@ -65,6 +69,10 @@ public final class F8qParty {
 
     private static void payloads(RegisterPayloadHandlersEvent event) {
         var registrar = event.registrar("1");
+        registrar.versioned("1").playToServer(Net.TilesUp.TYPE,Net.TilesUp.CODEC,(p,c)->c.enqueueWork(()->{if(c.player() instanceof ServerPlayer player)Exploration.upload(player,p);}));
+        registrar.versioned("1").playToClient(Net.TilesDown.TYPE,Net.TilesDown.CODEC,(p,c)->c.enqueueWork(()->PartyClientBridge.tiles(p)));
+        registrar.versioned("2").playToClient(Net.SharedPlaces.TYPE,Net.SharedPlaces.CODEC,(p,c)->c.enqueueWork(()->PartyClientBridge.places(p)));
+
         registrar.playToServer(Net.Action.TYPE, Net.Action.CODEC, (payload, context) -> context.enqueueWork(() -> {
             if (context.player() instanceof ServerPlayer player) {
                 action(player, payload);
@@ -75,7 +83,7 @@ public final class F8qParty {
                 relay(player, payload);
             }
         }));
-        registrar.versioned("2").playToClient(Net.Unknowns.TYPE, Net.Unknowns.CODEC, (payload, context) -> context.enqueueWork(() -> PartyClientBridge.unknowns(payload)));
+        registrar.versioned("4").playToClient(Net.Unknowns.TYPE, Net.Unknowns.CODEC, (payload, context) -> context.enqueueWork(() -> PartyClientBridge.unknowns(payload)));
         registrar.versioned("3").playToClient(Net.MarksDown.TYPE, Net.MarksDown.CODEC, (payload, context) -> context.enqueueWork(() -> PartyClientBridge.marks(payload)));
         registrar.playToClient(Net.Offer.TYPE, Net.Offer.CODEC, (payload, context) -> context.enqueueWork(() -> PartyClientBridge.offer(payload)));
         registrar.playToClient(Net.Helpers.TYPE, Net.Helpers.CODEC, (payload, context) -> context.enqueueWork(() -> PartyClientBridge.helpers(payload)));
@@ -96,7 +104,7 @@ public final class F8qParty {
         }
     }
 
-    private static List<UUID> partyOf(UUID player) {
+    static List<UUID> partyOf(UUID player) {
         for (List<UUID> party : parties) {
             if (party.contains(player)) {
                 return party;
@@ -167,6 +175,7 @@ public final class F8qParty {
             return;
         }
         party.add(player.getUUID());
+        Unknowns.membershipChanged();
         save(server);
     }
 
@@ -176,6 +185,7 @@ public final class F8qParty {
             return;
         }
         party.remove(player);
+        Unknowns.membershipChanged();
         if (party.size() < 2) {
             parties.remove(party);
         }
@@ -204,6 +214,7 @@ public final class F8qParty {
 
     private static void joined(PlayerEvent.PlayerLoggedInEvent event) {
         Unknowns.reconnect(event.getEntity().getUUID());
+        Exploration.reconnect(event.getEntity().getUUID());
         if (event.getEntity() instanceof ServerPlayer player) {
             gone.remove(player.getUUID());
             names.put(player.getUUID(), player.getGameProfile().getName());
@@ -253,6 +264,7 @@ public final class F8qParty {
 
     private static void tick(ServerTickEvent.Post event) {
         Unknowns.tick(event.getServer());
+        Exploration.tick(event.getServer());
         if (event.getServer().getTickCount() % 20 == 0) {
             event.getServer().getPlayerList().getPlayers().forEach(F8qParty::wounded);
         }

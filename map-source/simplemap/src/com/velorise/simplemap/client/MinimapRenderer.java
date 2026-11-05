@@ -309,7 +309,7 @@ public class MinimapRenderer {
         if (MapConfig.coordsEnabled) {
             String coords = coordinateText(player);
             int textWidth = (int) (mc.font.width(coords) * MapConfig.coordsScale);
-            int textHeight = (int) (9 * MapConfig.coordsScale);
+            int textHeight = (int) (20 * MapConfig.coordsScale);
 
             int cx, cy;
             if (MapConfig.coordsXPercent < 0 || MapConfig.coordsYPercent < 0) {
@@ -333,6 +333,8 @@ public class MinimapRenderer {
             guiGraphics.fill(-3, -2, rawWidth + 3, 9, 0x88000000);
             int coordsColor = MapRenderer.getInstance().getActualPointerColor(MapConfig.coordsTextColor);
             guiGraphics.drawString(mc.font, coords, 0, 0, coordsColor, false);
+            String worldTime=WorldClock.format(mc.level.getDayTime());
+            guiGraphics.drawString(mc.font,worldTime,(rawWidth-mc.font.width(worldTime))/2,11,coordsColor,true);
             guiGraphics.pose().popPose();
         }
 
@@ -618,7 +620,7 @@ public class MinimapRenderer {
                 }
             }
 
-            float iconScale = Math.max(0.25f, Math.min(3.0f, 0.10f * MapConfig.waypointScale * wp.scale * LocalPlaces.markerScale));
+            float iconScale = Math.max(0.25f, Math.min(3.0f, 0.065f * MapConfig.waypointScale * wp.scale * LocalPlaces.markerScale));
             if (offMap) {
                 iconScale *= 1.0f;
             }
@@ -673,7 +675,7 @@ public class MinimapRenderer {
                 dx *= limit / reach;
                 dz *= limit / reach;
             }
-            TeamMarks.markIcon(guiGraphics,mark,cx+dx,cy+dz,Math.round(5*(mark==localRoute?LocalPlaces.routeScale:LocalPlaces.markerScale)));
+            TeamMarks.markIcon(guiGraphics,mark,cx+dx,cy+dz,Math.max(3,Math.min(6,Math.round(3*(mark==localRoute?LocalPlaces.routeScale:LocalPlaces.markerScale)))));
         }
         for (double[] place : unknownPlaces) {
             double worldDX = place[0] - playerX;

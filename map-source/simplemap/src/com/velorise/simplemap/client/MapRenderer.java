@@ -715,6 +715,7 @@ public class MapRenderer {
             surfaceTextures.endRenderBatch();
         }
 
+        if (!drawOverlayContent) SharedExploration.render(guiGraphics,minX,maxX,minZ,maxZ);
         if (drawOverlayContent) {
             drawMapOverlays(guiGraphics, mc, poseStack,
                     minX, maxX, minZ, maxZ, scale, isMinimap,
@@ -746,6 +747,7 @@ public class MapRenderer {
             double mouseWorldX, double mouseWorldZ, float partialTick,
             float fixedOverlayScale, boolean drawPinContent,
             boolean drawPlayer) {
+        SharedExploration.render(guiGraphics,minX,maxX,minZ,maxZ);
         // 6.5. Draw waypoints for the current dimension on the fullscreen map if enabled
         // (Minimap waypoints are rendered in screen space by MinimapRenderer like Pin)
         if (MapConfig.waypointsVisible && !isMinimap) {

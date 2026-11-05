@@ -37,4 +37,6 @@ final class PartyClientBridge {
             PartyClient.unknowns(unknowns);
         }
     }
+    static void tiles(Net.TilesDown p){if(FMLEnvironment.dist==Dist.CLIENT)PartyClient.tiles(p);}
+    static void places(Net.SharedPlaces p){if(FMLEnvironment.dist==Dist.CLIENT)PartyClient.places(p);}
 }

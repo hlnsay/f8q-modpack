@@ -959,6 +959,7 @@ public class MapManager {
         if (region == null || !region.isLoaded()) return SurfaceChunkCommit.empty();
         int localChunkX = (blockX & 511) >>> 4;
         int localChunkZ = (blockZ & 511) >>> 4;
+        LiveMapColors.capture(chunkX,chunkZ,startColumn,packedPixels,surfaceTints,validColumns,sourceOffset,safeCount);
         SurfaceChunkCommit result = region.commitSurfaceChunkSlice(
                 localChunkX, localChunkZ, startColumn, packedPixels,
                 surfaceTints, validColumns, sourceOffset, safeCount);

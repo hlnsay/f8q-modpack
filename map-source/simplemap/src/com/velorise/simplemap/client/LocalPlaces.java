@@ -24,7 +24,7 @@ public final class LocalPlaces {
     public static final class Journal {
         private static final Gson JSON=new GsonBuilder().setPrettyPrinting()
             .registerTypeAdapter(TeamMarks.Location.class,(com.google.gson.JsonDeserializer<TeamMarks.Location>)(json,type,context)->{
-                var o=json.getAsJsonObject();return new TeamMarks.Location(o.get("id").getAsString(),o.get("structure").getAsString(),o.get("x").getAsDouble(),o.get("y").getAsDouble(),o.get("z").getAsDouble(),o.get("kind").getAsInt(),o.get("open").getAsBoolean());
+                var o=json.getAsJsonObject();return new TeamMarks.Location(o.get("id").getAsString(),o.get("structure").getAsString(),o.get("x").getAsDouble(),o.get("y").getAsDouble(),o.get("z").getAsDouble(),o.get("kind").getAsInt(),o.get("open").getAsBoolean(),o.has("label")?o.get("label").getAsString():"");
             })
             .registerTypeAdapter(Style.class,(com.google.gson.JsonDeserializer<Style>)(json,type,context)->{
                 var o=json.getAsJsonObject();return new Style(o.get("name").getAsString(),o.get("color").getAsInt());

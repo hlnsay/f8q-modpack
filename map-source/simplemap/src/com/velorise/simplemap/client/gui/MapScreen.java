@@ -144,6 +144,7 @@ public class MapScreen extends Screen {
             double d=Math.hypot(entry.x()-x,entry.z()-z);if(d<=best){best=d;found=entry;}
         }
         if(TeamMarks.autoPlacesVisible())for(var place:TeamMarks.locations(dim)){
+            if(!TeamMarks.mapped(place,dim))continue;
             double d=Math.hypot(place.x()-x,place.z()-z);if(d<=best){best=d;found=PlaceEntry.automatic(dim,place);}
         }
         return found;

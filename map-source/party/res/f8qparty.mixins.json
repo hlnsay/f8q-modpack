@@ -7,12 +7,15 @@
     "DownedPickMixin",
     "HoverGlowMixin",
     "JukeboxRangeMixin",
-    "KneelPoseMixin"
+    "KneelPoseMixin",
+    "LiveSurfaceColorMixin",
+    "DownedHandsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "mixins": [
-    "PortalPlacementAccessor"
+    "PortalPlacementAccessor",
+    "ConchWaystonesMixin"
   ]
 }
