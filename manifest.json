@@ -651,9 +651,9 @@
     },
     {
       "path": "resourcepacks/Cozy-Russian.zip",
-      "sha512": "ab4ac6504e34fe4afe1e8b1088ff7509a1b8c49a44556f86d720b10f8efb497a0d6fc42ac282224a8a8a60ac08ac489024f4fb3189218ae1907a619cd4cddcf1",
-      "size": 343673,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v9.zip"
+      "sha512": "476afb996e0df80eab51bcc4649a4716894b9d8aa3d1ff41a25d364081578d66741c84086ae352d27cb82aab803ca07c68095206d3722ac5ab2cbd6ad2b132ae",
+      "size": 344805,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v10.zip"
     },
     {
       "path": "resourcepacks/F8Q 1.21.zip",
@@ -1050,6 +1050,18 @@
       "size": 1397664,
       "sha512": "29889b09c706348f2bb21a14a41388fa3275e08c85c3c14db90e55660f1e97bbd2b304aa6d0baf6b6d4879fbf54507ca130d1ab346299597ee0a1ba6f414be6d",
       "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q.jar"
+    },
+    {
+      "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
+      "size": 72353,
+      "sha512": "ea911ac6d4dfedfcf4a994a99a169ab958d201ee182665fc8129aed81c20c33d4752ef15893d0f60be27f4d63f3b07e1cfef651200ff75604f5e480111243bdf",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar"
+    },
+    {
+      "path": "mods/shieldexp-neoforge-1.21.1-1.4.3.jar",
+      "size": 270216,
+      "sha512": "312714e665285477adbd98e421227b15c97cbe50eb5bc156525b323c89a276b54d7606a848219fdc713db2602153dc02bf9caf11d389a49c4b8e596d508756bb",
+      "url": "https://cdn.modrinth.com/data/sjxWxSao/versions/UC512VgT/shieldexp-neoforge-1.21.1-1.4.3.jar"
     }
   ],
   "remove": [
@@ -2287,7 +2299,9 @@
         "Companions!",
         "Realm RPG: Treasure Balloons",
         "Realm RPG: Fallen Adventurers",
-        "CleanCut"
+        "CleanCut",
+        "Smooth Mount (порт на NeoForge)",
+        "Shield Expansion"
       ],
       "updated": [
         "Перевод новых модов и Ice Caves Backport"
@@ -2520,6 +2534,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-map-waystones-companions",
+  "revision": "2026-11-05-smoothmount-shields",
   "journeymap": []
 }
