@@ -657,9 +657,9 @@
     },
     {
       "path": "resourcepacks/Cozy-Russian.zip",
-      "sha512": "65a53923aa5cc37a06d696cd273a7343e36d81492e6c1b467e82324d1b5d930223e6a07f4246b811ac90db59c6abf05718eec69ca99242e26c0ba888459c956b",
-      "size": 330241,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v6.zip"
+      "sha512": "ab82f698bdef6efdecaf1259a9fb8cf44691877b8858f629295bd54391f5cc13665e4b4746a3cd0af0398ba01407eac23471273949d1389377ab235619a25c10",
+      "size": 333371,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v7.zip"
     },
     {
       "path": "resourcepacks/F8Q 1.21.zip",
@@ -969,9 +969,21 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "ebe41a67e6d8c9c9647e6b49e3ec837eeb02408f85b02d54e18e1310a5f751046c073314d26b21510169cfcd6c514f275851aec8c78100f3a2fe7547a09cc2d0",
-      "size": 30509,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.1.jar"
+      "sha512": "d5e83aafd844e7d5ebf6e1d3d864e96738271509c053066e7f568fe1421053a5dcb754411c101fe8ec4c766bd506ec8aadb6f7e997d63e0f80c8755b6e01d885",
+      "size": 36049,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.2.jar"
+    },
+    {
+      "path": "mods/Paraglider-neoforge-21.1.5.jar",
+      "sha512": "b2d986b5eb21b12ad59b0b4ac3f4ac00457562031064eada7870c023f22ba06b57712d67a0a11e4914ad4ebba51860ee37060b8b20baee1efa16738f97802434",
+      "size": 658184,
+      "url": "https://cdn.modrinth.com/data/esqWA0aQ/versions/tkTruHIA/Paraglider-neoforge-21.1.5.jar"
+    },
+    {
+      "path": "mods/Ribbits-1.21.1-NeoForge-4.1.6.jar",
+      "sha512": "5e78b0d63757d5904b96e0c4565d56832ca42b1cbba939b98101f848f618cfcda94d5aeadeacb0faff85bdd05fb071f2df551a42c3e7d0e3a2564adbec227931",
+      "size": 2215572,
+      "url": "https://cdn.modrinth.com/data/8YcE8y4T/versions/XrUKaWrw/Ribbits-1.21.1-NeoForge-4.1.6.jar"
     }
   ],
   "remove": [
@@ -2207,6 +2219,16 @@
     {
       "date": "2026-11-05",
       "added": [
+        "Paragliders",
+        "Ribbits",
+        "Поза на колене при поднятии"
+      ],
+      "updated": [],
+      "removed": []
+    },
+    {
+      "date": "2026-11-05",
+      "added": [
         "Пати до 3 игроков: приглашения, худ, ромбики",
         "Проигрыватель слышно на 10 блоков"
       ],
@@ -2396,7 +2418,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-party-key",
+  "revision": "2026-11-05-paragliders-ribbits",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
