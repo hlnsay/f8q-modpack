@@ -70,13 +70,13 @@ public final class F8qParty {
                 action(player, payload);
             }
         }));
-        registrar.playToServer(Net.MarksUp.TYPE, Net.MarksUp.CODEC, (payload, context) -> context.enqueueWork(() -> {
+        registrar.versioned("3").playToServer(Net.MarksUp.TYPE, Net.MarksUp.CODEC, (payload, context) -> context.enqueueWork(() -> {
             if (context.player() instanceof ServerPlayer player) {
                 relay(player, payload);
             }
         }));
         registrar.versioned("2").playToClient(Net.Unknowns.TYPE, Net.Unknowns.CODEC, (payload, context) -> context.enqueueWork(() -> PartyClientBridge.unknowns(payload)));
-        registrar.playToClient(Net.MarksDown.TYPE, Net.MarksDown.CODEC, (payload, context) -> context.enqueueWork(() -> PartyClientBridge.marks(payload)));
+        registrar.versioned("3").playToClient(Net.MarksDown.TYPE, Net.MarksDown.CODEC, (payload, context) -> context.enqueueWork(() -> PartyClientBridge.marks(payload)));
         registrar.playToClient(Net.Offer.TYPE, Net.Offer.CODEC, (payload, context) -> context.enqueueWork(() -> PartyClientBridge.offer(payload)));
         registrar.playToClient(Net.Helpers.TYPE, Net.Helpers.CODEC, (payload, context) -> context.enqueueWork(() -> PartyClientBridge.helpers(payload)));
         registrar.playToClient(Net.State.TYPE, Net.State.CODEC, (payload, context) -> context.enqueueWork(() -> PartyClientBridge.state(payload)));

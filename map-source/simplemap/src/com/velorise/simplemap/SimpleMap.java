@@ -412,6 +412,7 @@ public class SimpleMap {
 
             // 1. Tick MapManager to update active directory and auto-save dirty regions
             MapManager.getInstance().updateWorldAndDimension(mc);
+            com.velorise.simplemap.client.LocalPlaces.tick();
             MapManager.getInstance().tickSave();
             // One scheduler now owns mutation repair, live critical observation,
             // visible saved/live admission, cave-band warmup, archive background and

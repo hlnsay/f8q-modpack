@@ -59,10 +59,10 @@ import java.util.Locale;
 import java.util.Map;
 
 public class MapScreen extends Screen {
-    private static final int TOOLBAR_BUTTON_SIZE = 22;
-    private static final int TOOLBAR_MARGIN = 3;
+    private static final int TOOLBAR_BUTTON_SIZE = 28;
+    private static final int TOOLBAR_MARGIN = 6;
     private static final int TOOLBAR_GAP = 2;
-    private static final float TOOLBAR_ICON_SCALE = 1.0f;
+    private static final float TOOLBAR_ICON_SCALE = 1.35f;
     private static final int PLAYER_PANEL_MARGIN = 4;
     private static final int PLAYER_PANEL_HEIGHT = 15;
     private static final int ZOOM_PANEL_MARGIN = 4;
@@ -120,11 +120,72 @@ public class MapScreen extends Screen {
     private boolean hasFocusedCoordinateOverride;
     private boolean cameraInitialized;
     private TeamMarks.Location selectedLocation;
+    private PlaceEntry selectedEntry,clickedPlace;
+    private final KnownPlacesPanel knownPlaces=new KnownPlacesPanel();
+    public boolean editingPreview;
+    public boolean isSelectedEntry(String id){return selectedEntry!=null&&selectedEntry.id().equals(id);}
+    public int placeListTop(){return selectedEntry==null?14:42+cardHeight+6;}
+    public void refreshPlaces(){knownPlaces.refresh();}
+    public void focusEntry(PlaceEntry entry){
+        freezeCamera();
+        String dimension=entry.dimension();
+        if(!dimension.equals(MapManager.getInstance().getCurrentDimensionResourceId()))MapManager.getInstance().switchToDimension(dimension);
+        centerX=entry.x();centerZ=entry.z();currentRenderScale=scale;selectEntry(entry);
+    }
+    private void selectEntry(PlaceEntry entry){
+        freezeCamera();selectedEntry=entry;cardDimension=entry.dimension();
+        selectedLocation=entry.location()!=null?entry.location():new TeamMarks.Location("waypoint:"+entry.title(),"",entry.x(),entry.y(),entry.z(),entry.waypoint()!=null&&entry.waypoint().deathPoint?12:13,true);
+        selectedAtNanos=System.nanoTime();cardWidth=Math.min(200,Math.max(130,width/3));
+        cardLines=font.split(Component.literal(entry.description()),cardWidth-16);cardHeight=49+cardLines.size()*10;
+    }
+    private PlaceEntry findPlace(double x,double z){
+        String dim=MapManager.getInstance().getCurrentDimensionResourceId();double best=15/currentRenderScale;PlaceEntry found=null;
+        for(PlaceEntry entry:PlaceEntry.all())if(entry.dimension().equals(dim)){
+            double d=Math.hypot(entry.x()-x,entry.z()-z);if(d<=best){best=d;found=entry;}
+        }
+        if(TeamMarks.autoPlacesVisible())for(var place:TeamMarks.locations(dim)){
+            double d=Math.hypot(place.x()-x,place.z()-z);if(d<=best){best=d;found=PlaceEntry.automatic(dim,place);}
+        }
+        return found;
+    }
+    public void openPlacePopup(PlaceEntry entry,double mx,double my){
+        freezeCamera();clickedPlace=entry;clickedWaypoint=entry==null?null:entry.waypoint();
+        if(entry!=null){popupWorldX=entry.x();popupWorldZ=entry.z();selectEntry(entry);}
+        clampPopupPosition(mx,my);isPopupMenuOpen=true;
+    }
+    private record PopupOption(String label,boolean enabled,Runnable action) {}
+    private java.util.List<PopupOption> popupOptions(){
+        java.util.List<PopupOption> rows=new java.util.ArrayList<>();
+        PlaceEntry entry=clickedPlace;
+        if(entry!=null){
+            boolean following=LocalPlaces.following(entry.id());
+            rows.add(new PopupOption(following?"Убрать маршрут":"Проложить маршрут",true,()->{
+                if(following)LocalPlaces.clearRoute(true);else{
+                    TeamMarks.Location point=entry.location()!=null?entry.location():new TeamMarks.Location("waypoint:"+entry.title(),"",entry.x(),entry.y(),entry.z(),13,true);
+                    LocalPlaces.follow(point,entry.dimension(),entry.id(),entry.location()!=null?"poi:"+entry.location().kind():entry.waypoint()!=null?WaypointManager.resolveIconItemId(entry.waypoint()):entry.shared().iconItem(),entry.location()!=null?entry.location().kind():13);
+                }
+            }));
+            if(entry.location()!=null)rows.add(new PopupOption("Изменить",true,()->{freezeCamera();minecraft.setScreen(new PlaceEditorScreen(this,entry));}));
+            else if(entry.waypoint()!=null){
+                rows.add(new PopupOption("Изменить",true,()->{freezeCamera();minecraft.setScreen(new MapConfigScreen.WaypointListScreen.AddWaypointScreen(this,entry.waypoint()));}));
+                rows.add(new PopupOption("Удалить метку",true,()->{WaypointManager.getInstance().removeWaypoint(entry.waypoint());selectedLocation=null;selectedEntry=null;refreshPlaces();}));
+            }
+            if(MapTeleportController.canTeleport(minecraft))rows.add(new PopupOption("Телепортироваться сюда",true,()->{if(MapTeleportController.teleport(minecraft,entry.dimension(),(int)Math.floor(entry.x()),(int)Math.floor(entry.y()),(int)Math.floor(entry.z())))onClose();}));
+        }else{
+            rows.add(new PopupOption("Добавить метку",true,()->{
+                String dim=MapManager.getInstance().getCurrentDimensionResourceId();int y=resolveTeleportTargetY((int)Math.floor(popupWorldX),(int)Math.floor(popupWorldZ),dim);freezeCamera();minecraft.setScreen(new MapConfigScreen.WaypointListScreen.AddWaypointScreen(this,popupWorldX,y,popupWorldZ,dim));
+            }));
+            if(MapTeleportController.canTeleport(minecraft))rows.add(new PopupOption("Телепортироваться сюда",true,()->{
+                String dim=MapManager.getInstance().getCurrentDimensionResourceId();int y=resolveTeleportTargetY((int)Math.floor(popupWorldX),(int)Math.floor(popupWorldZ),dim);if(MapTeleportController.teleport(minecraft,dim,(int)Math.floor(popupWorldX),y,(int)Math.floor(popupWorldZ)))onClose();
+            }));
+        }
+        return rows;
+    }
     private long selectedAtNanos;
     public boolean isSelectedLocation(String id){return selectedLocation!=null&&selectedLocation.id().equals(id);}
     private void drawSelectedMarker(GuiGraphics g) {
         if(selectedLocation==null||!cardDimension.equals(MapManager.getInstance().getCurrentDimensionResourceId()))return;
-        if(!selectedLocation.id().startsWith("waypoint:")&&!TeamMarks.autoPlacesVisible()){selectedLocation=null;return;}
+        if(!selectedLocation.id().startsWith("waypoint:")&&!TeamMarks.autoPlacesVisible()){selectedLocation=null;selectedEntry=null;return;}
         float x=(float)(width*.5+(selectedLocation.x()-centerX)*currentRenderScale);
         float y=(float)(height*.5+(selectedLocation.z()-centerZ)*currentRenderScale);
         if(x<0||x>width||y<0||y>height)return;
@@ -133,7 +194,7 @@ public class MapScreen extends Screen {
         int half=Math.round(TeamMarks.placeHalf(selectedLocation.kind(),selectedLocation.open())*pulse);
         g.pose().pushPose();g.pose().translate(0,0,65);
         drawCircleRing(g,x,y,half+2,half+2.8f,40,0xA8E9DEC0);
-        if(!selectedLocation.id().startsWith("waypoint:"))TeamMarks.icon(g,selectedLocation.open()?TeamMarks.placeIcon(selectedLocation.kind()):TeamMarks.UNKNOWN,x,y,half);
+        if(selectedEntry!=null)selectedEntry.icon(g,x,y,half);
         g.pose().popPose();
     }
     private String cardDimension = "";
@@ -145,41 +206,19 @@ public class MapScreen extends Screen {
         currentRenderScale = scale;
         isDragging = false;
     }
-    private boolean selectPlace(double x, double z) {
-        String dim = MapManager.getInstance().getCurrentDimensionResourceId();
-        double best = 14.0 / currentRenderScale;
-        TeamMarks.Location hit = null;
-        for (TeamMarks.Location place : TeamMarks.autoPlacesVisible()?TeamMarks.locations(dim):java.util.List.<TeamMarks.Location>of()) {
-            double d = Math.hypot(place.x()-x, place.z()-z);
-            if (d <= best) { best=d; hit=place; }
-        }
-        if (MapConfig.waypointsVisible) for (Waypoint wp : WaypointManager.getInstance().getWaypointsForDimension(dim)) {
-            double d = Math.hypot(wp.x-x, wp.z-z);
-            if (d <= best) {best=d; hit=new TeamMarks.Location("waypoint:"+wp.name, "", wp.x, wp.y, wp.z, wp.deathPoint?12:13, true);}
-        }
-        for (TeamMarks.Mark mark : TeamMarks.visible(dim)) {
-            double d=Math.hypot(mark.x()-x,mark.z()-z);
-            if(d<=best){best=d;hit=new TeamMarks.Location("waypoint:"+mark.title(),"",mark.x(),mark.y(),mark.z(),13,true);}
-        }
-        if (hit == null) return false;
-        freezeCamera(); selectedLocation=hit; cardDimension=dim; selectedAtNanos=System.nanoTime();
-        cardWidth=Math.min(186,Math.max(110,width/3));
-        cardLines=font.split(Component.literal(hit.description()),cardWidth-16);
-        cardHeight=49+cardLines.size()*10;
-        return true;
-    }
+    private boolean selectPlace(double x,double z){PlaceEntry entry=findPlace(x,z);if(entry==null)return false;selectEntry(entry);return true;}
     private void drawSelectionCard(GuiGraphics g) {
-        if (selectedLocation==null) return;
-        if (!cardDimension.equals(MapManager.getInstance().getCurrentDimensionResourceId())) {selectedLocation=null; return;}
+        if (selectedLocation==null||selectedEntry==null) return;
+        if (!cardDimension.equals(MapManager.getInstance().getCurrentDimensionResourceId())) {selectedLocation=null;selectedEntry=null; return;}
         // Refresh a question mark's card after the server confirms discovery.
         for (TeamMarks.Location fresh : TeamMarks.locations(cardDimension)) if(fresh.id().equals(selectedLocation.id()) && !fresh.equals(selectedLocation)) {
-            selectedLocation=fresh; cardLines=font.split(Component.literal(fresh.description()),cardWidth-16);cardHeight=49+cardLines.size()*10;break;
+            selectedLocation=fresh;selectedEntry=PlaceEntry.automatic(cardDimension,fresh); cardLines=font.split(Component.literal(fresh.description()),cardWidth-16);cardHeight=49+cardLines.size()*10;break;
         }
         int x=width-cardWidth-8,y=42;
         g.pose().pushPose();g.pose().translate(0,0,90);
         MapPanels.menu(g,x,y,cardWidth,cardHeight,32);
-        TeamMarks.icon(g,selectedLocation.open()?TeamMarks.placeIcon(selectedLocation.kind()):TeamMarks.UNKNOWN,x+18,y+17,11);
-        g.drawString(font,font.plainSubstrByWidth(selectedLocation.title(),cardWidth-49),x+34,y+8,0xFFE9DEC0,false);
+        selectedEntry.icon(g,x+18,y+17,11);
+        g.drawString(font,font.plainSubstrByWidth(selectedEntry.title(),cardWidth-49),x+34,y+8,0xFFE9DEC0,false);
         g.drawString(font,"×",x+cardWidth-11,y+5,0xFFBDB59E,false);
         g.drawString(font,(int)Math.floor(selectedLocation.x())+", "+(int)Math.floor(selectedLocation.z()),x+34,y+20,0xFFA8A08D,false);
         int lineY=y+39;
@@ -318,7 +357,7 @@ public class MapScreen extends Screen {
         // Pos 1: Settings
         minimapConfigButton = new PixelIconButton(0, 0, TOOLBAR_BUTTON_SIZE, TOOLBAR_BUTTON_SIZE, MapUiIcons.Icon.SETTINGS, button -> {
             if (this.minecraft != null) {
-                this.minecraft.setScreen(new MapConfigScreen(this));
+                this.minecraft.setScreen(new MapStyleScreen(this));
             }
         });
         this.addRenderableWidget(minimapConfigButton);
@@ -465,15 +504,17 @@ public class MapScreen extends Screen {
         Button[] buttons = { minimapConfigButton, waypointsToggleButton, waypointListButton,
                 nightModeButton, refreshMapButton, teamPinsButton, teamWaypointsButton, worldMarksButton };
         toolbarStartX = TOOLBAR_MARGIN;
-        toolbarStartY = TOOLBAR_MARGIN;
-        toolbarStepY = TOOLBAR_BUTTON_SIZE + TOOLBAR_GAP;
+        toolbarStartY = Math.max(8,(this.height-10*Math.min(TOOLBAR_BUTTON_SIZE+TOOLBAR_GAP,Math.max(18,(this.height-16)/10)))/2);
+        toolbarStepY = Math.min(TOOLBAR_BUTTON_SIZE+TOOLBAR_GAP,Math.max(18,(this.height-16)/10));
         toolbarWidth = TOOLBAR_BUTTON_SIZE;
         toolbarRows = buttons.length;
         for (int i = 0; i < buttons.length; i++) {
             buttons[i].setX(toolbarStartX);
             buttons[i].setY(toolbarStartY + i * toolbarStepY);
             buttons[i].setWidth(TOOLBAR_BUTTON_SIZE);
+            buttons[i].setHeight(Math.min(TOOLBAR_BUTTON_SIZE,toolbarStepY-2));
         }
+        updateCaveControlLayout();
     }
 
     private void drawToolbarBackground(GuiGraphics guiGraphics) {
@@ -593,7 +634,7 @@ public class MapScreen extends Screen {
     }
 
     private void updateCaveControlLayout() {
-        int controlY = this.height - TOOLBAR_BUTTON_SIZE - TOOLBAR_MARGIN;
+        int controlY = toolbarStartY+(toolbarRows+1)*toolbarStepY;
         if (caveLayerModeButton != null) {
             updateCaveTooltip();
             caveLayerModeButton.setWidth(TOOLBAR_BUTTON_SIZE);
@@ -603,7 +644,7 @@ public class MapScreen extends Screen {
         if (dimensionSwitchButton != null) {
             dimensionSwitchButton.setWidth(TOOLBAR_BUTTON_SIZE);
             dimensionSwitchButton.setX(TOOLBAR_MARGIN);
-            dimensionSwitchButton.setY(controlY - TOOLBAR_BUTTON_SIZE - TOOLBAR_GAP);
+            dimensionSwitchButton.setY(controlY-toolbarStepY);
         }
         if (caveLayerSlider == null || caveLayerModeButton == null) return;
 
@@ -830,7 +871,7 @@ public class MapScreen extends Screen {
         // Draw coordinates overlay
         drawCoordsOverlay(guiGraphics, mouseX, mouseY);
         drawSelectedMarker(guiGraphics);
-        drawSelectionCard(guiGraphics);
+        if(!editingPreview){drawSelectionCard(guiGraphics);knownPlaces.render(this,guiGraphics,mouseX,mouseY);}
 
         // Draw the custom context menu if open
         if (isPopupMenuOpen) {
@@ -968,13 +1009,8 @@ public class MapScreen extends Screen {
             int y0 = getY();
             int x1 = x0 + getWidth();
             int y1 = y0 + getHeight();
-            graphics.fill(x0, y0, x1, y1, hover ? 0xF02A2115 : 0xE6120E0A);
-            int edge = hover ? 0xFFE0B84C : 0xFF4A3D2C;
-            graphics.fill(x0, y0, x1, y0 + 1, edge);
-            graphics.fill(x0, y1 - 1, x1, y1, edge);
-            graphics.fill(x0, y0, x0 + 1, y1, edge);
-            graphics.fill(x1 - 1, y0, x1, y1, edge);
-            MapUiIcons.drawScaled(graphics, displayedIcon, x0 + getWidth() / 2, y0 + getHeight() / 2, active && on, TOOLBAR_ICON_SCALE);
+            float iconScale=TOOLBAR_ICON_SCALE*(hover?1.12f:1f);
+            MapUiIcons.drawScaled(graphics, displayedIcon, x0 + getWidth() / 2, y0 + getHeight() / 2, active && on, iconScale);
         }
     }
 
@@ -1760,47 +1796,9 @@ public class MapScreen extends Screen {
         return result.toString();
     }
 
-    private String getPopupMenuHeaderText() {
-        if (clickedWaypoint != null) {
-            String rawName = clickedWaypoint.name != null && !clickedWaypoint.name.isBlank()
-                    ? clickedWaypoint.name : "Waypoint";
-            return rawName.length() > 26 ? rawName.substring(0, 24) + "..." : rawName;
-        }
-        int bx = (int) Math.floor(popupWorldX);
-        int bz = (int) Math.floor(popupWorldZ);
-        return String.format(Locale.ROOT, "X: %d, Z: %d", bx, bz);
-    }
-
-    private int getPopupMenuHeight() {
-        int rows = clickedWaypoint != null ? 5 : 3;
-        return POPUP_HEADER_HEIGHT + 1 + rows * POPUP_ROW_HEIGHT;
-    }
-
-    private int getPopupMenuWidth() {
-        Component optAddOrDelete = clickedWaypoint != null
-                ? Component.translatable("gui.simplemap.popup.delete_waypoint")
-                : Component.translatable("gui.simplemap.add_waypoint");
-        Component optTeleport = Component.translatable("gui.simplemap.teleport_here");
-        Component optShare = Component.translatable("gui.simplemap.popup.share_location");
-        int maxW = Math.max(this.font.width(optAddOrDelete),
-                Math.max(this.font.width(optTeleport), this.font.width(optShare)));
-        if (clickedWaypoint != null) {
-            Component optEdit = Component.translatable("gui.simplemap.edit_waypoint");
-            boolean isCurrentlyFollowing = MapConfig.pinActive &&
-                    Math.abs(MapConfig.pinWorldX - clickedWaypoint.x) < 0.01 &&
-                    Math.abs(MapConfig.pinWorldZ - clickedWaypoint.z) < 0.01;
-            Component optFollow = isCurrentlyFollowing
-                    ? Component.translatable("gui.simplemap.popup.stop_following")
-                    : Component.translatable("gui.simplemap.popup.follow_waypoint");
-            maxW = Math.max(maxW, Math.max(this.font.width(optEdit), this.font.width(optFollow)));
-        }
-        int headerW = this.font.width(getPopupMenuHeaderText()) + 14;
-        int desired = Math.max(116, Math.max(maxW + 18, headerW + 14));
-        if (this.width > POPUP_SCREEN_MARGIN * 2) {
-            return Math.min(desired, Math.max(100, this.width - POPUP_SCREEN_MARGIN * 2));
-        }
-        return desired;
-    }
+    private String getPopupMenuHeaderText(){return clickedPlace!=null?font.plainSubstrByWidth(clickedPlace.title(),180):"X: "+(int)Math.floor(popupWorldX)+", Z: "+(int)Math.floor(popupWorldZ);}
+    private int getPopupMenuHeight(){return POPUP_HEADER_HEIGHT+1+popupOptions().size()*POPUP_ROW_HEIGHT;}
+    private int getPopupMenuWidth(){int max=font.width(getPopupMenuHeaderText())+32;for(var row:popupOptions())max=Math.max(max,font.width(row.label())+20);return Math.min(Math.max(130,max),Math.max(130,width-12));}
 
     private void clampPopupPosition(double anchorX, double anchorY) {
         int menuWidth = getPopupMenuWidth();
@@ -1829,80 +1827,16 @@ public class MapScreen extends Screen {
                 enabled ? textColor : 0xFF6E737B, false);
     }
 
-    private void drawPopupMenu(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        guiGraphics.pose().pushPose();
-        guiGraphics.pose().translate(0, 0, 100); // Draw on top of everything
-
-        int menuWidth = getPopupMenuWidth();
-        int menuHeight = getPopupMenuHeight();
-        double maxAllowedX = Math.max(POPUP_SCREEN_MARGIN, this.width - menuWidth - POPUP_SCREEN_MARGIN);
-        double maxAllowedY = Math.max(POPUP_SCREEN_MARGIN, this.height - menuHeight - POPUP_SCREEN_MARGIN);
-        int x = (int) Math.round(Math.max(POPUP_SCREEN_MARGIN, Math.min(maxAllowedX, popupX)));
-        int y = (int) Math.round(Math.max(POPUP_SCREEN_MARGIN, Math.min(maxAllowedY, popupY)));
-        popupX = x;
-        popupY = y;
-
-        MapPanels.menu(guiGraphics,x,y,menuWidth,menuHeight,POPUP_HEADER_HEIGHT+1);
-
-        // Header badge + title (Waypoint name or World X/Z coordinates)
-        int badgeColor = 0xFFE0B84C;
-        if (clickedWaypoint != null) {
-            badgeColor = clickedWaypoint.deathPoint ? 0xFFFF5252
-                    : (clickedWaypoint.iconType == 0 ? 0xFFFF3D00
-                    : (clickedWaypoint.iconType == 1 ? 0xFF00E676
-                    : (clickedWaypoint.iconType == 2 ? 0xFF2979FF
-                    : (clickedWaypoint.iconType == 3 ? 0xFFFFD600 : 0xFFFFD54F))));
+    private void drawPopupMenu(GuiGraphics g,int mouseX,int mouseY){
+        int w=getPopupMenuWidth(),h=getPopupMenuHeight();clampPopupPosition(popupX,popupY);int x=(int)popupX,y=(int)popupY;
+        g.pose().pushPose();g.pose().translate(0,0,150);MapPanels.menu(g,x,y,w,h,POPUP_HEADER_HEIGHT+1);
+        if(clickedPlace!=null)clickedPlace.icon(g,x+12,y+10,7);
+        g.drawString(font,getPopupMenuHeaderText(),x+(clickedPlace!=null?24:8),y+6,0xFFE9DEC0,false);
+        var rows=popupOptions();for(int i=0;i<rows.size();i++){
+            int rowY=y+POPUP_HEADER_HEIGHT+1+i*POPUP_ROW_HEIGHT;var row=rows.get(i);
+            drawPopupMenuRow(g,x,rowY,w,Component.literal(row.label()),mouseX>=x&&mouseX<x+w&&mouseY>=rowY&&mouseY<rowY+POPUP_ROW_HEIGHT,row.enabled(),0xFFE9DEC0,0xFFB8AC84);
         }
-        guiGraphics.fill(x + 6, y + 6, x + 14, y + 14, 0xFF0B0D10);
-        guiGraphics.fill(x + 7, y + 7, x + 13, y + 13, badgeColor);
-        int headerColor = clickedWaypoint != null ? 0xFFFFE082 : 0xFFB0BEC5;
-        guiGraphics.drawString(this.font, getPopupMenuHeaderText(), x + 18, y + 6, headerColor, false);
-
-        int rowsStartY = y + POPUP_HEADER_HEIGHT + 1;
-        boolean insideMenuX = mouseX >= x && mouseX <= x + menuWidth;
-        boolean canTeleport = MapTeleportController.canTeleport(this.minecraft);
-
-        if (clickedWaypoint != null) {
-            boolean isCurrentlyFollowing = MapConfig.pinActive &&
-                    Math.abs(MapConfig.pinWorldX - clickedWaypoint.x) < 0.01 &&
-                    Math.abs(MapConfig.pinWorldZ - clickedWaypoint.z) < 0.01;
-            Component followText = isCurrentlyFollowing
-                    ? Component.translatable("gui.simplemap.popup.stop_following")
-                    : Component.translatable("gui.simplemap.popup.follow_waypoint");
-
-            Component[] labels = new Component[] {
-                    Component.translatable("gui.simplemap.edit_waypoint"),
-                    Component.translatable("gui.simplemap.popup.delete_waypoint"),
-                    Component.translatable("gui.simplemap.teleport_here"),
-                    Component.translatable("gui.simplemap.popup.share_location"),
-                    followText
-            };
-            boolean[] enabled = new boolean[] { true, true, canTeleport, true, true };
-            int[] textColors = new int[] { 0xFFFFFFFF, 0xFFFF8A80, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF };
-            int[] accents = new int[] { 0xFFE0B84C, 0xFFFF5252, 0xFFE0B84C, 0xFFE0B84C, 0xFFFFD54F };
-
-            for (int i = 0; i < labels.length; i++) {
-                int rowY = rowsStartY + i * POPUP_ROW_HEIGHT;
-                boolean hovered = insideMenuX && mouseY >= rowY && mouseY < rowY + POPUP_ROW_HEIGHT;
-                drawPopupMenuRow(guiGraphics, x, rowY, menuWidth, labels[i],
-                        hovered, enabled[i], textColors[i], accents[i]);
-            }
-        } else {
-            Component[] labels = new Component[] {
-                    Component.translatable("gui.simplemap.add_waypoint"),
-                    Component.translatable("gui.simplemap.teleport_here"),
-                    Component.translatable("gui.simplemap.popup.share_location")
-            };
-            boolean[] enabled = new boolean[] { true, canTeleport, true };
-            for (int i = 0; i < labels.length; i++) {
-                int rowY = rowsStartY + i * POPUP_ROW_HEIGHT;
-                boolean hovered = insideMenuX && mouseY >= rowY && mouseY < rowY + POPUP_ROW_HEIGHT;
-                drawPopupMenuRow(guiGraphics, x, rowY, menuWidth, labels[i],
-                        hovered, enabled[i], 0xFFFFFFFF, 0xFFE0B84C);
-            }
-        }
-
-        guiGraphics.pose().popPose();
+        g.pose().popPose();
     }
 
     private void markViewportInteraction() {
@@ -2017,124 +1951,19 @@ public class MapScreen extends Screen {
         if (!isPopupMenuOpen && button == 0 && selectedLocation != null
                 && mouseX >= width-cardWidth-8 && mouseX <= width-8
                 && mouseY >= 42 && mouseY <= 42+cardHeight) {
-            if(mouseX >= width-23 && mouseY <= 58) selectedLocation=null;
+            if(mouseX >= width-23 && mouseY <= 58){selectedLocation=null;selectedEntry=null;}
             return true;
         }
-        // 1. If context menu is open, handle its options first
-        if (isPopupMenuOpen && button == 0) {
-            int menuWidth = getPopupMenuWidth();
-            int menuHeight = getPopupMenuHeight();
-            int rowsStartY = (int) Math.round(popupY) + POPUP_HEADER_HEIGHT + 1;
-            if (mouseX >= popupX && mouseX <= popupX + menuWidth
-                    && mouseY >= popupY && mouseY <= popupY + menuHeight) {
-                if (mouseY < rowsStartY) {
-                    // Clicked on the header bar: keep menu open without triggering a row
-                    return true;
+        if(isPopupMenuOpen&&button==0){
+            int row=(int)((mouseY-popupY-POPUP_HEADER_HEIGHT-1)/POPUP_ROW_HEIGHT);
+            if(mouseX>=popupX&&mouseX<=popupX+getPopupMenuWidth()&&mouseY>=popupY+POPUP_HEADER_HEIGHT+1&&mouseY<popupY+getPopupMenuHeight()){
+                var options=popupOptions();if(row>=0&&row<options.size()&&options.get(row).enabled()){
+                    var action=options.get(row).action();isPopupMenuOpen=false;action.run();return true;
                 }
-                int rowIndex = (int) Math.floor((mouseY - rowsStartY) / (double) POPUP_ROW_HEIGHT);
-                if (clickedWaypoint != null) {
-                    Waypoint targetWp = clickedWaypoint;
-                    if (rowIndex == 0) {
-                        // Row 0: Edit Waypoint
-                        isPopupMenuOpen = false;
-                        clickedWaypoint = null;
-                        if (this.minecraft != null) {
-                            this.minecraft.setScreen(new MapConfigScreen.WaypointListScreen.AddWaypointScreen(
-                                    this, targetWp));
-                        }
-                    } else if (rowIndex == 1) {
-                        // Row 1: Delete Waypoint
-                        WaypointManager.getInstance().removeWaypoint(targetWp);
-                        clickedWaypoint = null;
-                        isPopupMenuOpen = false;
-                    } else if (rowIndex == 2) {
-                        // Row 2: Teleport Here
-                        if (MapTeleportController.canTeleport(this.minecraft)) {
-                            isPopupMenuOpen = false;
-                            clickedWaypoint = null;
-                            int tpX = (int) Math.floor(targetWp.x);
-                            int tpZ = (int) Math.floor(targetWp.z);
-                            String targetDimension = targetWp.dimension != null && !targetWp.dimension.isBlank()
-                                    ? targetWp.dimension
-                                    : MapManager.getInstance().getCurrentDimensionResourceId();
-                            int tpY = (int) Math.floor(targetWp.y);
-                            if (MapTeleportController.teleport(this.minecraft, targetDimension,
-                                    tpX, tpY, tpZ)) {
-                                this.onClose();
-                            }
-                        }
-                    } else if (rowIndex == 3) {
-                        // Row 3: Share Location
-                        String dimension = targetWp.dimension != null && !targetWp.dimension.isBlank()
-                                ? targetWp.dimension
-                                : MapManager.getInstance().getCurrentDimensionResourceId();
-                        isPopupMenuOpen = false;
-                        clickedWaypoint = null;
-                        this.onClose();
-                        WaypointManager.shareLocation(this.minecraft, targetWp.name,
-                                targetWp.x, targetWp.y, targetWp.z, true, dimension);
-                    } else if (rowIndex == 4) {
-                        // Row 4: Follow / Stop Following Waypoint
-                        boolean isCurrentlyFollowing = MapConfig.pinActive &&
-                                Math.abs(MapConfig.pinWorldX - targetWp.x) < 0.01 &&
-                                Math.abs(MapConfig.pinWorldZ - targetWp.z) < 0.01;
-                        if (isCurrentlyFollowing) {
-                            PinNavigation.clear();
-                        } else {
-                            PinNavigation.activate(targetWp.x, targetWp.z);
-                        }
-                        MapManager.getInstance().savePin();
-                        isPopupMenuOpen = false;
-                        clickedWaypoint = null;
-                    }
-                } else {
-                    if (rowIndex == 0) {
-                        // Row 0: Add Waypoint
-                        isPopupMenuOpen = false;
-                        if (this.minecraft != null) {
-                            String waypointDimension = MapManager.getInstance()
-                                    .getCurrentDimensionResourceId();
-                            int waypointY = resolveTeleportTargetY(
-                                    (int) Math.floor(popupWorldX),
-                                    (int) Math.floor(popupWorldZ), waypointDimension);
-                            freezeCamera();
-                            this.minecraft.setScreen(new MapConfigScreen.WaypointListScreen.AddWaypointScreen(this,
-                                    popupWorldX, waypointY, popupWorldZ,
-                                    waypointDimension));
-                        }
-                    } else if (rowIndex == 1) {
-                        // Row 1: Teleport Here
-                        if (MapTeleportController.canTeleport(this.minecraft)) {
-                            isPopupMenuOpen = false;
-                            int tpX = (int) Math.floor(popupWorldX);
-                            int tpZ = (int) Math.floor(popupWorldZ);
-                            String targetDimension = MapManager.getInstance()
-                                    .getCurrentDimensionResourceId();
-                            int targetY = resolveTeleportTargetY(tpX, tpZ, targetDimension);
-                            if (MapTeleportController.teleport(this.minecraft, targetDimension,
-                                    tpX, targetY, tpZ)) {
-                                this.onClose();
-                            }
-                        }
-                    } else if (rowIndex == 2) {
-                        // Row 2: Share Location
-                        String dimension = MapManager.getInstance()
-                                .getCurrentDimensionResourceId();
-                        int targetY = resolveTeleportTargetY(
-                                (int) Math.floor(popupWorldX),
-                                (int) Math.floor(popupWorldZ), dimension);
-                        isPopupMenuOpen = false;
-                        this.onClose();
-                        WaypointManager.shareLocation(this.minecraft, null,
-                                popupWorldX, targetY, popupWorldZ, true, dimension);
-                    }
-                }
-                return true;
             }
-            isPopupMenuOpen = false; // Clicked outside the menu, close it
-            clickedWaypoint = null;
+            isPopupMenuOpen=false;return true;
         }
-
+        if(!editingPreview&&knownPlaces.click(this,mouseX,mouseY,button))return true;
         // 2. Standard button clicks
         if (super.mouseClicked(mouseX, mouseY, button)) {
             return true;
@@ -2156,27 +1985,9 @@ public class MapScreen extends Screen {
             popupWorldX = centerX + (mouseX - this.width / 2.0) / currentRenderScale;
             popupWorldZ = centerZ + (mouseY - this.height / 2.0) / currentRenderScale;
 
-            // Check if right-clicking on an existing waypoint
-            clickedWaypoint = null;
-            java.util.List<WaypointManager.Waypoint> waypoints = WaypointManager.getInstance()
-                    .getWaypointsForDimension(MapManager.getInstance()
-                            .getCurrentDimensionResourceId());
-            double nearestDistance = Double.POSITIVE_INFINITY;
-            for (WaypointManager.Waypoint wp : waypoints) {
-                double hoverRadius = MapRenderer.waypointHitRadiusWorld(
-                        wp, currentRenderScale);
-                if (Math.abs(popupWorldX - wp.x) <= hoverRadius && Math.abs(popupWorldZ - wp.z) <= hoverRadius) {
-                    double distance = Math.hypot(popupWorldX - wp.x,
-                            popupWorldZ - wp.z);
-                    if (distance < nearestDistance) {
-                        clickedWaypoint = wp;
-                        nearestDistance = distance;
-                    }
-                }
-            }
-
-            clampPopupPosition(mouseX, mouseY);
-            isPopupMenuOpen = true;
+            clickedPlace=findPlace(popupWorldX,popupWorldZ);
+            clickedWaypoint=clickedPlace==null?null:clickedPlace.waypoint();
+            openPlacePopup(clickedPlace,mouseX,mouseY);
             return true;
         }
 
@@ -2214,6 +2025,7 @@ public class MapScreen extends Screen {
 
     @Override
     public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        knownPlaces.release();
         if (button == 0) {
             if (this.caveLayerSlider != null && this.caveLayerSlider.isDragging()) {
                 this.caveLayerSlider.onRelease(mouseX, mouseY);
@@ -2233,7 +2045,7 @@ public class MapScreen extends Screen {
                 double clickWorldZ = centerZ + (mouseY - 1 - (this.height - 2) / 2.0) / currentRenderScale;
 
                 if (selectPlace(clickWorldX,clickWorldZ)) return true;
-                selectedLocation=null;
+                selectedLocation=null;selectedEntry=null;LocalPlaces.clearRoute(false);
                 double snappedPinX = Math.floor(clickWorldX) + 0.5;
                 double snappedPinZ = Math.floor(clickWorldZ) + 0.5;
 
@@ -2251,6 +2063,7 @@ public class MapScreen extends Screen {
 
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
+        if(!editingPreview&&knownPlaces.drag(mouseX,mouseY))return true;
         if (!com.velorise.simplemap.SimpleMap.isMapUnlocked(this.minecraft.player)) {
             return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
         }
@@ -2298,6 +2111,7 @@ public class MapScreen extends Screen {
 
     @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
+        if(!editingPreview&&knownPlaces.scroll(mouseX,mouseY,scrollY))return true;
         if (!com.velorise.simplemap.SimpleMap.isMapUnlocked(this.minecraft.player)) {
             return super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
         }

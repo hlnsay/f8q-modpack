@@ -74,5 +74,32 @@ public final class MapPlacesTest {
         System.out.println("PASS: classification, bbox positions, discovery distances, network roundtrip and packet bounds");
         System.out.println("PASS: incremental discoveries, real titles, dimensions, deletion and disconnect reset");
         System.out.println("PASS: TREK grid filtering, underground portals, settlements, Russian fallback, decluttering and selection pulse");
+        var shared=new Net.MarksUp(List.of(new Net.Spot(false,"Деревня",1,65,2,"minecraft:overworld","minecraft:compass",13)));
+        var packet=new FriendlyByteBuf(Unpooled.buffer());Net.MarksUp.CODEC.encode(packet,shared);
+        check(shared.equals(Net.MarksUp.CODEC.decode(packet)),"party marker actual icon survives protocol");packet.release();
+        try {
+            var dir=java.nio.file.Files.createTempDirectory("f8q-place-journal-");
+            var path=dir.resolve("world-a-player-one.json");
+            var journal=new com.velorise.simplemap.client.LocalPlaces.Journal(path);
+            journal.receive("minecraft:overworld",List.of(a,b));journal.style(a.id(),"Моя крепость",0xff5555);journal.flush();
+            var reloaded=new com.velorise.simplemap.client.LocalPlaces.Journal(path);
+            check(reloaded.state.places.get("minecraft:overworld").size()==2,"discovered places survive restart");
+            check(reloaded.state.styles.get(a.id()).name().equals("Моя крепость"),"personal title survives restart");
+            check(reloaded.state.styles.get(a.id()).color()==0xff5555,"personal color survives restart");
+            check(new com.velorise.simplemap.client.LocalPlaces.Journal(dir.resolve("world-b-player-one.json")).state.places.isEmpty(),"worlds isolated");
+            check(new com.velorise.simplemap.client.LocalPlaces.Journal(dir.resolve("world-a-player-two.json")).state.styles.isEmpty(),"players isolated");
+            java.nio.file.Files.delete(path);java.nio.file.Files.delete(dir);
+        }catch(java.io.IOException e){throw new AssertionError(e);}
+        check(com.velorise.simplemap.client.LocalPlaces.parseColor("red")==0xff5555,"Minecraft named color");
+        check(com.velorise.simplemap.client.LocalPlaces.parseColor("&c")==0xff5555,"Minecraft formatting color");
+        check(com.velorise.simplemap.client.LocalPlaces.parseColor("15")==0xffffff,"Minecraft numeric color");
+        check(com.velorise.simplemap.client.LocalPlaces.parseColor("not-a-color")==null,"invalid color rejected");
+        try {
+            var field=Unknowns.class.getDeclaredField("GSON");field.setAccessible(true);var gson=(com.google.gson.Gson)field.get(null);
+            Class<?> record=java.util.Arrays.stream(Unknowns.class.getDeclaredClasses()).filter(c->c.getSimpleName().equals("Place")).findFirst().orElseThrow();
+            Object place=gson.fromJson("{\"key\":\"verified\",\"dimension\":\"minecraft:overworld\",\"structure\":\"minecraft:village_plains\",\"kind\":3,\"x\":12.5,\"y\":70,\"z\":-32.5,\"minX\":0,\"maxX\":25,\"minZ\":-40,\"maxZ\":-25,\"block\":false}",record);
+            var x=record.getDeclaredMethod("x");x.setAccessible(true);check(((Double)x.invoke(place))==12.5,"server record reload preserves exact coordinates with older Gson");
+        }catch(ReflectiveOperationException e){throw new AssertionError(e);}
+        System.out.println("PASS: party icon codec, journal restart persistence, world/account isolation, personal names/colors and Minecraft color IDs");
     }
 }

@@ -344,6 +344,8 @@ public class MapManager {
             }
             loadLearningState(worldDirectory);
             WaypointManager.getInstance().updateWorldDir(worldDirectory);
+            LocalPlaces.preferences(minecraft.gameDirectory.toPath().resolve("simplemap/f8q-map-ui.properties"));
+            TeamMarks.openJournal(worldDirectory.toPath().resolve("f8q-places-"+minecraft.getUser().getProfileId()+".json"));
             configureDimension(liveStorageId, liveResourceId);
             observeLiveDimensionProfile(level, worldDirectory, liveStorageId, liveResourceId);
             MapSessionManager.getInstance().open(currentWorldId, liveResourceId);
@@ -2322,6 +2324,7 @@ public class MapManager {
     }
 
     public synchronized void flushAndClear() {
+        if(LocalPlaces.isBound())TeamMarks.closeJournal();
         saveDirtyRegionsAsync();
         MapSessionManager.getInstance().closeActive();
         resetPersistence();

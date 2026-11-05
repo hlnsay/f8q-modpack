@@ -217,6 +217,7 @@ public class MinimapRenderer {
     }
 
     public void renderHUD(GuiGraphics guiGraphics, float partialTick, boolean screenOverlay) {
+        if(Minecraft.getInstance().screen instanceof net.minecraft.client.gui.screens.inventory.AbstractContainerScreen<?>)return;
         Minecraft mc = Minecraft.getInstance();
 
         long now = System.nanoTime();
@@ -617,9 +618,9 @@ public class MinimapRenderer {
                 }
             }
 
-            float iconScale = Math.max(0.25f, Math.min(1.25f, 0.10f * MapConfig.waypointScale * wp.scale));
+            float iconScale = Math.max(0.25f, Math.min(3.0f, 0.10f * MapConfig.waypointScale * wp.scale * LocalPlaces.markerScale));
             if (offMap) {
-                iconScale *= 0.85f;
+                iconScale *= 1.0f;
             }
             net.minecraft.world.item.ItemStack iconStack =
                     MapRenderer.getInstance().resolveWaypointIconStack(wp);
@@ -642,6 +643,7 @@ public class MinimapRenderer {
             int size, int borderThickness, float effectiveZoom, float partialTick) {
         String dimensionId = MapManager.getInstance().getCurrentDimensionResourceId();
         var marks = TeamMarks.visible(dimensionId);
+        var localRoute=TeamMarks.localRoute(dimensionId);if(localRoute!=null)marks.add(localRoute);
         var mates = TeamMarks.mates(dimensionId);
         var unknownPlaces = TeamMarks.autoPlacesVisible()?TeamMarks.unknown(dimensionId):java.util.List.<double[]>of();
         if (marks.isEmpty() && mates.isEmpty() && unknownPlaces.isEmpty()) return;
@@ -671,7 +673,7 @@ public class MinimapRenderer {
                 dx *= limit / reach;
                 dz *= limit / reach;
             }
-            TeamMarks.cross(guiGraphics, cx + dx, cy + dz, 3, mark.color(), false);
+            TeamMarks.markIcon(guiGraphics,mark,cx+dx,cy+dz,Math.round(5*(mark==localRoute?LocalPlaces.routeScale:LocalPlaces.markerScale)));
         }
         for (double[] place : unknownPlaces) {
             double worldDX = place[0] - playerX;
@@ -682,7 +684,7 @@ public class MinimapRenderer {
             float reach = MapConfig.minimapCircle ? (float) Math.sqrt(dx * dx + dz * dz) : Math.max(Math.abs(dx), Math.abs(dz));
             if (reach <= limit - 3) {
                 boolean open = place[3] > 0;
-                TeamMarks.icon(guiGraphics, open ? TeamMarks.placeIcon((int) place[2]) : TeamMarks.UNKNOWN, cx + dx, cy + dz, open ? ((int)place[2]==8?7:5) : 3);
+                TeamMarks.icon(guiGraphics, open ? TeamMarks.placeIcon((int) place[2]) : TeamMarks.UNKNOWN, cx + dx, cy + dz, open ? ((int)place[2]==8?7:5) : 3,place.length>4?(int)place[4]:0xffffff);
             }
         }
         float ownYaw = MapConfig.minimapRotate ? net.minecraft.util.Mth.rotLerp(partialTick, player.yRotO, player.getYRot()) : 180.0f;

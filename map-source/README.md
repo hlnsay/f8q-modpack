@@ -24,3 +24,14 @@ Actual ruined-portal piece placement is read through a narrow Mixin accessor: UN
 Ruins icons are larger. Full-map icons and captions use screen-space collision bins; undiscovered points show their caption only when hovered/selected. Selection is enlarged with a bounded 1.20–1.36 scale pulse and a thin ring. Unmapped labels use Russian category names; an unclassified object is suppressed.
 
 Tests include real installed TREK IDs, portal placement exclusions, tavern categories, villager/illager separation, unsupported-object suppression, label/icon collision rules, and pulse bounds. Dedicated server starts, generates a ruined portal and shuts down cleanly with the portal accessor active. Only the two map integration JARs are deployed.
+
+
+## Journal and interface v13
+
+Known surface places are saved client-side in the existing map world directory as `f8q-places-<account UUID>.json`. The journal keeps all dimensions, opened/question states, personal names/colors and the private route. It flushes on logout/world change and at bounded intervals when dirty. Atomic file replacement protects prior data. Explicit JSON record adapters support both older and newer Gson versions. The server also remembers each player's seen places and resends previously seen/opened points even outside the immediate 4096-block window. The cache schema from v12 is preserved.
+
+Generated places, personal waypoints and party marks use one PlaceEntry presentation for the list, card and menu. The list is scrollable with a draggable scrollbar; clicking focuses the map. It includes actual waypoint item icons and party owners/colors. Personal POI edits stay only in the local journal. The active route is excluded from shared party pins and is rendered locally with name/distance and a larger mini-map edge icon. Party spot payloads are version 3 to carry the actual item icon; generated-place payload remains version 2.
+
+The settings gear opens map interface settings: POI visibility (default on), marker size and active-route size (0.75–3), and a link to all original settings. Preferences live outside the pack's managed config files in `simplemap/f8q-map-ui.properties`. Mini-map rendering exits for every AbstractContainerScreen, including creative/survival inventories and chests. Cave-map policy defaults to 2 and the pack-managed simplemap-server.json is set to 2; underground POIs remain excluded.
+
+The places-list and personal-editor panels are original imagegen PNGs matching the supplied map-ui style. Source PNGs are unmodified, with their transparent margins handled by nine-slice UV coordinates. GUI review in an isolated instance verified a 44-row scrollable journal, camera focus, actual card/list icons, personal color changes and inventory minimap hiding. Serialization tests cover restart persistence, world/account separation and party icon payload roundtrips.

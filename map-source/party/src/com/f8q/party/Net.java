@@ -131,7 +131,8 @@ final class Net {
     }
 
     /** One place on the map: a pin or a waypoint. */
-    record Spot(boolean pin, String label, double x, double y, double z, String dimension) {
+    record Spot(boolean pin, String label, double x, double y, double z, String dimension,String iconItem,int kind) {
+        Spot(boolean pin,String label,double x,double y,double z,String dimension){this(pin,label,x,y,z,dimension,"",13);}
         void write(FriendlyByteBuf buf) {
             buf.writeBoolean(pin);
             buf.writeUtf(label, 64);
@@ -139,10 +140,11 @@ final class Net {
             buf.writeDouble(y);
             buf.writeDouble(z);
             buf.writeUtf(dimension, 256);
+            buf.writeUtf(iconItem,128);buf.writeVarInt(kind);
         }
 
         static Spot read(FriendlyByteBuf buf) {
-            return new Spot(buf.readBoolean(), buf.readUtf(64), buf.readDouble(), buf.readDouble(), buf.readDouble(), buf.readUtf(256));
+            return new Spot(buf.readBoolean(), buf.readUtf(64), buf.readDouble(), buf.readDouble(), buf.readDouble(), buf.readUtf(256),buf.readUtf(128),buf.readVarInt());
         }
     }
 
@@ -152,7 +154,8 @@ final class Net {
     }
 
     private static List<Spot> readSpots(FriendlyByteBuf buf) {
-        int size = Math.min(buf.readVarInt(), 48);
+        int size = buf.readVarInt();
+        if(size<0||size>48)throw new IllegalArgumentException("Invalid shared marker count");
         List<Spot> spots = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             spots.add(Spot.read(buf));

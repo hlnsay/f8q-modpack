@@ -963,9 +963,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "1aab16a7a69b4156a1fab3adc23da822c19fec9b11a16bd7313d7aed7665550810ec460a3572127e96db0a6cdf604cbdc05a7759c4499c91854ffe0ac406f25b",
-      "size": 75784,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.12-1aab16a7a69b.jar"
+      "sha512": "716eba5a1e092c3fa08cf005f107a4ad31377235ee0955ae7d759fa6a1148c7a3dce426d57b2b4af303e4475264cab77db5ae7d24cec6cbaeb90d15bfc34a30e",
+      "size": 76711,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.13-716eba5a1e09.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -1047,9 +1047,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 2164383,
-      "sha512": "f094a7bfca881c2e1d286c8e73fb83c142eb64eefc345836a63d7de65a9d454829d07cb97ad23abe8652b88ae1485b943377fb1e71816af1848ea884ec153d45",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q12-f094a7bfca88.jar"
+      "size": 4212507,
+      "sha512": "2cf175626636f46a22ef7829e468f7fef9365e45b58d47db69e92b1a8dc730218d83094cfaa4565f3cb00a65039f766e029da50f265c6e56e662e9b6463202e6",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q13-2cf175626636.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2248,6 +2248,12 @@
       "size": 568271,
       "sha512": "5c98e739a2fd3ac23b465de3e3ceb304a3e7088b9d16e7fb230a2f3ca8f44524bbaeb0152761836cd193f9ddbd88f4fd389af842532f14c677eb4706b4b44578",
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/assets/f8q/menu-dark.png"
+    },
+    {
+      "path": "config/simplemap-server.json",
+      "size": 50,
+      "sha512": "7e0254ced11a96dbb3df1f6599842ba2f07105fddaa5f32ca92014c4bdd492cb666701568a94f711eaa21ab0b26f83f7f2d10e16a49d7270e014c4f0baa74f76",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-caves-on-7e0254ced11a.json"
     }
   ],
   "updater": {
@@ -2297,6 +2303,24 @@
     "file/better-3d-beds.zip"
   ],
   "changelog": [
+    {
+      "date": "2026-11-05",
+      "added": [
+        "Список открытых мест, личных меток и меток пати: прокрутка и переход камеры по клику.",
+        "Персональный редактор точки интереса: название и цвет Minecraft сохраняются только у игрока.",
+        "Локальный маршрут к месту: его значок, название и расстояние в мире и на мини-карте.",
+        "Настройки показа зон интереса и размеров значков меток и маршрута."
+      ],
+      "updated": [
+        "Известные места и персональные настройки сохраняются между перезапусками отдельно для каждого мира/сервера и аккаунта.",
+        "Крупные иконки панели карты без контейнеров, выровненные слева по центру. Две новые PNG-панели для списка и редактора.",
+        "Значок метки совпадает на карте, в карточке и в списке; метки пати передают настоящую иконку.",
+        "Мини-карта скрывается в инвентаре и контейнерах. Включён разрешённый режим карты пещер."
+      ],
+      "removed": [
+        "Действие «Поделиться местом» из контекстного меню карты."
+      ]
+    },
     {
       "date": "2026-11-05",
       "added": [
@@ -2581,6 +2605,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-map-polish-v12-verified",
+  "revision": "2026-11-05-place-journal-v13",
   "journeymap": []
 }

@@ -19,7 +19,8 @@ import net.minecraft.client.gui.GuiGraphics;
  * Marks arrive already coloured and named, and three switches say what the player wants to see.
  */
 public final class TeamMarks {
-    public record Mark(String owner, int color, String label, double x, double y, double z, String dimension, boolean pin) {
+    public record Mark(String owner, int color, String label, double x, double y, double z, String dimension, boolean pin, String iconItem, int kind) {
+        public Mark(String owner,int color,String label,double x,double y,double z,String dimension,boolean pin){this(owner,color,label,x,y,z,dimension,pin,"",13);}
         public String title() {
             return owner.isEmpty() ? label : "[" + owner + "] " + label;
         }
@@ -126,14 +127,14 @@ public final class TeamMarks {
     /** The player's own pin and waypoints here, for the party and for the view of the world. */
     public static List<Mark> own(String dimension) {
         List<Mark> out = new ArrayList<>();
-        if (MapConfig.pinActive) {
+        if (MapConfig.pinActive && !LocalPlaces.routing()) {
             out.add(new Mark("", 0xE0B84C, "Метка", MapConfig.pinWorldX, Double.NaN, MapConfig.pinWorldZ, dimension, true));
         }
         var waypoints = WaypointManager.getInstance().getWaypointsForDimension(dimension);
         if (waypoints != null) {
             for (WaypointManager.Waypoint wp : waypoints) {
                 if (wp != null && !wp.deathPoint) {
-                    out.add(new Mark("", 0xE0B84C, wp.name, wp.x, wp.hasY ? wp.y : Double.NaN, wp.z, dimension, false));
+                    out.add(new Mark("", 0xE0B84C, wp.name, wp.x, wp.hasY ? wp.y : Double.NaN, wp.z, dimension, false, WaypointManager.resolveIconItemId(wp),13));
                 }
             }
         }
@@ -148,17 +149,20 @@ public final class TeamMarks {
         return net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("simplemap", "textures/gui/" + name + ".png");
     }
 
-    public static void icon(GuiGraphics g, net.minecraft.resources.ResourceLocation texture, float x, float y, int half) {
+    public static void icon(GuiGraphics g, net.minecraft.resources.ResourceLocation texture, float x, float y, int half) {icon(g,texture,x,y,half,0xffffff);}
+    public static void icon(GuiGraphics g, net.minecraft.resources.ResourceLocation texture, float x, float y, int half,int color) {
+        com.mojang.blaze3d.systems.RenderSystem.setShaderColor((color>>16&255)/255f,(color>>8&255)/255f,(color&255)/255f,1);
         g.pose().pushPose();
         g.pose().translate(x, y, 0);
         com.mojang.blaze3d.systems.RenderSystem.enableBlend();
         com.mojang.blaze3d.systems.RenderSystem.defaultBlendFunc();
         g.blit(texture, -half, -half, half * 2, half * 2, 0F, 0F, 32, 32, 32, 32);
         g.pose().popPose();
+        com.mojang.blaze3d.systems.RenderSystem.setShaderColor(1,1,1,1);
     }
 
     public record Location(String id, String structure, double x, double y, double z, int kind, boolean open) {
-        public String title() { return id.startsWith("waypoint:") ? id.substring(9) : open ? structureTitle(structure,kind) : "Неизвестное место"; }
+        public String title() { return LocalPlaces.name(id,id.startsWith("waypoint:") ? id.substring(9) : open ? structureTitle(structure,kind) : "Неизвестное место"); }
         public String description() { return kind==12 ? "Место вашей гибели. Здесь стоит поискать оставленные вещи." : kind==13 ? "Ваша сохранённая метка. Ориентир для будущего путешествия." : open ? placeDescription(kind) : "Здесь обнаружена настоящая постройка. Подойдите ближе, чтобы узнать, что это за место."; }
     }
     private static final java.util.Map<String,String> STRUCTURE_TITLES=java.util.Map.ofEntries(
@@ -231,15 +235,16 @@ public final class TeamMarks {
         Snapshot snapshot=placeSnapshots.get(dimension);return snapshot==null?List.of():snapshot.locations();
     }
     public static void setLocations(String dimension,List<Location> changes) {
-        if(dimension.isEmpty()){placeCache.clear();placeSnapshots=java.util.Map.of();return;}
+        if(dimension.isEmpty()){closeJournal();return;}
         var cache=placeCache.computeIfAbsent(dimension,d->new java.util.LinkedHashMap<>());
         for(Location p:changes){if(p.kind()<0||(p.open()&&p.kind()==4)||hiddenUnderground(p))cache.remove(p.id());else cache.put(p.id(),p);}
         cache.values().removeIf(TeamMarks::hiddenUnderground);
         while(cache.size()>16384)cache.remove(cache.keySet().iterator().next());
         var list=List.copyOf(cache.values());
         var next=new java.util.HashMap<>(placeSnapshots);
-        next.put(dimension,new Snapshot(list,list.stream().map(p->new double[]{p.x(),p.z(),p.kind(),p.open()?1:0}).toList()));
+        next.put(dimension,new Snapshot(list,list.stream().map(p->new double[]{p.x(),p.z(),p.kind(),p.open()?1:0,LocalPlaces.color(p.id())}).toList()));
         placeSnapshots=java.util.Map.copyOf(next);
+        LocalPlaces.journal().receive(dimension,changes.stream().map(p->hiddenUnderground(p)||(p.open()&&p.kind()==4)?new Location(p.id(),p.structure(),p.x(),p.y(),p.z(),-1,false):p).toList());
     }
     public static void setUnknown(String dimension,List<double[]> places) {
         // Compatibility with older callers; authoritative locations use setLocations.
@@ -248,6 +253,34 @@ public final class TeamMarks {
     public static List<double[]> unknown(String dimension) {
         Snapshot snapshot=placeSnapshots.get(dimension);
         return snapshot==null?List.of():snapshot.points();
+    }
+
+    public static void openJournal(Path path) {
+        var pending=LocalPlaces.isBound()?java.util.Map.<String,Snapshot>of():placeSnapshots;
+        if(!LocalPlaces.bind(path))return;
+        placeCache.clear();placeSnapshots=java.util.Map.of();
+        var saved=new java.util.LinkedHashMap<>(LocalPlaces.journal().state.places);
+        saved.forEach((dim,points)->setLocations(dim,List.copyOf(points.values())));
+        pending.forEach((dim,snapshot)->setLocations(dim,snapshot.locations()));
+    }
+    public static void refreshStyles(){
+        var next=new java.util.HashMap<String,Snapshot>();
+        placeSnapshots.forEach((dim,snapshot)->next.put(dim,new Snapshot(snapshot.locations(),snapshot.locations().stream().map(p->new double[]{p.x(),p.z(),p.kind(),p.open()?1:0,LocalPlaces.color(p.id())}).toList())));
+        placeSnapshots=java.util.Map.copyOf(next);
+    }
+    public static void closeJournal(){LocalPlaces.close();placeCache.clear();placeSnapshots=java.util.Map.of();}
+    public static java.util.Map<String,List<Location>> allLocations(){
+        var out=new java.util.LinkedHashMap<String,List<Location>>();placeSnapshots.forEach((dim,snapshot)->out.put(dim,snapshot.locations()));return out;
+    }
+    public static List<Mark> allVisible(){return marks.stream().filter(m->m.pin()?showPins:showWaypoints).toList();}
+    public static Mark localRoute(String dim){
+        var place=LocalPlaces.routeLocation();if(place==null||!dim.equals(LocalPlaces.routeDimension()))return null;
+        return new Mark("",LocalPlaces.color(place.id()),place.title(),place.x(),place.y(),place.z(),dim,false,LocalPlaces.journal().state.routeIcon==null||LocalPlaces.journal().state.routeIcon.isEmpty()?"poi:"+place.kind():LocalPlaces.journal().state.routeIcon,LocalPlaces.journal().state.routeKind);
+    }
+    public static void markIcon(GuiGraphics g,Mark mark,float x,float y,int half){
+        if(mark.iconItem()!=null&&mark.iconItem().startsWith("poi:")){icon(g,placeIcon(mark.kind()),x,y,half,mark.color());return;}
+        if(mark.iconItem()!=null&&!mark.iconItem().isEmpty()){PlaceEntry.itemIcon(g,mark.iconItem(),x,y,half);return;}
+        cross(g,x,y,half,mark.color(),mark.owner().isEmpty());
     }
 
     /** The map's cross: the plain one for the player, the party colour for a teammate. */
@@ -262,7 +295,7 @@ public final class TeamMarks {
 
     public static boolean autoPlacesVisible() {
         var mc=Minecraft.getInstance();
-        return mc!=null&&com.velorise.simplemap.client.cave.CaveMode.getCaveType(mc)==com.velorise.simplemap.client.cave.CaveMode.CaveType.OFF;
+        return LocalPlaces.showPois&&mc!=null&&com.velorise.simplemap.client.cave.CaveMode.getCaveType(mc)==com.velorise.simplemap.client.cave.CaveMode.CaveType.OFF;
     }
     public static int placeHalf(int kind,boolean open){return !open?6:kind==8?11:8;}
 
@@ -280,7 +313,7 @@ public final class TeamMarks {
             if(!layout.icon(sx,sy,half,focused))continue;
             float size=overlay/scale;
             g.pose().pushPose();g.pose().translate(location.x(),location.z(),5);g.pose().scale(size,size,1);
-            icon(g,location.open()?placeIcon(location.kind()):UNKNOWN,0,0,half);
+            icon(g,location.open()?placeIcon(location.kind()):UNKNOWN,0,0,half,LocalPlaces.color(location.id()));
             // Questions are symbols, not a wall of repeated labels. Hover or selection reveals their caption.
             if(location.open()||focused) {
                 String title=location.title();int width=font.width(title),labelY=half+3;
@@ -290,6 +323,11 @@ public final class TeamMarks {
                 }
             }
             g.pose().popPose();
+        }
+        var privateRoute=localRoute(MapManager.getInstance().getCurrentDimensionResourceId());
+        if(privateRoute!=null&&(!autoPlacesVisible()||LocalPlaces.routeLocation().id().startsWith("waypoint:"))
+                &&privateRoute.x()>=minX&&privateRoute.x()<=maxX&&privateRoute.z()>=minZ&&privateRoute.z()<=maxZ){
+            g.pose().pushPose();g.pose().translate(privateRoute.x(),privateRoute.z(),8);g.pose().scale(overlay/scale,overlay/scale,1);markIcon(g,privateRoute,0,0,10);g.pose().popPose();
         }
         for (Mate mate : mates(MapManager.getInstance().getCurrentDimensionResourceId())) {
             if (mate.x() < minX || mate.x() > maxX || mate.z() < minZ || mate.z() > maxZ) {
@@ -313,7 +351,7 @@ public final class TeamMarks {
             g.pose().pushPose();
             g.pose().translate(mark.x(), mark.z(), 6);
             g.pose().scale(factor, factor, 1F);
-            cross(g, 0, 0, 4, mark.color(), false);
+            markIcon(g,mark,0,0,6);
             String title = mark.title();
             int width = font.width(title);
             g.fill(-width / 2 - 2, 7, width / 2 + 2, 18, 0xB0000000);

@@ -802,7 +802,7 @@ public class MapRenderer {
         }
 
         // 6.5. Render pin marker if active and within visible bounds
-        if (drawPinContent && MapConfig.pinActive && viewingLiveDim) {
+        if (drawPinContent && MapConfig.pinActive && viewingLiveDim && !LocalPlaces.routing()) {
             if (MapConfig.pinWorldX >= minX && MapConfig.pinWorldX <= maxX &&
                     MapConfig.pinWorldZ >= minZ && MapConfig.pinWorldZ <= maxZ) {
 
@@ -3411,7 +3411,7 @@ public class MapRenderer {
         // to less than one pixel; wp.scale remains an immediately visible choice.
         float safeMapScale = Math.max(0.0001f, Math.abs(mapScale));
         // The global setting is historically 1..10 with 5 as its visual 1.0x.
-        float markerScale = (0.20f * MapConfig.waypointScale * wp.scale)
+        float markerScale = (0.20f * MapConfig.waypointScale * wp.scale * (isMinimap?LocalPlaces.markerScale:1f))
                 / safeMapScale;
         poseStack.scale(markerScale, markerScale, 1.0f);
 

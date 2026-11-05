@@ -259,7 +259,7 @@ public final class PartyClient {
             Integer when = seen.get(mate.id());
             if (spots != null && when != null && ticks - when < 300) {
                 for (Net.Spot spot : spots) {
-                    all.add(new TeamMarks.Mark(mate.name(), COLORS[mate.color() % 3], spot.label(), spot.x(), spot.y(), spot.z(), spot.dimension(), spot.pin()));
+                    all.add(new TeamMarks.Mark(mate.name(), COLORS[mate.color() % 3], spot.label(), spot.x(), spot.y(), spot.z(), spot.dimension(), spot.pin(),spot.iconItem(),spot.kind()));
                 }
             }
         }
@@ -291,7 +291,7 @@ public final class PartyClient {
         List<Net.Spot> spots = new ArrayList<>();
         for (TeamMarks.Mark mark : TeamMarks.own(dimension)) {
             if (spots.size() < 48) {
-                spots.add(new Net.Spot(mark.pin(), mark.label(), mark.x(), mark.y(), mark.z(), dimension));
+                spots.add(new Net.Spot(mark.pin(), mark.label(), mark.x(), mark.y(), mark.z(), dimension,mark.iconItem(),mark.kind()));
             }
         }
         PacketDistributor.sendToServer(new Net.MarksUp(spots));
@@ -316,7 +316,7 @@ public final class PartyClient {
             return;
         }
         boolean own = mark.owner().isEmpty();
-        TeamMarks.cross(g, at[0], at[1], 4, mark.color(), own);
+        TeamMarks.markIcon(g,mark,at[0],at[1],6);
         int y2 = at[1] + 6;
         if (!(own && mark.pin())) {
             box(g, font, mark.title(), at[0], y2, own ? 0xFFFFFFFF : 0xFF000000 | mark.color());
@@ -338,6 +338,7 @@ public final class PartyClient {
         }
         String dimension = MapManager.getInstance().getLiveDimensionResourceId();
         TeamMarks.own(dimension).forEach(mark -> worldMark(mc, g, font, me, mark));
+        var route=TeamMarks.localRoute(dimension);if(route!=null)worldMark(mc,g,font,me,route);
         TeamMarks.visible(dimension).forEach(mark -> worldMark(mc, g, font, me, mark));
     }
 

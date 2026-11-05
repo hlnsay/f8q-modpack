@@ -26,8 +26,12 @@ final class Unknowns {
     private static final class Store {
         Map<String,Place> places=new HashMap<>();
         Map<String,Set<String>> known=new HashMap<>();
+        Map<String,Set<String>> seen=new HashMap<>();
     }
-    private static final Gson GSON=new Gson();
+    private static final Gson GSON=new com.google.gson.GsonBuilder()
+        .registerTypeAdapter(Place.class,(com.google.gson.JsonDeserializer<Place>)(json,type,context)->{
+            var o=json.getAsJsonObject();return new Place(o.get("key").getAsString(),o.get("dimension").getAsString(),o.get("structure").getAsString(),o.get("kind").getAsInt(),o.get("x").getAsDouble(),o.get("y").getAsDouble(),o.get("z").getAsDouble(),o.get("minX").getAsInt(),o.get("maxX").getAsInt(),o.get("minZ").getAsInt(),o.get("maxZ").getAsInt(),o.get("block").getAsBoolean());
+        }).create();
     private static final Queue<Job> queue=new ConcurrentLinkedQueue<>();
     private static final Set<Job> pending=java.util.concurrent.ConcurrentHashMap.newKeySet();
     private static final Map<Job,Long> scanned=new LinkedHashMap<>();
@@ -61,6 +65,7 @@ final class Unknowns {
                 if(read!=null&&read.places!=null&&read.known!=null)store=read;
             }
         }catch(Exception e){F8qParty.LOG.warn("Could not read confirmed map places",e);}
+        if(store.seen==null)store.seen=new HashMap<>();
         // Migration removes already saved underground markers, not just future discoveries.
         if(store.places.values().removeIf(p->hidden(s,p))) {
             for(var known:store.known.values())known.retainAll(store.places.keySet());
@@ -150,9 +155,11 @@ final class Unknowns {
     }
     private static void send(ServerPlayer player){
         String dim=player.level().dimension().location().toString();Set<String> known=store.known.computeIfAbsent(player.getUUID().toString(),k->new HashSet<>());
+        Set<String> seen=store.seen.computeIfAbsent(player.getUUID().toString(),k->new HashSet<>());
         List<Place> near=new ArrayList<>();
-        for(Place p:store.places.values())if(p.dimension.equals(dim)&&Math.abs(p.x-player.getX())<=4096&&Math.abs(p.z-player.getZ())<=4096){
+        for(Place p:store.places.values())if(p.dimension.equals(dim)&&((Math.abs(p.x-player.getX())<=4096&&Math.abs(p.z-player.getZ())<=4096)||known.contains(p.key)||seen.contains(p.key))){
             if(PlaceKinds.distance(player.getX(),player.getZ(),p.minX,p.maxX,p.minZ,p.maxZ)<=48*48&&known.add(p.key))dirty=true;
+            if(seen.add(p.key))dirty=true;
             near.add(p);
         }
         near.sort(Comparator.comparingDouble(p->(p.x-player.getX())*(p.x-player.getX())+(p.z-player.getZ())*(p.z-player.getZ())));
