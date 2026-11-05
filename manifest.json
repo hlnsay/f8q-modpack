@@ -885,9 +885,9 @@
     },
     {
       "path": "mods/f8qknock-1.0.0.jar",
-      "sha512": "c217ee154bc1acd08e124f9d972fa664c716860f12d6531e742e35605b180dfea02a888235b8f9f004a7ac96396788bde1363a9aafa1faeede5e2e28441f8aed",
-      "size": 13686,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.0.jar"
+      "sha512": "7f979d9be29136d37df3ac8d71c116fe0d785f7d1855bc42e3a95f5ffbc0dfbc7abe2b6df77ca06e92c14887b403f8e64464d57dd38ad079761ef681c141f4cf",
+      "size": 13834,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.1.jar"
     },
     {
       "path": "mods/naturalist-2.0.7-neoforge-1.21.1.jar",
@@ -966,6 +966,12 @@
       "sha512": "8c3f0226ea95ada1bb91bb74ab9b4b5ea435f3b1fb5cdf0a5673fe1f50a5292c7d780b73890796a9b51d76950c320932616c1e2768a9b92b08d014dfb6369d7c",
       "size": 1420398,
       "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.1.jar"
+    },
+    {
+      "path": "mods/f8qparty-1.0.0.jar",
+      "sha512": "c4e077203079cd94a80d26697fc2cea38ba302db33aa3f5dd7a9250813563a966ea64fc29ac12d7f659733dbb73bca5e93447a780bdbffbb76990acf83ed86a4",
+      "size": 30510,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.0.jar"
     }
   ],
   "remove": [
@@ -2201,6 +2207,17 @@
     {
       "date": "2026-11-05",
       "added": [
+        "Пати до 3 игроков: приглашения, худ, ромбики",
+        "Проигрыватель слышно на 10 блоков"
+      ],
+      "updated": [
+        "Поднять из нокаута можно только игрока из пати"
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-05",
+      "added": [
         "Новый экран достижений"
       ],
       "updated": [
@@ -2379,7 +2396,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-settings-achievements",
+  "revision": "2026-11-05-party",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
