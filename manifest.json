@@ -965,7 +965,7 @@
       "path": "mods/f8qparty-1.0.0.jar",
       "sha512": "1aab16a7a69b4156a1fab3adc23da822c19fec9b11a16bd7313d7aed7665550810ec460a3572127e96db0a6cdf604cbdc05a7759c4499c91854ffe0ac406f25b",
       "size": 75784,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.12.jar"
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.12-1aab16a7a69b.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -1049,7 +1049,7 @@
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
       "size": 2164383,
       "sha512": "f094a7bfca881c2e1d286c8e73fb83c142eb64eefc345836a63d7de65a9d454829d07cb97ad23abe8652b88ae1485b943377fb1e71816af1848ea884ec153d45",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q12.jar"
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q12-f094a7bfca88.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2581,6 +2581,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-map-polish-v12",
+  "revision": "2026-11-05-map-polish-v12-verified",
   "journeymap": []
 }
