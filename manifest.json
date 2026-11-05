@@ -963,9 +963,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "4c6bfc3a1e13603bc800faa65579713aa4ad76f7806033b55eb2eb66ba0052d8a629d405ee4d8b88de22e7ed05b4cc1f9520c951dbd42e88eea041c23de53528",
-      "size": 37553,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.4.jar"
+      "sha512": "389fa40051e9627dd541f8c9c93d54fcce2bea0b6568f5c9e9f83bd5569d6e48e3a0c6a2c8f19beea03970364e25edc2c473a80df43a8c3de3148320d976ddbe",
+      "size": 44757,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.5.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -1047,9 +1047,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 1397664,
-      "sha512": "29889b09c706348f2bb21a14a41388fa3275e08c85c3c14db90e55660f1e97bbd2b304aa6d0baf6b6d4879fbf54507ca130d1ab346299597ee0a1ba6f414be6d",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q.jar"
+      "size": 1420717,
+      "sha512": "9123c5c1fa482975c19f06ee4bbd0df629f0ae2d4ae7090097e583f4050ed7f082efa9815be4677c3fa17c69ff584efef3c0caacc011b9d6ce505580b51ab7be",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q2.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2309,7 +2309,8 @@
         "Smooth Mount (порт на NeoForge)",
         "Shield Expansion",
         "Critical Strike",
-        "Эффекты низкого здоровья и нока"
+        "Эффекты низкого здоровья и нока",
+        "Метки в мире и общие метки пати"
       ],
       "updated": [
         "Перевод новых модов и Ice Caves Backport"
@@ -2542,6 +2543,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-grim-crits",
+  "revision": "2026-11-05-team-marks",
   "journeymap": []
 }
