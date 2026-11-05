@@ -657,9 +657,9 @@
     },
     {
       "path": "resourcepacks/Cozy-Russian.zip",
-      "sha512": "e64f39d754a9a86f63f8f6669a7f90de5af10f494b89be93314f03f7a44f970cbee04e93a461e21514f726411229b8ef928727e3335ae498fb0e645b1a1cfb7d",
-      "size": 329052,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v3.zip"
+      "sha512": "672c2e76fe46c1df460e9a7d7e7c5c14b24c5fbaa1baa2333b9d3ef420e15bdb2111da6edda455db0d548b7cdae944852ad689f0e36735461ce0bfb2ae5dce53",
+      "size": 330042,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v4.zip"
     },
     {
       "path": "resourcepacks/F8Q 1.21.zip",
@@ -813,9 +813,9 @@
     },
     {
       "path": "resourcepacks/F8Q-Interface.zip",
-      "size": 9636,
-      "sha512": "629995454b400688b84e4946bf64523dce827ab6af0ff720d32196f87233d60f1947fdc8697575669878da5b8bbe03d240d650af402b5a8f686bf0064351b512",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Interface-v002.zip"
+      "size": 10198,
+      "sha512": "45ac5fe6d4931547735877c814a70698670ebb6ffa943f41997302a5057a1c550695bd4d20663e32efc90626b41af19e6dee79a4bc1001e6acda318d59e30a15",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Interface-v2.zip"
     },
     {
       "path": "resourcepacks/F8Q-Fixes.zip",
@@ -1901,129 +1901,129 @@
     },
     {
       "path": "config/fancymenu/customization/f8q-AccessibilityOptionsScreen.txt",
-      "size": 715,
-      "sha512": "9338ef5cc3530adac9a123a25d6308f4177f41f9366e00b89ad020837e9ba73bd85b82def564b0a7fadb32e5b5bc8a2d147291a36ca0bfa2cdc80b98d454c743",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-AccessibilityOptionsScreen.txt"
+      "size": 750,
+      "sha512": "f96f8555e4741c3f6d0bf2f9692eea9519cdc4a032294b0d41ae8ce75b634b6b377e39abaeb28bf921f2cd535dde528a57e4224a28830f4125dea8c76af45ea5",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-AccessibilityOptionsScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-ChatOptionsScreen.txt",
-      "size": 697,
-      "sha512": "db7dfccab6c1153f91c5be1e6f1e84b213e6ae24cadcc83be4d2f342130a3405d2e3716cda5cd47fc4df2af534fd257e1ce21a4da177069c65065064063c78f3",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-ChatOptionsScreen.txt"
+      "size": 732,
+      "sha512": "3347cd81f08be936bfc013e8bc41d897edaad5b536b9e8543dc506072f06472bffd408319bd07dc47cdf75b82c26cafbafcfa4f48be556b6513448d46e62b318",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-ChatOptionsScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-ConfigurationScreen-ConfigurationSectionScreen.txt",
-      "size": 748,
-      "sha512": "4202838c0780685c8e35a4bacb8ee5c6350019f0b2118807acb8413ebcba641645b1a5f9f55c179582ffa72d4ee2d3b4531ab2a6803bd54e290a62e53651c74f",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-ConfigurationScreen-ConfigurationSectionScreen.txt"
+      "size": 783,
+      "sha512": "2308f9a89f8810c302608a9a5275bb605583d0c4cd63968ad43daace9de389ee1cb3a724846f93ba787df23e46d37fb78ac114c6ea07625422ec54b34d254266",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-ConfigurationScreen-ConfigurationSectionScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-ConfigurationScreen.txt",
-      "size": 694,
-      "sha512": "9ac74c428d6dab21e92a81745e954ba261a9c979c00e1b44c221a0c4b4a362680d955419f1f91ae8b705c434454222c5e839b6aca4e4dbe9930ae637a5ac5d15",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-ConfigurationScreen.txt"
+      "size": 729,
+      "sha512": "287bde0dce577be82c050964b380b78db0a364a9d7ae719d1c5afe2ca0e9670b326503921fe3a5e1bc7abe71339410d1d8c35f7d5acc8984083565f7cf126947",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-ConfigurationScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-ControlsScreen.txt",
-      "size": 700,
-      "sha512": "7764f185bedc01ba5d4475f2bfd51d1216427f172925e4565814370da192c5b7cb16180b646ac7f68df500f1d1cd35c05609af15ff7c71bc3075e79b2d8561f7",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-ControlsScreen.txt"
+      "size": 735,
+      "sha512": "0ef62dad7f15e653ff872e13fbc678906b5751cdfb3bca823c1d4fffcfe7d402fe11fbec7cac1888ac7a8775a7c6cf81cf3f6b00b7cf7962c9643f9f6875ae93",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-ControlsScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-CreateWorldScreen.txt",
-      "size": 704,
-      "sha512": "277cda71eec798ee847378554ff2c8e0dcb602f2808613db2ccc16c072dc3de05e1d1a85a01628a8556c7cd929e3c1074196cfcd0b21e78370ef3e0a83b1723f",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-CreateWorldScreen.txt"
+      "size": 739,
+      "sha512": "7cc8ab91a8d6bc17a7a5f3499dd97dbfd9f2f87edf0802ff027a595c4fff75dffcf2c0bd2b95620cf3186051889171a53d954be1b938553c6dbbccf27c3b3c4a",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-CreateWorldScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-CreditsAndAttributionScreen.txt",
-      "size": 709,
-      "sha512": "38953303e9ea83a3c5c85f6dff6c17a2c8e4a5b5e06ec078f023782a051430a8a71dc45a075e904c1a592190666efafc1c3651d4b56229eebf6783bc846d225b",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-CreditsAndAttributionScreen.txt"
+      "size": 744,
+      "sha512": "644b1c44f5f69cb29e71656dee26322d0fa91dfef2ea5aa76db11cf25ce2e0af637ce36e4b7f8f35aed27f62cc7bae42bdc7b275bd4888e23d4686b6580f397c",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-CreditsAndAttributionScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-DirectJoinServerScreen.txt",
-      "size": 699,
-      "sha512": "d0e6b543de47a73fd1aaab970f17f2018f35e830ce48d7dec48d0385ed3375b1bbc7b88ed170cce0af1cdb1fa65bf3e5511bfa72ae4ed4637b48f45f3bc17a37",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-DirectJoinServerScreen.txt"
+      "size": 734,
+      "sha512": "b9de8fadfd8b5cbaee309b9296a08bae853d6b967fca4c629801ade9303698c36b19faf124852a4e8eef905d5dcbd586d4e8072f63f406c1d7b6227ba4a06e62",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-DirectJoinServerScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-EditServerScreen.txt",
-      "size": 687,
-      "sha512": "a1ee3e7f5a06c7acfdc0e43265b0cc5e32825ae0a5c1622a8cce3d67fc4a6f9f45d19a3ff28f58334b37a9fadb579b79054d5c482efff7efb293423a3648eea0",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-EditServerScreen.txt"
+      "size": 722,
+      "sha512": "f96872811e7c6ff8dfbacfe40e27a65d67dae0e2c5bdef367424f3fcd59fa45f180746d80142a36f0f6bc9f0723f366db9d2c8f04c69293b98a7ff33fed7de82",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-EditServerScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-JoinMultiplayerScreen.txt",
-      "size": 709,
-      "sha512": "7d6cd5dc55a968a5295cb3318024442afaf1d5d0087a8a3a02b718f1ad2b538a53bc6229a1bd5259776dc15df5c2048dcffe07bc4afb9a607c50b4492eb24f3a",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-JoinMultiplayerScreen.txt"
+      "size": 744,
+      "sha512": "59cf3619025319bcdb652072706cc58076d307602e072212d7c220daa1bc8884723b31e797947408be37b6673c59841a36fdb5d3a40bff4bd6d7e3f44af6fd0a",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-JoinMultiplayerScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-KeyBindsScreen.txt",
-      "size": 700,
-      "sha512": "3c3a4987ca1faf15cff53c6c8407dc1414cc08fa82323b6f706815df6894e0f4a85426822880b81fa043636712872d2a041bfeae5440e4e5e4b04bde38d11881",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-KeyBindsScreen.txt"
+      "size": 735,
+      "sha512": "a82b0befc2e5052ee5ef4bd80a8b8054ff1db90c5ad189aa6b33762bccaf021cb6973a4c9f5f7382da7cf5cb8a12ba1ec90652b6ea97f2c9737514e476d3d6ec",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-KeyBindsScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-LanguageSelectScreen.txt",
-      "size": 703,
-      "sha512": "e74e6656b2069507810c775e6ac01b7ee4bcdea8f7346391f04e0b62aa7cca7989204417c0b1f0c9e749e4ed0031cab9d6be06902b1d641ea96594f4c395c75c",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-LanguageSelectScreen.txt"
+      "size": 738,
+      "sha512": "298984c8a17a2bf08df23fe152f41e3567b23fae318770738c6853a5a8d14cdbbed6fdcd8e0fa66e8684767db30fac705d52c06f1ccba699cf7fd66933568c13",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-LanguageSelectScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-ModListScreen.txt",
-      "size": 682,
-      "sha512": "1f0798c9f4b214a90cc991739501f0633f354caa6ba363c3be1ead860c8aa347c13df181ba62b9e4d3ad80b8813f709c7544f2b0aa28ef34f56c98dc640e38c2",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-ModListScreen.txt"
+      "size": 717,
+      "sha512": "937bccf3c70df689a48fdebc85d3b44c3f6d4aa9ae1d3d3cd1fe4466c721179c34eec30654a89be2664ecf12df391f838288f53f4f1612ea762074df64de2ffd",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-ModListScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-MouseSettingsScreen.txt",
-      "size": 701,
-      "sha512": "2cf72af7d9f46fb007eb6e211419968a5062d0128e4dda2cc2c2bd14986cab78bc059219c6b60f7ea55916dbdb8d751b3788c003b39c03f421b68414f735ff13",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-MouseSettingsScreen.txt"
+      "size": 736,
+      "sha512": "fe00c26b046ecc92f69e7f8507f147aea920147a97d1ebb66d5a6c43fbdc5391d234adb3f5f33cd0fae431e8c1e83e0fcd1cf86511a09e0e7b19d1f030b62a9a",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-MouseSettingsScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-OnlineOptionsScreen.txt",
-      "size": 701,
-      "sha512": "a697f02ccb20467ff2eed5830338f8e82836cb3972f0a05c41598580cf38f357cf97c7093f6f281f15a489f91cc52ceaddbb089ccb21e37caa22c894cdad5b1a",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-OnlineOptionsScreen.txt"
+      "size": 736,
+      "sha512": "d48bb8a40d71d968c89c9715bbd55996042308af729c156c6debe14f585183bc72fde63d46b23d47393cf0b03adc84c4776e7addf89953991a90b8488e227936",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-OnlineOptionsScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-OptionsScreen.txt",
-      "size": 28583,
-      "sha512": "db6b5ab2a089c3c6142561ec3d81b1ea6fe55ea07dc1661494448b0784ebef9dac28d05692d6fa7115cd5b8d21b5ba836778a84d69e464b4ae5a7a89957de1d5",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-OptionsScreen.txt"
+      "size": 29414,
+      "sha512": "a9f4b72e4858eb77458c5d3584b8259e55c145ca1154284a960523be0eb5af0702dd036ae5c291ee717a9e0918d814c043d9a4b56d14f675636342a27e05e2ce",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-OptionsScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-PackSelectionScreen.txt",
-      "size": 699,
-      "sha512": "82bf629ae782291c267c29066da34ad19332b14efed59af9eb6605258dbc03358161359e34e3b5b8768c726909d7b45f2dfd76b1bf8184855bfa84b8d3ab7d98",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-PackSelectionScreen.txt"
+      "size": 734,
+      "sha512": "ba7704f22977dbe1c915f392b229ff73fda858d1e1d73f411596e71f60a6fee4ccc0ad0e9e2afcb63d84cae633840215f8d3fd6d38f74fcdf8a27c30f723aa1e",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-PackSelectionScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-SafetyScreen.txt",
-      "size": 691,
-      "sha512": "294b513f21edc32cb489636444446df1075ae6a5fa092491d6a04723c3096eed9ecbd49b5dad7331a4911e2d7e78de5e7df5ea9d8d65fedc4e7940afeb9ecfd2",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-SafetyScreen.txt"
+      "size": 726,
+      "sha512": "7ba9e46dfd7306a4d8933e42f4972dbb8890a38553cb2b8ea5436448173e02ae716e284407309ff45ecf94a805a080e96737b13d34ce9a1b51b178a363ef3b1e",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-SafetyScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-SelectWorldScreen.txt",
-      "size": 704,
-      "sha512": "4c5d3e608756d3d3b5f3fa8bf2647a7378cff03ec40173bd17ca74c785ad2fc4a3cd60f64337f9e49d24ceb5f8f5262156bb128ac969bce44e1953d8fd3e0c90",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-SelectWorldScreen.txt"
+      "size": 739,
+      "sha512": "c7369bde0ea1b4e33c7aaa75fdcb7d00f33cc2454ae58ddbfedd9a698098c6e3affdda881e550e56b824dfbb6c4459eb24e8081ac24af84f0aa922b7d4c8b9dc",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-SelectWorldScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-SkinCustomizationScreen.txt",
-      "size": 709,
-      "sha512": "aecfbda60f5c71d90c45870e5103b0c6428d94ed50b27af48035b675397647610edd8be9756d87d058fd2bfe081999fd83b4028d1afddd208c1168b2bd3da64d",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-SkinCustomizationScreen.txt"
+      "size": 744,
+      "sha512": "0d23fdd15aca5999fec194c07315d43c91637cd7854598937201e01b57ed92ae74dd519f2ceb49bf646f7a3b1507229a4fb9a31b99d31e18899339acfde86498",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-SkinCustomizationScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-SoundOptionsScreen.txt",
-      "size": 699,
-      "sha512": "8f6830ed4001981843300cd06203adeeec6e5a17f0807b93dd71a6e17bd8103ec7b9ccb56761027842e079bb63b49710da6ee2801f3f34d1e0d3082e559a55a3",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-SoundOptionsScreen.txt"
+      "size": 734,
+      "sha512": "8374bde239db0cd4c375a9764d258b62549317a659427a9bcb48fa42c37a7d43add64893cfcfd2cfd52b0ef44c382f4c292d4c8f06af33309cf5cbe24306eef4",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-SoundOptionsScreen.txt"
     },
     {
       "path": "config/fancymenu/customization/f8q-title.txt",
@@ -2033,9 +2033,9 @@
     },
     {
       "path": "config/fancymenu/customization/f8q-VideoSettingsScreen.txt",
-      "size": 701,
-      "sha512": "a8258eaceda3c7ee44c2cfb01d3eebc8b08e3792cd34d79563d52419c67e9934b7fd8ed79b689a1d14c8bc5a9eb2e833b15ac4c47de1e0465d66f37297460c44",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/customization/f8q-VideoSettingsScreen.txt"
+      "size": 736,
+      "sha512": "d208b703080412b8b0774e848626bb3db92d4ca419830c79aa803b24c5dbc8e3494ffed2cd1d5bba29686ba3396e40bb53e3a343281b390c02f42cca29e6eb1e",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/customization/f8q-VideoSettingsScreen.txt"
     },
     {
       "path": "config/fancymenu/assets/f8q/autumn-ruins.png",
@@ -2138,6 +2138,12 @@
       "size": 134,
       "sha512": "9d482f141e870a16ddf3eedc99e85f0a1619588ac3b3cc8971bf9ceb24b344949f80e48adf5bd6883e111165eeef02cf38ba9d6f57ee346901f7288b416dbb0b",
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/1095909d30cb6cf182d3a2470f4443ee3d690234/config/fancymenu/assets/f8q/primary.png"
+    },
+    {
+      "path": "config/fancymenu/assets/f8q/menu-dark.png",
+      "size": 568271,
+      "sha512": "5c98e739a2fd3ac23b465de3e3ceb304a3e7088b9d16e7fb230a2f3ca8f44524bbaeb0152761836cd193f9ddbd88f4fd389af842532f14c677eb4706b4b44578",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/7d2d749f63c8c506e9fb471e568e6bd04dd517bc/config/fancymenu/assets/f8q/menu-dark.png"
     }
   ],
   "updater": {
@@ -2186,6 +2192,14 @@
     "file/better-3d-beds.zip"
   ],
   "changelog": [
+    {
+      "date": "2026-11-05",
+      "added": [],
+      "updated": [
+        "Новый вид меню: тёмный фон, заголовки и кнопки прописными"
+      ],
+      "removed": []
+    },
     {
       "date": "2026-11-05",
       "added": [],
@@ -2340,7 +2354,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-logo-above",
+  "revision": "2026-11-05-menus",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
