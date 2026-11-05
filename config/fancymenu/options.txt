@@ -74,7 +74,7 @@ S:global_slider_handle_normal = '[source:local]/config/fancymenu/assets/f8q/hand
 I:global_slider_background_nine_slice_border_right = '1';
 S:global_background_panorama = '';
 I:global_slider_handle_nine_slice_border_left = '1';
-S:global_menu_background_texture = '[source:local]/config/fancymenu/assets/f8q/black.png';
+S:global_menu_background_texture = '';
 
 
 ##[multiplayer_screen]
