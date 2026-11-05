@@ -881,7 +881,7 @@
       "path": "mods/f8qknock-1.0.0.jar",
       "sha512": "a8f112621c9206406d160b0f97f218e1ff8808ffbdeecb19495bb430e069f40cf7aef09cbb91eb833ae1bc968bddea4a894549d7e34d128fc2089c7c1f6c8f6b",
       "size": 40617,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.10.jar"
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.11.jar"
     },
     {
       "path": "mods/naturalist-2.0.7-neoforge-1.21.1.jar",
@@ -965,7 +965,7 @@
       "path": "mods/f8qparty-1.0.0.jar",
       "sha512": "451e8650130dac0edfa3d8251c802abd6cb232231d97bd0d5a4fef9ce32ee3a4b677465787acbc101853cf213b48846bb66990d37acdb44e8853a4dd3525818f",
       "size": 70420,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.10.jar"
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.11.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -1047,9 +1047,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 1524487,
-      "sha512": "fa5b03b4079e9e9ada9e136e2cfafd5a06252b4d61ce892ea25e4bf66691cdce5d5b89a0e4a8c56c6d127c5b7980f81f253076650932a0a3e7d573fd6be842a7",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q10.jar"
+      "size": 1540681,
+      "sha512": "5831fd8835fd35259c099202c94965173abfb65716dc67d4c1c381c955f5305269e9762681cc927e86a1f037cfac63090d1e0300f81961d9cf30b3256eb9f1e1",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q11.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2568,6 +2568,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-real-places",
+  "revision": "2026-11-05-toolbar-fixed",
   "journeymap": []
 }
