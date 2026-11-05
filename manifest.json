@@ -969,9 +969,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "c4e077203079cd94a80d26697fc2cea38ba302db33aa3f5dd7a9250813563a966ea64fc29ac12d7f659733dbb73bca5e93447a780bdbffbb76990acf83ed86a4",
-      "size": 30510,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.0.jar"
+      "sha512": "ebe41a67e6d8c9c9647e6b49e3ec837eeb02408f85b02d54e18e1310a5f751046c073314d26b21510169cfcd6c514f275851aec8c78100f3a2fe7547a09cc2d0",
+      "size": 30509,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.1.jar"
     }
   ],
   "remove": [
@@ -2396,7 +2396,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-party",
+  "revision": "2026-11-05-party-key",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
