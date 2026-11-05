@@ -200,6 +200,7 @@ public class MapScreen extends Screen {
     private void drawSelectionCard(GuiGraphics g) {
         if (selectedLocation==null||selectedEntry==null) return;
         if (!cardDimension.equals(MapManager.getInstance().getCurrentDimensionResourceId())) {selectedLocation=null;selectedEntry=null; return;}
+        if(selectedEntry.location()!=null&&TeamMarks.locations(cardDimension).stream().noneMatch(p->p.id().equals(selectedLocation.id()))){selectedLocation=null;selectedEntry=null;return;}
         // Refresh a question mark's card after the server confirms discovery.
         for (TeamMarks.Location fresh : TeamMarks.locations(cardDimension)) if(fresh.id().equals(selectedLocation.id()) && !fresh.equals(selectedLocation)) {
             selectedLocation=fresh;selectedEntry=PlaceEntry.automatic(cardDimension,fresh); cardLines=font.split(Component.literal(fresh.description()),cardWidth-16);cardHeight=49+cardLines.size()*10;break;

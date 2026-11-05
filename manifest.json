@@ -951,9 +951,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "ff8dd15afa828f8be940df6fe57a74d5a0828b8fbaa7e30cfaf27eb93f0132b860508a10f9f053d18e574654798b937c52d0cd8cdc7416c6fda3658671dc31ae",
-      "size": 640325,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.15-ff8dd15afa82.jar"
+      "sha512": "b7de18ea80c863495f360577b246e802974b7ba8c684ca7df136a15479b1077f0d49b290012ed0c9890c814c850da069958adb9534bfffc0b9dba719bf648d93",
+      "size": 641268,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.16-b7de18ea80c8.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -1035,9 +1035,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 4226781,
-      "sha512": "732583256def9de4aa1c75221a2734b9f1817b677a381493322a6efe5a0423b866e2b0198efc7f2f98fdf7df92afe50f3b059b016db44960e8e9cd3a930623f0",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q15-732583256def.jar"
+      "size": 4234337,
+      "sha512": "926e958d46cb7fb8a310fd42641c73285b5a3c3bff94d0152282d501cf18e3cb4513a8d6380349a0cd5ef29f5ee6009338dac58a76cb486637157c81ebb72a2f",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q16-926e958d46cb.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2298,6 +2298,17 @@
   ],
   "changelog": [
     {
+      "date": "2026-11-06",
+      "added": [
+        "Восстановление открытой поверхности из старого кэша JourneyMap. Автоперенос сопоставляет сервер по архивным журналам подключения. Исходные данные сохраняются."
+      ],
+      "updated": [
+        "Большие карты сохраняются и сжимаются в фоне. Текстуры старой карты создаются только для видимой области.",
+        "История карты пати передаётся небольшими пакетами в фоне; увеличена вместимость кэша для переноса больших исследованных областей."
+      ],
+      "removed": []
+    },
+    {
       "date": "2026-11-05",
       "added": [
         "Карта и открытые места участников пати передаются союзникам; полученные открытия сохраняются после выхода из пати.",
@@ -2630,6 +2641,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-rain-sounds",
+  "revision": "2026-11-06-journeymap-recovery-v16",
   "journeymap": []
 }

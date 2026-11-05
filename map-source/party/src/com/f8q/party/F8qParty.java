@@ -60,7 +60,7 @@ public final class F8qParty {
         NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.level.BlockEvent.EntityPlaceEvent e)->Unknowns.changed(e));
         net.blay09.mods.balm.api.Balm.getEvents().onEvent(net.blay09.mods.waystones.api.event.WaystoneUpdatedEvent.class,e->Unknowns.renamed(e.getWaystone()));
 
-        NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.server.ServerStoppingEvent e) -> { Unknowns.stopping(e.getServer());Exploration.save(e.getServer()); });
+        NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.server.ServerStoppingEvent e) -> { Unknowns.stopping(e.getServer());Exploration.flush(e.getServer()); });
         NeoForge.EVENT_BUS.addListener((net.neoforged.neoforge.event.server.ServerStoppedEvent stop) -> {Unknowns.stopped();Exploration.clear();});
         NeoForge.EVENT_BUS.addListener(F8qParty::joined);
         NeoForge.EVENT_BUS.addListener(F8qParty::quit);

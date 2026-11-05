@@ -195,7 +195,7 @@ final class Unknowns {
         // Send bounded deltas: dense areas are paged across ticks, not silently truncated to 127 places.
         for(Net.Place place:result)if(changes.size()<128&&!place.equals(sent.get(place.id()))){changes.add(place);sent.put(place.id(),place);}
         var removed=deletedSent.computeIfAbsent(player.getUUID(),k->new HashSet<>());
-        for(String id:store.deleted)if(id.startsWith(dim+"|")&&changes.size()<128&&removed.add(id))changes.add(new Net.Place(id,"",0,0,0,-1,false));
+        for(String id:store.deleted)if(id.startsWith(dim+"|")&&(known.contains(id)||seen.contains(id))&&changes.size()<128&&removed.add(id))changes.add(new Net.Place(id,"",0,0,0,-1,false));
         if(!changes.isEmpty())PacketDistributor.sendToPlayer(player,new Net.Unknowns(dim,changes));
     }
     private static final Map<UUID,Set<String>> deletedSent=new HashMap<>();

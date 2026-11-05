@@ -253,7 +253,7 @@ public final class TeamMarks {
         if(dimension.isEmpty()){closeJournal();return;}
         if(!LocalPlaces.isBound()){var queued=pendingChanges.computeIfAbsent(dimension,k->new java.util.LinkedHashMap<>());for(var p:changes)queued.put(p.id(),p);}
         var cache=placeCache.computeIfAbsent(dimension,d->new java.util.LinkedHashMap<>());
-        for(var p:changes)if(p.kind()<0)sharedPlaces.values().forEach(dims->dims.values().forEach(points->points.remove(p.id())));
+        for(var p:changes)if(p.kind()<0){sharedPlaces.values().forEach(dims->dims.values().forEach(points->points.remove(p.id())));if(LocalPlaces.following(p.id()))LocalPlaces.clearRoute(true);}
         for(Location p:changes){if(p.kind()<0||(p.open()&&p.kind()==4)||hiddenUnderground(p))cache.remove(p.id());else { Location previous=cache.get(p.id()); cache.put(p.id(),previous!=null&&previous.open()&&!p.open()?previous:p); }}
         cache.values().removeIf(TeamMarks::hiddenUnderground);
         while(cache.size()>16384)cache.remove(cache.keySet().iterator().next());
