@@ -960,6 +960,12 @@
       "sha512": "6bca244fad0febf5c733090c230b1239f0255ce5086cace04240ac4c394861da7ac6fdb8dd7529eeaa7b1feb659e422c574fab12ec06e342da7d7444b7fa2bda",
       "size": 535556,
       "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/ancientstructures-neoforge-1.21.1-0.1.2.jar"
+    },
+    {
+      "path": "mods/f8qmenu-1.0.0.jar",
+      "sha512": "26899456fdfd44c5429e0eb29c20764db1fa020972bb2dec074c6a8f5cb807df2a6a809c224dde70b68fe6fad1e361dfc4421d5269c940e9069f4405f8775ee0",
+      "size": 1396157,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.0.jar"
     }
   ],
   "remove": [
@@ -2194,6 +2200,14 @@
   "changelog": [
     {
       "date": "2026-11-05",
+      "added": [
+        "Новые экраны одиночной игры, сетевой игры и настроек"
+      ],
+      "updated": [],
+      "removed": []
+    },
+    {
+      "date": "2026-11-05",
       "added": [],
       "updated": [
         "Новый вид меню: тёмный фон, заголовки и кнопки прописными"
@@ -2354,7 +2368,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-menus",
+  "revision": "2026-11-05-own-screens",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
