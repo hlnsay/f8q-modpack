@@ -297,8 +297,11 @@ public final class F8qKnock {
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
         guiGraphics.pose().pushPose();
-        if(resourceLocation.equals(MOUSE_RIGHT)){guiGraphics.pose().translate(n+11,n2,0);guiGraphics.pose().scale(-1,1,1);guiGraphics.blit(resourceLocation,0,0,11,15,0f,0f,24,32,24,32);}
-        else guiGraphics.blit(resourceLocation,n,n2,11,15,0f,0f,24,32,24,32);
+        guiGraphics.pose().translate(0,0,400);
+        RenderSystem.setShaderColor(1,1,1,1);
+        // Use the existing left-button asset directly: a negative X scale culls the quad.
+        guiGraphics.blit(MOUSE_LEFT,n,n2,11,15,0f,0f,24,32,24,32);
+        guiGraphics.flush();
         guiGraphics.pose().popPose();
     }
 

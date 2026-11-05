@@ -114,7 +114,7 @@ public final class MapPlacesTest {
             com.velorise.simplemap.client.TeamMarks.setLocations("minecraft:overworld",List.of(new com.velorise.simplemap.client.TeamMarks.Location("reconnect","",32,70,64,-1,false)));
             com.velorise.simplemap.client.TeamMarks.closeJournal();com.velorise.simplemap.client.TeamMarks.openJournal(file);
             check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").isEmpty(),"explicit removals remain removed after reload");
-            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.delete(file);java.nio.file.Files.delete(tmp);
+            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.delete(file);try(var files=java.nio.file.Files.list(tmp)){for(var extra:files.toList())java.nio.file.Files.delete(extra);}java.nio.file.Files.delete(tmp);
         } catch(java.io.IOException e){throw new AssertionError(e);}
         try {
             var root=java.nio.file.Files.createTempDirectory("early-delete-");var file=root.resolve("journal.json");
@@ -123,23 +123,8 @@ public final class MapPlacesTest {
             com.velorise.simplemap.client.TeamMarks.setLocations("minecraft:overworld",List.of(new com.velorise.simplemap.client.TeamMarks.Location(stone.id(),"",0,0,0,-1,false)));
             com.velorise.simplemap.client.TeamMarks.openJournal(file);
             check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").isEmpty(),"deletion arriving before journal bind must not resurrect saved obelisk");
-            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.delete(file);java.nio.file.Files.delete(root);
-        }catch(java.io.IOException e){throw new AssertionError(e);}
-        try {
-            var root=java.nio.file.Files.createTempDirectory("journeymap-fixture-");var day=root.resolve("overworld/day");java.nio.file.Files.createDirectories(day);
-            var picture=new java.awt.image.BufferedImage(512,512,java.awt.image.BufferedImage.TYPE_INT_ARGB);picture.setRGB(0,0,0xff123456);javax.imageio.ImageIO.write(picture,"png",day.resolve("-1,-2.png").toFile());
-            var migrated=com.velorise.simplemap.client.LegacyMapImport.readSurface(root);check(migrated.size()==1,"JourneyMap transparent fog is never imported as known land");
-            check(migrated.get(0).x()==-32&&migrated.get(0).z()==-64&&migrated.get(0).pixels()[0]==0xff563412,"JourneyMap negative region coordinates and ARGB/ABGR conversion");
-            java.nio.file.Files.delete(day.resolve("-1,-2.png"));java.nio.file.Files.delete(day);java.nio.file.Files.delete(root.resolve("overworld"));java.nio.file.Files.delete(root);
-        }catch(java.io.IOException e){throw new AssertionError(e);}
-        try {
-            var root=java.nio.file.Files.createTempDirectory("legacy-source-proof-");java.nio.file.Files.createDirectories(root.resolve("journeymap/data/mp/verified"));java.nio.file.Files.createDirectories(root.resolve("logs"));
-            var log=root.resolve("journeymap/journeymap.log");java.nio.file.Files.writeString(log,"[12:00:00] [Render thread/INFO] [JourneymapClient] Mapping started in "+root.toString().replace('\\','/')+"/journeymap/data/mp/verified/overworld. Memory: 4096MB\n");
-            String date=java.time.LocalDate.now().toString();var compressed=root.resolve("logs/"+date+"-1.log.gz");
-            try(var out=new java.util.zip.GZIPOutputStream(java.nio.file.Files.newOutputStream(compressed))){out.write("[11:59:45.123] [Render thread/INFO] Connecting to correct.example, 30096\n".getBytes(java.nio.charset.StandardCharsets.UTF_8));}
-            check(com.velorise.simplemap.client.LegacyMapImport.source(root,root.resolve("target.dat"),"correct.example:30096").endsWith("verified"),"migration needs matching last connection proof");
-            check(com.velorise.simplemap.client.LegacyMapImport.source(root,root.resolve("target.dat"),"other.example:30096")==null,"migration refuses a different server's map");
-            try(var paths=java.nio.file.Files.walk(root)){for(var file:paths.sorted(java.util.Comparator.reverseOrder()).toList())java.nio.file.Files.delete(file);}
+            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.delete(file);try(var files=java.nio.file.Files.list(root)){for(var extra:files.toList())java.nio.file.Files.delete(extra);}
+            java.nio.file.Files.delete(root);
         }catch(java.io.IOException e){throw new AssertionError(e);}
         var obelisk=new com.velorise.simplemap.client.TeamMarks.Location("obelisk-test","waystones:waystone",10,70,12,0,true,"Дом");
         check(obelisk.title().equals("Обелиск [Дом]"),"obelisk uses actual Waystones name");
@@ -162,7 +147,8 @@ public final class MapPlacesTest {
             check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").contains(own),"learned party places survive leaving party");
             com.velorise.simplemap.client.TeamMarks.closeJournal();com.velorise.simplemap.client.TeamMarks.openJournal(file);
             check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").contains(own),"learned party places survive reconnect");
-            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.delete(file);java.nio.file.Files.delete(root);
+            com.velorise.simplemap.client.TeamMarks.closeJournal();java.nio.file.Files.delete(file);try(var files=java.nio.file.Files.list(root)){for(var extra:files.toList())java.nio.file.Files.delete(extra);}
+            java.nio.file.Files.delete(root);
         }catch(java.io.IOException e){throw new AssertionError(e);}
         var alice=java.util.UUID.randomUUID();var stranger=java.util.UUID.randomUUID();
         try {

@@ -867,9 +867,9 @@
     },
     {
       "path": "mods/f8qknock-1.0.0.jar",
-      "sha512": "4047a601187a4dd673bf9ccfbc9b05c93329fbfb41faa0c8f9cf76afde8aef68f931bb706ed205c9b5cef56116b79c6c682647b89f56c4ad7d4726945453a870",
-      "size": 38672,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.15-4047a601187a.jar"
+      "sha512": "62568db7152bd94b17d4b12a908cc403572bc1c972e4e10ce43b229ef4fef65d27ad340c8ed3738a7dc56cd41bac60a1bc4c40e6d38249dc36f48fffffad7e5a",
+      "size": 38687,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.17-62568db7152b.jar"
     },
     {
       "path": "mods/naturalist-2.0.7-neoforge-1.21.1.jar",
@@ -951,9 +951,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "b7de18ea80c863495f360577b246e802974b7ba8c684ca7df136a15479b1077f0d49b290012ed0c9890c814c850da069958adb9534bfffc0b9dba719bf648d93",
-      "size": 641268,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.16-b7de18ea80c8.jar"
+      "sha512": "f197cd9b7ffff821815175e345fe74f92dca5361150ff45f44aa5bc0b57a796dffe45614ff936492ed19517160f3d45d79f926c6d6cf383829c1ff4fcb3675a7",
+      "size": 639559,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.17-f197cd9b7fff.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -1035,9 +1035,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 4234337,
-      "sha512": "926e958d46cb7fb8a310fd42641c73285b5a3c3bff94d0152282d501cf18e3cb4513a8d6380349a0cd5ef29f5ee6009338dac58a76cb486637157c81ebb72a2f",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q16-926e958d46cb.jar"
+      "size": 4227304,
+      "sha512": "81c9b459b68ffd7d265dcbab3788f3768484dc81e1bafb0707938a06501c0b3ebf83e71f0043c81d9ab4bf875501b43f0f51a3aa13f3a1c967fe7e90be9ef924",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q17-81c9b459b68f.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2299,6 +2299,18 @@
   "changelog": [
     {
       "date": "2026-11-06",
+      "added": [],
+      "updated": [
+        "Откат переноса JourneyMap: карта снова использует собственные данные. Старый слой изображений архивируется и не подмешивается к карте.",
+        "PNG клавиш ё / ~ в подсказке пати и значок мыши с подсвеченной ЛКМ при поднятии игрока.",
+        "AppleSkin перемещается вместе с нижним HUD и скрывается во время нока."
+      ],
+      "removed": [
+        "Автоматический перенос и потоковая отправка истории JourneyMap."
+      ]
+    },
+    {
+      "date": "2026-11-06",
       "added": [
         "Восстановление открытой поверхности из старого кэша JourneyMap. Автоперенос сопоставляет сервер по архивным журналам подключения. Исходные данные сохраняются."
       ],
@@ -2641,6 +2653,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-06-journeymap-recovery-v16",
+  "revision": "2026-11-06-native-map-rollback-v17",
   "journeymap": []
 }

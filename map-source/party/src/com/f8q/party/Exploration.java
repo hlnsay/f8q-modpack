@@ -36,6 +36,14 @@ final class Exploration {
                 for(int j=0;j<n;j++){Key k=new Key(in.readUTF(),in.readInt(),in.readInt());int[] p=new int[256];for(int a=0;a<256;a++)p[a]=in.readInt();map.put(k,new Net.Tile(k.dim,k.x,k.z,p));}tiles.put(id,map);
             }
         }catch(IOException e){F8qParty.LOG.warn("Could not load personal exploration",e);}
+        Path flag=file(s).resolveSibling("f8q-native-only-v17.done");
+        if(!Files.exists(flag))try{
+            Path backup=file(s).resolveSibling("f8q-personal-exploration-before-v17.dat");
+            if(Files.exists(file(s))&&!Files.exists(backup))Files.copy(file(s),backup);
+            tiles.clear();dirty=true;save(s);
+            diskJob.thenRunAsync(()->{try{Files.writeString(flag,"JourneyMap raster removed; personal coverage retained.\n");}catch(IOException e){F8qParty.LOG.warn("Could not finish map rollback marker",e);}},IO);
+        }catch(IOException e){F8qParty.LOG.warn("Could not back up old raster; not marking rollback complete",e);}
+
     }
     static void observe(ServerPlayer p,ChunkPos pos){load(p.getServer());var set=watched.computeIfAbsent(p.getUUID(),k->new HashSet<>());if(set.size()<131072&&set.add(new Key(p.level().dimension().location().toString(),pos.x,pos.z)))dirty=true;}
     static boolean knows(UUID id,String dim,double x,double z){return watched.getOrDefault(id,Set.of()).contains(new Key(dim,((int)Math.floor(x))>>4,((int)Math.floor(z))>>4));}

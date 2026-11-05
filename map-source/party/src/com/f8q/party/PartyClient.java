@@ -511,7 +511,11 @@ public final class PartyClient {
             return keyCap(g, font, ACTION.getTranslatedKeyMessage(), x, y);
         }
         boolean russian=Minecraft.getInstance().options.languageCode.startsWith("ru");
-        return keyCap(g,font,Component.literal(russian?"Ё":"~"),x,y);
+        g.pose().pushPose();g.pose().translate(0,0,400);
+        com.mojang.blaze3d.systems.RenderSystem.enableBlend();
+        com.mojang.blaze3d.systems.RenderSystem.setShaderColor(1,1,1,1);
+        g.blit(russian?KEY_YO:KEY_TILDE,x,y-3,16,16,0f,0f,32,32,32,32);g.flush();g.pose().popPose();
+        return x+16;
     }
 
     private static int keyCap(GuiGraphics g, Font font, Component text, int x, int y) {
