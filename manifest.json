@@ -881,7 +881,7 @@
       "path": "mods/f8qknock-1.0.0.jar",
       "sha512": "a8f112621c9206406d160b0f97f218e1ff8808ffbdeecb19495bb430e069f40cf7aef09cbb91eb833ae1bc968bddea4a894549d7e34d128fc2089c7c1f6c8f6b",
       "size": 40617,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.11.jar"
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.12.jar"
     },
     {
       "path": "mods/naturalist-2.0.7-neoforge-1.21.1.jar",
@@ -963,9 +963,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "2eeaef6ea2062238081aba19f0c3ac2567718236c9df1365c574e068a9b8f4dfda185610a702f1bfc7c03476166e544dab589614f25320573d66dcaa3ed0f08b",
-      "size": 76778,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.14-2eeaef6ea206.jar"
+      "sha512": "a3321e00f0640713495327d0e77099621c9adc8374f96492a21b34bcab1325b020af26eaec79c074addcbce7259bc0cf86943f5bec170a137f6a29d8524f3bc5",
+      "size": 71445,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.12.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -1047,9 +1047,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 4212387,
-      "sha512": "36e4c4961862f9ec3f1e5f7019a3542213bcf5d2bb1bc767fb9568fdfeb81702c4e270ea5ce0898a7d8eaeaecc1ff28f93e3405eca73649d5193ceb0f105cf03",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q14-36e4c4961862.jar"
+      "size": 1540681,
+      "sha512": "5831fd8835fd35259c099202c94965173abfb65716dc67d4c1c381c955f5305269e9762681cc927e86a1f037cfac63090d1e0300f81961d9cf30b3256eb9f1e1",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q12.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2615,6 +2615,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-map-regression-repair-v14",
+  "revision": "2026-11-05-server-start-fix",
   "journeymap": []
 }
