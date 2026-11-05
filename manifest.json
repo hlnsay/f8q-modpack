@@ -657,9 +657,9 @@
     },
     {
       "path": "resourcepacks/Cozy-Russian.zip",
-      "sha512": "ab82f698bdef6efdecaf1259a9fb8cf44691877b8858f629295bd54391f5cc13665e4b4746a3cd0af0398ba01407eac23471273949d1389377ab235619a25c10",
-      "size": 333371,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v7.zip"
+      "sha512": "081ae6f6049c06e2ba820d08840b4f26081246480e162fda8f1dafe9e7e6333f0e6f43195b558b0f724fa0efe39a5ef9476cafc296411d9ed62fa72c6c1c4a38",
+      "size": 336509,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v8.zip"
     },
     {
       "path": "resourcepacks/F8Q 1.21.zip",
@@ -969,9 +969,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "d5e83aafd844e7d5ebf6e1d3d864e96738271509c053066e7f568fe1421053a5dcb754411c101fe8ec4c766bd506ec8aadb6f7e997d63e0f80c8755b6e01d885",
-      "size": 36049,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.2.jar"
+      "sha512": "9bcb6aaaa2262dd998cd1862873ad3ff585d00f14afb993c1a4516cb80f1b6a8f770462e900fcd8069ecd92da1842ed2a510dd8627c6188b2793c18b9185ea60",
+      "size": 36923,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.3.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -984,6 +984,24 @@
       "sha512": "5e78b0d63757d5904b96e0c4565d56832ca42b1cbba939b98101f848f618cfcda94d5aeadeacb0faff85bdd05fb071f2df551a42c3e7d0e3a2564adbec227931",
       "size": 2215572,
       "url": "https://cdn.modrinth.com/data/8YcE8y4T/versions/XrUKaWrw/Ribbits-1.21.1-NeoForge-4.1.6.jar"
+    },
+    {
+      "path": "mods/golemoverhaul-neoforge-1.21.1-1.1.1.jar",
+      "sha512": "a2e3171f708a033a89e2f6417311e42e0773dc95ac27ef1819816cefa7f0e15ff73f8a3ffd168beb9a4a3eeae2d09859badd278bc6bf3bec224d49d3b8dcccaa",
+      "size": 1036924,
+      "url": "https://cdn.modrinth.com/data/qEYs2G9A/versions/V1OtffxB/golemoverhaul-neoforge-1.21.1-1.1.1.jar"
+    },
+    {
+      "path": "mods/croaks-2.0.0-neoforge-1.21.1.jar",
+      "sha512": "622632fd1531a1dc6a53fa88f494cf0b99a5dc51b6e8ebc92a2652007169a8e8df6f850d7675f6555cafed56265cb8f7cac2976c7105453b95ca735af48dcbe7",
+      "size": 6859416,
+      "url": "https://cdn.modrinth.com/data/VtNWzBdM/versions/Vt4uSVmB/croaks-2.0.0-neoforge-1.21.1.jar"
+    },
+    {
+      "path": "mods/resourcefulconfig-neoforge-1.21-3.0.11.jar",
+      "sha512": "8e4ccc37732b3f5190e7e98df34dbc1339fe614494fcabf1aeaeab9ad8e5993522964b51be31882000c08c48a6d0096b5458364415bb81f2b2b775a7daf2eb87",
+      "size": 341009,
+      "url": "https://cdn.modrinth.com/data/M1953qlQ/versions/lSbyRD6v/resourcefulconfig-neoforge-1.21-3.0.11.jar"
     }
   ],
   "remove": [
@@ -2219,6 +2237,17 @@
     {
       "date": "2026-11-05",
       "added": [
+        "Ribbits: Croaks",
+        "Golem Overhaul"
+      ],
+      "updated": [
+        "Пати ждёт вышедшего игрока минуту"
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-05",
+      "added": [
         "Paragliders",
         "Ribbits",
         "Поза на колене при поднятии"
@@ -2418,7 +2447,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-paragliders-ribbits",
+  "revision": "2026-11-05-croaks-golems",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
