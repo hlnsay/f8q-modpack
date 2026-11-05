@@ -879,9 +879,9 @@
     },
     {
       "path": "mods/f8qknock-1.0.0.jar",
-      "sha512": "a4a4b763c7de9e7b04c006cbd502883809be5255a368513c3dbec7d6f6642c76f11951dc3654fb2155863d2ea4b6fde9422dbcc23b6ed76070b76f20c77c02e3",
-      "size": 36021,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.6.jar"
+      "sha512": "ba381561c727ac50843da7a448654d1cb896c4633cdbfee186d24fccdd2594d86fd5ae57615e7c46d140bf4c2c4b21415570b4c09543ce55aa4fad97d99b433d",
+      "size": 40617,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.7.jar"
     },
     {
       "path": "mods/naturalist-2.0.7-neoforge-1.21.1.jar",
@@ -963,9 +963,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "dd99f8b346ecf935920298dfc005df33e4583de42882d724a71d054682b35da2dbc3d23144753060c4e8fe2448583975c55cc252b3a26d8c7a022a32b88dfbf6",
-      "size": 44923,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.6.jar"
+      "sha512": "1e81c3b8062b8abf9f3d6a1ed77addfe16efb913bb59c109cd64d143177ad970bf04c3a38c1a4ed9dd5a19cc55751d3d1261e027a17a9e95529cba95d2e333c8",
+      "size": 58605,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.7.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -1047,9 +1047,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 1439731,
-      "sha512": "e54f829db79df06b5bccc8ed76e4441f3ed51a17ef39a8057a65695ba74f8bea88884cf557999d048499e201479ccbdc6e98f19ed679c20fe14b2fe00dd0c440",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q6.jar"
+      "size": 1428124,
+      "sha512": "5b031fe1ebcc3b360e3e24c6619644324df6bd780e8a6d8bcd359ab735a81d3c5adfab4d24746432f3c61bd93a46c5aad394d68fd684f130583570bb4a022520",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q7.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2544,6 +2544,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-map-art",
+  "revision": "2026-11-05-party-arrows",
   "journeymap": []
 }
