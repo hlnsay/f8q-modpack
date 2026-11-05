@@ -657,9 +657,9 @@
     },
     {
       "path": "resourcepacks/Cozy-Russian.zip",
-      "sha512": "672c2e76fe46c1df460e9a7d7e7c5c14b24c5fbaa1baa2333b9d3ef420e15bdb2111da6edda455db0d548b7cdae944852ad689f0e36735461ce0bfb2ae5dce53",
-      "size": 330042,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v4.zip"
+      "sha512": "65a53923aa5cc37a06d696cd273a7343e36d81492e6c1b467e82324d1b5d930223e6a07f4246b811ac90db59c6abf05718eec69ca99242e26c0ba888459c956b",
+      "size": 330241,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v6.zip"
     },
     {
       "path": "resourcepacks/F8Q 1.21.zip",
@@ -963,9 +963,9 @@
     },
     {
       "path": "mods/f8qmenu-1.0.0.jar",
-      "sha512": "26899456fdfd44c5429e0eb29c20764db1fa020972bb2dec074c6a8f5cb807df2a6a809c224dde70b68fe6fad1e361dfc4421d5269c940e9069f4405f8775ee0",
-      "size": 1396157,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.0.jar"
+      "sha512": "8c3f0226ea95ada1bb91bb74ab9b4b5ea435f3b1fb5cdf0a5673fe1f50a5292c7d780b73890796a9b51d76950c320932616c1e2768a9b92b08d014dfb6369d7c",
+      "size": 1420398,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.1.jar"
     }
   ],
   "remove": [
@@ -1895,9 +1895,9 @@
     },
     {
       "path": "config/fancymenu/options.txt",
-      "size": 4886,
-      "sha512": "2a4d2bf0a59edf4cb3bb42e3e751a5e3627b006e6dca411d3d57d446472cad903a26db48d615bec210f15973115ce0922b1e00d5d23c10ec29432c02ab92c9ab",
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/fancymenu/options.txt"
+      "size": 4834,
+      "sha512": "db1d0921a621c3f6ab14fe7b85a18b5b7bc8872b6b3e106a618720ee7188b936fca5921ef76581730c749e4dc1aad18de23a6a83aa11f51dac670e1ec26f6f24",
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/eb67bf0204a99b666c1bf542ebf27d03df97405c/config/fancymenu/options.txt"
     },
     {
       "path": "config/fancymenu/customizablemenus.txt",
@@ -2201,6 +2201,17 @@
     {
       "date": "2026-11-05",
       "added": [
+        "Новый экран достижений"
+      ],
+      "updated": [
+        "Пауза показывает игру",
+        "Настройки: всё на странице, разделы под моды"
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-05",
+      "added": [
         "Новые экраны одиночной игры, сетевой игры и настроек"
       ],
       "updated": [],
@@ -2368,7 +2379,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-own-screens",
+  "revision": "2026-11-05-settings-achievements",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
