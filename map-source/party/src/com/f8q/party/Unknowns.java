@@ -37,6 +37,14 @@ final class Unknowns {
     private static boolean loaded,dirty;
     private static int saveClock;
     private static Path file(MinecraftServer s) {return s.getWorldPath(LevelResource.ROOT).resolve("f8q-generated-places-v2.json");}
+    private static boolean hidden(MinecraftServer server,Place p) {
+        if(PlaceKinds.hidden(p.structure))return true;
+        for(ServerLevel level:server.getAllLevels())if(level.dimension().location().toString().equals(p.dimension)) {
+            var structure=level.registryAccess().registryOrThrow(Registries.STRUCTURE).get(net.minecraft.resources.ResourceLocation.parse(p.structure));
+            return structure!=null&&PlaceKinds.undergroundStep(structure.step().name());
+        }
+        return false;
+    }
     private static void load(MinecraftServer s) {
         if(loaded)return;loaded=true;
         try {
@@ -45,6 +53,11 @@ final class Unknowns {
                 if(read!=null&&read.places!=null&&read.known!=null)store=read;
             }
         }catch(Exception e){F8qParty.LOG.warn("Could not read confirmed map places",e);}
+        // Migration removes already saved underground markers, not just future discoveries.
+        if(store.places.values().removeIf(p->hidden(s,p))) {
+            for(var known:store.known.values())known.retainAll(store.places.keySet());
+            dirty=true;
+        }
     }
     private static void save(MinecraftServer s) {
         if(!dirty)return;
@@ -90,25 +103,31 @@ final class Unknowns {
             if(loadedStart!=null)for(var start:loadedStart.getAllStarts().values())if(!actual.contains(start))actual.add(start);
         }
         actual.forEach(start->{
-            var structure=start.getStructure();
-            if(start==null||!start.isValid())return;var rid=registry.getKey(structure);if(rid==null)return;
+            if(start==null||!start.isValid())return;
+            var structure=start.getStructure();var rid=registry.getKey(structure);if(rid==null)return;
             String id=rid.toString(),hints=id;
+            if(PlaceKinds.hidden(id)||PlaceKinds.undergroundStep(structure.step().name()))return;
             if(id.contains("ribbit")||id.contains("frog")){
                 int n=0;for(var piece:start.getPieces()){if(++n>128)break;if(piece instanceof PoolElementStructurePiece pool)hints+=" "+pool.getElement();}
             }
             var b=start.getBoundingBox();double x=PlaceKinds.center(b.minX(),b.maxX()),z=PlaceKinds.center(b.minZ(),b.maxZ());
+            // Some mods mislabel wholly buried structures as surface structures.
+            LevelChunk centerChunk=level.getChunkSource().getChunkNow(((int)Math.floor(x))>>4,((int)Math.floor(z))>>4);
+            if(centerChunk!=null&&level.dimension().equals(net.minecraft.world.level.Level.OVERWORLD)
+                    &&(PlaceKinds.classify(hints)==1||PlaceKinds.classify(hints)==4)) {
+                int ground=centerChunk.getHeight(net.minecraft.world.level.levelgen.Heightmap.Types.OCEAN_FLOOR,((int)Math.floor(x))&15,((int)Math.floor(z))&15);
+                if(b.maxY()<ground-8)return;
+            }
             String key=job.dimension+"|"+id+"|"+b.minX()+","+b.minY()+","+b.minZ();
             put(new Place(key,job.dimension,id,PlaceKinds.classify(hints),x,PlaceKinds.center(b.minY(),b.maxY()),z,b.minX(),b.maxX(),b.minZ(),b.maxZ(),false));
         });
         Set<String> blocks=new HashSet<>();
         for(var entry:chunk.getBlockEntities().entrySet()){
             String id=BuiltInRegistries.BLOCK.getKey(entry.getValue().getBlockState().getBlock()).toString();
-            boolean spawner=id.equals("minecraft:spawner");
-            if(!spawner&&(!id.contains("waystone")||id.contains("warp_plate")||id.contains("sharestone")))continue;
+            if(!id.contains("waystone")||id.contains("warp_plate")||id.contains("sharestone"))continue;
             BlockPos b=entry.getKey();
-            if(spawner&&actual.stream().anyMatch(start->start!=null&&start.isValid()&&start.getBoundingBox().isInside(b)))continue;
             String key=job.dimension+"|block|"+b.asLong();blocks.add(key);
-            put(new Place(key,job.dimension,id,spawner?1:0,b.getX()+.5,b.getY(),b.getZ()+.5,b.getX(),b.getX(),b.getZ(),b.getZ(),true));
+            put(new Place(key,job.dimension,id,0,b.getX()+.5,b.getY(),b.getZ()+.5,b.getX(),b.getX(),b.getZ(),b.getZ(),true));
         }
         if(store.places.values().removeIf(p->p.block&&p.dimension.equals(job.dimension)&&((int)Math.floor(p.x)>>4)==pos.x&&((int)Math.floor(p.z)>>4)==pos.z&&!blocks.contains(p.key)))dirty=true;
     }

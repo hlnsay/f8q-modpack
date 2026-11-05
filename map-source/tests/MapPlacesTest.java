@@ -24,13 +24,20 @@ public final class MapPlacesTest {
         var bad=new FriendlyByteBuf(Unpooled.buffer());bad.writeUtf("minecraft:overworld");bad.writeVarInt(129);
         boolean rejected=false;try{Net.Unknowns.CODEC.decode(bad);}catch(IllegalArgumentException e){rejected=true;}finally{bad.release();}
         check(rejected,"oversized packet rejected");
-        var a=new com.velorise.simplemap.client.TeamMarks.Location("first","minecraft:ancient_city",100,10,200,1,true);
-        var b=new com.velorise.simplemap.client.TeamMarks.Location("second","minecraft:spawner",12.5,84,12.5,1,true);
+        var a=new com.velorise.simplemap.client.TeamMarks.Location("first","mod:surface_castle",100,90,200,1,true);
+        var b=new com.velorise.simplemap.client.TeamMarks.Location("second","mod:tower",12.5,84,12.5,1,true);
+        check(PlaceKinds.hidden("minecraft:spawner"),"spawner room excluded");
+        check(PlaceKinds.hidden("minecraft:mineshaft"),"mineshafts excluded");
+        check(PlaceKinds.hidden("minecraft:ancient_city"),"ancient cities excluded");
+        check(PlaceKinds.undergroundStep("UNDERGROUND_STRUCTURES"),"modded underground generation excluded");
+        check(!PlaceKinds.undergroundStep("SURFACE_STRUCTURES"),"surface modded structures retained");
         var team=com.velorise.simplemap.client.TeamMarks.class;
         com.velorise.simplemap.client.TeamMarks.setLocations("minecraft:overworld",List.of(a));
         com.velorise.simplemap.client.TeamMarks.setLocations("minecraft:overworld",List.of(b));
         check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").size()==2,"delta retains earlier discoveries");
-        check(a.title().equals("Древний город"),"actual structure title");
+        check(a.title().equals("Данж"),"generic dungeon title");
+        com.velorise.simplemap.client.TeamMarks.setLocations("minecraft:overworld",List.of(new com.velorise.simplemap.client.TeamMarks.Location("old-spawner","minecraft:spawner",0,0,0,1,true)));
+        check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").size()==2,"old spawner marker rejected by client");
         com.velorise.simplemap.client.TeamMarks.setLocations("minecraft:the_nether",List.of(b));
         check(com.velorise.simplemap.client.TeamMarks.locations("minecraft:overworld").size()==2,"dimensions isolated");
         com.velorise.simplemap.client.TeamMarks.setLocations("minecraft:overworld",List.of(new com.velorise.simplemap.client.TeamMarks.Location("first","",0,0,0,-1,false)));

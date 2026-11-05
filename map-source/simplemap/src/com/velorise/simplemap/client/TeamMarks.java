@@ -181,6 +181,7 @@ public final class TeamMarks {
         java.util.Map.entry("skeleton_dungeon","Подземелье скелетов"),java.util.Map.entry("spider_dungeon","Паучье подземелье"),
         java.util.Map.entry("zombie_dungeon","Подземелье зомби"));
     public static String structureTitle(String structure,int kind){
+        if(kind==1||kind==4)return "Данж";
         if(kind==0||kind==11||structure.isEmpty())return placeName(kind);
         String path=structure.substring(structure.indexOf(':')+1);
         if(structure.startsWith("croaks:"))return path.equals("outpost")?"Лагерь злых лягушек":path.equals("shed")?"Хижина злых лягушек":"Грибное убежище Croaks";
@@ -194,8 +195,8 @@ public final class TeamMarks {
         return words.isEmpty()?placeName(kind):Character.toUpperCase(words.charAt(0))+words.substring(1);
     }
     private static volatile List<Location> locations = List.of();
-    private static final String[] PLACE_FILES = { "poi_waystone", "poi_dungeon", "poi_witch", "poi_village", "poi_interesting", "poi_ogre", "poi_frog", "poi_frog_enemy", "poi_ruins", "poi_pillager", "poi_portal", "poi_home" };
-    private static final String[] PLACE_NAMES = { "Камень телепорта", "Подземелье", "Ведьмины земли", "Деревня", "Интересное место", "Лагерь огров", "Поселение Ribbits", "Лагерь злых лягушек", "Руины", "Лагерь разбойников", "Разрушенный портал", "Ваш дом" };
+    private static final String[] PLACE_FILES = { "poi_waystone", "poi_dungeon", "poi_witch", "poi_village", "poi_dungeon", "poi_ogre", "poi_frog", "poi_frog_enemy", "poi_ruins", "poi_pillager", "poi_portal", "poi_home" };
+    private static final String[] PLACE_NAMES = { "Камень телепорта", "Данж", "Ведьмины земли", "Деревня", "Данж", "Лагерь огров", "Поселение Ribbits", "Лагерь злых лягушек", "Руины", "Лагерь разбойников", "Разрушенный портал", "Ваш дом" };
     private static final String[] PLACE_DESCRIPTIONS = {
         "Древний путевой камень. Активируйте его, чтобы открыть новую точку для путешествий.",
         "Запутанное сооружение, которое может скрывать опасности и ценные находки. Прихватите факелы и припасы.",
@@ -217,6 +218,11 @@ public final class TeamMarks {
     public static String placeName(int kind) { return PLACE_NAMES[safeKind(kind)]; }
     public static String placeDescription(int kind) { return PLACE_DESCRIPTIONS[safeKind(kind)]; }
     public static net.minecraft.resources.ResourceLocation placeIcon(int kind) { return kind==12 ? SKULL : PLACE_TEXTURES[safeKind(kind)]; }
+    private static boolean hiddenUnderground(Location p) {
+        String id=p.structure().isEmpty()?p.id():p.structure();
+        return id.contains("minecraft:spawner")||id.contains("mineshaft")||id.contains("ancient_city")
+            ||id.contains("stronghold")||id.contains("trial_chamber")||id.contains("betterdungeons:");
+    }
     private record Snapshot(List<Location> locations,List<double[]> points) {}
     private static final java.util.Map<String,java.util.LinkedHashMap<String,Location>> placeCache=new java.util.HashMap<>();
     private static volatile java.util.Map<String,Snapshot> placeSnapshots=java.util.Map.of();
@@ -226,7 +232,8 @@ public final class TeamMarks {
     public static void setLocations(String dimension,List<Location> changes) {
         if(dimension.isEmpty()){placeCache.clear();placeSnapshots=java.util.Map.of();return;}
         var cache=placeCache.computeIfAbsent(dimension,d->new java.util.LinkedHashMap<>());
-        for(Location p:changes){if(p.kind()<0)cache.remove(p.id());else cache.put(p.id(),p);}
+        for(Location p:changes){if(p.kind()<0||hiddenUnderground(p))cache.remove(p.id());else cache.put(p.id(),p);}
+        cache.values().removeIf(TeamMarks::hiddenUnderground);
         while(cache.size()>16384)cache.remove(cache.keySet().iterator().next());
         var list=List.copyOf(cache.values());
         var next=new java.util.HashMap<>(placeSnapshots);

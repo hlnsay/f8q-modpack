@@ -963,9 +963,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "50c6b0180ced6b03bf1c6a0950af18612aa01b30c656296cbdf5c23d1449890e56cabb125ec4ea88b42f07287bec60728fbf1180eff7be81246ca2d029058982",
-      "size": 73965,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.10.jar"
+      "sha512": "0e5f235db143c836a3753090b79f2736cad00e2839051c1cab08133f6a7fa2ce62601dc7af12033502dd5a27f79b07c538f1ed9d9973a894297165d252f32693",
+      "size": 74617,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.11.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -1047,9 +1047,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 2160283,
-      "sha512": "1221dd6a5c99594277d8418a888b06206db8eb0eb6dfb4e6750cfa7f411e4e9928a9d569a2d80ded993981adc5ae642a60fec171c0d293492a96058ae487d6ce",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q10.jar"
+      "size": 2160563,
+      "sha512": "5b22f344f976931aea72d0430494e0df54202445d088ca9c89e7200b9f204b10953252bbe2973f6125b3d316e05c1b9ba9150a1461c272848500eaa9eeecb675",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q11.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2299,6 +2299,15 @@
   "changelog": [
     {
       "date": "2026-11-05",
+      "added": [],
+      "updated": [
+        "Карта: убраны комнаты со спавнерами, шахты, древние города и подземные структуры, включая ранее сохранённые метки.",
+        "Модовые постройки без отдельной категории обозначаются общим названием «Данж». Иконки лагерей, руин, деревень, порталов и дома сохранены."
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-05",
       "added": [
         "Карточки мест по ЛКМ: значок, название и описание.",
         "Иконки огров, Ribbits, разбойников, руин, разрушенных порталов и дома.",
@@ -2559,6 +2568,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-confirmed-map-places-v2",
+  "revision": "2026-11-05-surface-map-only-v3",
   "journeymap": []
 }

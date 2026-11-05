@@ -21,6 +21,15 @@ final class PlaceKinds {
             if (id.contains(word)) return 1;
         return 4;
     }
+    static boolean hidden(String value) {
+        String id=value.toLowerCase(Locale.ROOT);
+        return id.equals("minecraft:spawner") || id.contains("mineshaft") || id.contains("ancient_city")
+            || id.contains("stronghold") || id.contains("trial_chamber")
+            || id.startsWith("betterdungeons:");
+    }
+    static boolean undergroundStep(String step) {
+        return step.equals("UNDERGROUND_STRUCTURES") || step.equals("UNDERGROUND_DECORATION");
+    }
     static double center(int min, int max) { return min + (max - (double) min) / 2.0 + .5; }
     static double distance(double x, double z, int minX, int maxX, int minZ, int maxZ) {
         double dx = Math.max(minX-x, Math.max(0,x-maxX)), dz = Math.max(minZ-z, Math.max(0,z-maxZ));
