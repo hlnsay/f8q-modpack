@@ -1,5 +1,11 @@
 # F8Q map integration РІР‚вЂќ NeoForge 1.21.1
 
+## Current policy: manual party marks restored (v19)
+
+Party members again see one another's manually placed pins and waypoints. The existing marker payload carries label, coordinates, dimension and custom icon; the receiving UI uses the existing TeamMarks presentation for the full map, minimap, known-places list and world HUD. Changes are checked once per second and unchanged snapshots are sent every five seconds as a heartbeat. Empty snapshots delete markers; leaving the party removes them. The server derives recipients from the authenticated sender's party; the client rejects unrelated owners.
+
+Terrain imagery, explored-area transfer and automatic POI discovery sharing stay disabled. Exploration.java, SharedExploration.java and Unknowns.java are unchanged from v18, including the minute-stall fix. PartyMarksTest exercises recipient isolation, marker codec, presentation publication, deletion, stranger rejection and party exit. Existing private-exploration regression tests remain passing.
+
 ## Current policy: private maps (v18)
 
 Exploration, POI discovery and private markers are no longer shared through parties. Player positions, party HUD, invites and revival remain. Raster channels remain as compatibility boundaries, with no upload, receive, rendering or export logic. The server ignores obsolete raster uploads, skips their arrays when reading old journals, and rewrites the file with personal observed coverage only. Previously learned discoveries are retained: the old schema did not distinguish personal discoveries from permanently learned party discoveries, so deleting those would risk user data loss.

@@ -90,7 +90,17 @@ public final class F8qParty {
         registrar.playToClient(Net.State.TYPE, Net.State.CODEC, (payload, context) -> context.enqueueWork(() -> PartyClientBridge.state(payload)));
     }
 
-    private static void relay(ServerPlayer from,Net.MarksUp marks){ /* Personal markers are not relayed. */ }
+    static List<UUID> markRecipients(UUID owner){
+        List<UUID> party=partyOf(owner);
+        return party==null?List.of():party.stream().filter(id->!id.equals(owner)).toList();
+    }
+    private static void relay(ServerPlayer from,Net.MarksUp marks){
+        Net.MarksDown down=new Net.MarksDown(from.getUUID(),marks.spots().stream().limit(48).toList());
+        for(UUID id:markRecipients(from.getUUID())){
+            ServerPlayer mate=from.getServer().getPlayerList().getPlayer(id);
+            if(mate!=null)PacketDistributor.sendToPlayer(mate,down);
+        }
+    }
 
     static List<UUID> partyOf(UUID player) {
         for (List<UUID> party : parties) {

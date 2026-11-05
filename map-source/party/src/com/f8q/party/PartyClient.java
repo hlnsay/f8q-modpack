@@ -84,6 +84,8 @@ public final class PartyClient {
     private static int inviteLeft;
     private static int inviteTotal = 1;
     private static int ticks;
+    private static List<Net.Spot> lastSharedSpots=List.of();
+    private static int lastMarkSend=-100;
 
     public PartyClient(IEventBus bus) {
         bus.addListener(PartyClient::keys);
@@ -114,7 +116,7 @@ public final class PartyClient {
     static void state(Net.State state) {
         mates = state.mates();
         var ids=mates.stream().map(Net.Mate::id).filter(id->!id.equals(Minecraft.getInstance().getUser().getProfileId())).collect(java.util.stream.Collectors.toSet());
-        TeamMarks.retainParty(ids);theirs.keySet().retainAll(ids);publish();
+        TeamMarks.retainParty(ids);theirs.keySet().retainAll(ids);seen.keySet().retainAll(ids);publish();
     }
 
     private static void left(ClientPlayerNetworkEvent.LoggingOut event) {
@@ -122,6 +124,7 @@ public final class PartyClient {
         TeamMarks.setMates(List.of());
         TeamMarks.set(List.of());
         mates = new ArrayList<>();
+        theirs.clear();seen.clear();lastSharedSpots=List.of();lastMarkSend=-100;
         inviter = null;
     }
 
@@ -151,6 +154,7 @@ public final class PartyClient {
         }
         if (me != null && mc.level != null) {
             com.velorise.simplemap.client.LiveMapColors.tick(mc);
+            shareMarks(mc);
 
 
             placeMates(mc, me);
@@ -253,7 +257,12 @@ public final class PartyClient {
         TeamMarks.setLocations(unknowns.dimension(), places);
     }
 
-    static void marks(Net.MarksDown down){ /* Private waypoints stay on their owner's client. */ }
+    static void marks(Net.MarksDown down){
+        if(!isMate(down.owner()))return;
+        theirs.put(down.owner(),List.copyOf(down.spots()));
+        seen.put(down.owner(),ticks);
+        publish();
+    }
 
     /** Teammates' marks in their colours; whoever left the party or fell silent drops out. */
     private static void publish() {
@@ -284,7 +293,7 @@ public final class PartyClient {
     }
 
     private static void shareMarks(Minecraft mc) {
-        if (ticks % 100 != 0) {
+        if (ticks % 20 != 0) {
             return;
         }
         publish();
@@ -298,6 +307,9 @@ public final class PartyClient {
                 spots.add(new Net.Spot(mark.pin(), mark.label(), mark.x(), mark.y(), mark.z(), dimension,mark.iconItem(),mark.kind()));
             }
         }
+        // Changes arrive within a second; unchanged marks use a five-second heartbeat.
+        if(spots.equals(lastSharedSpots)&&ticks-lastMarkSend<100)return;
+        lastSharedSpots=List.copyOf(spots);lastMarkSend=ticks;
         PacketDistributor.sendToServer(new Net.MarksUp(spots));
     }
 
