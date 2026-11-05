@@ -963,9 +963,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "00306efca4273843c04f52966d3d6459c750a844817b8be84ee1e4b6d9852c29a560a216e2e878a5e119bf8be54d407e4f401e576481b38732833a252cfedb13",
-      "size": 71642,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.9.jar"
+      "sha512": "50c6b0180ced6b03bf1c6a0950af18612aa01b30c656296cbdf5c23d1449890e56cabb125ec4ea88b42f07287bec60728fbf1180eff7be81246ca2d029058982",
+      "size": 73965,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.10.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -1047,9 +1047,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 1475816,
-      "sha512": "e2812d806928d720341c53ae15171571b5856e07df0c261a4522ac02bb68ce8bdbc44c56856c57e6221c4343684306928f3a20db95ea3ae578cde482dd8891db",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q9.jar"
+      "size": 2160283,
+      "sha512": "1221dd6a5c99594277d8418a888b06206db8eb0eb6dfb4e6750cfa7f411e4e9928a9d569a2d80ded993981adc5ae642a60fec171c0d293492a96058ae487d6ce",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q10.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2300,6 +2300,21 @@
     {
       "date": "2026-11-05",
       "added": [
+        "Карточки мест по ЛКМ: значок, название и описание.",
+        "Иконки огров, Ribbits, разбойников, руин, разрушенных порталов и дома.",
+        "Подложки карты из map-ui: координаты, биом, масштаб и меню ПКМ."
+      ],
+      "updated": [
+        "Метки построек берутся из реально загруженных структур всех модов и ванильной игры. Предсказания по сиду удалены.",
+        "Точные координаты по границам постройки; путевые камни и комнаты со спавнерами — по настоящим блокам.",
+        "Неизвестные места раскрываются при приближении. Открытия сохраняются отдельно для каждого игрока.",
+        "Исправлен сброс масштаба при добавлении метки; точки передаются небольшими обновлениями."
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-05",
+      "added": [
         "Velorise Simple Map вместо JourneyMap",
         "Waystones",
         "Companions!",
@@ -2544,6 +2559,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-map-places",
+  "revision": "2026-11-05-confirmed-map-places-v2",
   "journeymap": []
 }

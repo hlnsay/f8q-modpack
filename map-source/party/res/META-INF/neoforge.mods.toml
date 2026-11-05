@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="f8qparty"
+version="1.0.10"
+displayName="F8Q Party"
+description="Parties of three: invites, the list of friends, and who may lift whom."
+
+[[mixins]]
+config="f8qparty.mixins.json"
+
+[[dependencies.f8qparty]]
+modId="playerrevive"
+type="required"
+versionRange="[2.1,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.f8qparty]]
+modId="waystones"
+type="required"
+versionRange="[21.1,)"
+ordering="AFTER"
+side="BOTH"
