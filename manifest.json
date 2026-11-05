@@ -945,9 +945,9 @@
     },
     {
       "path": "mods/f8qmenu-1.0.0.jar",
-      "sha512": "f14c0e824dbab7f60c1138cc27f1502f8bf2e8be8368e1a7791254c98010782dd3fbe5ac837a46d4c75ba4701c263c931529f392ade8a6138d3dfc828f661be3",
-      "size": 1421625,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.5.jar"
+      "sha512": "61414d630becfed58a34700c3497e0e433019b3f98f9868e6113af8a340a0ecf54f131f192b12c4ee19835a45aee610d6baa4606d1714a7a811c4001bdcd2ade",
+      "size": 1421646,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.6.jar"
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
@@ -1056,6 +1056,12 @@
       "size": 133273,
       "sha512": "80b98158f2ad35c26890282907f0ad720fb2378539ae383ecf69e3c267a3c4cb492703e0c1ec34ba6eaa87e2e4c9b17838955bcc8bf12b475fbf80d35a9efdb5",
       "url": "https://cdn.modrinth.com/data/ilvNBzFn/versions/2LZ76MSH/critical_strike-neoforge-1.0.4%2B1.21.1.jar"
+    },
+    {
+      "path": "mods/f8qrain-1.0.0.jar",
+      "size": 593603,
+      "sha512": "89c33fb12a59594f6d7e416a5bd4a90f651a4b5ca9d1f504ef2be340f4ab45426a3fb8b1d11d6c583ca86b30a66059256ad49cdf8324c9db792d92b722df5fa0",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qrain-1.0.0.jar"
     }
   ],
   "remove": [
@@ -2296,7 +2302,8 @@
       "added": [
         "Карта и открытые места участников пати передаются союзникам; полученные открытия сохраняются после выхода из пати.",
         "Игровое время под координатами мини-карты.",
-        "Имена обелисков из Waystones, появление и удаление меток при установке и разрушении."
+        "Имена обелисков из Waystones, появление и удаление меток при установке и разрушении.",
+        "Звуки дождя по блокам"
       ],
       "updated": [
         "Возвращены последние функции карты с сохранением исправления запуска PikaFishing.",
@@ -2623,6 +2630,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-party-exploration-hud-v15",
+  "revision": "2026-11-05-rain-sounds",
   "journeymap": []
 }
