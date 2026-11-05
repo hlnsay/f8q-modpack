@@ -1004,17 +1004,18 @@
       "url": "https://cdn.modrinth.com/data/M1953qlQ/versions/lSbyRD6v/resourcefulconfig-neoforge-1.21-3.0.11.jar"
     },
     {
-      "path": "resourcepacks/miles-enhanced-hud.zip",
-      "size": 61046,
-      "sha512": "273d3670a6259c2524d1a5ed5e9b30e0a51a9d562690de6acd0a5509e1420bf91de17b6a4ad3bbcc645a64c9d0ad095ee875dbb24bf25a4a89621e2e7f5caad6",
-      "url": "https://mediafilez.forgecdn.net/files/6303/493/miles%27s%20Enhanced%20Hud.zip"
+      "path": "resourcepacks/xp-like-hud.zip",
+      "size": 5636628,
+      "sha512": "ea402eb0db34f8c4b1e1aa6e5622903d7554f414076a3e3a0801f0d880f2a35a743195846bc4cfddc8a1aec6628ad4a09bc1d79c4969871ea454a0ade88291ee",
+      "url": "https://cdn.modrinth.com/data/utdjGfzH/versions/dle9X3qt/XP-like%20HUD%20%28Rounded%29.zip"
     }
   ],
   "remove": [
     "mods/SereneSeasons-neoforge-1.21.1-10.1.0.9.jar",
     "mods/emotecraft-for-MC1.21.1-2.4.12-neoforge.jar",
     "mods/sophisticatedbackpacks-1.21.1-3.26.19.2243.jar",
-    "mods/sophisticatedcore-1.21.1-1.5.25.2451.jar"
+    "mods/sophisticatedcore-1.21.1-1.5.25.2451.jar",
+    "resourcepacks/miles-enhanced-hud.zip"
   ],
   "config": [
     {
@@ -2228,7 +2229,7 @@
     "mod_resources",
     "moonlight:merged_pack",
     "file/F8Q-Interface.zip",
-    "file/miles-enhanced-hud.zip",
+    "file/xp-like-hud.zip",
     "file/F8Q-Fixes.zip"
   ],
   "incompatible_packs": [
@@ -2244,7 +2245,7 @@
     {
       "date": "2026-11-05",
       "added": [
-        "Miles Enhanced HUD"
+        "XP-like HUD"
       ],
       "updated": [
         "Инвентарь и библиотека предметов возвращены к прошлой версии"
@@ -2464,7 +2465,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-rollback-miles-hud",
+  "revision": "2026-11-05-xp-like-hud",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
