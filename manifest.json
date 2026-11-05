@@ -813,9 +813,9 @@
     },
     {
       "path": "resourcepacks/F8Q-Interface.zip",
-      "size": 10198,
-      "sha512": "45ac5fe6d4931547735877c814a70698670ebb6ffa943f41997302a5057a1c550695bd4d20663e32efc90626b41af19e6dee79a4bc1001e6acda318d59e30a15",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Interface-v2.zip"
+      "size": 18031,
+      "sha512": "0e3af2b0633db7622227376010dbbf9899642164dcc32afced882169fe8db73bec5e91f30209fc30cfc1d025f6676196613b3e80f4b624df30be9d05be5e06da",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Interface-v3.zip"
     },
     {
       "path": "resourcepacks/F8Q-Fixes.zip",
@@ -963,9 +963,9 @@
     },
     {
       "path": "mods/f8qmenu-1.0.0.jar",
-      "sha512": "8c3f0226ea95ada1bb91bb74ab9b4b5ea435f3b1fb5cdf0a5673fe1f50a5292c7d780b73890796a9b51d76950c320932616c1e2768a9b92b08d014dfb6369d7c",
-      "size": 1420398,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.1.jar"
+      "sha512": "b0b3a9d77901b046a793eeae36a1efeb7c0a4fa74326c333de45a91230ad6f5e2ad443e478604c8b3eb6474af762102bbfd6a00f4dca42d99b96bdb78dcfd5a5",
+      "size": 1425046,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.2.jar"
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
@@ -1451,9 +1451,9 @@
     },
     {
       "path": "config/jei/client/default/jei-client.ini",
-      "sha512": "6faa39dbabc9a36911a6f33f022fd26dd8d2cee3c03bcaa0545b09e5be91f10dd1c617ef9d904bf83585f402b2c440554263ed59603937eb6ca56531cb4cb7ca",
-      "size": 16752,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/jei/client/default/jei-client.ini"
+      "sha512": "37369a998453e21c2d945e01b284a60345ba038d2b8ea781f6b327e4cfd0b2aba7c009272d7d268b08380ff90c7ada25a7004965b1df20f6b82b8ae61a0d11c5",
+      "size": 16309,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/87f587d70fcc1673f3e7697b2a40c5b166617b33/config/jei/client/default/jei-client.ini"
     },
     {
       "path": "config/jei/client/default/jei-colors.ini",
@@ -2236,6 +2236,16 @@
   "changelog": [
     {
       "date": "2026-11-05",
+      "added": [],
+      "updated": [
+        "Новый худ игрока",
+        "Панель предметов и поиск JEI",
+        "Пауза без размытия: видна игра"
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-05",
       "added": [
         "Ribbits: Croaks",
         "Golem Overhaul"
@@ -2447,7 +2457,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-croaks-golems",
+  "revision": "2026-11-05-hud",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
