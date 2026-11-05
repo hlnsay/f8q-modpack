@@ -963,9 +963,9 @@
     },
     {
       "path": "mods/f8qmenu-1.0.0.jar",
-      "sha512": "b0b3a9d77901b046a793eeae36a1efeb7c0a4fa74326c333de45a91230ad6f5e2ad443e478604c8b3eb6474af762102bbfd6a00f4dca42d99b96bdb78dcfd5a5",
-      "size": 1425046,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.2.jar"
+      "sha512": "586ae7820079010e68ed47abf069c5e1f1f100ff5b48db7d87b29ed85850a362785de767fbf8e966d6b3c57fc5315fff3a309ec3715e4123b8a6d97b9b768326",
+      "size": 1433471,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.3.jar"
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
@@ -2236,11 +2236,13 @@
   "changelog": [
     {
       "date": "2026-11-05",
-      "added": [],
+      "added": [
+        "Новый инвентарь",
+        "Своя библиотека предметов с поиском"
+      ],
       "updated": [
-        "Новый худ игрока",
-        "Панель предметов и поиск JEI",
-        "Пауза без размытия: видна игра"
+        "Пауза без размытия: видна игра",
+        "Хотбар в стиле сборки"
       ],
       "removed": []
     },
@@ -2457,7 +2459,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-hud",
+  "revision": "2026-11-05-inventory",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
