@@ -1047,9 +1047,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 1420717,
-      "sha512": "9123c5c1fa482975c19f06ee4bbd0df629f0ae2d4ae7090097e583f4050ed7f082efa9815be4677c3fa17c69ff584efef3c0caacc011b9d6ce505580b51ab7be",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q2.jar"
+      "size": 1426774,
+      "sha512": "1c8b9a10341cab8313dbe459d91c844ccbd5e2a02d6ad7e05b60ed68782fc2c3cad781eed965dbcc7a18455dc325936d15cb691035336a8d238c0bef75f259dc",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q3.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2313,7 +2313,8 @@
         "Метки в мире и общие метки пати"
       ],
       "updated": [
-        "Перевод новых модов и Ice Caves Backport"
+        "Перевод новых модов и Ice Caves Backport",
+        "Настройки карты и менеджер меток"
       ],
       "removed": [
         "JourneyMap"
@@ -2543,6 +2544,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-team-marks",
+  "revision": "2026-11-05-map-panels",
   "journeymap": []
 }
