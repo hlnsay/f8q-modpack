@@ -9,7 +9,7 @@ layout-meta {
 }
 
 menu_background {
-  image_path = [source:local]/config/fancymenu/assets/f8q/black.png
+  image_path = [source:local]/config/fancymenu/assets/f8q/menu-dark.png
   slide = false
   repeat_texture = false
   parallax = false
