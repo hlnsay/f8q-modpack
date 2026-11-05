@@ -651,9 +651,9 @@
     },
     {
       "path": "resourcepacks/Cozy-Russian.zip",
-      "sha512": "476afb996e0df80eab51bcc4649a4716894b9d8aa3d1ff41a25d364081578d66741c84086ae352d27cb82aab803ca07c68095206d3722ac5ab2cbd6ad2b132ae",
-      "size": 344805,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v10.zip"
+      "sha512": "d3b782cdfd821431a67cd62f0cd505324355373e9424484ef01910a9ff40d7e85725688fec0b82f3a8cd853e0bacdea613d575877ab2c5f68ee7ee50d38b7f68",
+      "size": 345292,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-v11.zip"
     },
     {
       "path": "resourcepacks/F8Q 1.21.zip",
@@ -879,9 +879,9 @@
     },
     {
       "path": "mods/f8qknock-1.0.0.jar",
-      "sha512": "7f979d9be29136d37df3ac8d71c116fe0d785f7d1855bc42e3a95f5ffbc0dfbc7abe2b6df77ca06e92c14887b403f8e64464d57dd38ad079761ef681c141f4cf",
-      "size": 13834,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.1.jar"
+      "sha512": "a4a4b763c7de9e7b04c006cbd502883809be5255a368513c3dbec7d6f6642c76f11951dc3654fb2155863d2ea4b6fde9422dbcc23b6ed76070b76f20c77c02e3",
+      "size": 36021,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.2.jar"
     },
     {
       "path": "mods/naturalist-2.0.7-neoforge-1.21.1.jar",
@@ -963,9 +963,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "9bcb6aaaa2262dd998cd1862873ad3ff585d00f14afb993c1a4516cb80f1b6a8f770462e900fcd8069ecd92da1842ed2a510dd8627c6188b2793c18b9185ea60",
-      "size": 36923,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.3.jar"
+      "sha512": "4c6bfc3a1e13603bc800faa65579713aa4ad76f7806033b55eb2eb66ba0052d8a629d405ee4d8b88de22e7ed05b4cc1f9520c951dbd42e88eea041c23de53528",
+      "size": 37553,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.4.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -1062,6 +1062,12 @@
       "size": 270216,
       "sha512": "312714e665285477adbd98e421227b15c97cbe50eb5bc156525b323c89a276b54d7606a848219fdc713db2602153dc02bf9caf11d389a49c4b8e596d508756bb",
       "url": "https://cdn.modrinth.com/data/sjxWxSao/versions/UC512VgT/shieldexp-neoforge-1.21.1-1.4.3.jar"
+    },
+    {
+      "path": "mods/critical_strike-neoforge-1.0.4+1.21.1.jar",
+      "size": 133273,
+      "sha512": "80b98158f2ad35c26890282907f0ad720fb2378539ae383ecf69e3c267a3c4cb492703e0c1ec34ba6eaa87e2e4c9b17838955bcc8bf12b475fbf80d35a9efdb5",
+      "url": "https://cdn.modrinth.com/data/ilvNBzFn/versions/2LZ76MSH/critical_strike-neoforge-1.0.4%2B1.21.1.jar"
     }
   ],
   "remove": [
@@ -2301,7 +2307,9 @@
         "Realm RPG: Fallen Adventurers",
         "CleanCut",
         "Smooth Mount (порт на NeoForge)",
-        "Shield Expansion"
+        "Shield Expansion",
+        "Critical Strike",
+        "Эффекты низкого здоровья и нока"
       ],
       "updated": [
         "Перевод новых модов и Ice Caves Backport"
@@ -2534,6 +2542,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-smoothmount-shields",
+  "revision": "2026-11-05-grim-crits",
   "journeymap": []
 }
