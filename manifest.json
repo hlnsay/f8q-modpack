@@ -813,9 +813,9 @@
     },
     {
       "path": "resourcepacks/F8Q-Interface.zip",
-      "size": 27135,
-      "sha512": "3ce2fd6f322f69c06eb81006b3a2a7cca88fbad01b4a8ce83a00179a59e3cef28d5575ed643d577c0eec9a3113f2a2c2decdfc6f5df1831c9b847b7fad3a6273",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Interface-v4.zip"
+      "size": 10198,
+      "sha512": "45ac5fe6d4931547735877c814a70698670ebb6ffa943f41997302a5057a1c550695bd4d20663e32efc90626b41af19e6dee79a4bc1001e6acda318d59e30a15",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Interface-v2.zip"
     },
     {
       "path": "resourcepacks/F8Q-Fixes.zip",
@@ -963,9 +963,9 @@
     },
     {
       "path": "mods/f8qmenu-1.0.0.jar",
-      "sha512": "09f48c230d999cef38e8000e247994c1d3bc0ef0224736639049c7a8eb51cb4935ce4ec1d812b48c58cf8986d94fd5d189636564e5dfb7d774623ef9cebe5381",
-      "size": 1446900,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.4.jar"
+      "sha512": "8c3f0226ea95ada1bb91bb74ab9b4b5ea435f3b1fb5cdf0a5673fe1f50a5292c7d780b73890796a9b51d76950c320932616c1e2768a9b92b08d014dfb6369d7c",
+      "size": 1420398,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.1.jar"
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
@@ -1002,6 +1002,12 @@
       "sha512": "8e4ccc37732b3f5190e7e98df34dbc1339fe614494fcabf1aeaeab9ad8e5993522964b51be31882000c08c48a6d0096b5458364415bb81f2b2b775a7daf2eb87",
       "size": 341009,
       "url": "https://cdn.modrinth.com/data/M1953qlQ/versions/lSbyRD6v/resourcefulconfig-neoforge-1.21-3.0.11.jar"
+    },
+    {
+      "path": "resourcepacks/miles-enhanced-hud.zip",
+      "size": 61046,
+      "sha512": "273d3670a6259c2524d1a5ed5e9b30e0a51a9d562690de6acd0a5509e1420bf91de17b6a4ad3bbcc645a64c9d0ad095ee875dbb24bf25a4a89621e2e7f5caad6",
+      "url": "https://mediafilez.forgecdn.net/files/6303/493/miles%27s%20Enhanced%20Hud.zip"
     }
   ],
   "remove": [
@@ -1451,9 +1457,9 @@
     },
     {
       "path": "config/jei/client/default/jei-client.ini",
-      "sha512": "37369a998453e21c2d945e01b284a60345ba038d2b8ea781f6b327e4cfd0b2aba7c009272d7d268b08380ff90c7ada25a7004965b1df20f6b82b8ae61a0d11c5",
-      "size": 16309,
-      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/87f587d70fcc1673f3e7697b2a40c5b166617b33/config/jei/client/default/jei-client.ini"
+      "sha512": "6faa39dbabc9a36911a6f33f022fd26dd8d2cee3c03bcaa0545b09e5be91f10dd1c617ef9d904bf83585f402b2c440554263ed59603937eb6ca56531cb4cb7ca",
+      "size": 16752,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/4413b5f5cbe32850dc7e830d63f6f237cb989325/config/jei/client/default/jei-client.ini"
     },
     {
       "path": "config/jei/client/default/jei-colors.ini",
@@ -2222,6 +2228,7 @@
     "mod_resources",
     "moonlight:merged_pack",
     "file/F8Q-Interface.zip",
+    "file/miles-enhanced-hud.zip",
     "file/F8Q-Fixes.zip"
   ],
   "incompatible_packs": [
@@ -2237,14 +2244,12 @@
     {
       "date": "2026-11-05",
       "added": [
-        "Инвентарь с ванильной раскладкой и встроенными слотами Curios",
-        "Рецепты прямо в библиотеке предметов"
+        "Miles Enhanced HUD"
       ],
       "updated": [
-        "Страницы и ползунок в библиотеке, сортировка и книга рецептов"
+        "Инвентарь и библиотека предметов возвращены к прошлой версии"
       ],
-      "removed": [],
-      "fixed": []
+      "removed": []
     },
     {
       "date": "2026-11-05",
@@ -2459,7 +2464,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-inventory-2",
+  "revision": "2026-11-05-rollback-miles-hud",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
