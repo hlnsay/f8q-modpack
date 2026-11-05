@@ -963,9 +963,9 @@
     },
     {
       "path": "mods/f8qmenu-1.0.0.jar",
-      "sha512": "8c3f0226ea95ada1bb91bb74ab9b4b5ea435f3b1fb5cdf0a5673fe1f50a5292c7d780b73890796a9b51d76950c320932616c1e2768a9b92b08d014dfb6369d7c",
-      "size": 1420398,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.1.jar"
+      "sha512": "f14c0e824dbab7f60c1138cc27f1502f8bf2e8be8368e1a7791254c98010782dd3fbe5ac837a46d4c75ba4701c263c931529f392ade8a6138d3dfc828f661be3",
+      "size": 1421625,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qmenu-1.0.5.jar"
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
@@ -2245,7 +2245,8 @@
     {
       "date": "2026-11-05",
       "added": [
-        "XP-like HUD"
+        "XP-like HUD",
+        "Сложность мира в настройках"
       ],
       "updated": [
         "Инвентарь и библиотека предметов возвращены к прошлой версии"
@@ -2465,7 +2466,7 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-05-xp-like-hud",
+  "revision": "2026-11-05-difficulty",
   "journeymap": [
     {
       "path": "journeymap/config/6.0/journeymap.core.config",
