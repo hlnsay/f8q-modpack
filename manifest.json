@@ -867,9 +867,9 @@
     },
     {
       "path": "mods/f8qknock-1.0.0.jar",
-      "sha512": "62568db7152bd94b17d4b12a908cc403572bc1c972e4e10ce43b229ef4fef65d27ad340c8ed3738a7dc56cd41bac60a1bc4c40e6d38249dc36f48fffffad7e5a",
-      "size": 38687,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.17-62568db7152b.jar"
+      "sha512": "89898d1081a7417e744c815fb331d1f20825ac3fb646311be8081ce4df24a4132bd03081e16e87df6074903f66b4c61b948c4f8e85cc2f1fc8ddf4b403359a5a",
+      "size": 39062,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qknock-1.0.20-89898d1081a7.jar"
     },
     {
       "path": "mods/naturalist-2.0.7-neoforge-1.21.1.jar",
@@ -1035,9 +1035,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 4218011,
-      "sha512": "c4d84983dd75425b75ee16439c8b175c5e037c7de4a0f2c4095cc050bf1c5c6122bc79c06ea68a8da522a8bd62bea2a73f74d4f70b64d723b28c31053685722f",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q18-c4d84983dd75.jar"
+      "size": 4234726,
+      "sha512": "32702827cf8083d4f48d4ce126668696594b54019bab4b34289021d132fe64183f1b5c7ebbe6548a449323cb8f9b8505c51e4b274b6830d2fccd00a71cc131a4",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q20-32702827cf80.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2299,6 +2299,23 @@
   "changelog": [
     {
       "date": "2026-11-06",
+      "added": [
+        "Одинаковые известные места объединены в строки с перелистыванием; выбор переносит карту к координатам нужного места.",
+        "Кремовая PNG-стрелка панели и перелистывания. Серый облачный фон неизученной карты без частиц.",
+        "Нокнутый игрок видит живых союзников белым контуром, союзники видят нокнутого красным."
+      ],
+      "updated": [
+        "Список известных мест свёрнут при открытии карты; у левых кнопок убраны квадратные подложки.",
+        "Понятная настройка ориентации мини-карты: «По взгляду» поворачивает карту и компас за камерой, «Север сверху» сохраняет север наверху.",
+        "Маршрут к неизвестному месту показывает вопросительный знак, включая ранее сохранённые маршруты.",
+        "Стандартное имя обелиска больше не содержит [Waystone]; пользовательские имена сохранены."
+      ],
+      "removed": [
+        "Режим, кнопка и настройка пещерной карты."
+      ]
+    },
+    {
+      "date": "2026-11-06",
       "added": [],
       "updated": [
         "Возвращены ручные метки участников пати на карте, мини-карте, в списке мест и игровом HUD. Передаются название, координаты и значок.",
@@ -2684,6 +2701,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-06-manual-party-marks-v19",
+  "revision": "2026-11-06-map-ui-and-party-outlines-v20",
   "journeymap": []
 }

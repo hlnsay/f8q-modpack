@@ -115,6 +115,12 @@ public final class F8qKnock {
         return entity instanceof Player && (player = (Player)entity).isAlive() && PlayerReviveServer.getBleeding((Player)player).isBleeding();
     }
 
+    public static int partyOutlineColor(Entity target) {
+        var viewer=Minecraft.getInstance().player;
+        if(viewer==null||target==viewer||!(target instanceof Player))return -1;
+        return PartyOutlinePolicy.color(isDowned(viewer),isDowned(target),PartyClient.isMate(target.getUUID()),target.isAlive());
+    }
+
     public static int outlineColor(Player player) {
         if (ReviveEventClient.helpActive && player.getUUID().equals(ReviveEventClient.helpTarget)) {
             return 5234810;

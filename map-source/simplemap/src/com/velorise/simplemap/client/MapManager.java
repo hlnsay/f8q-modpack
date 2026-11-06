@@ -4699,9 +4699,7 @@ public class MapManager {
      * usable on ordinary public servers without pretending those servers control it.
      */
     public static int getEffectiveCaveMapMode() {
-        return serverExtensionAvailable
-                ? Math.max(0, Math.min(2, serverCaveMapMode))
-                : Math.max(0, Math.min(2, localCaveMapMode));
+        return 0; // F8Q is a surface-only map; also gates cave scanning and persisted modes.
     }
 
     public static int calculateDefaultScanPoints() {

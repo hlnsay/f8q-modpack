@@ -439,50 +439,6 @@ public class MapScreen extends Screen {
                 MapUiIcons.Icon.DIMENSION_PORTAL, button -> cycleViewedDimension());
         this.addRenderableWidget(dimensionSwitchButton);
 
-        if (this.minecraft != null && this.minecraft.level != null) {
-            caveLayerModeButton = new PixelIconButton(0, 0, TOOLBAR_BUTTON_SIZE, TOOLBAR_BUTTON_SIZE, MapUiIcons.Icon.CAVE_OFF, button -> {
-                if (MapConfig.getEffectiveCaveMapMode() == 0) return;
-                markViewportInteraction();
-                CaveMode.cycleCaveType(this.minecraft);
-                clampScaleForCurrentMode();
-                FullscreenMapFramebufferRenderer.getInstance().invalidate();
-                FullscreenMapFramebufferRenderer.getInstance().resetFailureState();
-                MapRenderer.getInstance().clearFullscreenFallback();
-                this.lastViewportInteractionNanos = 0L;
-                MapPerformanceGovernor.getInstance().setFullscreenState(true, false);
-                if (CaveMode.getCaveType(this.minecraft) == CaveMode.CaveType.OFF) {
-                    MapManager.getInstance().ensureCeilingSurfaceRegionsBackfilled();
-                    ChunkScanner.getInstance().requestImmediateSurfaceRefresh(this.minecraft);
-                } else if (CaveMode.getCaveType(this.minecraft) == CaveMode.CaveType.LAYERED) {
-                    ChunkScanner.getInstance().requestImmediateCaveLayerRefresh(this.minecraft);
-                } else {
-                    ChunkScanner.getInstance().requestImmediateCaveLayerRefresh(
-                            this.minecraft);
-                }
-                if (caveLayerSlider != null) caveLayerSlider.syncFromMode();
-                updateCaveControlLayout();
-            });
-            this.addRenderableWidget(caveLayerModeButton);
-
-            caveLayerModeButton.active = MapConfig.getEffectiveCaveMapMode() != 0;
-
-            if (MapConfig.getEffectiveCaveMapMode() != 0) {
-                DimensionMapProfile viewedProfile = MapManager.getInstance()
-                        .getCurrentDimensionProfile();
-                int minimumY = viewedProfile == null
-                        ? this.minecraft.level.getMinBuildHeight() : viewedProfile.minY();
-                int maximumY = viewedProfile == null
-                        ? this.minecraft.level.getMaxBuildHeight() - 1 : viewedProfile.maxY();
-                double initialValue = CaveMode.hasManualTopY(this.minecraft)
-                        ? CaveLayerSlider.normalizeNumeric(CaveMode.getSelectedTopY(this.minecraft), minimumY, maximumY)
-                        : 0.0;
-                caveLayerSlider = new CaveLayerSlider(0, 0, 156, 18,
-                        minimumY, maximumY, initialValue);
-                caveLayerSlider.setTooltip(Tooltip.create(Component.translatable("gui.simplemap.tooltip.cave_top_y")));
-                this.addRenderableWidget(caveLayerSlider);
-            }
-            updateCaveControlLayout();
-        }
 
         if (this.minecraft != null && !CaveMode.isActive(this.minecraft)) {
             MapManager.getInstance().ensureCeilingSurfaceRegionsBackfilled();
@@ -741,7 +697,7 @@ public class MapScreen extends Screen {
             caveLayerSlider.syncFromMode();
         }
         // Fullscreen dark background
-        guiGraphics.fill(0, 0, this.width, this.height, 0xFF0D0D0D);
+        com.velorise.simplemap.client.MapArtwork.fog(guiGraphics,0,0,this.width,this.height);
 
         // Thin 2-pixel border at screen edges (clean 2-pixel margin)
         guiGraphics.fill(0, 0, this.width, 1, 0xFF4A3D2C); // top
@@ -1006,12 +962,6 @@ public class MapScreen extends Screen {
             int y0 = getY();
             int x1 = x0 + getWidth();
             int y1 = y0 + getHeight();
-            graphics.fill(x0, y0, x1, y1, hover ? 0xF02A2115 : 0xE6120E0A);
-            int edge = hover ? 0xFFE0B84C : 0xFF4A3D2C;
-            graphics.fill(x0, y0, x1, y0 + 1, edge);
-            graphics.fill(x0, y1 - 1, x1, y1, edge);
-            graphics.fill(x0, y0, x0 + 1, y1, edge);
-            graphics.fill(x1 - 1, y0, x1, y1, edge);
             MapUiIcons.drawScaled(graphics, displayedIcon, x0 + getWidth() / 2, y0 + getHeight() / 2, active && on, TOOLBAR_ICON_SCALE);
         }
     }
@@ -2691,31 +2641,6 @@ public class MapScreen extends Screen {
             requireBookButton.active = !remoteServer;
             this.addRenderableWidget(requireBookButton);
 
-            caveScanButton = Button.builder(
-                    getServerCaveModeMessage(remoteServer, remoteExtension),
-                    button -> {
-                        if (remoteServer && !remoteExtension) {
-                            MapConfig.localCaveMapMode = (MapConfig.localCaveMapMode + 1) % 3;
-                            if (MapConfig.localCaveMapMode == 0) {
-                                CaveMapManager.getInstance().deactivate();
-                            }
-                            MapConfig.save();
-                            button.setMessage(getServerCaveModeMessage(true, false));
-                            return;
-                        }
-                        ServerConfig.caveMapMode = (ServerConfig.caveMapMode + 1) % 3;
-                        MapConfig.serverCaveMapMode = ServerConfig.caveMapMode;
-                        if (ServerConfig.caveMapMode == 0) {
-                            CaveMapManager.getInstance().deactivate();
-                        }
-                        ServerConfig.save();
-                        syncIntegratedServerConfig();
-                        button.setMessage(getServerCaveModeMessage(false, false));
-                    }).bounds((this.width - btnWidth) / 2, this.height / 2, btnWidth, btnHeight)
-                    .tooltip(Tooltip.create(Component.translatable("gui.simplemap.tooltip.server_cave_scan")))
-                    .build();
-            caveScanButton.active = !remoteExtension;
-            this.addRenderableWidget(caveScanButton);
 
             this.addRenderableWidget(Button.builder(
                     Component.translatable("gui.simplemap.done"),
@@ -2853,7 +2778,7 @@ public class MapScreen extends Screen {
                     MapConfig.minimapRotate = !MapConfig.minimapRotate;
                     button.setMessage(getRotateMessage());
                 }).bounds(col1X, r3Y, colW, 20)
-                .tooltip(Tooltip.create(Component.translatable("gui.simplemap.tooltip.north_lock")))
+                .tooltip(Tooltip.create(Component.literal("По взгляду: карта и стороны света поворачиваются за камерой. Север сверху: поворачивается стрелка игрока.")))
                 .build();
         this.addRenderableWidget(minimapRotateButton);
 
@@ -3440,8 +3365,7 @@ public class MapScreen extends Screen {
     }
 
     private Component getRotateMessage() {
-        return Component.translatable("gui.simplemap.option.north_lock",
-                onOffComponent(!MapConfig.minimapRotate));
+        return Component.literal("Ориентация: "+(MapConfig.minimapRotate?"По взгляду":"Север сверху"));
     }
 
     private Component getShapeMessage() {

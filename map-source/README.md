@@ -1,5 +1,15 @@
 # F8Q map integration РІР‚вЂќ NeoForge 1.21.1
 
+## Surface UI and local party outlines (v20)
+
+The known-places panel starts collapsed. Automatic places with matching dimension, kind and display name form a single paged row; individual journal records and coordinates are unchanged. The selected member survives refresh, page changes focus its actual position, and the list only draws visible rows. Manual and party markers are not grouped. Toolbar icons retain their hit boxes and tooltips with no square background. Cave controls are removed and the effective cave policy always returns zero, including old saved modes.
+
+MapArtwork draws a static 256x256 cloud PNG below surface terrain, including retained framebuffer composition. This costs one background quad per composition; there are no runtime noise calculations, particles or map rebuilds for animation. The orientation setting now explicitly describes existing camera-follow versus north-up behavior, including compass letters. Unknown routes dynamically resolve to the question sprite so old saved kind values cannot reveal a dungeon. Default Waystone labels are omitted while meaningful custom obelisk names remain.
+
+PartyOutlinePolicy and the existing client glow/color mixins provide white living teammates to a downed viewer and red downed teammates to party viewers. No server-wide glowing flag is changed. MapUiPolicyTest covers grouped pagination, refresh/deletion, collapsed defaults, cave policy, route discovery, default/custom obelisk names and all outline policy combinations. Manual party marker regression tests, dedicated startup and obelisk place-break-replace integration pass. Both isolated clients joined the test server without new mixin failures. Interactive visual QA was interrupted and not repeated on the user's desktop. No live FPS/MSPT improvement is claimed.
+
+Exploration stays personal. The v18 async coverage save and v19 manual party marker relay are unchanged. No JourneyMap importer or terrain-sharing path is restored.
+
 ## Current policy: manual party marks restored (v19)
 
 Party members again see one another's manually placed pins and waypoints. The existing marker payload carries label, coordinates, dimension and custom icon; the receiving UI uses the existing TeamMarks presentation for the full map, minimap, known-places list and world HUD. Changes are checked once per second and unchanged snapshots are sent every five seconds as a heartbeat. Empty snapshots delete markers; leaving the party removes them. The server derives recipients from the authenticated sender's party; the client rejects unrelated owners.

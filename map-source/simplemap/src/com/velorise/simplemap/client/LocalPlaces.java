@@ -75,7 +75,7 @@ public final class LocalPlaces {
     public static String routeDimension(){return journal.state.routeDimension;}
     public static boolean following(String id){return routing()&&journal.state.routeId.equals(id);}
     public static void follow(TeamMarks.Location place,String dimension){follow(place,dimension,place.id());}
-    public static void follow(TeamMarks.Location place,String dimension,String routeKey){follow(place,dimension,routeKey,"poi:"+place.kind(),place.kind());}
+    public static void follow(TeamMarks.Location place,String dimension,String routeKey){follow(place,dimension,routeKey,TeamMarks.routeIcon(place,""),place.kind());}
     public static void follow(TeamMarks.Location place,String dimension,String routeKey,String icon,int kind){
         journal.state.routeIcon=icon;journal.state.routeKind=kind;
         journal.state.routePoint=place;journal.state.routeId=routeKey;journal.state.routeDimension=dimension;resumed=true;

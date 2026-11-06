@@ -163,7 +163,7 @@ public final class TeamMarks {
 
     public record Location(String id, String structure, double x, double y, double z, int kind, boolean open,String label) {
         public Location(String id,String structure,double x,double y,double z,int kind,boolean open){this(id,structure,x,y,z,kind,open,"");}
-        public String title() { return LocalPlaces.name(id,id.startsWith("waypoint:") ? id.substring(9) : open ? (kind==0&&label!=null&&!label.isBlank()?"Обелиск ["+label+"]":structureTitle(structure,kind)) : "Неизвестное место"); }
+        public String title() { return LocalPlaces.name(id,id.startsWith("waypoint:") ? id.substring(9) : open ? (kind==0?obeliskTitle(label):structureTitle(structure,kind)) : "Неизвестное место"); }
         public String description() { return kind==12 ? "Место вашей гибели. Здесь стоит поискать оставленные вещи." : kind==13 ? "Ваша сохранённая метка. Ориентир для будущего путешествия." : open ? placeDescription(kind) : "Здесь обнаружена настоящая постройка. Подойдите ближе, чтобы узнать, что это за место."; }
     }
     private static final java.util.Map<String,String> STRUCTURE_TITLES=java.util.Map.ofEntries(
@@ -200,6 +200,15 @@ public final class TeamMarks {
         return placeName(kind);
     }
     private static volatile List<Location> locations = List.of();
+    public static String obeliskTitle(String label){
+        String name=label==null?"":label.strip();
+        if(name.isEmpty()||name.equalsIgnoreCase("waystone")||name.equalsIgnoreCase("обелиск")||name.equalsIgnoreCase("камень телепорта"))return "Обелиск";
+        return "Обелиск ["+name+"]";
+    }
+    public static String routeIcon(Location place,String saved){
+        if(!place.open())return "poi:unknown";
+        return saved==null||saved.isEmpty()||saved.startsWith("poi:")?"poi:"+place.kind():saved;
+    }
     private static final String[] PLACE_FILES = { "poi_waystone", "poi_dungeon", "poi_witch", "poi_village", "poi_dungeon", "poi_ogre", "poi_frog", "poi_frog_enemy", "poi_ruins", "poi_pillager", "poi_portal", "poi_home" };
     private static final String[] PLACE_NAMES = { "Обелиск", "Данж", "Ведьмины земли", "Поселение", "Данж", "Лагерь огров", "Поселение Ribbits", "Лагерь злых лягушек", "Руины", "Лагерь разбойников", "Разрушенный портал", "Ваш дом" };
     private static final String[] PLACE_DESCRIPTIONS = {
@@ -291,10 +300,10 @@ public final class TeamMarks {
     public static List<Mark> allVisible(){return marks.stream().filter(m->m.pin()?showPins:showWaypoints).toList();}
     public static Mark localRoute(String dim){
         var place=LocalPlaces.routeLocation();if(place==null||!dim.equals(LocalPlaces.routeDimension()))return null;
-        return new Mark("",LocalPlaces.color(place.id()),place.title(),place.x(),place.y(),place.z(),dim,false,LocalPlaces.journal().state.routeIcon==null||LocalPlaces.journal().state.routeIcon.isEmpty()?"poi:"+place.kind():LocalPlaces.journal().state.routeIcon,LocalPlaces.journal().state.routeKind);
+        return new Mark("",LocalPlaces.color(place.id()),place.title(),place.x(),place.y(),place.z(),dim,false,routeIcon(place,LocalPlaces.journal().state.routeIcon),place.kind());
     }
     public static void markIcon(GuiGraphics g,Mark mark,float x,float y,int half){
-        if(mark.iconItem()!=null&&mark.iconItem().startsWith("poi:")){icon(g,placeIcon(mark.kind()),x,y,half,mark.color());return;}
+        if(mark.iconItem()!=null&&mark.iconItem().startsWith("poi:")){icon(g,"poi:unknown".equals(mark.iconItem())?UNKNOWN:placeIcon(mark.kind()),x,y,half,mark.color());return;}
         if(mark.iconItem()!=null&&!mark.iconItem().isEmpty()){PlaceEntry.itemIcon(g,mark.iconItem(),x,y,half);return;}
         cross(g,x,y,half,mark.color(),mark.owner().isEmpty());
     }

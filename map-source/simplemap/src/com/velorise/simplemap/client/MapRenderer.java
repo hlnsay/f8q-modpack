@@ -322,6 +322,8 @@ public class MapRenderer {
             guiGraphics.enableScissor(viewportX, viewportY, viewportX + width, viewportY + height);
         }
 
+        if (!isMinimap) MapArtwork.fog(guiGraphics,viewportX,viewportY,width,height);
+
         // 3. Set up the camera transformation:
         // - Translate to the center of the viewport
         poseStack.translate(viewportX + width / 2.0, viewportY + height / 2.0, 0);
