@@ -1,5 +1,13 @@
 # F8Q map integration РІР‚вЂќ NeoForge 1.21.1
 
+## Native map address recovery (v22)
+
+The active connection was verified on port 30096, while the server entry omitted the port. This selected a new cache key (mp_f8quit.exaroton.me_fc8eaf369899) instead of the historical explicit-port key. Old native observations still existed; the gray fog was displaying genuinely missing local tiles in the newly selected folder, not proving an erased map or a blending bug.
+
+ServerMapIdentity aliases only this pack's verified hostname and connected port. Other hosts and ports are untouched. On first connection it merges only native .smdat region files using RegionDataStore's block/biome palette and coverage merge. It preserves source directories and target backups, archives derived LOD/container caches for regeneration, keeps the newest place snapshot so deleted POIs are not resurrected, retains personal styles, and preserves the latest native waypoint snapshot. It never imports JourneyMap rasters, terrain.dat overlays or source LOD tiles. A durable marker makes recovery one-time.
+
+Tests: endpoint/port isolation, disjoint native pixels, palette remapping, new-region retention, personal styles, deletion preservation, backup, no raster imports, idempotence and path containment. A copied real cache held 6,378,240 old cells and 918,016 alias cells; after recovery it held 7,008,000 cells. Recovery plus verification took about 736 ms on this machine at login, with no per-frame migration work. No live client cache was changed while Minecraft was running.
+
 ## Surface UI and local party outlines (v20)
 
 The known-places panel starts collapsed. Automatic places with matching dimension, kind and display name form a single paged row; individual journal records and coordinates are unchanged. The selected member survives refresh, page changes focus its actual position, and the list only draws visible rows. Manual and party markers are not grouped. Toolbar icons retain their hit boxes and tooltips with no square background. Cave controls are removed and the effective cave policy always returns zero, including old saved modes.

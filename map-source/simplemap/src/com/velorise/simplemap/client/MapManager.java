@@ -310,8 +310,21 @@ public class MapManager {
                 worldDirectory = new File(minecraft.gameDirectory, "simplemap/saves/" + worldId);
             }
         } else if (minecraft.getCurrentServer() != null) {
-            String address = minecraft.getCurrentServer().ip;
+            String rawAddress = minecraft.getCurrentServer().ip;
+            int connectedPort = minecraft.getConnection() != null
+                    && minecraft.getConnection().getConnection().getRemoteAddress() instanceof java.net.InetSocketAddress socket
+                    ? socket.getPort() : -1;
+            String address = ServerMapIdentity.canonicalAddress(rawAddress, connectedPort);
             worldId = multiplayerWorldId(address);
+            if (!multiplayerWorldId(rawAddress).equals(worldId)) {
+                try {
+                    boolean recovered = ServerMapIdentity.recover(new File(minecraft.gameDirectory, "simplemap/saves").toPath(),
+                            multiplayerWorldId(rawAddress), worldId);
+                    if (recovered) LOGGER.info("Recovered native map from alternate spelling of this server address");
+                } catch (IOException e) {
+                    LOGGER.error("Native address recovery failed; existing map files retained",e);
+                }
+            }
             worldDirectory = resolveMultiplayerWorldDirectory(minecraft, address, worldId);
         } else {
             worldId = "dim_" + safePathComponent(level.dimension().location().toString());

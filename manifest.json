@@ -1035,9 +1035,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 4234726,
-      "sha512": "32702827cf8083d4f48d4ce126668696594b54019bab4b34289021d132fe64183f1b5c7ebbe6548a449323cb8f9b8505c51e4b274b6830d2fccd00a71cc131a4",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q20-32702827cf80.jar"
+      "size": 4239388,
+      "sha512": "a511c3adba22e1a2ab88067da6c45176eb869a39f1e63e5429206a756ff65836fe4ffec360ad23b0ef0326f339f8d2919748e786d1b6750da737934b07300880",
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q22-a511c3adba22.jar"
     },
     {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
@@ -2301,6 +2301,16 @@
       "date": "2026-11-06",
       "added": [],
       "updated": [
+        "Исправлен разрыв личной карты при входе на f8quit.exaroton.me с портом 30096 и без него: используется одна папка кэша.",
+        "При первом входе объединяются собственные native-регионы обеих папок; старые наблюдения, новые участки и личные стили сохраняются. Исходники и резервные копии остаются локально.",
+        "Серый фон остаётся только на неисследованном участке; перенос изображений JourneyMap не включается."
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-06",
+      "added": [],
+      "updated": [
         "В XP-like HUD выровнен вертикальный шаг полосок: броня опущена на 2 игровых пикселя, расстояние броня–здоровье теперь равно расстоянию здоровье–опыт. Остальной HUD сохранён."
       ],
       "removed": []
@@ -2709,6 +2719,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-06-hud-armor-spacing-v21",
+  "revision": "2026-11-06-native-map-address-recovery-v22",
   "journeymap": []
 }
