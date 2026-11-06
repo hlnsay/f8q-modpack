@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="f8qparty"
-version="1.0.19"
+version="1.0.21"
 displayName="F8Q Party"
 description="Parties of three: invites, the list of friends, and who may lift whom."
 

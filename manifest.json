@@ -951,9 +951,9 @@
     },
     {
       "path": "mods/f8qparty-1.0.0.jar",
-      "sha512": "57c1a61a8448f3953b5c8a6b0b6cfc205a695e51b7868343d7bcbf5ebc1b9ece56a639a3269aa3afe09461c994a126ad53bbea33d130e493fc57f8eb869369e2",
-      "size": 636423,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.19-57c1a61a8448.jar"
+      "sha512": "42fd2b0d1fb3b79c440e3bf7662bc39a40678d9bae5e49c670c53581ee32abeb0bdc0e075521a79c22e9ce2a78d85c0705a2490961ba7ab8ccd633a6740b169d",
+      "size": 636441,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8qparty-1.0.21-42fd2b0d1fb3.jar"
     },
     {
       "path": "mods/Paraglider-neoforge-21.1.5.jar",
@@ -2299,6 +2299,14 @@
   "changelog": [
     {
       "date": "2026-11-06",
+      "added": [],
+      "updated": [
+        "В XP-like HUD выровнен вертикальный шаг полосок: броня опущена на 2 игровых пикселя, расстояние броня–здоровье теперь равно расстоянию здоровье–опыт. Остальной HUD сохранён."
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-06",
       "added": [
         "Одинаковые известные места объединены в строки с перелистыванием; выбор переносит карту к координатам нужного места.",
         "Кремовая PNG-стрелка панели и перелистывания. Серый облачный фон неизученной карты без частиц.",
@@ -2701,6 +2709,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-06-map-ui-and-party-outlines-v20",
+  "revision": "2026-11-06-hud-armor-spacing-v21",
   "journeymap": []
 }

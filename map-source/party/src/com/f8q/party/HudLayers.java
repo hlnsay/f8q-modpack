@@ -16,7 +16,9 @@ final class HudLayers {
     static void before(RenderGuiLayerEvent.Pre event){
         if((!BOTTOM.contains(event.getName())&&!event.getName().getNamespace().equals("appleskin"))||event.isCanceled())return;
         if(downed()){event.setCanceled(true);return;}
-        event.getGuiGraphics().pose().pushPose();event.getGuiGraphics().pose().translate(0,-6,0);translated.add(event.getName());
+        // Vanilla places armor ten GUI pixels above health; XP-like HUD uses an eight-pixel row pitch.
+        int offset=event.getName().equals(VanillaGuiLayers.ARMOR_LEVEL)?-4:-6;
+        event.getGuiGraphics().pose().pushPose();event.getGuiGraphics().pose().translate(0,offset,0);translated.add(event.getName());
     }
     static void after(RenderGuiLayerEvent.Post event){if(translated.remove(event.getName()))event.getGuiGraphics().pose().popPose();}
 }
