@@ -1,18 +1,19 @@
 {
   "joined": true,
-  "screen": "net.minecraft.client.gui.screens.ChatScreen",
-  "elapsed_seconds": 127.3758532,
+  "screen": "none",
+  "elapsed_seconds": 127.8357931,
   "language": "ru_ru",
   "sable_ru": "Сохранение подуровней",
   "furniture_ru": "Дубовый стол",
   "voice_ru": "Усиление: 1",
-  "render_samples": 3458,
-  "frame_ms_p50": 6.5466,
-  "frame_ms_p95": 16.7197,
-  "frame_ms_p99": 55.057,
+  "render_samples": 2877,
+  "frame_ms_p50": 6.9043,
+  "frame_ms_p95": 23.3609,
+  "frame_ms_p99": 25.7089,
   "dimension": "minecraft:overworld",
   "weather_glass": "0.6.0+1.21.1-neoforge",
   "weather_detail": 16,
-  "fixture": "28 vanilla glass blocks under rain, Complementary Unbound, Sodium and Continuity",
-  "production_server_mod_installed": false
+  "fixture": "28 vanilla glass blocks under open sky at Y298-301, plains biome, rain, Complementary Unbound, Sodium and Continuity",
+  "production_server_mod_installed": false,
+  "visual_rain_glass_verified": true
 }
