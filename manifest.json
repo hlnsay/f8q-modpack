@@ -1218,6 +1218,12 @@
       "url": "https://cdn.modrinth.com/data/ZAOmQGkv/versions/rcyk6T3X/fancyitems-1.0.0.jar",
       "sha512": "99678817205644a9a456014a9c3173fce33986a23f694de7177fe0967d239221145e8377ee46445c2450a4926fb224f4cbbf093e2298760f66fafe6e95d871bc",
       "size": 454864
+    },
+    {
+      "path": "mods/weatherglass-0.6.0-1.21.1-neoforge.jar",
+      "url": "https://edge.forgecdn.net/files/9508/282/weatherglass-0.6.0-1.21.1-neoforge.jar",
+      "size": 593033,
+      "sha512": "ec0cfc7f5a9289b71569e47247703d32b04daf4ae3c67ce2ce476788c67a33d291f96294ec0e6df66f100d86067f217522a097bc4bcad6a3b567ef9d9ad53584"
     }
   ],
   "remove": [
@@ -2485,6 +2491,12 @@
       "sha512": "38a97910fd316886649f42fd89c101448f263d16221339b24774f0972135166e478763f464ed4c9c7ff95908aee043f787d91590ce1ec7a599b15274cddb99c1",
       "size": 2913,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/d4888fcdaaba19058ba28005bc47d600e5b96aec/config/fancyitems-client.toml"
+    },
+    {
+      "path": "config/weatherglass.properties",
+      "sha512": "568de348b95d7fb223b99af083797a4a940ce2db58b04772e36be868002cbf56d1dd7e286a87e2e8dce14bb58bbda7cdb3782bdc6a09efae3736759be1c94093",
+      "size": 115,
+      "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/0184340e71032ff1c062f12183070c038efa9df1/config/weatherglass.properties"
     }
   ],
   "updater": {
@@ -2533,6 +2545,16 @@
     "file/better-3d-beds.zip"
   ],
   "changelog": [
+    {
+      "date": "2026-11-09",
+      "added": [
+        "Weather Glass: дождь, снег и иней на оконных блоках."
+      ],
+      "updated": [
+        "Детализация эффектов окон — 16×. Мод устанавливается только на клиент."
+      ],
+      "removed": []
+    },
     {
       "date": "2026-11-09",
       "added": [
@@ -2985,6 +3007,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-09-polymorph-leveling-grassrise-fancyitems-v24",
+  "revision": "2026-11-09-weather-glass-v25",
   "journeymap": []
 }

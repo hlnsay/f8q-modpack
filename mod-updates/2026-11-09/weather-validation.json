@@ -1,0 +1,18 @@
+{
+  "joined": true,
+  "screen": "net.minecraft.client.gui.screens.ChatScreen",
+  "elapsed_seconds": 127.3758532,
+  "language": "ru_ru",
+  "sable_ru": "Сохранение подуровней",
+  "furniture_ru": "Дубовый стол",
+  "voice_ru": "Усиление: 1",
+  "render_samples": 3458,
+  "frame_ms_p50": 6.5466,
+  "frame_ms_p95": 16.7197,
+  "frame_ms_p99": 55.057,
+  "dimension": "minecraft:overworld",
+  "weather_glass": "0.6.0+1.21.1-neoforge",
+  "weather_detail": 16,
+  "fixture": "28 vanilla glass blocks under rain, Complementary Unbound, Sodium and Continuity",
+  "production_server_mod_installed": false
+}
