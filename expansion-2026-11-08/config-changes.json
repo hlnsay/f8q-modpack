@@ -1,0 +1,49 @@
+{
+  "sable-common.toml": {
+    "sub_level_tracking_range": "160.0",
+    "disable_udp_pipeline": "true",
+    "attempt_udp_networking": "false"
+  },
+  "sable-client.toml": {
+    "attempt_udp_networking": "false"
+  },
+  "simulated-server.toml": {
+    "maxBlocksMoved": "8192"
+  },
+  "ritchiesprojectilelib-server.toml": {
+    "maxChunksForceLoaded": "8",
+    "maxChunksLoadedEachTick": "4"
+  },
+  "createbigcannons-server.toml": {
+    "smokeCloudsCanChunkload": "false"
+  },
+  "createbigcannons-client.toml": {
+    "fluidBlobParticleCount": "8",
+    "useShaderCompatibleGraphics": "true",
+    "showExtraSmoke": "false",
+    "showExtraFlames": "false"
+  },
+  "simpleblood-client.toml": {
+    "groundDecalDurationMultiplier": "0.5"
+  },
+  "yungscavebiomes-neoforge-1_21_1.toml": {
+    "\"Render Extra Particles During Sandstorms\"": "false"
+  },
+  "refurbished_furniture.client.toml": {
+    "electricityViewDistance": "24"
+  },
+  "yungsmenutweaks-neoforge-1_21.toml": {
+    "\"Enable Custom Background Texture\"": "false"
+  },
+  "voicechat/voicechat-server.properties": {
+    "port": "-1",
+    "voice_host": "",
+    "max_voice_distance": "32.0",
+    "whisper_distance": "12.0"
+  },
+  "voicechat/voicechat-client.properties": {
+    "group_player_icon_pos_x": "8",
+    "group_player_icon_pos_y": "-72",
+    "group_hud_icon_scale": "1.0"
+  }
+}

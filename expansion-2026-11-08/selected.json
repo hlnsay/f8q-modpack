@@ -1,0 +1,233 @@
+[
+  {
+    "slug": "alcocraft",
+    "project": "6t2MdNbo",
+    "version": "2.1.2+1.21.1",
+    "filename": "alcocraftplus-1.21.1-2.1.2-neoforge.jar",
+    "url": "https://cdn.modrinth.com/data/6t2MdNbo/versions/n4gLo4WI/alcocraftplus-1.21.1-2.1.2-neoforge.jar",
+    "sha512": "a3d94f2f84d75a1c4463bd02883ede222413bc36284881d23d3c24ce3b4c010371fbdbc189bf1426c315f2404c50e1db14d7c0e1bf8fe11b552df1e61944f672",
+    "size": 288935,
+    "client_side": "required",
+    "server_side": "required"
+  },
+  {
+    "slug": "create-aeronautics",
+    "project": "oWaK0Q19",
+    "version": "1.3.2+mc1.21.1",
+    "filename": "create-aeronautics-bundled-1.21.1-1.3.2.jar",
+    "url": "https://cdn.modrinth.com/data/oWaK0Q19/versions/44pLdPGg/create-aeronautics-bundled-1.21.1-1.3.2.jar",
+    "sha512": "dc7e8e1148fa442243889ba29412207137e1bb86206e6c92bc0a589f1374a466e93de22bdbf14f753984d86c29308fbbdc0f14a4b9618b14c0ac1666a36b46f5",
+    "size": 33123131,
+    "client_side": "required",
+    "server_side": "required"
+  },
+  {
+    "slug": "create-big-cannons",
+    "project": "GWp4jCJj",
+    "version": "5.11.7",
+    "filename": "createbigcannons-5.11.7+mc.1.21.1.jar",
+    "url": "https://cdn.modrinth.com/data/GWp4jCJj/versions/bOiDu0LS/createbigcannons-5.11.7%2Bmc.1.21.1.jar",
+    "sha512": "24f414dfbb973a0f4d9c9b2aa059edc7bed4d23b4f39eb1f7d23a1d6b437e3b5d64cca6e4b85ff7eb2815743fa711d54ad652bffe96d1eb1234544716006440d",
+    "size": 3771506,
+    "client_side": "required",
+    "server_side": "required"
+  },
+  {
+    "slug": "irons-simple-blood",
+    "project": "l7Ddlxg5",
+    "version": "1.21.1-1.0.5",
+    "filename": "simpleblood-1.21.1-1.0.5.jar",
+    "url": "https://cdn.modrinth.com/data/l7Ddlxg5/versions/ay2cFXz0/simpleblood-1.21.1-1.0.5.jar",
+    "sha512": "e171b7e446b5c926626018255eb7a1e4ba0ed0dbfae78bef7179bb847171479119070893bac69d2fb53cbe7b4593fd011606725ff1535b835589118b2c7ca152",
+    "size": 71624,
+    "client_side": "required",
+    "server_side": "required"
+  },
+  {
+    "slug": "rpl",
+    "project": "B3pb093D",
+    "version": "2.1.2",
+    "filename": "ritchiesprojectilelib-2.1.2+mc.1.21.1-neoforge.jar",
+    "url": "https://cdn.modrinth.com/data/B3pb093D/versions/hZ6B2Z0x/ritchiesprojectilelib-2.1.2%2Bmc.1.21.1-neoforge.jar",
+    "sha512": "6d64c84505a5a8fbb96d106603065465c5a2314ec09636900c5c1a31014c12fa68f1a41e758313cbf0d6f95d9a1f53bd67339020f7d8db0e184c23f66aee0330",
+    "size": 76369,
+    "client_side": "required",
+    "server_side": "required"
+  },
+  {
+    "slug": "sable",
+    "project": "T9PomCSv",
+    "version": "2.0.6+mc1.21.1",
+    "filename": "sable-neoforge-1.21.1-2.0.6.jar",
+    "url": "https://cdn.modrinth.com/data/T9PomCSv/versions/fg9dTRz9/sable-neoforge-1.21.1-2.0.6.jar",
+    "sha512": "76d293ce751a01cb9c095a3659b0a41e03e005480bc9d76dfdc73ec7c2eabf7923740c7b077921d42616673c496cd5143569f2085ddcebe174fd91d81e2a04b8",
+    "size": 12986135,
+    "client_side": "required",
+    "server_side": "required"
+  },
+  {
+    "slug": "simple-voice-chat",
+    "project": "9eGKb6K1",
+    "version": "neoforge-1.21.1-2.6.27",
+    "filename": "voicechat-neoforge-1.21.1-2.6.27.jar",
+    "url": "https://cdn.modrinth.com/data/9eGKb6K1/versions/iR08ksVF/voicechat-neoforge-1.21.1-2.6.27.jar",
+    "sha512": "35a9411d71de86071501f6b42088585a1be6e90b03cafe75d89b53e913a5af9d5cdfa40a098d95908af63237577e58f6263ce4f676deec58aca2de0758eba9dd",
+    "size": 4936802,
+    "client_side": "optional",
+    "server_side": "optional"
+  },
+  {
+    "slug": "yungs-better-caves",
+    "project": "Dfu00ggU",
+    "version": "1.21.1-NeoForge-3.1.6",
+    "filename": "YungsBetterCaves-1.21.1-NeoForge-3.1.6.jar",
+    "url": "https://cdn.modrinth.com/data/Dfu00ggU/versions/Feo6YOjN/YungsBetterCaves-1.21.1-NeoForge-3.1.6.jar",
+    "sha512": "a5fa3881a32a96c25c8012aac347221363792d68491ae1f6e26d345264f7acff7c7562d6c96e0ee2f00c63ad50351742763a740f0965cc9ca0b97808f8847bba",
+    "size": 400316,
+    "client_side": "unsupported",
+    "server_side": "required"
+  },
+  {
+    "slug": "yungs-better-desert-temples",
+    "project": "XNlO7sBv",
+    "version": "1.21.1-NeoForge-4.1.5",
+    "filename": "YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar",
+    "url": "https://cdn.modrinth.com/data/XNlO7sBv/versions/GQ9iNWkI/YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar",
+    "sha512": "6454c955f75f66104810e967a59ae032ddf1ccc5a854346af6bfba6e44cd456e755cd8feb1e0968be4e9132ea6c5d1cb2126fe5e85d3eb18c8d3ea3c81ffdf9a",
+    "size": 905839,
+    "client_side": "unsupported",
+    "server_side": "required"
+  },
+  {
+    "slug": "yungs-better-end-island",
+    "project": "2BwBOmBQ",
+    "version": "1.21.1-NeoForge-3.1.2",
+    "filename": "YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar",
+    "url": "https://cdn.modrinth.com/data/2BwBOmBQ/versions/I52NZ1qK/YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar",
+    "sha512": "02923a1a97eb81ec13d69bdc6b7e8b36dfb9e6f1a98adfcf103707ec3afde35831ccd4b210e9b3a9c7662541c38ea593a3d94c12171b4072ea7feafa75c95f96",
+    "size": 398130,
+    "client_side": "unsupported",
+    "server_side": "required"
+  },
+  {
+    "slug": "yungs-better-jungle-temples",
+    "project": "z9Ve58Ih",
+    "version": "1.21.1-NeoForge-3.1.2",
+    "filename": "YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar",
+    "url": "https://cdn.modrinth.com/data/z9Ve58Ih/versions/P00i2hJn/YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar",
+    "sha512": "eca4233e874a55886c63d2111b8685d479771d3627bad2922582e65b78c51ba74733dc4624aabf91f2a2178a940a72d9209ae33eef74e34f84f07d62256709d9",
+    "size": 795839,
+    "client_side": "unsupported",
+    "server_side": "required"
+  },
+  {
+    "slug": "yungs-better-mineshafts",
+    "project": "HjmxVlSr",
+    "version": "1.21.1-NeoForge-5.1.1",
+    "filename": "YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
+    "url": "https://cdn.modrinth.com/data/HjmxVlSr/versions/Go3nbneL/YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
+    "sha512": "8b01b386f53feeaa55f0c62697578b82e00501e45e428b2a68df6bda34efb6a4b3b4e3582abf13fe767ebcb61aef9368186f53c03999958bef38f31c41a7f8b2",
+    "size": 493967,
+    "client_side": "unsupported",
+    "server_side": "required"
+  },
+  {
+    "slug": "yungs-better-nether-fortresses",
+    "project": "Z2mXHnxP",
+    "version": "1.21.1-NeoForge-3.1.5",
+    "filename": "YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar",
+    "url": "https://cdn.modrinth.com/data/Z2mXHnxP/versions/iopJiJQp/YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar",
+    "sha512": "18b461298d3df1215fa3b4d2c0cb2ef1c7ed76701d8a0bb140277b21923e31abd939f0fd9b400c5bd676d739f1cda31c43b4dc753f9187251542223f3424d336",
+    "size": 609639,
+    "client_side": "unsupported",
+    "server_side": "required"
+  },
+  {
+    "slug": "yungs-better-ocean-monuments",
+    "project": "3dT9sgt4",
+    "version": "1.21.1-NeoForge-4.1.2",
+    "filename": "YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar",
+    "url": "https://cdn.modrinth.com/data/3dT9sgt4/versions/yFjEcj2g/YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar",
+    "sha512": "77c864da36f1d2173e6460dc335996893a804954b8a5c274173fc95dfdbf437e80d9dce32f6060306a662fc35322566eecf5dfe24e2d3fab79bf7e0ff9fa4db6",
+    "size": 1025571,
+    "client_side": "unsupported",
+    "server_side": "required"
+  },
+  {
+    "slug": "yungs-better-strongholds",
+    "project": "kidLKymU",
+    "version": "1.21.1-NeoForge-5.1.3",
+    "filename": "YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar",
+    "url": "https://cdn.modrinth.com/data/kidLKymU/versions/8U0dIfSM/YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar",
+    "sha512": "385d67e07f2c67af5ea387d92d92949d8f671e8f99204457b6396dbe987ac3b14c2bff765df5fcbaa68016604f82a1fc6ec5a69c012ca22ad088d1a7c9bc135d",
+    "size": 461244,
+    "client_side": "unsupported",
+    "server_side": "required"
+  },
+  {
+    "slug": "yungs-better-witch-huts",
+    "project": "t5FRdP87",
+    "version": "1.21.1-NeoForge-4.1.1",
+    "filename": "YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar",
+    "url": "https://cdn.modrinth.com/data/t5FRdP87/versions/AvedwcIe/YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar",
+    "sha512": "9baa8a1f36a2a36efc3df58ab9347fd9f326b551ad78e3f600ed9d68862c619752ac0770804807efb15a46fcb4d9f6e2baf6a11f622d3ebb6c865662f6c7bcfd",
+    "size": 174789,
+    "client_side": "unsupported",
+    "server_side": "required"
+  },
+  {
+    "slug": "yungs-bridges",
+    "project": "Ht4BfYp6",
+    "version": "1.21.1-NeoForge-5.1.1",
+    "filename": "YungsBridges-1.21.1-NeoForge-5.1.1.jar",
+    "url": "https://cdn.modrinth.com/data/Ht4BfYp6/versions/urkCzBf6/YungsBridges-1.21.1-NeoForge-5.1.1.jar",
+    "sha512": "20b07ae4c08974980f976bcae32f18ccb885745d6cd50d4a5d0156eb5c51c29e49f8b2bf7dc2ae160d39b62f2332513bd9850efc5cba13697e36a2ac2848bc3b",
+    "size": 136820,
+    "client_side": "unsupported",
+    "server_side": "required"
+  },
+  {
+    "slug": "yungs-cave-biomes",
+    "project": "cs7iGVq1",
+    "version": "1.21.1-NeoForge-3.1.1",
+    "filename": "YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar",
+    "url": "https://cdn.modrinth.com/data/cs7iGVq1/versions/HYGqXWqQ/YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar",
+    "sha512": "9e88b5109e06c791f27c23df16ebd2c535b5b27cf9b748ee6a439dccf3e560d32110b81ace5ea7dcca2992394b439223c20e4f2688e80e263efa103e2b154024",
+    "size": 13006621,
+    "client_side": "required",
+    "server_side": "required"
+  },
+  {
+    "slug": "yungs-extras",
+    "project": "ZYgyPyfq",
+    "version": "1.21.1-NeoForge-5.1.1",
+    "filename": "YungsExtras-1.21.1-NeoForge-5.1.1.jar",
+    "url": "https://cdn.modrinth.com/data/ZYgyPyfq/versions/N2EpMhR7/YungsExtras-1.21.1-NeoForge-5.1.1.jar",
+    "sha512": "d4ef831a034977abdcaec40a7662adbc37c32cf141c68245250da501f6ada2ce193c5351166fbcf2ffb1c452b60bfca8ac578963332aa4a1b523e43912b8cb8c",
+    "size": 198183,
+    "client_side": "unsupported",
+    "server_side": "required"
+  },
+  {
+    "slug": "yungs-menu-tweaks",
+    "project": "Hcy2DFKF",
+    "version": "1.21.1-NeoForge-2.1.2",
+    "filename": "YungsMenuTweaks-1.21.1-NeoForge-2.1.2.jar",
+    "url": "https://cdn.modrinth.com/data/Hcy2DFKF/versions/OB9hQTpQ/YungsMenuTweaks-1.21.1-NeoForge-2.1.2.jar",
+    "sha512": "509327f5f5542246e2b98811b36cf2f7e26fe81b7538f3443b958c0134029e0e1ae8483165adaf1f2c4ee5a531bf8b57a2628305f7caf6bf1301cf34ad46b5fb",
+    "size": 157761,
+    "client_side": "required",
+    "server_side": "unsupported"
+  },
+  {
+    "slug": "refurbished-furniture",
+    "project": "curseforge:897116",
+    "version": "1.0.22",
+    "filename": "refurbished_furniture-neoforge-1.21.1-1.0.22.jar",
+    "url": "https://edge.forgecdn.net/files/7473/565/refurbished_furniture-neoforge-1.21.1-1.0.22.jar",
+    "sha512": "fde4f40a3a6439c43df1f522a92a1bd16e4a175966d17efe9dea425d42f7906e7ed7771fd84182b1fd7f3bb86ecd6b969fdca3c4aca4719597e4832e75ae2511",
+    "size": 7133477,
+    "client_side": "required",
+    "server_side": "required"
+  }
+]
