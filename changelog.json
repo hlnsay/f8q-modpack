@@ -1,5 +1,22 @@
 [
   {
+    "date": "2026-11-08",
+    "added": [
+      "Create Big Cannons, Ritchie’s Projectile Library, Create Aeronautics и Sable.",
+      "Новые пещеры и биомы YUNG; мосты, дополнительные постройки, улучшенные храмы, хижины, шахты, крепости, монументы и остров Энда.",
+      "MrCrayfish’s Refurbished Furniture, AlcoCraft+, Iron’s Simple Blood, Simple Voice Chat.",
+      "YUNG’s Menu Tweaks; русский перевод мебели и 365 недостающих строк."
+    ],
+    "updated": [
+      "Ограничены размер физических конструкций, бюджет подгрузки снарядов и дополнительные частицы. Сохранён фон FancyMenu.",
+      "Голос настроен на UDP-порт exaroton; Sable использует Minecraft/TCP. F10 — голосовое меню, Caps Lock — разговор по удержанию, при первом добавлении и без замены личных назначений.",
+      "Better Dungeons и YUNG’s API уже установлены и не дублируются. Новая генерация появляется в новых чанках."
+    ],
+    "removed": [
+      "Luki’s Strongholds заменён на YUNG’s Better Strongholds для исключения двух генераторов крепостей."
+    ]
+  },
+  {
     "date": "2026-11-06",
     "added": [],
     "updated": [

@@ -1,0 +1,23 @@
+{
+  "joined": true,
+  "screen": "none",
+  "elapsed_seconds": 131.0206016,
+  "language": "ru_ru",
+  "sable_ru": "Сохранение подуровней",
+  "furniture_ru": "Дубовый стол",
+  "voice_ru": "Усиление: 1",
+  "render_samples": 2397,
+  "frame_ms_p50": 9.3706,
+  "frame_ms_p95": 27.3898,
+  "frame_ms_p99": 37.4356,
+  "dimension": "minecraft:overworld",
+  "shader_pack": "ComplementaryUnbound_r5.9.3.zip",
+  "voice_udp_local_authenticated": true,
+  "production_restarted": false,
+  "limits": "Single isolated client, fresh world and small Sable fixture; no large-vehicle or multiplayer battle stress test; Iris moving-structure issues remain upstream.",
+  "server_uploads_verified": 20,
+  "server_configs_verified": 6,
+  "local_client_files_verified": 36,
+  "query_port": 9898,
+  "minecraft_udp_voice_port": 30096
+}

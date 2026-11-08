@@ -1,0 +1,9 @@
+{
+  "tick query": "The game is running normally\nTarget tick rate: 20,0 per second.\nAverage time per tick: 7,2ms (Target: 50,0ms)\nPercentiles: P50: 6,7ms P95: 11,1ms P99: 20,1ms, sample: 100\n",
+  "forceload remove 5000 5000 5055 5055": "Unmarked 16 chunks in Overworld from [312, 312] to [315, 315] for force loading\n",
+  "tp F8QPreview 0 77 45 180 10": "Teleported F8QPreview to 0.500000, 77.000000, 45.500000\n",
+  "list": "There are 1 of a max of 20 players online: F8QPreview\n",
+  "physics_fixture": "sable spawn jenga 6: Spawned jenga",
+  "execute positioned 0 120 0 run sable spawn jenga 6": "Spawned jenga",
+  "fresh_worldgen_chunks": 16
+}
