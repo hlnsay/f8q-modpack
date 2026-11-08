@@ -1,0 +1,144 @@
+forceIrisCompatibility = false
+
+[starburstEffect]
+	enableStarburstEffect = true
+	starburstEffectAllowCommon = false
+	# Default: 9
+	# Range: 1 ~ 18
+	starburstRayCount = 9
+	# Default: 0.5
+	# Range: 0.1 ~ 2.0
+	starburstRayLength = 0.5
+	# Default: 0.25
+	# Range: 0.1 ~ 1.0
+	starburstRayWidth = 0.25
+	# Default: 1.0
+	# Range: 0.1 ~ 1.0
+	starburstIntensity = 1.0
+	# Default: 0.1
+	# Range: 0.01 ~ 1.0
+	starburstLengthVariation = 0.1
+	# Default: 3
+	# Range: 1 ~ 18
+	starburstLengthVariationCount = 3
+	# Default: 0.05
+	# Range: 0.01 ~ 0.5
+	starburstWidthVariation = 0.05
+	# Default: 2
+	# Range: 1 ~ 18
+	starburstWidthVariationCount = 2
+	# Default: 0.9
+	# Range: 0.1 ~ 2.0
+	starburstPulseLengthMin = 0.9
+	# Default: 1.1
+	# Range: 0.1 ~ 2.0
+	starburstPulseLengthMax = 1.1
+	# Default: 0.33
+	# Range: 0.1 ~ 2.0
+	starburstPulseWidthMin = 0.33
+	# Default: 1.5
+	# Range: 0.1 ~ 2.0
+	starburstPulseWidthMax = 1.5
+	# Default: 80
+	# Range: 1 ~ 1200
+	starburstPulseDuration = 80
+	# Default: 400
+	# Range: 1 ~ 1200
+	starburstRotationDuration = 400
+	starburstAnimationOffset = true
+
+[beamEffect]
+	enableBeamEffect = true
+	beamEffectAllowCommon = false
+	#Allowed Values: FANCY, SIMPLE
+	beamEffectStyle = "FANCY"
+	# Default: 60
+	# Range: 1 ~ 1200
+	beamEffectFadeDuration = 60
+
+	[beamEffect.beam]
+		enableBeam = true
+		# Default: 2
+		# Range: 1 ~ 4
+		beamPlanes = 2
+		# Default: 3.0
+		# Range: 0.1 ~ 16.0
+		beamHeight = 3.0
+		# Default: 0.5
+		# Range: 0.1 ~ 2.0
+		beamWidth = 0.5
+		# Default: 1.0
+		# Range: 0.1 ~ 1.0
+		beamIntensity = 1.0
+		# Default: 1.0
+		# Range: 0.1 ~ 2.0
+		beamPulseMin = 1.0
+		# Default: 1.5
+		# Range: 0.1 ~ 2.0
+		beamPulseMax = 1.5
+
+	[beamEffect.glow]
+		enableGlow = true
+		# Default: 1.0
+		# Range: 0.1 ~ 3.0
+		glowScale = 1.0
+		# Default: 0.5
+		# Range: 0.1 ~ 1.0
+		glowIntensity = 0.5
+		# Default: 1.0
+		# Range: 0.1 ~ 2.0
+		glowPulseMin = 1.0
+		# Default: 1.25
+		# Range: 0.1 ~ 2.0
+		glowPulseMax = 1.25
+
+	[beamEffect.sparkles]
+		enableSparkles = false
+		# Default: 16
+		# Range: 1 ~ 64
+		sparklesAmount = 16
+		# Default: 0.0625
+		# Range: 0.01 ~ 0.25
+		sparklesScale = 0.0625
+		# Default: 1.0
+		# Range: 0.1 ~ 1.0
+		sparklesIntensity = 1.0
+		# Default: 100
+		# Range: 1 ~ 1200
+		sparklesLifetime = 100
+		# Default: 0.5
+		# Range: 0.1 ~ 2.0
+		sparklesDistance = 0.5
+		# Default: 0.25
+		# Range: 0.1 ~ 2.0
+		sparklesDriftAmount = 0.25
+		# Default: 60
+		# Range: 1 ~ 1200
+		sparklesDriftFrequency = 60
+		# Default: 0.5
+		# Range: 0.1 ~ 1.0
+		sparklesRandomness = 0.5
+
+	[beamEffect.sound]
+		enableSound = true
+		# Default: 0.5
+		# Range: 0.0 ~ 1.0
+		soundVolume = 0.5
+		# Default: 16.0
+		# Range: 1.0 ~ 64.0
+		soundRange = 16.0
+		# Default: 0.1
+		# Range: 0.0 ~ 1.0
+		soundPitchVariation = 0.1
+		# Default: 0.5
+		# Range: 0.1 ~ 2.0
+		soundPulseMin = 0.5
+		# Default: 1.0
+		# Range: 0.1 ~ 2.0
+		soundPulseMax = 1.0
+
+[fadeEffect]
+	enableFadeEffect = true
+	# Default: 16.0
+	# Range: 1.0 ~ 64.0
+	fadeDistance = 16.0

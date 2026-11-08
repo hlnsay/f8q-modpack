@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "polymorph",
+    "path": "mods/polymorph-neoforge-1.2.0+1.21.1.jar",
+    "url": "https://cdn.modrinth.com/data/tagwiZkJ/versions/9yWvrF5o/polymorph-neoforge-1.2.0%2B1.21.1.jar",
+    "sha512": "dce77fffebae80532fec39d35c9c8b5817ba756bb03569022cc0854a8a6cf1868690f91451b587bd60d813e8403b5de91adbc324796bc423ef28deecfb13c775",
+    "size": 172671,
+    "version": "1.2.0+1.21.1",
+    "server": "required"
+  },
+  {
+    "slug": "grassrise-mod",
+    "path": "mods/grassrise-2.0.0+mc1.21.1-neoforge.jar",
+    "url": "https://cdn.modrinth.com/data/XEbPlg55/versions/dCoBnf1L/grassrise-2.0.0%2Bmc1.21.1-neoforge.jar",
+    "sha512": "71693ddb4c4679c2c785ff72d509cc389b8122bffdf38222781a15ce72ae07b9d029b5ec8903bce06691464bc3fe88b49e3ac1688780c7ae140292a86cb42157",
+    "size": 101505,
+    "version": "2.0.0",
+    "server": "unsupported"
+  },
+  {
+    "slug": "the-leveling",
+    "path": "mods/the-leveling-neoforge-1.21.1-1.2.1.jar",
+    "url": "https://cdn.modrinth.com/data/lUM7qbQQ/versions/fSdJQ3l2/the-leveling-neoforge-1.21.1-1.2.1.jar",
+    "sha512": "f61cbcd6b42c564c1d20094e5984ce8d8a59b84bd08e471ddecc792c2df30da793340a540d5c71f95f93549a1d5043f9b89ff81b8e7d9acc3e25b79692f14895",
+    "size": 328027,
+    "version": "1.2.1",
+    "server": "required"
+  },
+  {
+    "slug": "fancyitems",
+    "path": "mods/fancyitems-1.0.0.jar",
+    "url": "https://cdn.modrinth.com/data/ZAOmQGkv/versions/rcyk6T3X/fancyitems-1.0.0.jar",
+    "sha512": "99678817205644a9a456014a9c3173fce33986a23f694de7177fe0967d239221145e8377ee46445c2450a4926fb224f4cbbf093e2298760f66fafe6e95d871bc",
+    "size": 454864,
+    "version": "1.0.0",
+    "server": "unsupported"
+  }
+]
