@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026-11-09",
+    "added": [
+      "Polymorph: выбор результата при одинаковых рецептах.",
+      "The Leveling: прокачка отдельного снаряжения.",
+      "Grassrise: объёмная трава с поддержкой шейдеров.",
+      "Fancy Items: эффекты редких предметов в инвентаре и мире."
+    ],
+    "updated": [
+      "Дополнительные искры Fancy Items отключены; лучи и свечение сохранены."
+    ],
+    "removed": []
+  },
+  {
     "date": "2026-11-08",
     "added": [
       "Create Big Cannons, Ritchie’s Projectile Library, Create Aeronautics и Sable.",

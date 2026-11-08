@@ -1,0 +1,9 @@
+{
+  "item replace entity F8QPreview weapon.mainhand with minecraft:iron_sword": "Replaced a slot on F8QPreview with [Iron Sword]\n",
+  "weaponlevel set F8QPreview 5": "Weapon progress updated.\n",
+  "weaponlevel get F8QPreview": "F8QPreview item: level 6, XP 44, total XP 362\n",
+  "weaponlevel addxp F8QPreview 100": "Weapon progress updated.\n",
+  "data get entity F8QPreview SelectedItem": "F8QPreview has the following entity data: {id: \"minecraft:iron_sword\", count: 1, components: {\"weaponleveling:progress\": {total_xp: 362L, current_xp: 44L, schema_version: 3, unspent_points: 0, instance_id: [I; -1903400575, 2047757220, -1507327112, -1842983324], level: 6, base_attack_damage: 5.0d}}}\n",
+  "execute at F8QPreview run summon minecraft:item ~1 ~ ~ {Item:{id:\"minecraft:enchanted_golden_apple\",count:1}}": "Summoned new Enchanted Golden Apple\n",
+  "tick query": "The game is running normally\nTarget tick rate: 20,0 per second.\nAverage time per tick: 5,0ms (Target: 50,0ms)\nPercentiles: P50: 0,8ms P95: 10,1ms P99: 285,7ms, sample: 100\n"
+}

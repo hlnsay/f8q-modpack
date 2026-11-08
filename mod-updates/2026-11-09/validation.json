@@ -1,0 +1,22 @@
+{
+  "joined": true,
+  "screen": "none",
+  "elapsed_seconds": 125.994621,
+  "language": "ru_ru",
+  "sable_ru": "Сохранение подуровней",
+  "furniture_ru": "Дубовый стол",
+  "voice_ru": "Усиление: 1",
+  "render_samples": 2418,
+  "frame_ms_p50": 9.5018,
+  "frame_ms_p95": 26.8835,
+  "frame_ms_p99": 33.6554,
+  "dimension": "minecraft:overworld",
+  "server_files_verified": [
+    "mods/polymorph-neoforge-1.2.0+1.21.1.jar",
+    "mods/the-leveling-neoforge-1.21.1-1.2.1.jar"
+  ],
+  "server_restarted": false,
+  "polymorph_conflicts": 35,
+  "leveling_state_verified": true,
+  "test_heap_limit_gb": 5
+}
