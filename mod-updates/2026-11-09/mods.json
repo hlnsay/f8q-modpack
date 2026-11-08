@@ -9,15 +9,6 @@
     "server": "required"
   },
   {
-    "slug": "grassrise-mod",
-    "path": "mods/grassrise-2.0.0+mc1.21.1-neoforge.jar",
-    "url": "https://cdn.modrinth.com/data/XEbPlg55/versions/dCoBnf1L/grassrise-2.0.0%2Bmc1.21.1-neoforge.jar",
-    "sha512": "71693ddb4c4679c2c785ff72d509cc389b8122bffdf38222781a15ce72ae07b9d029b5ec8903bce06691464bc3fe88b49e3ac1688780c7ae140292a86cb42157",
-    "size": 101505,
-    "version": "2.0.0",
-    "server": "unsupported"
-  },
-  {
     "slug": "the-leveling",
     "path": "mods/the-leveling-neoforge-1.21.1-1.2.1.jar",
     "url": "https://cdn.modrinth.com/data/lUM7qbQQ/versions/fSdJQ3l2/the-leveling-neoforge-1.21.1-1.2.1.jar",
