@@ -334,15 +334,15 @@ public final class TeamMarks {
         var screen=Minecraft.getInstance().screen instanceof com.velorise.simplemap.client.gui.MapScreen map?map:null;
         for (Location location : autoPlacesVisible()?locations(MapManager.getInstance().getCurrentDimensionResourceId()):List.<Location>of()) {
             if(!mapped(location,MapManager.getInstance().getCurrentDimensionResourceId()))continue;
-            if(location.x()<minX||location.x()>maxX||location.z()<minZ||location.z()>maxZ)continue;
+            if(DioramaView.markerX(location.x(),location.z())<minX||DioramaView.markerX(location.x(),location.z())>maxX||DioramaView.markerZ(location.x(),location.z())<minZ||DioramaView.markerZ(location.x(),location.z())>maxZ)continue;
             int half=placeHalf(location.kind(),location.open());
             boolean selected=screen!=null&&screen.isSelectedLocation(location.id());
-            boolean hover=Math.hypot((location.x()-hoverX)*scale,(location.z()-hoverZ)*scale)<=(half+3)*overlay;
+            boolean hover=Math.hypot((DioramaView.markerX(location.x(),location.z())-DioramaView.markerX(hoverX,hoverZ))*scale,(DioramaView.markerZ(location.x(),location.z())-DioramaView.markerZ(hoverX,hoverZ))*scale)<=(half+3)*overlay;
             boolean focused=selected||hover;
-            int sx=(int)Math.round((location.x()-minX)*scale/overlay),sy=(int)Math.round((location.z()-minZ)*scale/overlay);
+            int sx=(int)Math.round((DioramaView.markerX(location.x(),location.z())-minX)*scale/overlay),sy=(int)Math.round((DioramaView.markerZ(location.x(),location.z())-minZ)*scale/overlay);
             if(!layout.icon(sx,sy,half,focused))continue;
             float size=overlay/scale;
-            g.pose().pushPose();g.pose().translate(location.x(),location.z(),5);g.pose().scale(size,size,1);
+            g.pose().pushPose();DioramaView.point(g.pose(),location.x(),location.z(),5);g.pose().scale(size,size,1);
             g.pose().pushPose();
             float selectedScale=screen==null?1f:screen.selectionScale(location.id());
             g.pose().scale(selectedScale,selectedScale,1);
@@ -360,30 +360,30 @@ public final class TeamMarks {
         }
         var privateRoute=localRoute(MapManager.getInstance().getCurrentDimensionResourceId());
         if(privateRoute!=null&&(!autoPlacesVisible()||LocalPlaces.routeLocation().id().startsWith("waypoint:"))
-                &&privateRoute.x()>=minX&&privateRoute.x()<=maxX&&privateRoute.z()>=minZ&&privateRoute.z()<=maxZ){
-            g.pose().pushPose();g.pose().translate(privateRoute.x(),privateRoute.z(),8);g.pose().scale(overlay/scale,overlay/scale,1);markIcon(g,privateRoute,0,0,10);g.pose().popPose();
+                &&DioramaView.markerX(privateRoute.x(),privateRoute.z())>=minX&&DioramaView.markerX(privateRoute.x(),privateRoute.z())<=maxX&&DioramaView.markerZ(privateRoute.x(),privateRoute.z())>=minZ&&DioramaView.markerZ(privateRoute.x(),privateRoute.z())<=maxZ){
+            g.pose().pushPose();DioramaView.point(g.pose(),privateRoute.x(),privateRoute.z(),8);g.pose().scale(overlay/scale,overlay/scale,1);markIcon(g,privateRoute,0,0,10);g.pose().popPose();
         }
         for (Mate mate : mates(MapManager.getInstance().getCurrentDimensionResourceId())) {
-            if (mate.x() < minX || mate.x() > maxX || mate.z() < minZ || mate.z() > maxZ) {
+            if (DioramaView.markerX(mate.x(),mate.z()) < minX || DioramaView.markerX(mate.x(),mate.z()) > maxX || DioramaView.markerZ(mate.x(),mate.z()) < minZ || DioramaView.markerZ(mate.x(),mate.z()) > maxZ) {
                 continue;
             }
             float factor = 2F / scale * overlay * 0.5F;
             g.pose().pushPose();
-            g.pose().translate(mate.x(), mate.z(), 7);
+            DioramaView.point(g.pose(),mate.x(), mate.z(), 7);
             g.pose().scale(factor, factor, 1F);
-            arrow(g, mate.arrow(), 0, 0, 13, mate.yaw() + 180F);
+            arrow(g, mate.arrow(), 0, 0, 13, mate.yaw() + 180F- (DioramaView.overlaysActive()?dev.diorama.Projection.facing().turns*90:0));
             int width = font.width(mate.name());
             g.fill(-width / 2 - 2, 8, width / 2 + 2, 19, 0xB0000000);
             g.drawString(font, mate.name(), -width / 2, 10, 0xFFFFFFFF, false);
             g.pose().popPose();
         }
         for (Mark mark : visible(MapManager.getInstance().getCurrentDimensionResourceId())) {
-            if (mark.x() < minX || mark.x() > maxX || mark.z() < minZ || mark.z() > maxZ) {
+            if (DioramaView.markerX(mark.x(),mark.z()) < minX || DioramaView.markerX(mark.x(),mark.z()) > maxX || DioramaView.markerZ(mark.x(),mark.z()) < minZ || DioramaView.markerZ(mark.x(),mark.z()) > maxZ) {
                 continue;
             }
             float factor = 2F / scale * overlay * 0.5F;
             g.pose().pushPose();
-            g.pose().translate(mark.x(), mark.z(), 6);
+            DioramaView.point(g.pose(),mark.x(), mark.z(), 6);
             g.pose().scale(factor, factor, 1F);
             markIcon(g,mark,0,0,6);
             String title = mark.title();

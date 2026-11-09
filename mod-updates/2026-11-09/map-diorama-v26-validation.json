@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "checks": [
+    "north marker_click=true",
+    "east marker_click=true",
+    "south marker_click=true",
+    "west marker_click=true",
+    "west marker_click=true"
+  ],
+  "frames": 7281,
+  "p50": 5.984,
+  "p95": 12.0195,
+  "embedded_renderer": true,
+  "revision": "2026-11-09-map-diorama-schematics-v26",
+  "map_sha512": "24fe3dfe5d6660a88806b93e1f5fe1456f21374a90e2262160f436cd9a1b5a25c85b0db2b10b2e2e1ab8b1f66703d0ef98e0e306b892c8915fcecb74cb584ae7",
+  "client_installed": true,
+  "server_installed": true,
+  "server_was_offline": true,
+  "production_server_started": false,
+  "native_cache_files_unchanged": 131,
+  "separate_diorama_mod": false,
+  "real_geometry_recovered_from_server": true,
+  "forge_and_inventory_ui_test": {
+    "forgematica_menu": true,
+    "inventory_screen": true,
+    "schematic_loaded": true
+  },
+  "test_window_visibility_guard": "GLFW create/show/focus blocked and validated",
+  "tested_render_sha512": "3e63786366623b301d0740329717da77ba7736394278ef4aa8b4c185c8632c0e03d93cd33a51907f27eb2860f4690217b7de8a4b641ff6c53aaf0ee0ee6aaf90",
+  "lifecycle_cleanup": "After GUI integration passed, clear the old ClientLevel/reader and pending sets on disconnect; null-safe pre-attachment rotation. Recompiled successfully.",
+  "repository_build_reproduced_all_release_classes": true
+}

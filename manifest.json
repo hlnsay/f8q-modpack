@@ -650,12 +650,6 @@
       "url": "https://cdn.modrinth.com/data/o6qsdrrQ/versions/Rh2ImJ86/zume-1.2.2.jar"
     },
     {
-      "path": "resourcepacks/Cozy-Russian.zip",
-      "sha512": "27df2cbc8b6b52023e62562d171a8c76b86afb2aee5f830bee661d8db80c9c98dae397fa3b3d694b8a22c0becb24495165d605346bd98b7d2ebb90cb35a16d06",
-      "size": 356429,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-expansion-27df2cbc8b6b.zip"
-    },
-    {
       "path": "resourcepacks/F8Q 1.21.zip",
       "sha512": "d5c738d79db6520f3941043db43e8119cdd8fd9640211fd2f249a2e1a31ad48d9f52133a354f78cb1c95d1ccf097adddb172764a273be7b01c003e1d5b172e95",
       "size": 68168299,
@@ -1028,12 +1022,6 @@
       "url": "https://cdn.modrinth.com/data/tu54PMAb/versions/x1Blh0Gt/realmrpg_skeletons-1.1.0-neoforge-1.21.1.jar"
     },
     {
-      "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "size": 4239388,
-      "sha512": "a511c3adba22e1a2ab88067da6c45176eb869a39f1e63e5429206a756ff65836fe4ffec360ad23b0ef0326f339f8d2919748e786d1b6750da737934b07300880",
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q22-a511c3adba22.jar"
-    },
-    {
       "path": "mods/smoothmount-neoforge-1.21.1-0.2.2-f8q.jar",
       "size": 72353,
       "sha512": "ea911ac6d4dfedfcf4a994a99a169ab958d201ee182665fc8129aed81c20c33d4752ef15893d0f60be27f4d63f3b07e1cfef651200ff75604f5e480111243bdf",
@@ -1202,12 +1190,6 @@
       "size": 172671
     },
     {
-      "path": "mods/grassrise-2.0.0+mc1.21.1-neoforge.jar",
-      "url": "https://cdn.modrinth.com/data/XEbPlg55/versions/dCoBnf1L/grassrise-2.0.0%2Bmc1.21.1-neoforge.jar",
-      "sha512": "71693ddb4c4679c2c785ff72d509cc389b8122bffdf38222781a15ce72ae07b9d029b5ec8903bce06691464bc3fe88b49e3ac1688780c7ae140292a86cb42157",
-      "size": 101505
-    },
-    {
       "path": "mods/the-leveling-neoforge-1.21.1-1.2.1.jar",
       "url": "https://cdn.modrinth.com/data/lUM7qbQQ/versions/fSdJQ3l2/the-leveling-neoforge-1.21.1-1.2.1.jar",
       "sha512": "f61cbcd6b42c564c1d20094e5984ce8d8a59b84bd08e471ddecc792c2df30da793340a540d5c71f95f93549a1d5043f9b89ff81b8e7d9acc3e25b79692f14895",
@@ -1224,6 +1206,36 @@
       "url": "https://edge.forgecdn.net/files/9508/282/weatherglass-0.6.0-1.21.1-neoforge.jar",
       "size": 593033,
       "sha512": "ec0cfc7f5a9289b71569e47247703d32b04daf4ae3c67ce2ce476788c67a33d291f96294ec0e6df66f100d86067f217522a097bc4bcad6a3b567ef9d9ad53584"
+    },
+    {
+      "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
+      "sha512": "24fe3dfe5d6660a88806b93e1f5fe1456f21374a90e2262160f436cd9a1b5a25c85b0db2b10b2e2e1ab8b1f66703d0ef98e0e306b892c8915fcecb74cb584ae7",
+      "size": 5389676,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q26-24fe3dfe5d66.jar"
+    },
+    {
+      "path": "resourcepacks/Cozy-Russian.zip",
+      "sha512": "c6ac7315bcf0feec101218030bffc134013e22c28be33ff5a30d26782749206790703b86c6ab025c70814c1784660e8916cc92a27c8e2495297aea5cc139b3ab",
+      "size": 399004,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/Cozy-Russian-schematics-c6ac7315bcf0.zip"
+    },
+    {
+      "path": "mods/forgematica-0.4.3+mc1.21.1.jar",
+      "sha512": "babad424d23c39f196d931f4c63ba0d9f35791f59d5dee03daca3b9c3700430e7677f10a580f1567db6ae93e59fa5bd5b59b73a6d0a160e5a7200f7a15c7bdd0",
+      "size": 1646167,
+      "url": "https://cdn.modrinth.com/data/dCKRaeBC/versions/PFUOWUDF/forgematica-0.4.3%2Bmc1.21.1.jar"
+    },
+    {
+      "path": "mods/mafglib-0.4.3+mc1.21.1.jar",
+      "sha512": "b28b0552022ba22a729c917b848d119b84236689b550b99ba1fe11f2353551abcd2d9e23b190689be82376a9b2a47ffc22cdb116f413d6f76a5d19f075a9e78d",
+      "size": 1314767,
+      "url": "https://cdn.modrinth.com/data/SKI34J7B/versions/CgDQ0u0Q/mafglib-0.4.3%2Bmc1.21.1.jar"
+    },
+    {
+      "path": "mods/improved-inventory-tabs-neoforge-1.21.1-1.4.1.jar",
+      "sha512": "e6bf51c1ab65a8bd2304ce256ed926045094cc81341d7961d55799c79bbfc867e8a41650e8f55edb204179ce44aaa654896832a306c0ccc77a5be61f45f3619b",
+      "size": 83364,
+      "url": "https://cdn.modrinth.com/data/BImI8AB5/versions/W6fT8fIn/improved-inventory-tabs-neoforge-1.21.1-1.4.1.jar"
     }
   ],
   "remove": [
@@ -1235,7 +1247,8 @@
     "mods/journeymap-neoforge-1.21.1-6.0.9.jar",
     "resourcepacks/visual-effects-plus.zip",
     "resourcepacks/biome-bloom.zip",
-    "mods/lukis-strongholds-v1.0.jar"
+    "mods/lukis-strongholds-v1.0.jar",
+    "mods/grassrise-2.0.0+mc1.21.1-neoforge.jar"
   ],
   "config": [
     {
@@ -2497,6 +2510,12 @@
       "sha512": "568de348b95d7fb223b99af083797a4a940ce2db58b04772e36be868002cbf56d1dd7e286a87e2e8dce14bb58bbda7cdb3782bdc6a09efae3736759be1c94093",
       "size": 115,
       "url": "https://raw.githubusercontent.com/hlnsay/f8q-modpack/0184340e71032ff1c062f12183070c038efa9df1/config/weatherglass.properties"
+    },
+    {
+      "path": "config/litematica.json",
+      "sha512": "934e437d3caf41398f5087d59f620cf635cff859b8902bd97ef1696075fad30b5c40818248c1ce4b7f9e31d703740a962dded79657443d444a45b1ac17032300",
+      "size": 1131,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-forgematica-config-934e437d3caf.json"
     }
   ],
   "updater": {
@@ -2545,6 +2564,24 @@
     "file/better-3d-beds.zip"
   ],
   "changelog": [
+    {
+      "date": "2026-11-09",
+      "added": [
+        "Forgematica и MaFgLib: схемы строительства, меню на Insert.",
+        "Improved Inventory Tabs: вкладки ближайших контейнеров.",
+        "Поворот объёмной карты: зажмите колёсико и потяните мышь влево или вправо."
+      ],
+      "updated": [
+        "В наш мод карты встроен оригинальный движок Diorama: реальные блоки и мягкий облачный туман.",
+        "Наш интерфейс, личные метки и сохранённая разведка остаются в SimpleMap; отдельный мод Diorama не устанавливается.",
+        "Мини-карта использует тот же объёмный рендер; рамка, значки и время сохранены.",
+        "Данные блоков старых открытых участков восстанавливаются с сервера постепенно; новые чанки для этого не генерируются.",
+        "Добавлен русский интерфейс схем и вкладок инвентаря."
+      ],
+      "removed": [
+        "Grassrise."
+      ]
+    },
     {
       "date": "2026-11-09",
       "added": [
@@ -3007,6 +3044,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-09-weather-glass-v25",
+  "revision": "2026-11-09-map-diorama-schematics-v26",
   "journeymap": []
 }

@@ -255,6 +255,7 @@ public class MapRenderer {
 
             double halfW = (width / 2.0) / scale;
             double halfH = (height / 2.0) / scale;
+            if(DioramaView.overlaysActive())halfH=halfH/DioramaProjection.SIN+256;
             boolean caveMode = CaveMode.isActive(mc);
             boolean fullCaveView = caveMode && CaveMode.isFullView(mc);
             int caveLayerY = caveMode ? CaveMode.getLayerY(mc) : Integer.MIN_VALUE;
@@ -322,7 +323,7 @@ public class MapRenderer {
             guiGraphics.enableScissor(viewportX, viewportY, viewportX + width, viewportY + height);
         }
 
-        if (!isMinimap) MapArtwork.fog(guiGraphics,viewportX,viewportY,width,height);
+        if (!isMinimap && !DioramaView.composing()) MapArtwork.fog(guiGraphics,viewportX,viewportY,width,height);
 
         // 3. Set up the camera transformation:
         // - Translate to the center of the viewport
@@ -795,7 +796,8 @@ public class MapRenderer {
                                 PinNavigation.dotWorldX(route, index));
                         int bz = (int) Math.floor(
                                 PinNavigation.dotWorldZ(route, index));
-                        guiGraphics.fill(bx, bz, bx + 1, bz + 1, lineColor);
+                        int pz=(int)Math.round(DioramaView.markerZ(bx,bz));
+                        int px=(int)Math.round(DioramaView.markerX(bx,bz));guiGraphics.fill(px, pz, px + 1, pz + 1, lineColor);
                     }
                 }
             }
@@ -807,11 +809,11 @@ public class MapRenderer {
 
         // 6.5. Render pin marker if active and within visible bounds
         if (drawPinContent && MapConfig.pinActive && viewingLiveDim && !LocalPlaces.routing()) {
-            if (MapConfig.pinWorldX >= minX && MapConfig.pinWorldX <= maxX &&
-                    MapConfig.pinWorldZ >= minZ && MapConfig.pinWorldZ <= maxZ) {
+            if (DioramaView.markerX(MapConfig.pinWorldX,MapConfig.pinWorldZ) >= minX && DioramaView.markerX(MapConfig.pinWorldX,MapConfig.pinWorldZ) <= maxX &&
+                    DioramaView.markerZ(MapConfig.pinWorldX,MapConfig.pinWorldZ) >= minZ && DioramaView.markerZ(MapConfig.pinWorldX,MapConfig.pinWorldZ) <= maxZ) {
 
                 poseStack.pushPose();
-                poseStack.translate(MapConfig.pinWorldX, MapConfig.pinWorldZ, 5);
+                DioramaView.point(poseStack,MapConfig.pinWorldX, MapConfig.pinWorldZ, 5);
 
                 float baseFactor = isMinimap ? 1.0f : 2.0f;
                 float pinScaleFactor = (baseFactor / scale) * MapConfig.pinScale * fixedOverlayScale;
@@ -3282,7 +3284,7 @@ public class MapRenderer {
             double worldX, double worldZ, float mapScale) {
         PoseStack pose = guiGraphics.pose();
         pose.pushPose();
-        pose.translate(worldX, worldZ, 20.0);
+        DioramaView.point(pose,worldX,worldZ,20.0);
         float safeScale = Math.max(0.0001f, Math.abs(mapScale));
         float inverseScale = 1.0f / safeScale;
         pose.scale(inverseScale, inverseScale, 1.0f);
@@ -3408,7 +3410,7 @@ public class MapRenderer {
         poseStack.pushPose();
 
         // Translate to the waypoint's position in world space
-        poseStack.translate(wp.x, wp.z, 5);
+        DioramaView.point(poseStack,wp.x, wp.z, 5);
 
         // Item icons are screen overlays anchored in world space. Compensating the
         // camera zoom keeps a 0.48x fullscreen icon visible instead of shrinking it
@@ -3481,7 +3483,7 @@ public class MapRenderer {
         poseStack.pushPose();
 
         // Translate to the player's position in world space
-        poseStack.translate(worldX, worldZ, 10);
+        DioramaView.point(poseStack,worldX, worldZ, 10);
 
         // Compensate map scale and apply playerMarkerScale config
         float markerScale = (1.0f / mapScale) * MapConfig.playerMarkerScale * fixedOverlayScale;

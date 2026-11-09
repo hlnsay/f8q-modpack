@@ -82,6 +82,7 @@ public class MapScreen extends Screen {
     private double centerX;
     private double centerZ;
     private float scale = DEFAULT_MAP_SCALE;
+    private boolean orbitDragging;private double orbitDragX;private long lastOrbitTurn;
     private float currentRenderScale = DEFAULT_MAP_SCALE;
     private boolean isDragging = false;
     private long openAnimationStartNanos = System.nanoTime();
@@ -138,16 +139,27 @@ public class MapScreen extends Screen {
         selectedAtNanos=System.nanoTime();cardWidth=Math.min(200,Math.max(130,width/3));
         cardLines=font.split(Component.literal(entry.description()),cardWidth-16);cardHeight=49+cardLines.size()*10;
     }
+    private double projectedZ(double x,double z){return !editingPreview&&DioramaView.active()?DioramaView.get().projectZ(x,z):z;}
     private PlaceEntry findPlace(double x,double z){
         String dim=MapManager.getInstance().getCurrentDimensionResourceId();double best=15/currentRenderScale;PlaceEntry found=null;
         for(PlaceEntry entry:PlaceEntry.all())if(entry.dimension().equals(dim)){
-            double d=Math.hypot(entry.x()-x,entry.z()-z);if(d<=best){best=d;found=entry;}
+            double d=Math.hypot(DioramaView.get().projectX(entry.x(),entry.z())-DioramaView.get().projectX(x,z),projectedZ(entry.x(),entry.z())-projectedZ(x,z));if(d<=best){best=d;found=entry;}
         }
         if(TeamMarks.autoPlacesVisible())for(var place:TeamMarks.locations(dim)){
             if(!TeamMarks.mapped(place,dim))continue;
-            double d=Math.hypot(place.x()-x,place.z()-z);if(d<=best){best=d;found=PlaceEntry.automatic(dim,place);}
+            double d=Math.hypot(DioramaView.get().projectX(place.x(),place.z())-DioramaView.get().projectX(x,z),projectedZ(place.x(),place.z())-projectedZ(x,z));if(d<=best){best=d;found=PlaceEntry.automatic(dim,place);}
         }
         return found;
+    }
+    private PlaceEntry findPlaceScreen(double mx,double my){
+        String dim=MapManager.getInstance().getCurrentDimensionResourceId();double best=15;PlaceEntry found=null;
+        java.util.List<PlaceEntry> candidates=new java.util.ArrayList<>(PlaceEntry.all());
+        if(TeamMarks.autoPlacesVisible())for(var p:TeamMarks.locations(dim))if(TeamMarks.mapped(p,dim))candidates.add(PlaceEntry.automatic(dim,p));
+        for(var entry:candidates){if(!entry.dimension().equals(dim))continue;
+            double px=editingPreview?entry.x():DioramaView.get().projectX(entry.x(),entry.z());double pz=projectedZ(entry.x(),entry.z());
+            double sx=width*.5+(px-centerX)*currentRenderScale,sy=height*.5+(pz-centerZ)*currentRenderScale;
+            double d=Math.hypot(sx-mx,sy-my);if(d<=best){best=d;found=entry;}
+        }return found;
     }
     public void openPlacePopup(PlaceEntry entry,double mx,double my){
         freezeCamera();clickedPlace=entry;clickedWaypoint=entry==null?null:entry.waypoint();
@@ -726,7 +738,9 @@ public class MapScreen extends Screen {
 
         // Mouse world coordinates relative to fullscreen viewport centre
         double mouseWorldX = centerX + (mouseX - vx - vw / 2.0) / currentRenderScale;
-        double mouseWorldZ = centerZ + (mouseY - vy - vh / 2.0) / currentRenderScale;
+        DioramaView.get().view(centerX,centerZ);
+        double mouseWorldZ = centerZ + (mouseY-vy-vh/2.0)/currentRenderScale;
+        if(DioramaView.active()){var picked=DioramaView.get().pickWorld(mouseWorldX,mouseWorldZ);mouseWorldX=picked.x();mouseWorldZ=picked.z();}
 
         // Scanning, IO and texture publication are handled by MapViewportCoordinator
         // from client tick. Retained composition may reuse one texture for many
@@ -740,9 +754,10 @@ public class MapScreen extends Screen {
         float demandScale = scale;
         double demandHalfW = (vw * 0.5 + demandGuard)
                 / Math.max(0.0001f, demandScale);
-        double demandHalfH = (vh * 0.5 + demandGuard)
-                / Math.max(0.0001f, demandScale);
+        double demandHalfH = (vh * 0.5 + demandGuard + (DioramaView.active()?128:0))
+                / (Math.max(0.0001f, demandScale)*(DioramaView.active()?DioramaProjection.SIN:1));
         boolean viewportInteracting = isViewportInteracting(frameNow);
+        if(!editingPreview&&(dev.diorama.Projection.facing().turns&1)!=0){double swap=demandHalfW;demandHalfW=demandHalfH;demandHalfH=swap;}
         MapViewportCoordinator.getInstance().submitFullscreen(
                 centerX - demandHalfW, centerX + demandHalfW,
                 centerZ - demandHalfH, centerZ + demandHalfH,
@@ -751,8 +766,9 @@ public class MapScreen extends Screen {
         // Draw map fullscreen, North-up, no rotation. The optional pixel-aligned
         // framebuffer retains the atlas replay and applies bounded pan motion as
         // source UV translation. Direct rendering remains the correctness fallback.
-        boolean framebufferRendered = false;
-        if (FullscreenMapFramebufferRenderer.shouldUse(this.minecraft,
+        boolean dioramaRendered = !editingPreview && DioramaView.get().render(guiGraphics,vx,vy,vw,vh,centerX,centerZ,scale,currentRenderScale,partialTick);
+        boolean framebufferRendered = dioramaRendered;
+        if (!framebufferRendered && FullscreenMapFramebufferRenderer.shouldUse(this.minecraft,
                 currentRenderScale)) {
             framebufferRendered = FullscreenMapFramebufferRenderer.getInstance().render(
                     guiGraphics, vx, vy, vw, vh, centerX, centerZ,
@@ -770,11 +786,14 @@ public class MapScreen extends Screen {
                 partialTick, false
             );
         } else {
-            MapRenderer.getInstance().drawFullscreenOverlays(
+            if(dioramaRendered)DioramaView.beginOverlays();
+            try {
+                MapRenderer.getInstance().drawFullscreenOverlays(
                     guiGraphics, vx, vy, vw, vh,
                     centerX, centerZ, currentRenderScale,
                     drawPlayerInCurrentDimension,
                     mouseWorldX, mouseWorldZ, partialTick);
+            } finally { DioramaView.endOverlays(); }
         }
 
         if (!MapManager.getInstance().isViewingLiveDimension()
@@ -792,8 +811,8 @@ public class MapScreen extends Screen {
 
         // Highlight target coordinate when opened from a clickable chat coordinate
         if (frameNow < focusedCoordinateUntilNanos) {
-            float screenTargetX = (float) (vx + vw * 0.5 + (focusedCoordinateX - centerX) * currentRenderScale);
-            float screenTargetY = (float) (vy + vh * 0.5 + (focusedCoordinateZ - centerZ) * currentRenderScale);
+            float screenTargetX = (float) (vx + vw * 0.5 + ((dioramaRendered?DioramaView.get().projectX(focusedCoordinateX,focusedCoordinateZ):focusedCoordinateX) - centerX) * currentRenderScale);
+            float screenTargetY = (float) (vy + vh * 0.5 + ((dioramaRendered?DioramaView.get().projectZ(focusedCoordinateX,focusedCoordinateZ):focusedCoordinateZ) - centerZ) * currentRenderScale);
             if (screenTargetX >= vx && screenTargetX <= vx + vw
                     && screenTargetY >= vy && screenTargetY <= vy + vh) {
                 float remSec = (focusedCoordinateUntilNanos - frameNow) / 1_000_000_000.0f;
@@ -969,7 +988,9 @@ public class MapScreen extends Screen {
     private void drawCoordsOverlay(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         // Calculate world coordinates under the mouse cursor (viewport starts at x=1, y=1)
         double worldX = centerX + (mouseX - 1 - (this.width - 2) / 2.0) / currentRenderScale;
-        double worldZ = centerZ + (mouseY - 1 - (this.height - 2) / 2.0) / currentRenderScale;
+        double projectedCursorZ = centerZ + (mouseY - 1 - (this.height - 2) / 2.0) / currentRenderScale;
+        double worldZ=projectedCursorZ;
+        if(!editingPreview&&DioramaView.active()){var picked=DioramaView.get().pickWorld(worldX,projectedCursorZ);worldX=picked.x();worldZ=picked.z();}
 
         int bx = (int) Math.floor(worldX);
         int bz = (int) Math.floor(worldZ);
@@ -1068,7 +1089,7 @@ public class MapScreen extends Screen {
     }
 
     private String getZoomText() {
-        // MapScreen.scale is expressed in logical GUI pixels per block. the 
+        // MapScreen.scale is expressed in logical GUI pixels per block. the
         // fullscreen label is effectively physical framebuffer pixels per block on
         // a 1080p display. Printing the logical value made 0.262x in Simple Map look
         // comparable to 0.262x in world units even though GUI scale 3 renders it at 0.786
@@ -1869,6 +1890,7 @@ public class MapScreen extends Screen {
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if(button==2&&!editingPreview){freezeCamera();orbitDragging=true;orbitDragX=0;return true;}
         // If map is not unlocked, only allow clicking screen widgets (buttons)
         if (!SimpleMap.isMapUnlocked(this.minecraft.player)) {
             return super.mouseClicked(mouseX, mouseY, button);
@@ -1936,8 +1958,9 @@ public class MapScreen extends Screen {
             freezeCamera();
             popupWorldX = centerX + (mouseX - this.width / 2.0) / currentRenderScale;
             popupWorldZ = centerZ + (mouseY - this.height / 2.0) / currentRenderScale;
+            if(!editingPreview&&DioramaView.active()){var p=DioramaView.get().pickWorld(popupWorldX,popupWorldZ);popupWorldX=p.x();popupWorldZ=p.z();}
 
-            clickedPlace=findPlace(popupWorldX,popupWorldZ);
+            clickedPlace=findPlaceScreen(mouseX,mouseY);
             clickedWaypoint=clickedPlace==null?null:clickedPlace.waypoint();
             openPlacePopup(clickedPlace,mouseX,mouseY);
             return true;
@@ -1977,6 +2000,7 @@ public class MapScreen extends Screen {
 
     @Override
     public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        if(button==2&&orbitDragging){orbitDragging=false;orbitDragX=0;return true;}
         knownPlaces.release();
         if (button == 0) {
             if (this.caveLayerSlider != null && this.caveLayerSlider.isDragging()) {
@@ -1995,8 +2019,9 @@ public class MapScreen extends Screen {
                 momentumZ = 0.0;
                 double clickWorldX = centerX + (mouseX - 1 - (this.width - 2) / 2.0) / currentRenderScale;
                 double clickWorldZ = centerZ + (mouseY - 1 - (this.height - 2) / 2.0) / currentRenderScale;
+                if(!editingPreview&&DioramaView.active()){var p=DioramaView.get().pickWorld(clickWorldX,clickWorldZ);clickWorldX=p.x();clickWorldZ=p.z();}
 
-                if (selectPlace(clickWorldX,clickWorldZ)) return true;
+                PlaceEntry hit=findPlaceScreen(mouseX,mouseY);if(hit!=null){selectEntry(hit);return true;}
                 selectedLocation=null;selectedEntry=null;LocalPlaces.clearRoute(false);
                 double snappedPinX = Math.floor(clickWorldX) + 0.5;
                 double snappedPinZ = Math.floor(clickWorldZ) + 0.5;
@@ -2015,6 +2040,7 @@ public class MapScreen extends Screen {
 
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
+        if(button==2&&orbitDragging){orbitDragX+=dragX;long now=System.nanoTime();if(Math.abs(orbitDragX)>=48&&now-lastOrbitTurn>200_000_000L){DioramaView.get().turn(orbitDragX>0?1:-1);orbitDragX=0;lastOrbitTurn=now;cursorCacheValid=false;markViewportInteraction();}return true;}
         if(!editingPreview&&knownPlaces.drag(mouseX,mouseY))return true;
         if (!com.velorise.simplemap.SimpleMap.isMapUnlocked(this.minecraft.player)) {
             return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
@@ -2024,7 +2050,8 @@ public class MapScreen extends Screen {
             markViewportInteraction();
             // Drag direction moves the map camera center in the opposite direction.
             double deltaX = -dragX / this.scale;
-            double deltaZ = -dragY / this.scale;
+            double deltaZ = -dragY / (this.scale*(!editingPreview&&DioramaView.active()?DioramaProjection.SIN:1));
+            if(!editingPreview&&DioramaView.active()){var d=DioramaView.worldDelta(-dragX/this.scale,-dragY/this.scale);deltaX=d.x();deltaZ=d.z();}
             this.centerX += deltaX;
             this.centerZ += deltaZ;
             long now = System.nanoTime();
@@ -2081,11 +2108,15 @@ public class MapScreen extends Screen {
         double vpCentreZ = 1 + (this.height - 2) / 2.0;
 
         // Adjust camera center so that zoom focuses on the mouse cursor location
-        double mouseWorldX = this.centerX + (mouseX - vpCentreX) / oldScale;
-        double mouseWorldZ = this.centerZ + (mouseY - vpCentreZ) / oldScale;
-
-        this.centerX = mouseWorldX - (mouseX - vpCentreX) / this.scale;
-        this.centerZ = mouseWorldZ - (mouseY - vpCentreZ) / this.scale;
+        double px=this.centerX+(mouseX-vpCentreX)/oldScale,pz=this.centerZ+(mouseY-vpCentreZ)/oldScale;
+        if(!editingPreview&&DioramaView.active()){
+            var world=DioramaView.get().pickWorld(px,pz);
+            double u=dev.diorama.Projection.u(world.x(),world.z())-(mouseX-vpCentreX)/this.scale;
+            double v=dev.diorama.Projection.v(world.x(),DioramaView.get().height(world.x(),world.z()),world.z())-(mouseY-vpCentreZ)/this.scale;
+            double rz=dev.diorama.Projection.zAt(v,64);var facing=dev.diorama.Projection.facing();
+            this.centerX=facing.worldX(u,rz);this.centerZ=facing.worldZ(u,rz);
+        }else{this.centerX=px-(mouseX-vpCentreX)/this.scale;this.centerZ=pz-(mouseY-vpCentreZ)/this.scale;}
+        DioramaView.get().view(centerX,centerZ);
 
         return true;
     }

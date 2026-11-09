@@ -1,0 +1,58 @@
+{
+  "source": "https://github.com/SunkenInTime/diorama",
+  "license": "MIT",
+  "upstream": [
+    {
+      "version": "0.8.1+neoforge-1.21.1",
+      "files": [
+        {
+          "id": "YTPDpI5v",
+          "hashes": {
+            "sha1": "3db96cb299bc1cce44aa46bf992050dcc4c862b9",
+            "sha512": "c76491e3de3df73ffeff44e0959e5d2a04fde956aa5719bebdb208788060332fceca4899b5ab92e4467d0484d92e773ad5aed912eb768b6a0c82fc1a252deac5"
+          },
+          "url": "https://cdn.modrinth.com/data/kwpTgbCk/versions/LUifI5BG/diorama-0.8.1%2Bneoforge-1.21.1.jar",
+          "filename": "diorama-0.8.1+neoforge-1.21.1.jar",
+          "primary": true,
+          "size": 1131177,
+          "file_type": null
+        }
+      ]
+    },
+    {
+      "version": "0.7.0+neoforge-1.21.1",
+      "files": [
+        {
+          "id": "CIW2cpPH",
+          "hashes": {
+            "sha512": "e19c3f4a97eb5ed1941beeabb500fa8fda2d5602ede6ff6d6d5c77bb670b4ae686fc4d4b574434f638bdab8007b75531c87e2e07789fb003e75813c925e9a772",
+            "sha1": "dc671a8422ce0fcaaf4ae148fb38728f59629289"
+          },
+          "url": "https://cdn.modrinth.com/data/kwpTgbCk/versions/1FG2KJOU/diorama-0.7.0%2Bneoforge-1.21.1.jar",
+          "filename": "diorama-0.7.0+neoforge-1.21.1.jar",
+          "primary": true,
+          "size": 924656,
+          "file_type": null
+        }
+      ]
+    }
+  ],
+  "integration": "Diorama render/data/bake engine embedded in SimpleMap; original NeoForge entrypoint excluded; SimpleMap retains all UI/exploration/markers.",
+  "base": {
+    "sha512": "a511c3adba22e1a2ab88067da6c45176eb869a39f1e63e5429206a756ff65836fe4ffec360ad23b0ef0326f339f8d2919748e786d1b6750da737934b07300880",
+    "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q22-a511c3adba22.jar"
+  },
+  "integration_sources": [
+    "com/velorise/simplemap/client/DioramaChunkReader.java",
+    "com/velorise/simplemap/client/DioramaLiveEvents.java",
+    "com/velorise/simplemap/client/DioramaProjection.java",
+    "com/velorise/simplemap/client/DioramaView.java",
+    "com/velorise/simplemap/client/MapRenderer.java",
+    "com/velorise/simplemap/client/TeamMarks.java",
+    "com/velorise/simplemap/mixin/DioramaFogCompatibility.java",
+    "com/velorise/simplemap/mixin/DioramaLiveChunks.java",
+    "com/velorise/simplemap/mixin/DioramaMinimap.java",
+    "com/velorise/simplemap/network/DioramaGeometry.java",
+    "com/velorise/simplemap/client/gui/MapScreen.java"
+  ]
+}

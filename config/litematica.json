@@ -1,0 +1,54 @@
+{
+  "Generic": {
+    "loadEntireSchematics": false,
+    "renderThreadNoTimeout": false,
+    "commandLimitPerTick": 4
+  },
+  "Hotkeys": {
+    "addSelectionBox": {
+      "keys": "INSERT,A"
+    },
+    "layerModeNext": {
+      "keys": "INSERT,PAGE_UP"
+    },
+    "layerModePrevious": {
+      "keys": "INSERT,PAGE_DOWN"
+    },
+    "openGuiMainMenu": {
+      "keys": "INSERT"
+    },
+    "openGuiMaterialList": {
+      "keys": "INSERT,L"
+    },
+    "openGuiSchematicPlacements": {
+      "keys": "INSERT,P"
+    },
+    "openGuiSchematicVerifier": {
+      "keys": "INSERT,V"
+    },
+    "openGuiSelectionManager": {
+      "keys": "INSERT,S"
+    },
+    "openGuiSettings": {
+      "keys": "INSERT,C"
+    },
+    "pickBlockToggle": {
+      "keys": "INSERT,BUTTON_3"
+    },
+    "rerenderSchematic": {
+      "keys": "F3,INSERT"
+    },
+    "selectionModeCycle": {
+      "keys": "LEFT_CONTROL,INSERT"
+    },
+    "toggleAllRendering": {
+      "keys": "INSERT,R"
+    },
+    "toggleSchematicRendering": {
+      "keys": "INSERT,G"
+    },
+    "toolEnabledToggle": {
+      "keys": "INSERT,T"
+    }
+  }
+}
