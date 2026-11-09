@@ -1,0 +1,69 @@
+[
+  {
+    "file": "dwarfs_tyranny-1.0.8b-neoforge-1.21.1.jar",
+    "modId": "dwarfs_tyranny",
+    "internalVersion": "1.0.7",
+    "dependencies": [
+      {
+        "modId": "neoforge",
+        "type": "required",
+        "versionRange": "[21.1.232,)",
+        "ordering": "AFTER",
+        "side": "BOTH"
+      },
+      {
+        "modId": "minecraft",
+        "type": "required",
+        "versionRange": "[1.21.1]",
+        "ordering": "AFTER",
+        "side": "BOTH"
+      },
+      {
+        "modId": "jei",
+        "type": "optional",
+        "versionRange": "[19.64.0.454,20)",
+        "ordering": "AFTER",
+        "side": "CLIENT"
+      }
+    ],
+    "resourceJSONFilesParsed": 864,
+    "hasRussian": false
+  },
+  {
+    "file": "goblins_tyranny-neoforge-1.21.1-1.2.5.jar",
+    "modId": "goblins_tyranny",
+    "internalVersion": "1.2.5",
+    "dependencies": [
+      {
+        "modId": "neoforge",
+        "type": "required",
+        "versionRange": "[21.1.232,)",
+        "ordering": "AFTER",
+        "side": "BOTH"
+      },
+      {
+        "modId": "minecraft",
+        "type": "required",
+        "versionRange": "[1.21.1]",
+        "ordering": "AFTER",
+        "side": "BOTH"
+      },
+      {
+        "modId": "geckolib",
+        "type": "required",
+        "versionRange": "[4.9.3,5)",
+        "ordering": "AFTER",
+        "side": "BOTH"
+      },
+      {
+        "modId": "jei",
+        "type": "optional",
+        "versionRange": "[19,)",
+        "ordering": "AFTER",
+        "side": "CLIENT"
+      }
+    ],
+    "resourceJSONFilesParsed": 510,
+    "hasRussian": true
+  }
+]

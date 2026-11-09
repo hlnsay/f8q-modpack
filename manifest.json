@@ -1236,6 +1236,18 @@
       "sha512": "e6bf51c1ab65a8bd2304ce256ed926045094cc81341d7961d55799c79bbfc867e8a41650e8f55edb204179ce44aaa654896832a306c0ccc77a5be61f45f3619b",
       "size": 83364,
       "url": "https://cdn.modrinth.com/data/BImI8AB5/versions/W6fT8fIn/improved-inventory-tabs-neoforge-1.21.1-1.4.1.jar"
+    },
+    {
+      "path": "mods/dwarfs_tyranny-1.0.8b-neoforge-1.21.1.jar",
+      "url": "https://edge.forgecdn.net/files/9421/995/dwarfs_tyranny-1.0.8b-neoforge-1.21.1.jar",
+      "size": 4686674,
+      "sha512": "110c0cb0d2d2055112a8bf075b05fd4e9c7043f433176287a203523fd54e482b13872fc576d429e13ec1385cb49d0a2f9cefad4b6e0a090895fec3caf9f550f4"
+    },
+    {
+      "path": "mods/goblins_tyranny-neoforge-1.21.1-1.2.5.jar",
+      "url": "https://edge.forgecdn.net/files/9350/435/goblins_tyranny-neoforge-1.21.1-1.2.5.jar",
+      "size": 7659787,
+      "sha512": "f86838f2e73e699ecde53b32718f1e765e85e2cf6fe0ad7a9b476256eb634567e47b78f4d7ca2f408f21ba82db8dd613ba1358ba9bdc4307060717982407a6fb"
     }
   ],
   "remove": [
@@ -2566,6 +2578,17 @@
   "changelog": [
     {
       "date": "2026-11-09",
+      "added": [
+        "Dwarf’s Tyranny 1.0.8b: подземные поселения дворфов, репутация, задания и мифриловые механизмы.",
+        "Goblin’s Tyranny 1.2.5: гоблинские деревни, торговцы, питомцы и снаряжение."
+      ],
+      "updated": [
+        "Оба мода — официальные сборки для Minecraft 1.21.1 NeoForge. GeckoLib и JEI уже присутствуют. Новые поселения генерируются в новых чанках."
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-09",
       "added": [],
       "updated": [
         "Вход на сервер по нику без регистрации и паролей. Скины и прежние персонажи сохранены.",
@@ -3066,6 +3089,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-09-password-free-access-v28",
+  "revision": "2026-11-09-dwarfs-goblins-tyranny-v29",
   "journeymap": []
 }

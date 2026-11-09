@@ -1,0 +1,16 @@
+[
+  {
+    "path": "mods/dwarfs_tyranny-1.0.8b-neoforge-1.21.1.jar",
+    "url": "https://edge.forgecdn.net/files/9421/995/dwarfs_tyranny-1.0.8b-neoforge-1.21.1.jar",
+    "sha512": "110c0cb0d2d2055112a8bf075b05fd4e9c7043f433176287a203523fd54e482b13872fc576d429e13ec1385cb49d0a2f9cefad4b6e0a090895fec3caf9f550f4",
+    "size": 4686674,
+    "curseforgeFileId": 9421995
+  },
+  {
+    "path": "mods/goblins_tyranny-neoforge-1.21.1-1.2.5.jar",
+    "url": "https://edge.forgecdn.net/files/9350/435/goblins_tyranny-neoforge-1.21.1-1.2.5.jar",
+    "sha512": "f86838f2e73e699ecde53b32718f1e765e85e2cf6fe0ad7a9b476256eb634567e47b78f4d7ca2f408f21ba82db8dd613ba1358ba9bdc4307060717982407a6fb",
+    "size": 7659787,
+    "curseforgeFileId": 9350435
+  }
+]
