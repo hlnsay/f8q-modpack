@@ -20,6 +20,7 @@ public final class LocalPlaces {
         public TeamMarks.Location routePoint;
         public String routeIcon="";
         public int routeKind=4;
+        public Map<String,java.util.Set<String>> hidden=new HashMap<>();
     }
     public static final class Journal {
         private static final Gson JSON=new GsonBuilder().setPrettyPrinting()
@@ -55,6 +56,9 @@ public final class LocalPlaces {
     private static boolean resumed;
     private static int ticks;
     public static boolean showPois=true;
+    /** Places the player removed from their own map, per dimension. */
+    public static void hide(String dimension,String id){if(journal.state.hidden==null)journal.state.hidden=new HashMap<>();journal.state.hidden.computeIfAbsent(dimension,k->new java.util.HashSet<>()).add(id);journal.changed();journal.flush();}
+    public static boolean hidden(String dimension,String id){var map=journal.state.hidden;if(map==null)return false;var ids=map.get(dimension);return ids!=null&&ids.contains(id);}
     public static float markerScale=1.5f,routeScale=1.5f;
     public static boolean isBound(){return bound!=null;}
     public static boolean bind(Path file){if(Objects.equals(bound,file))return false;journal.flush();bound=file;journal=new Journal(file);resumed=false;return true;}

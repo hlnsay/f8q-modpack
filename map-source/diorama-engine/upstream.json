@@ -53,6 +53,6 @@
     "com/velorise/simplemap/mixin/DioramaLiveChunks.java",
     "com/velorise/simplemap/mixin/DioramaMinimap.java",
     "com/velorise/simplemap/network/DioramaGeometry.java",
-    "com/velorise/simplemap/client/gui/MapScreen.java"
+    "com/velorise/simplemap/client/gui/MapScreen.java", "com/velorise/simplemap/client/LocalPlaces.java"
   ]
 }

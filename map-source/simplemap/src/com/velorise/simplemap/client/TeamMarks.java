@@ -247,7 +247,7 @@ public final class TeamMarks {
         sharedPlaces.values().forEach(dims->dims.getOrDefault(dimension,java.util.Map.of()).forEach(result::put));
         Snapshot snapshot=placeSnapshots.get(dimension);if(snapshot!=null)for(var p:snapshot.locations()){
             var shared=result.get(p.id());result.put(p.id(),shared!=null&&shared.open()&&!p.open()?shared:p);
-        }return List.copyOf(result.values());
+        }result.keySet().removeIf(id->LocalPlaces.hidden(dimension,id));return List.copyOf(result.values());
     }
     private static final java.util.Map<java.util.UUID,java.util.Map<String,java.util.Map<String,Location>>> sharedPlaces=new java.util.HashMap<>();
     public static void retainParty(java.util.Set<java.util.UUID> owners){sharedPlaces.keySet().retainAll(owners);SharedExploration.retainParty(owners);}

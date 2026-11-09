@@ -1209,9 +1209,9 @@
     },
     {
       "path": "mods/simplemap-1.21.1-neoforge-2.0.3-f8q.jar",
-      "sha512": "24fe3dfe5d6660a88806b93e1f5fe1456f21374a90e2262160f436cd9a1b5a25c85b0db2b10b2e2e1ab8b1f66703d0ef98e0e306b892c8915fcecb74cb584ae7",
-      "size": 5389676,
-      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q26-24fe3dfe5d66.jar"
+      "sha512": "bf8876aab0dc34137b6574bdfd4b79a9b96224a8976119eee49ef741b498f889f0e1558c889873c1e30e9a3c46cb02e3d31caabd02dba745d5ddf2742bc7f2d6",
+      "size": 5390164,
+      "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/simplemap-1.21.1-neoforge-2.0.3-f8q27-bf8876aab0dc.jar"
     },
     {
       "path": "resourcepacks/Cozy-Russian.zip",
@@ -2579,6 +2579,16 @@
     {
       "date": "2026-11-09",
       "added": [
+        "Удаление мест с карты через ПКМ"
+      ],
+      "updated": [
+        "Карта: убраны поворот колесом и переключатель измерений"
+      ],
+      "removed": []
+    },
+    {
+      "date": "2026-11-09",
+      "added": [
         "Dwarf’s Tyranny 1.0.8b: подземные поселения дворфов, репутация, задания и мифриловые механизмы.",
         "Goblin’s Tyranny 1.2.5: гоблинские деревни, торговцы, питомцы и снаряжение."
       ],
@@ -3089,6 +3099,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-09-dwarfs-goblins-tyranny-v29",
+  "revision": "20261109-map-v27",
   "journeymap": []
 }

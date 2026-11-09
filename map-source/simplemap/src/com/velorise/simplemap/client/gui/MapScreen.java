@@ -184,6 +184,10 @@ public class MapScreen extends Screen {
                 rows.add(new PopupOption("Удалить метку",true,()->{WaypointManager.getInstance().removeWaypoint(entry.waypoint());selectedLocation=null;selectedEntry=null;refreshPlaces();}));
             }
             if(MapTeleportController.canTeleport(minecraft))rows.add(new PopupOption("Телепортироваться сюда",true,()->{if(MapTeleportController.teleport(minecraft,entry.dimension(),(int)Math.floor(entry.x()),(int)Math.floor(entry.y()),(int)Math.floor(entry.z())))onClose();}));
+            if(entry.location()!=null)rows.add(new PopupOption("Удалить метку",true,()->{
+                // Only this player's map forgets it; the place itself and everyone else's maps stay as they are.
+                if(LocalPlaces.following(entry.id()))LocalPlaces.clearRoute(true);
+                LocalPlaces.hide(entry.dimension(),entry.location().id());selectedLocation=null;selectedEntry=null;refreshPlaces();}));
         }else{
             rows.add(new PopupOption("Добавить метку",true,()->{
                 String dim=MapManager.getInstance().getCurrentDimensionResourceId();int y=resolveTeleportTargetY((int)Math.floor(popupWorldX),(int)Math.floor(popupWorldZ),dim);freezeCamera();minecraft.setScreen(new MapConfigScreen.WaypointListScreen.AddWaypointScreen(this,popupWorldX,y,popupWorldZ,dim));
@@ -449,7 +453,7 @@ public class MapScreen extends Screen {
         // Dimension Switcher (above Cave controls)
         dimensionSwitchButton = new PixelIconButton(0, 0, TOOLBAR_BUTTON_SIZE, TOOLBAR_BUTTON_SIZE,
                 MapUiIcons.Icon.DIMENSION_PORTAL, button -> cycleViewedDimension());
-        this.addRenderableWidget(dimensionSwitchButton);
+        dimensionSwitchButton.visible = false;
 
 
         if (this.minecraft != null && !CaveMode.isActive(this.minecraft)) {
@@ -1890,7 +1894,6 @@ public class MapScreen extends Screen {
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if(button==2&&!editingPreview){freezeCamera();orbitDragging=true;orbitDragX=0;return true;}
         // If map is not unlocked, only allow clicking screen widgets (buttons)
         if (!SimpleMap.isMapUnlocked(this.minecraft.player)) {
             return super.mouseClicked(mouseX, mouseY, button);
@@ -2000,7 +2003,6 @@ public class MapScreen extends Screen {
 
     @Override
     public boolean mouseReleased(double mouseX, double mouseY, int button) {
-        if(button==2&&orbitDragging){orbitDragging=false;orbitDragX=0;return true;}
         knownPlaces.release();
         if (button == 0) {
             if (this.caveLayerSlider != null && this.caveLayerSlider.isDragging()) {
@@ -2040,7 +2042,6 @@ public class MapScreen extends Screen {
 
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
-        if(button==2&&orbitDragging){orbitDragX+=dragX;long now=System.nanoTime();if(Math.abs(orbitDragX)>=48&&now-lastOrbitTurn>200_000_000L){DioramaView.get().turn(orbitDragX>0?1:-1);orbitDragX=0;lastOrbitTurn=now;cursorCacheValid=false;markViewportInteraction();}return true;}
         if(!editingPreview&&knownPlaces.drag(mouseX,mouseY))return true;
         if (!com.velorise.simplemap.SimpleMap.isMapUnlocked(this.minecraft.player)) {
             return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
