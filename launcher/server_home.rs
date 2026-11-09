@@ -20,7 +20,7 @@ const CHANGELOG: &str = "https://raw.githubusercontent.com/hlnsay/f8q-modpack/ma
 const INSTALLER: &str =
     "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater.exe";
 /// This build's number: `launcher.json` on GitHub names the newest.
-pub(super) const BUILD: u32 = 22;
+pub(super) const BUILD: u32 = 23;
 /// Horizon's releases: its launcher's are tagged `launcher@`, among the game's.
 const ENGINE_RELEASE: &str =
     "https://api.github.com/repos/horizon-rust/horizon/releases?per_page=40";

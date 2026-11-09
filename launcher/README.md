@@ -29,3 +29,5 @@ Version 0.0.2 restores saved appearance, accent, background, glass and blur sett
 
 
 Версия 0.0.8: вход по нику добавлен в настройки аккаунта. Гостевые сеансы Java запускает сама сборка F8Q; вход Microsoft и обновление его сессии сохраняют прежний официальный механизм. Новые файлы account.rs, cli.rs, glass_account.rs, owner_page.rs, switch_page.rs размещаются в launcher/src/, account/tests.rs — в launcher/src/account/. Серверная часть и результаты проверок находятся в ../server-access/. В репозитории нет паролей и персональных таблиц идентификаторов.
+
+Версия 0.0.9 убирает подсказки регистрации и пароля: сервер подключает игроков сразу по нику.

@@ -1,10 +1,18 @@
 {
-  "build": 22,
-  "version": "0.0.8",
-  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.8-b3859deab4a8.exe",
+  "build": 23,
+  "version": "0.0.9",
+  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.9-878ecd060fb7.exe",
   "size": 55830016,
-  "sha512": "b3859deab4a88f0d7abd96c395b8ea399d561a4571c0bf859e13455f0ac96c0ed30d5bdf5c074fcca8e7068e43e455c209c84710c1c3624a17d310bb34159e2a",
+  "sha512": "878ecd060fb745af693c273fd748227afbd7f4e4db3a110f4bcb1be45a7f8bb14db537c7b43f4086c334ddc3e9e4f9de40dfd2cff516011d9e31ef392572d69e",
   "changelog": [
+    {
+      "version": "0.0.9",
+      "date": "2026-11-09",
+      "changes": [
+        "Вход на сервер по нику без регистрации и пароля.",
+        "Убраны подсказки /register и /login. Скины и прежние персонажи сохранены."
+      ]
+    },
     {
       "version": "0.0.8",
       "date": "2026-11-09",

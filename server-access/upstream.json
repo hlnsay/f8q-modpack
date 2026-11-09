@@ -1,41 +1,4 @@
 {
-  "easylogin": {
-    "game_versions": [
-      "1.21.1"
-    ],
-    "loaders": [
-      "neoforge"
-    ],
-    "environment": "dedicated_server_only",
-    "id": "tpr8fHX7",
-    "project_id": "VYmP7iH5",
-    "author_id": "uQEB2AK9",
-    "featured": false,
-    "name": "EasyLogin 1.0.1",
-    "version_number": "1.0.1",
-    "changelog": "feat: relocate player data to world/serverconfig and add auto-migration\n",
-    "changelog_url": null,
-    "date_published": "2026-02-10T20:30:43.855803Z",
-    "downloads": 3902,
-    "version_type": "release",
-    "status": "listed",
-    "requested_status": null,
-    "files": [
-      {
-        "id": "QKVcmNVD",
-        "hashes": {
-          "sha1": "7418666f9863d8078484878693b26b8dbae0d92a",
-          "sha512": "c6532ece3b27bdf16f490c8122adc65d03c79dede7a26b41804cca568ba40e0778b1f554edd37def2d3acdc5ec2f20ff26a7df646b42390989dd41bd4d9a0877"
-        },
-        "url": "https://cdn.modrinth.com/data/VYmP7iH5/versions/tpr8fHX7/easylogin-neoforge-1.21.1-1.0.1.jar",
-        "filename": "easylogin-neoforge-1.21.1-1.0.1.jar",
-        "primary": true,
-        "size": 162652,
-        "file_type": null
-      }
-    ],
-    "dependencies": []
-  },
   "skinrestorer": {
     "game_versions": [
       "1.21",

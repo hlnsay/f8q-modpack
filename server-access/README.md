@@ -1,21 +1,15 @@
-# F8Q nickname access
+# F8Q nickname access without passwords
 
-F8Q Launcher 0.0.8 adds explicit nickname sessions. Microsoft sessions keep the original Horizon authentication engine; guest Java sessions use the F8Q executable. Game downloads use the official hash-checked Mojang manifests. No proprietary game files are redistributed.
+F8Q Launcher 0.0.9 connects by nickname without Microsoft ownership or a server password. Microsoft sign-in remains optional through the original engine.
 
-Server-only components for NeoForge 1.21.1:
-- EasyLogin 1.0.1: https://modrinth.com/mod/easylogin
+Current server-only components for NeoForge 1.21.1:
 - Skin Restorer 2.11.1+1.21-neoforge: https://modrinth.com/mod/skinrestorer
-- F8Q Player Identity 1.0.0: source in this directory. The login profile mapping keeps existing inventory, operator and mod UUIDs intact; unknown guests use case-insensitive offline identities.
+- F8Q Player Identity 1.0.0: source in this directory. Existing names retain their old UUIDs, inventories, operator rights and mod data. New guest identities are case-insensitive.
 
-The server must have online-mode=false and enforce-secure-profile=false. Password authentication is required for all accounts, including Microsoft players. Existing names must be registered privately before the switch. Never publish the account database, passwords, usercache or the production identity mapping.
+EasyLogin, its config and account database have been removed at the server owner's request. No registration or /login command is needed. The server uses online-mode=false and enforce-secure-profile=false. Nicknames do not establish authenticated ownership in this mode.
 
-The operator deploys config/f8q-identities.json as an array of name/uuid objects from the existing authenticated player records. The bridge fails startup if that file is absent or invalid. It does not rename player data or rewrite mod saves.
+Official skins are fetched asynchronously from Mojang, cached and sent through standard player-info packets. No client skin mod or resource pack is needed.
 
-New players use /register PASSWORD PASSWORD, returning players /login PASSWORD. /changepassword OLD NEW NEW changes the password. Official skins are fetched asynchronously from Mojang, cached and sent to all clients via ordinary player-info packets; no client skin mod or resource pack is required.
+The private config/f8q-identities.json mapping is deployed by the operator, never published. The bridge refuses startup if the mapping file is absent or malformed. Activation of mod removal requires a server restart; no player data is renamed or converted.
 
-Activation requires a server restart. Updating a running server's files does not change its current authentication mode.
-
-## Validation
-61 account tests passed (2 upstream ignored); 16 updater tests passed. Isolated NeoForge tests checked preserved UUIDs, password rejection/acceptance, blocking pre-login commands, preventing re-registration through case changes, and signed official skin properties received by a different connected client. A private Java fixture was launched through the actual F8Q CLI with zero Microsoft accounts and verified the selected nickname/offline UUID.
-
-Launcher overlay files follow ../launcher/README.md; account/tests.rs belongs under launcher/src/account/. Identity mixins intercept only offline profile construction in ServerLoginPacketListenerImpl.handleHello.
+Build the identity mod with build.py using a local NeoForge development classpath. Launcher overlay file placement is documented in ../launcher/README.md.

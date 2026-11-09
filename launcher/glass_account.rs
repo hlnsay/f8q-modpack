@@ -190,8 +190,8 @@ impl Launcher {
                     .mt(px(12.))
                     .line_height(px(19.5))
                     .child(tr(
-                        "3 to 16 letters, numbers or underscores. On F8Q, protect your nickname with \
-                         /register and sign in with /login. Microsoft sign-in is optional.",
+                        "3 to 16 letters, numbers or underscores. F8Q connects by nickname without \
+                         a server password. Microsoft sign-in is optional.",
                     )),
             )
             .children(self.skin_panel(cx).map(|p| p.mt(px(16.))))
