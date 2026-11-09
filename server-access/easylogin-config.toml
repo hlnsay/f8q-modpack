@@ -1,0 +1,90 @@
+# ═══════════════════════════════════════════════════════════
+# EasyLogin Configuration
+# Server-only authentication mod
+# ═══════════════════════════════════════════════════════════
+
+[general]
+# Seconds until unauthenticated player is kicked
+loginTimeout = 120
+# Seconds between action bar reminders
+reminderInterval = 10
+# Allow /logout command
+enableLogout = true
+# Logout cooldown in seconds
+logoutCooldown = 30
+
+[limbo]
+# Teleport to isolated coordinates while unauthenticated
+enabled = false
+x = 0.5
+y = 120.0
+z = 0.5
+world = "minecraft:overworld"
+
+[security]
+# BCrypt cost factor (10-14 recommended)
+bcryptCost = 12
+# Max login attempts before lockout
+maxAttempts = 5
+# Rate limit window (minutes)
+attemptWindow = 5
+# Lockout duration (minutes)
+lockoutDuration = 10
+# Minimum password length
+minPasswordLength = 8
+
+[protection]
+# Block player movement while unauthenticated
+blockMovement = true
+# Block chat messages while unauthenticated
+blockChat = true
+# Block damage received while unauthenticated
+blockDamageReceived = true
+# Block damage dealt by unauthenticated players
+blockDamageDealt = true
+# Seconds of invincibility after successful login/register
+invincibilityDuration = 5
+
+[sounds]
+# Vanilla sound events
+loginSuccess = "minecraft:entity.player.levelup"
+loginFail = "minecraft:entity.villager.no"
+
+[messages]
+# All messages support color codes (&a, &c, etc.) and placeholders:
+# {player}, {server}, {online}, {discord}, {attempts}, {minutes}, {seconds}, {min}
+welcome = "&a{player}, с возвращением! &7Введите &e/login <пароль>"
+welcomeFirstTime = "&aДобро пожаловать, {player}! &7Задайте пароль: &e/register <пароль> <пароль>"
+loginSuccess = "&aВход выполнен. Приятной игры, {player}!"
+registerSuccess = "&aНик защищён паролем. Вы вошли в игру."
+wrongPassword = "&cНеверный пароль. Осталось попыток: {attempts}."
+alreadyLoggedIn = "&7Вы уже вошли."
+notRegistered = "&cСначала задайте пароль: &e/register <пароль> <пароль>"
+alreadyRegistered = "&cЭтот ник уже зарегистрирован. Введите &e/login <пароль>"
+kicked = "&cВремя для входа истекло. Подключитесь заново."
+rateLimited = "&cСлишком много попыток. Подождите {minutes} мин."
+passwordChanged = "&aПароль изменён."
+passwordMismatch = "&cПароли не совпадают. Повторите ввод."
+wrongOldPassword = "&cСтарый пароль неверен."
+logoutSuccess = "&7Вы вышли из аккаунта."
+logoutCooldown = "&cДо повторного выхода осталось {seconds} сек."
+actionBarReminder = "&eВойдите: /login <пароль>"
+actionBarReminderNew = "&eЗадайте пароль: /register <пароль> <пароль>"
+blocked = "&cСначала войдите в аккаунт: /login <пароль>"
+loginUsage = "&7Вход: &e/login <пароль>"
+registerUsage = "&7Регистрация: &e/register <пароль> <повтор пароля>"
+changePasswordUsage = "&7Смена пароля: &e/changepassword <старый> <новый> <повтор нового>"
+adminForceLogin = "&aИгрок {player} авторизован администратором."
+adminForceRegister = "&aДля {player} установлен временный пароль."
+adminResetPassword = "&aПароль {player} сброшен. Требуется повторная регистрация."
+adminPurge = "&aАккаунт {player} удалён."
+adminReload = "&aНастройки авторизации обновлены."
+adminPlayerNotFound = "&cИгрок {player} не найден."
+adminNotRegistered = "&cИгрок {player} ещё не зарегистрирован."
+minPasswordLength = "&cМинимальная длина пароля: {min} символов."
+
+[server]
+# Server display name for placeholders
+name = "F8Q"
+# Discord invite link (for {discord} placeholder)
+discord = ""

@@ -1526,6 +1526,12 @@ pub fn download_version_for_owner(
         Ok(body)
     };
     let pins = sources::Pins::for_version(id, manifest_sha1);
+    if account::f8q_guest_player(&account::Accounts::load()).is_some() {
+        // F8Q's Java guest path fetches the published, hash-checked Mojang version directly.
+        // Keep the Horizon native-resource owner gate separate.
+        mojang::download(&pins, &dir, crate::java_launch::os_name(), 8, &fetch, &mojang::CANCEL, log)?;
+        return Ok(dir);
+    }
     download_for_owner(&pins, &dir, &fetch, log)
         .map_err(|e| e.trim_start_matches("\n  • ").to_string())?;
     Ok(dir)
@@ -3711,7 +3717,7 @@ mod tests {
                     .map(move |_| name.as_str())
             })
             .collect();
-        assert_eq!(calls, ["backend.rs"]);
+        assert_eq!(calls, ["backend.rs", "backend.rs"]);
         let backend = &sources.iter().find(|(n, ..)| n == "backend.rs").unwrap().2;
         let body = |f: &str| {
             let start = backend.find(&format!("\nfn {f}(")).unwrap();

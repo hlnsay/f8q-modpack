@@ -2520,9 +2520,9 @@
   ],
   "updater": {
     "path": "f8q-updater.exe",
-    "size": 2981888,
-    "sha512": "3a57747dd41c98d15e8db0d68b74019268740fe60a67a38f5d1eef8b355b122ae2c8816745eb4e86d671c6026afca177f4265816d63f6931bcfda5a602b63d7a",
-    "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater-build21.exe"
+    "size": 2981376,
+    "sha512": "27529b6a8fb11529de0ea25303ecd6ea8ee04e1e04598dec4d8466106a10376edb73f5ba66b38f79ee6203842f49c1d54c5375ecb09ca1866328f5fd5455122a",
+    "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater-nickname-v22.exe"
   },
   "packs": [
     "mod/punchy:resourcepacks/punchy",
@@ -2564,6 +2564,17 @@
     "file/better-3d-beds.zip"
   ],
   "changelog": [
+    {
+      "date": "2026-11-09",
+      "added": [
+        "Вход по нику без Microsoft в F8Q Launcher 0.0.8",
+        "Защита ников паролем и официальные скины для всех игроков (сервер)"
+      ],
+      "updated": [
+        "Сохранены идентификаторы существующих игроков, их инвентари и права. Серверные изменения включатся после перезапуска."
+      ],
+      "removed": []
+    },
     {
       "date": "2026-11-09",
       "added": [
@@ -3044,6 +3055,6 @@
       "removed": []
     }
   ],
-  "revision": "2026-11-09-map-diorama-schematics-v26",
+  "revision": "2026-11-09-nickname-access-v27",
   "journeymap": []
 }

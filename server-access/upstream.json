@@ -1,0 +1,80 @@
+{
+  "easylogin": {
+    "game_versions": [
+      "1.21.1"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "environment": "dedicated_server_only",
+    "id": "tpr8fHX7",
+    "project_id": "VYmP7iH5",
+    "author_id": "uQEB2AK9",
+    "featured": false,
+    "name": "EasyLogin 1.0.1",
+    "version_number": "1.0.1",
+    "changelog": "feat: relocate player data to world/serverconfig and add auto-migration\n",
+    "changelog_url": null,
+    "date_published": "2026-02-10T20:30:43.855803Z",
+    "downloads": 3902,
+    "version_type": "release",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "id": "QKVcmNVD",
+        "hashes": {
+          "sha1": "7418666f9863d8078484878693b26b8dbae0d92a",
+          "sha512": "c6532ece3b27bdf16f490c8122adc65d03c79dede7a26b41804cca568ba40e0778b1f554edd37def2d3acdc5ec2f20ff26a7df646b42390989dd41bd4d9a0877"
+        },
+        "url": "https://cdn.modrinth.com/data/VYmP7iH5/versions/tpr8fHX7/easylogin-neoforge-1.21.1-1.0.1.jar",
+        "filename": "easylogin-neoforge-1.21.1-1.0.1.jar",
+        "primary": true,
+        "size": 162652,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  },
+  "skinrestorer": {
+    "game_versions": [
+      "1.21",
+      "1.21.1",
+      "1.21.2",
+      "1.21.3",
+      "1.21.4"
+    ],
+    "loaders": [
+      "neoforge"
+    ],
+    "environment": "server_only",
+    "id": "VW4OYPBP",
+    "project_id": "ghrZDhGW",
+    "author_id": "y7lI8CTm",
+    "featured": false,
+    "name": "[Neoforge] SkinRestorer 2.11.1",
+    "version_number": "2.11.1+1.21-neoforge",
+    "changelog": "### Fixed\n- Fixed skins applied with SkinShuffle being refreshed on join, which always failed and logged a warning\n- Fixed `/skin refresh` failing for skins applied with SkinShuffle\n- Fixed other mods looking up a player without a saved skin making that player count as having one (e.g. skipping the first join skin fetch)\n- Fixed a rare error when a player's skin was looked up while they were disconnecting\n- Fixed the broken Forge jars for 1.19.1\u20131.19.2 (crash on startup) and 1.19.3 (missing mod code)\n",
+    "changelog_url": null,
+    "date_published": "2026-11-04T16:40:43.683572Z",
+    "downloads": 2654,
+    "version_type": "release",
+    "status": "listed",
+    "requested_status": null,
+    "files": [
+      {
+        "id": "v8lNYT5U",
+        "hashes": {
+          "sha512": "3657b23fbbf0148c4a57438cf21f909434d7e1446fcd0c3a539df255781839c7b0e86e903a0800f3104ab6e49fb513d03d6d214977edcc5a17ff5f079b4db13e",
+          "sha1": "1926e526d84143daab4afcc3bb109caa385261ae"
+        },
+        "url": "https://cdn.modrinth.com/data/ghrZDhGW/versions/VW4OYPBP/skinrestorer-2.11.1%2B1.21-neoforge.jar",
+        "filename": "skinrestorer-2.11.1+1.21-neoforge.jar",
+        "primary": true,
+        "size": 286154,
+        "file_type": null
+      }
+    ],
+    "dependencies": []
+  }
+}

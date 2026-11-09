@@ -1,10 +1,19 @@
 {
-  "build": 21,
-  "version": "0.0.7",
-  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.7.exe",
-  "size": 55910400,
-  "sha512": "5f0f5489ea23b700dfb5a6f20a593c11e38e09c589734ade3de69544e34d3de1538e69e438d5b64ae0f22972643caec5b4f9ccca04b548742c737d6adabd7959",
+  "build": 22,
+  "version": "0.0.8",
+  "url": "https://github.com/hlnsay/f8q-modpack/releases/download/files/F8Q-Launcher-Setup-v0.0.8-b3859deab4a8.exe",
+  "size": 55830016,
+  "sha512": "b3859deab4a88f0d7abd96c395b8ea399d561a4571c0bf859e13455f0ac96c0ed30d5bdf5c074fcca8e7068e43e455c209c84710c1c3624a17d310bb34159e2a",
   "changelog": [
+    {
+      "version": "0.0.8",
+      "date": "2026-11-09",
+      "changes": [
+        "Добавлен вход по нику для сервера F8Q без аккаунта Microsoft.",
+        "Запуск и установка используют встроенный движок F8Q; выбранный ник сохраняется.",
+        "Официальные скины восстанавливаются сервером и видны другим игрокам."
+      ]
+    },
     {
       "version": "0.0.7",
       "date": "2026-11-04",

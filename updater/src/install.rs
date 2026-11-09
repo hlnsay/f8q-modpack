@@ -186,7 +186,7 @@ fn instance_of(launcher: &Path, name: &str) -> Result<Option<(String, PathBuf)>,
     let text = run(launcher, &["instance", "list", "--json"])?;
     let list: Value = serde_json::from_str(&text).map_err(|e| e.to_string())?;
     Ok(list.as_array().into_iter().flatten().find_map(|i| {
-        (i["name"] == name).then(|| {
+        (i["name"] == name && !i["java"].is_null()).then(|| {
             (
                 i["id"].as_str().unwrap_or_default().to_string(),
                 PathBuf::from(i["home"].as_str().unwrap_or_default()),
@@ -292,8 +292,7 @@ fn install_steps(agent: &ureq::Agent, adopt: Option<&str>, target: &Target) -> R
     println!("\nГотово. Откройте F8Q Launcher заново и нажмите «Играть».");
     println!("Первый запуск устанавливает NeoForge и занимает несколько минут.");
     if fresh {
-        println!("\nСейчас откроется Horizon: войдите в аккаунт Microsoft, иначе игра не запустится.");
-        let _ = Command::new(&launcher).spawn();
+        println!("\nВыберите ник или аккаунт Microsoft в настройках F8Q Launcher.");
     }
     Ok(())
 }

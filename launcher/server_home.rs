@@ -20,7 +20,7 @@ const CHANGELOG: &str = "https://raw.githubusercontent.com/hlnsay/f8q-modpack/ma
 const INSTALLER: &str =
     "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater.exe";
 /// This build's number: `launcher.json` on GitHub names the newest.
-pub(super) const BUILD: u32 = 16;
+pub(super) const BUILD: u32 = 22;
 /// Horizon's releases: its launcher's are tagged `launcher@`, among the game's.
 const ENGINE_RELEASE: &str =
     "https://api.github.com/repos/horizon-rust/horizon/releases?per_page=40";
@@ -83,6 +83,7 @@ impl ServerHome {
         if !self.run.as_ref().is_some_and(|active| Arc::ptr_eq(active, run)) { return false; }
         self.run = None;
         if self.self_update.as_ref().is_some_and(|active| Arc::ptr_eq(active, run)) { self.self_update = None; }
+        self.update_tried |= result.is_ok();
         self.note = result.err();
         true
     }
@@ -197,6 +198,10 @@ fn server_image(png: Vec<u8>) -> Arc<gpui::Image> {
 /// What the published list says about this computer.
 #[derive(Clone, Default)]
 struct Check {
+    /// The published list as read here: the updater works from this copy, not a later one.
+    manifest: Option<String>,
+    /// The first file still out of step with the list.
+    first_stale: Option<String>,
     /// The list answered.
     known: bool,
     /// Its files, and how many of them the server's instance lacks.
@@ -260,11 +265,36 @@ pub(super) struct ServerHome {
     update_checked: bool,
     /// A newer launcher came out while this one is open.
     update_waiting: bool,
+    /// An update finished here: the button must not hold the player back after that.
+    update_tried: bool,
     game_phase: game_session::Phase,
     launch_requested: Option<Instant>,
     launch_process: Option<std::process::Child>,
     game_poll: Option<Instant>,
     game_watch_started: bool,
+}
+
+fn play_log() -> PathBuf {
+    std::env::temp_dir().join("f8q-play.log")
+}
+
+/// Why the last start failed, in the starter's own words.
+fn play_failure() -> String {
+    let text = std::fs::read(play_log()).map(|b| String::from_utf8_lossy(&b).to_string()).unwrap_or_default();
+    let lines = || text.lines().rev().map(str::trim);
+    // The cause sits above the starter's closing "Exited with exit code".
+    let line = lines()
+        .find(|l| l.starts_with("[f8q]") && ["can't", "failed", "wrong", "checksum"].iter().any(|w| l.contains(w)))
+        .or_else(|| lines().find(|l| ["Mod Loading has failed", "Crash report saved", "Caused by:", "Exception:", "Could not create the Java", "Error occurred"].iter().any(|w| l.contains(w))))
+        .or_else(|| lines().find(|l| l.starts_with("error:")))
+        .or_else(|| lines().find(|l| !l.is_empty()));
+    match line {
+        Some(line) => {
+            let line: String = line.chars().take(300).collect();
+            format!("{} {line}", tr("Could not start the game."))
+        }
+        None => tr("Could not start the game. Check the game log.").to_string(),
+    }
 }
 
 /// The manifest's files `home` holds at the right size.
@@ -280,6 +310,25 @@ fn present_files(manifest: &serde_json::Value, home: &std::path::Path) -> usize 
             std::fs::metadata(home.join(path)).is_ok_and(|m| m.len() == size)
         })
         .count()
+}
+
+/// The first listed file that isn't here at its size, or setting not applied.
+fn first_stale(manifest: &serde_json::Value, home: &std::path::Path) -> Option<String> {
+    let files = manifest["files"].as_array().into_iter().flatten();
+    let missing = files.filter_map(|f| {
+        let path = f["path"].as_str()?;
+        let size = f["size"].as_u64()?;
+        (!std::fs::metadata(home.join(path)).is_ok_and(|m| m.len() == size)).then(|| path.to_string())
+    });
+    let applied: serde_json::Value = std::fs::read(home.join(".f8q-config-state.json"))
+        .ok()
+        .and_then(|b| serde_json::from_slice(&b).ok())
+        .unwrap_or_default();
+    let settings = manifest["config"].as_array().into_iter().flatten().filter_map(|e| {
+        let path = e["path"].as_str()?;
+        (applied[path] != e["sha512"]).then(|| path.to_string())
+    });
+    missing.chain(settings).next()
 }
 
 /// The published settings not applied here yet.
@@ -312,7 +361,7 @@ fn config_to_update(manifest: &serde_json::Value, home: &std::path::Path) -> usi
 fn check_files(own: Option<PathBuf>, others: Vec<(String, PathBuf)>) -> Check {
     let _ = update_engine();
     let manifest = public_json(MANIFEST);
-    let no_account = official_launcher().and_then(|p| has_account(&p)) == Some(false);
+    let no_account = account::f8q_guest_player(&Accounts::load()).is_none() && official_launcher().and_then(|p| has_account(&p)) == Some(false);
     let Some(manifest) = manifest else {
         return Check {
             no_account,
@@ -330,6 +379,7 @@ fn check_files(own: Option<PathBuf>, others: Vec<(String, PathBuf)>) -> Check {
         .collect();
     mods.sort_by_key(|m| m.to_lowercase());
     let mut check = Check {
+        manifest: Some(manifest.to_string()),
         known: true,
         total,
         mods,
@@ -344,6 +394,7 @@ fn check_files(own: Option<PathBuf>, others: Vec<(String, PathBuf)>) -> Check {
             let present = present_files(&manifest, &home);
             check.missing = total.saturating_sub(present);
             check.settings = config_to_update(&manifest, &home);
+            check.first_stale = first_stale(&manifest, &home);
         }
         None => {
             check.missing = total;
@@ -369,6 +420,19 @@ fn progress_of(line: &str) -> Option<f32> {
     (total > 0.).then(|| done / total)
 }
 
+fn newest_updater() -> Result<PathBuf, String> {
+    let path = std::env::temp_dir().join("f8q-updater.exe");
+    let agent = ureq::AgentBuilder::new()
+        .timeout_connect(Duration::from_secs(10))
+        .timeout_read(Duration::from_secs(30))
+        .build();
+    let reply = agent.get(INSTALLER).call().map_err(|e| e.to_string())?;
+    let mut body = Vec::new();
+    std::io::Read::read_to_end(&mut reply.into_reader(), &mut body).map_err(|e| e.to_string())?;
+    std::fs::write(&path, body).map_err(|e| e.to_string())?;
+    Ok(path)
+}
+
 /// Runs the updater with no window, passing its lines to `run`.
 pub(super) fn run_updater(
     run: &Mutex<Run>,
@@ -378,23 +442,15 @@ pub(super) fn run_updater(
     use std::io::BufRead;
     use std::process::{Command, Stdio};
     run.lock().unwrap().line = tr("Getting ready…").to_string();
-    // With a copy already here, a failed check is no reason to stop.
-    if let Err(e) = update_engine() {
-        if official_launcher().is_none() {
-            return Err(e);
-        }
+    // Only when missing: the page's check looks for updates, and this one can't be left waiting.
+    if official_launcher().is_none() {
+        update_engine()?;
     }
-    let exe = match exe {
-        Some(exe) => exe,
-        None => {
-            let path = std::env::temp_dir().join("f8q-updater.exe");
-            let reply = ureq::get(INSTALLER).call().map_err(|e| e.to_string())?;
-            let mut body = Vec::new();
-            std::io::Read::read_to_end(&mut reply.into_reader(), &mut body)
-                .map_err(|e| e.to_string())?;
-            std::fs::write(&path, body).map_err(|e| e.to_string())?;
-            path
-        }
+    // The newest updater, not the copy in the game folder, which can be any age.
+    let exe = match (newest_updater(), exe) {
+        (Ok(path), _) => path,
+        (Err(_), Some(exe)) => exe,
+        (Err(e), None) => return Err(e),
     };
     let mut command = Command::new(exe);
     command
@@ -605,6 +661,11 @@ static ENGINE: Mutex<()> = Mutex::new(());
 /// Keeps the copy of Horizon current. The setup exe is the launcher itself: under the plain name
 /// it runs as one. A failed check leaves the copy there as it is.
 pub(super) fn update_engine() -> Result<(), String> {
+    if account::f8q_guest_player(&Accounts::load()).is_some() { return Ok(()); }
+    update_microsoft_engine()
+}
+
+fn update_microsoft_engine() -> Result<(), String> {
     let _only_one = ENGINE.lock().unwrap();
     let dir = engine_folder().ok_or("no folder for Horizon")?;
     let exe = dir.join("horizon-launcher.exe");
@@ -653,6 +714,17 @@ pub(super) fn update_engine() -> Result<(), String> {
 
 /// This launcher's copy of Horizon, or one the player installed.
 pub(super) fn official_launcher() -> Option<PathBuf> {
+    // The F8Q executable includes the same CLI used for installation and launching.
+    // Use it so an upstream engine update cannot remove F8Q's guest session support.
+    if account::f8q_guest_player(&Accounts::load()).is_some() {
+        if let Ok(exe) = std::env::current_exe() {
+            if exe.is_file() { return Some(exe); }
+        }
+    }
+    microsoft_launcher()
+}
+
+fn microsoft_launcher() -> Option<PathBuf> {
     if let Some(exe) = engine_folder().map(|d| d.join("horizon-launcher.exe")) {
         if exe.is_file() {
             return Some(exe);
@@ -778,10 +850,11 @@ impl Launcher {
     }
 
     fn server_instance(&self) -> Option<instances::Instance> {
-        self.instances
-            .list
-            .iter()
-            .find(|i| i.id == INSTANCE || i.name == NAME)
+        // By its name first, and only a Minecraft instance: the id can also be a Horizon port's.
+        let list = &self.instances.list;
+        list.iter()
+            .find(|i| i.java.is_some() && i.name == NAME)
+            .or_else(|| list.iter().find(|i| i.java.is_some() && i.id == INSTANCE))
             .cloned()
     }
 
@@ -790,14 +863,10 @@ impl Launcher {
         self.server_home.sign_in = true;
     }
 
-    fn start_sign_in_official(&mut self, cx: &mut Context<Self>) {
+    pub(super) fn start_sign_in_official(&mut self, cx: &mut Context<Self>) {
         if self.server_home.run.is_some() {
             return;
         }
-        let Some(official) = official_launcher() else {
-            self.start_update(cx);
-            return;
-        };
         let run = Arc::new(Mutex::new(Run {
             line: tr("Getting ready…").to_string(),
             ..Run::default()
@@ -806,7 +875,9 @@ impl Launcher {
         self.server_home.run = Some(run.clone());
         let worker = run.clone();
         std::thread::spawn(move || {
-            let result = run_sign_in(&worker, official);
+            let result = update_microsoft_engine()
+                .and_then(|()| microsoft_launcher().ok_or_else(|| tr("Microsoft sign-in engine is unavailable").to_string()))
+                .and_then(|official| run_sign_in(&worker, official));
             worker.lock().unwrap().done = Some(result);
         });
         self.follow_run(run, cx);
@@ -822,6 +893,9 @@ impl Launcher {
             let finished = done.is_some();
             let alive = this.update(cx, |this, cx| {
                 if done.is_some_and(|result| this.server_home.complete_run(&run, result)) {
+                    this.accounts = Accounts::load();
+                    this.owner = None;
+                    this.load_auth_statuses(false);
                     this.reload_instances();
                     this.server_home.asked = None;
                     this.ask_server_status(cx);
@@ -1122,7 +1196,7 @@ impl Launcher {
     }
 
     pub(super) fn server_home_note(&self) -> Option<String> {
-        self.server_home.note.clone()
+        self.server_home.note.clone().or_else(|| self.stale_note())
     }
 
     /// What the button should do now.
@@ -1134,9 +1208,24 @@ impl Launcher {
             Some(_) if check.known && check.total > 0 && check.missing == check.total => {
                 Need::Download
             }
-            Some(_) if check.missing + check.settings > 0 => Need::Update,
-            Some(_) if check.no_account => Need::SignIn,
+            Some(_) if check.missing + check.settings > 0 && !self.server_home.update_tried => Need::Update,
+            Some(_) if check.no_account && self.accounts.accounts.is_empty() && account::f8q_guest_player(&self.accounts).is_none() => Need::SignIn,
             Some(_) => Need::Play,
+        }
+    }
+
+    /// What an update left out of step: the game's start tries it again.
+    fn stale_note(&self) -> Option<String> {
+        let file = self.server_home.check.first_stale.as_ref().filter(|_| self.server_home.update_tried)?;
+        Some(format!("{} {file}", tr("Not updated yet:")))
+    }
+
+    /// Where the updater reads the list from: the copy this check saw, else the published address.
+    fn manifest_for_updater(&self) -> String {
+        let saved = std::env::temp_dir().join("f8q-manifest.json");
+        match &self.server_home.check.manifest {
+            Some(text) if std::fs::write(&saved, text).is_ok() => saved.display().to_string(),
+            _ => MANIFEST.to_string(),
         }
     }
 
@@ -1155,7 +1244,8 @@ impl Launcher {
                 Some(exe),
                 vec![
                     "sync".to_string(),
-                    format!("{MANIFEST}?refresh={}", std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap_or_default().as_nanos()),
+                    // GitHub's copies can differ for minutes: this one is what lit the button.
+                    self.manifest_for_updater(),
                     i.home.display().to_string(),
                 ],
             ),
@@ -1203,7 +1293,7 @@ impl Launcher {
             let failed=matches!(child_state,Some(Err(_))) || matches!(child_state,Some(Ok(Some(status))) if !status.success());
             if failed {
                 self.server_home.launch_requested=None;
-                self.server_home.note=Some(tr("Could not start the game. Check the game log.").to_string());
+                self.server_home.note=Some(play_failure());
             }
             let recent=self.server_home.launch_requested.is_some_and(|at|at.elapsed()<Duration::from_secs(45));
             if child_alive || (previous==game_session::Phase::Starting && recent) {phase=game_session::Phase::Starting;}
@@ -1226,6 +1316,12 @@ impl Launcher {
         let mut command = std::process::Command::new(official);
         command.args(["play", "--instance", &instance.id, "--server", ADDRESS]);
         command.env("HORIZON_LAUNCHER_NO_SELF_UPDATE", "1");
+        if let Ok(log) = std::fs::File::create(play_log()) {
+            if let Ok(copy) = log.try_clone() {
+                command.stdout(copy);
+            }
+            command.stderr(log);
+        }
         #[cfg(windows)]
         {
             use std::os::windows::process::CommandExt;
@@ -1310,7 +1406,7 @@ impl Launcher {
                     match need {
                         Need::Download => "Download the instance",
                         Need::Update => "Update",
-                        Need::SignIn => "Sign in with Microsoft",
+                        Need::SignIn => "Choose nickname or Microsoft",
                         Need::Play => "Play",
                     }
                 })
@@ -1325,7 +1421,8 @@ impl Launcher {
             }));
         } else if need == Need::SignIn {
             play = play.on_click(cx.listener(|this, _: &ClickEvent, _, cx| {
-                this.start_sign_in_official(cx);
+                this.settings_tab = 0;
+                this.go(Page::Settings);
                 cx.notify();
             }));
         } else {
@@ -1435,10 +1532,7 @@ impl Launcher {
                     ))
             }))
             .children(
-                self.server_home
-                    .note
-                    .clone()
-                    .map(|note| shell::text(night::UI, c(n.ink_soft)).child(note)),
+                self.server_home_note().map(|note| shell::text(night::UI, c(n.ink_soft)).child(note)),
             )
             .child(facts)
     }

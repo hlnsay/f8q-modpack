@@ -1,0 +1,36 @@
+{
+  "launcher": {
+    "guestSelection": true,
+    "zeroMicrosoftAccounts": true,
+    "actualJavaLaunch": true,
+    "nicknameAndOfflineUUID": true
+  },
+  "server": {
+    "preservedUUID": true,
+    "commandsBlockedBeforeLogin": true,
+    "existingNicknameProtected": true,
+    "wrongPasswordRejected": true,
+    "passwordAccepted": true,
+    "commandsAllowedAfterLogin": true,
+    "caseKeepsUUID": true,
+    "caseCannotReregister": true,
+    "signedSkinVisibleToOtherPlayer": true,
+    "skinProfileMatchesLicensedUUID": true
+  },
+  "serverRestartPerformed": false,
+  "accountTests": {
+    "passed": 61,
+    "ignored": 2,
+    "failed": 0
+  },
+  "updaterTests": {
+    "passed": 16,
+    "failed": 0
+  },
+  "nativeOwnerGateTests": {
+    "passed": 1,
+    "failed": 0
+  },
+  "identityBuildReproduced": true,
+  "passwordsAbsentFromLogs": true
+}

@@ -1133,5 +1133,13 @@
   "{mods} mods · {packs} resource packs": "{mods} модов · {packs} ресурс-пака",
   "Launching…": "Запускаем…",
   "White by default. Choose any accent colour.": "Белый по умолчанию. Можно выбрать любой цвет акцента.",
-  "Could not start the game. Check the game log.": "Не удалось запустить игру. Проверьте журнал игры."
+  "Could not start the game.": "Не удалось запустить игру.",
+  "Not updated yet:": "Пока не обновилось:",
+  "Could not start the game. Check the game log.": "Не удалось запустить игру. Проверьте журнал игры.",
+  "Nickname · F8Q server and offline worlds": "По нику · сервер F8Q и одиночная игра",
+  "Nickname sign-in": "Вход по нику",
+  "Enter your nickname": "Введите ник",
+  "3 to 16 letters, numbers or underscores. On F8Q, protect your nickname with /register and sign in with /login. Microsoft sign-in is optional.": "От 3 до 16 латинских букв, цифр или _. На F8Q задайте пароль через /register, затем входите через /login. Вход Microsoft необязателен.",
+  "Choose nickname or Microsoft": "Войти по нику / Microsoft",
+  "Microsoft sign-in engine is unavailable": "Не удалось подготовить вход Microsoft. Проверьте соединение и повторите попытку."
 }

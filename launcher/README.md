@@ -26,3 +26,6 @@ Build 14 также обходит кэш метаданных GitHub при о�
 `ru.json` — в `launcher/lang/`, `f8q-icon.ico` — в `packaging/icons/horizon.ico`.
 
 Version 0.0.2 restores saved appearance, accent, background, glass and blur settings. Monochrome is an additional default accent. game_session.rs prevents duplicate game starts and drives the immediate launch status. FancyMenu assets are distributed in config/fancymenu.
+
+
+Версия 0.0.8: вход по нику добавлен в настройки аккаунта. Гостевые сеансы Java запускает сама сборка F8Q; вход Microsoft и обновление его сессии сохраняют прежний официальный механизм. Новые файлы account.rs, cli.rs, glass_account.rs, owner_page.rs, switch_page.rs размещаются в launcher/src/, account/tests.rs — в launcher/src/account/. Серверная часть и результаты проверок находятся в ../server-access/. В репозитории нет паролей и персональных таблиц идентификаторов.
