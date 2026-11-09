@@ -1142,5 +1142,7 @@
   "3 to 16 letters, numbers or underscores. On F8Q, protect your nickname with /register and sign in with /login. Microsoft sign-in is optional.": "От 3 до 16 латинских букв, цифр или _. На F8Q задайте пароль через /register, затем входите через /login. Вход Microsoft необязателен.",
   "Choose nickname or Microsoft": "Войти по нику / Microsoft",
   "Microsoft sign-in engine is unavailable": "Не удалось подготовить вход Microsoft. Проверьте соединение и повторите попытку.",
-  "3 to 16 letters, numbers or underscores. F8Q connects by nickname without a server password. Microsoft sign-in is optional.": "От 3 до 16 латинских букв, цифр или _. Вход на F8Q — по нику, без пароля сервера. Аккаунт Microsoft необязателен."
+  "3 to 16 letters, numbers or underscores. F8Q connects by nickname without a server password. Microsoft sign-in is optional.": "От 3 до 16 латинских букв, цифр или _. Вход на F8Q — по нику, без пароля сервера. Аккаунт Microsoft необязателен.",
+  "Could not prepare the launcher update.": "Не удалось подготовить обновление лаунчера.",
+  "The new launcher did not start. The previous version was restored.": "Новая версия не запустилась. Предыдущая версия восстановлена."
 }

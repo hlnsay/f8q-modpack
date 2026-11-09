@@ -1,0 +1,12 @@
+{
+  "runningOldImageReplacement": true,
+  "concurrentUpdatesBlocked": true,
+  "rollbackRestoresPreviousContents": true,
+  "testsPassed": 3,
+  "ignoredChildFixture": 1,
+  "fixedBackupCollisionRemoved": true,
+  "oldFileNoLongerSuppressesUpdateCheck": true,
+  "installedVersionVerified": "0.0.10",
+  "realLauncherReadyAcknowledged": true,
+  "mcpProcessPreserved": true
+}

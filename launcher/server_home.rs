@@ -20,7 +20,7 @@ const CHANGELOG: &str = "https://raw.githubusercontent.com/hlnsay/f8q-modpack/ma
 const INSTALLER: &str =
     "https://github.com/hlnsay/f8q-modpack/releases/download/files/f8q-updater.exe";
 /// This build's number: `launcher.json` on GitHub names the newest.
-pub(super) const BUILD: u32 = 23;
+pub(super) const BUILD: u32 = 24;
 /// Horizon's releases: its launcher's are tagged `launcher@`, among the game's.
 const ENGINE_RELEASE: &str =
     "https://api.github.com/repos/horizon-rust/horizon/releases?per_page=40";
@@ -65,7 +65,7 @@ pub(super) fn after_update_handoff() -> bool {
     static UPDATED: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
     *UPDATED.get_or_init(|| {
         std::env::var("F8Q_UPDATED_BUILD").ok().and_then(|v| v.parse::<u32>().ok()) == Some(BUILD)
-            || std::env::current_exe().ok().is_some_and(|p| p.file_name().is_some_and(|n| n == "f8q-launcher.exe") && p.with_extension("old").is_file())
+
     })
 }
 
@@ -511,6 +511,8 @@ fn replace_launcher(run: &Mutex<Run>, info: &serde_json::Value) -> Result<(), St
     use sha2::{Digest, Sha512};
     use std::io::Read;
     let exe = installed_exe().ok_or("not installed")?;
+    let files = horizon_launcher::launcher_update::UpdateFiles::acquire(&exe, info["build"].as_u64().unwrap_or(0))
+        .map_err(|e| format!("{}: {e}", tr("Could not prepare the launcher update.")))?;
     let url = info["url"].as_str().ok_or("no address")?;
     let size = info["size"].as_u64().unwrap_or(0) as f32;
     let reply = ureq::get(url).call().map_err(|e| e.to_string())?;
@@ -534,29 +536,29 @@ fn replace_launcher(run: &Mutex<Run>, info: &serde_json::Value) -> Result<(), St
     if Some(hash.as_str()) != info["sha512"].as_str() {
         return Err(tr("The update failed. Try again.").to_string());
     }
-    let fresh = exe.with_extension("new");
-    std::fs::write(&fresh, body).map_err(|e| e.to_string())?;
-    let old = exe.with_extension("old");
-    let _ = std::fs::remove_file(&old);
-    std::fs::rename(&exe, &old).map_err(|e| e.to_string())?;
-    if let Err(e) = std::fs::rename(&fresh, &exe) {
-        let _ = std::fs::rename(&old, &exe);
-        return Err(e.to_string());
-    }
+    files.install(&body).map_err(|e| e.to_string())?;
     let ready = std::env::temp_dir().join(format!("f8q-update-ready-{}-{}.txt", std::process::id(), info["build"].as_u64().unwrap_or(0)));
     let _ = std::fs::remove_file(&ready);
-    let mut child = std::process::Command::new(&exe)
+    let spawned = std::process::Command::new(&exe)
         .env("F8Q_UPDATED_BUILD", info["build"].as_u64().unwrap_or(0).to_string())
-        .env("F8Q_UPDATE_READY", &ready).spawn().map_err(|e| e.to_string())?;
+        .env("F8Q_UPDATE_READY", &ready).spawn();
+    let mut child = match spawned {
+        Ok(child) => child,
+        Err(error) => { files.rollback().map_err(|e| e.to_string())?; return Err(error.to_string()); }
+    };
     run.lock().unwrap().fraction = 1.;
     let until = Instant::now() + Duration::from_secs(15);
     while !ready.is_file() && Instant::now() < until {
         if child.try_wait().map_err(|e| e.to_string())?.is_some() {
-            let _ = std::fs::rename(&exe, &fresh);
-            let _ = std::fs::rename(&old, &exe);
+            files.rollback().map_err(|e| e.to_string())?;
             return Err(tr("The update failed. Try again.").to_string());
         }
         std::thread::sleep(Duration::from_millis(50));
+    }
+    if !ready.is_file() {
+        let _ = child.kill(); let _ = child.wait();
+        files.rollback().map_err(|e| e.to_string())?;
+        return Err(tr("The new launcher did not start. The previous version was restored.").to_string());
     }
     let _ = std::fs::remove_file(&ready);
     std::process::exit(0);
